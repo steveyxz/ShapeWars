@@ -1,10 +1,13 @@
 package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
@@ -35,9 +38,8 @@ public class InGameScreen extends ScreenAdapter {
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
-    }
+        InGameScreen s = this;
 
-    public void show() {
         stage = new Stage(viewport, game.batch());
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
@@ -48,6 +50,19 @@ public class InGameScreen extends ScreenAdapter {
         for (int i = 0; i < 50; i++) {
             entityManager.registerEntity(new RockEntity());
         }
+        stage.addListener(new InputListener() {
+            @Override
+            public boolean keyDown(InputEvent event, int keycode) {
+                if (keycode == Input.Keys.SPACE && game.getScreen().equals(s)) {
+                    game.setScreen(Screens.pausedScreen);
+                }
+                return true;
+            }
+        });
+    }
+
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
     }
 
     public void render(float delta) {

@@ -24,16 +24,16 @@ public class GroundFrictionSystem extends IteratingSystem {
         Vector2 velocity = rigidBody.getLinearVelocity();
         Vector2 pos = rigidBody.getPosition();
         if (velocity.x > 1) {
-            rigidBody.applyLinearImpulse(-friction.friction(), 0, pos.x, pos.y, true);
+            rigidBody.applyLinearImpulse(-friction.friction() * deltaTime, 0, pos.x, pos.y, true);
         }
         if (velocity.x < -1) {
-            rigidBody.applyLinearImpulse(friction.friction(), 0, pos.x, pos.y, true);
+            rigidBody.applyLinearImpulse(friction.friction() * deltaTime, 0, pos.x, pos.y, true);
         }
         if (velocity.y > 1) {
-            rigidBody.applyLinearImpulse(0, -friction.friction(), pos.x, pos.y, true);
+            rigidBody.applyLinearImpulse(0, -friction.friction() * deltaTime, pos.x, pos.y, true);
         }
         if (velocity.y < -1) {
-            rigidBody.applyLinearImpulse(0, friction.friction(), pos.x, pos.y, true);
+            rigidBody.applyLinearImpulse(0, friction.friction() * deltaTime, pos.x, pos.y, true);
         }
         if (Math.abs(velocity.x) < 1) {
             rigidBody.setLinearVelocity(0, rigidBody.getLinearVelocity().y);

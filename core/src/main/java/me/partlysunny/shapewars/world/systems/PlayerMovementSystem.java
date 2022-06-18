@@ -34,25 +34,26 @@ public class PlayerMovementSystem extends IteratingSystem {
             map = new PlayerKeyMap();
         }
         //Movement speed
-        float playerSpeed = 10f;
+        float playerSpeed = 0.1f;
         Body body = velocity.rigidBody();
-        float y = body.getPosition().y;
         float x = body.getPosition().x;
+        float y = body.getPosition().y;
         Vector2 linearVelocity = body.getLinearVelocity();
+        System.out.println(linearVelocity);
         if (input.isKeyPressed(map.getKey(PlayerAction.DOWN)) && !(linearVelocity.y < -GameInfo.MAX_VELOCITY)) {
-            body.applyForceToCenter(0, -playerSpeed, true);
+            body.applyLinearImpulse(0, -playerSpeed, x, y, true);
             state.setState(State.MOVING);
         }
         if (input.isKeyPressed(map.getKey(PlayerAction.LEFT)) && !(linearVelocity.x < -GameInfo.MAX_VELOCITY)) {
-            body.applyForceToCenter(-playerSpeed, 0, true);
+            body.applyLinearImpulse(-playerSpeed, 0, x, y, true);
             state.setState(State.MOVING);
         }
         if (input.isKeyPressed(map.getKey(PlayerAction.UP)) && !(linearVelocity.y > GameInfo.MAX_VELOCITY)) {
-            body.applyForceToCenter(0, playerSpeed, true);
+            body.applyLinearImpulse(0, playerSpeed, x, y, true);
             state.setState(State.MOVING);
         }
         if (input.isKeyPressed(map.getKey(PlayerAction.RIGHT)) && !(linearVelocity.x > GameInfo.MAX_VELOCITY)) {
-            body.applyForceToCenter(playerSpeed, 0, true);
+            body.applyLinearImpulse(playerSpeed, 0, x, y, true);
             state.setState(State.MOVING);
         }
         if (body.getLinearVelocity().x == 0 && body.getLinearVelocity().y == 0) {

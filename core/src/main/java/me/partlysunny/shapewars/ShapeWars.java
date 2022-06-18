@@ -14,12 +14,12 @@ public class ShapeWars extends Game {
 
     @Override
     public void create() {
+        TextureManager.initTextures();
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         font = new BitmapFont();
         Screens.init(this);
-        TextureManager.initTextures();
-        setScreen(Screens.introScreen);
+        setScreen(Screens.inGameScreen);
     }
 
     @Override

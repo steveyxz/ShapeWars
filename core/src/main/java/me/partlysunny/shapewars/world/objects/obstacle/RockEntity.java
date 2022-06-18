@@ -28,7 +28,7 @@ public class RockEntity implements ObstacleEntity, GameObject {
 
     @Override
     public float width() {
-        return Util.getRandomBetween(10, 14);
+        return Util.getRandomBetween(7, 10);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class RockEntity implements ObstacleEntity, GameObject {
 
     @Override
     public float angle() {
-        return 0;
+        return Util.getRandomBetween(0, 360);
     }
 }

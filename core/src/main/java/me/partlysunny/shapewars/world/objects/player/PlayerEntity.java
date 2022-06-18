@@ -13,6 +13,7 @@ import me.partlysunny.shapewars.util.Box2DFactory;
 import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
@@ -34,7 +35,7 @@ public class PlayerEntity implements GameObject {
         player.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         texture.init(new TextureRegion(TextureManager.getTexture("player")));
-        ScaleComponent scale = w.createComponent(ScaleComponent.class);
+        TransformComponent scale = w.createComponent(TransformComponent.class);
         scale.init(width, width);
         player.add(scale);
         player.add(texture);

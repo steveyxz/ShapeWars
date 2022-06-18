@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 
 import java.util.Comparator;
@@ -53,17 +54,15 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
 
     private final ComponentMapper<TextureComponent> textureMapper;
-    private final ComponentMapper<RigidBodyComponent> bodyMapper;
-    private final ComponentMapper<ScaleComponent> scaleMapper;
+    private final ComponentMapper<TransformComponent> transformMapper;
 
     public TextureRenderingSystem(Batch batch) {
         // gets all entities with a TransformComponent and TextureComponent
-        super(Family.all(RigidBodyComponent.class, TextureComponent.class, ScaleComponent.class).get(), new ZComparator());
+        super(Family.all(TextureComponent.class, TransformComponent.class).get(), new ZComparator());
 
         //creates out componentMappers
         textureMapper = ComponentMapper.getFor(TextureComponent.class);
-        bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
-        scaleMapper = ComponentMapper.getFor(ScaleComponent.class);
+        transformMapper = ComponentMapper.getFor(TransformComponent.class);
 
         // create the array for sorting entities
         renderQueue = new Array<>();
@@ -90,8 +89,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
         // loop through each entity in our render queue
         for (Entity entity : renderQueue) {
             TextureComponent tex = textureMapper.get(entity);
-            RigidBodyComponent t = bodyMapper.get(entity);
-            ScaleComponent scale = scaleMapper.get(entity);
+            TransformComponent transform = transformMapper.get(entity);
 
             if (tex.texture() == null || tex.isHidden()) {
                 continue;
@@ -104,17 +102,17 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
             float originX = width / 2f;
             float originY = height / 2f;
 
-            float x = t.rigidBody().getPosition().x;
-            float y = t.rigidBody().getPosition().y;
+            float x = transform.position.x;
+            float y = transform.position.y;
             float x1 = x - originX;
             float y1 = y - originY;
 
-            float rotation = t.rigidBody().getAngle();
+            float rotation = transform.rotation;
             batch.draw(tex.texture(),
                     x1, y1,
                     originX, originY,
                     width, height,
-                    scale.width() / tex.texture().getRegionWidth(), scale.height() / tex.texture().getRegionHeight(),
+                    transform.scale.x / tex.texture().getRegionWidth(), transform.scale.y / tex.texture().getRegionHeight(),
                     rotation * MathUtils.radiansToDegrees);
         }
 

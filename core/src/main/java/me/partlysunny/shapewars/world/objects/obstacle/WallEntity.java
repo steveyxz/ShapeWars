@@ -11,6 +11,7 @@ import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
@@ -45,7 +46,7 @@ public class WallEntity implements GameObject {
         TextureComponent texture = w.createComponent(TextureComponent.class);
         Texture finalTexture = TextureManager.getTexture("wall");
         texture.init(new TextureRegion(finalTexture));
-        ScaleComponent scale = w.createComponent(ScaleComponent.class);
+        TransformComponent scale = w.createComponent(TransformComponent.class);
         scale.init(width, height);
         e.add(scale);
         e.add(texture);

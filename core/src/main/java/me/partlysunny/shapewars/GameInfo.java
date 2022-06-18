@@ -12,6 +12,6 @@ public class GameInfo {
     public static final float TIME_STEP = 1 / 60f;
     public static final int VELOCITY_ITERATIONS = 6;
     public static final int POSITION_ITERATIONS = 2;
-    public static final float MAX_VELOCITY = 50;
+    public static final float MAX_VELOCITY = 15f;
     public static final Color BACKGROUND_COLOR = Color.LIGHT_GRAY;
 }

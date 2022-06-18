@@ -5,7 +5,7 @@ import com.badlogic.gdx.utils.Pool;
 
 public class GroundFrictionComponent implements Component, Pool.Poolable {
 
-    private float friction = 0.05f;
+    private float friction = 1f;
 
     public GroundFrictionComponent() {
     }
