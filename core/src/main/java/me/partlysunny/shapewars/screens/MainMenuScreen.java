@@ -22,9 +22,9 @@ import me.partlysunny.shapewars.TextureManager;
 
 public class MainMenuScreen extends ScreenAdapter {
 
-    private final ShapeWars game;
     public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
+    private final ShapeWars game;
     private final Stage stage;
 
     public MainMenuScreen(ShapeWars game) {

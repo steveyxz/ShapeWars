@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.screens;
 
-import com.badlogic.gdx.Screen;
 import me.partlysunny.shapewars.ShapeWars;
 
 public class Screens {

@@ -14,19 +14,16 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
-import com.kotcrab.vis.ui.widget.VisImage;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
-import com.kotcrab.vis.ui.widget.VisTextArea;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
-import me.partlysunny.shapewars.TextureManager;
 
 public class PauseScreen extends ScreenAdapter {
 
-    private final ShapeWars game;
     public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
+    private final ShapeWars game;
     private final Stage stage;
 
 

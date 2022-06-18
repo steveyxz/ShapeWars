@@ -12,7 +12,6 @@ import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class WallEntity implements GameObject {

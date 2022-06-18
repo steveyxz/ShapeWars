@@ -11,11 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.GameInfo;
+import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
@@ -27,14 +25,14 @@ import static me.partlysunny.shapewars.world.systems.TextureRenderingSystem.*;
 public class InGameScreen extends ScreenAdapter {
 
     public static final Vector2 cameraVelocity = new Vector2(0, 0);
+    public static final OrthographicCamera camera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT); // a reference to our camera
+    public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
     public static GameWorld world;
     private final ShapeWars game;
     private EntityManager entityManager;
     private float accumulator = 0;
     private Box2DDebugRenderer debugRenderer;
     private Stage stage;
-    public static final OrthographicCamera camera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT); // a reference to our camera
-    public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
@@ -94,7 +92,7 @@ public class InGameScreen extends ScreenAdapter {
     }
 
     @Override
-    public void resize (int width, int height) {
+    public void resize(int width, int height) {
         viewport.update(width, height);
     }
 

@@ -10,9 +10,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import me.partlysunny.shapewars.world.components.TextureComponent;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 
 import java.util.Comparator;
 
@@ -29,6 +27,27 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
 
     private static final Vector2 meterDimensions = new Vector2();
     private static final Vector2 pixelDimensions = new Vector2();
+    private final Batch batch; // a reference to our spritebatch
+    private final Array<Entity> renderQueue; // an array used to allow sorting of images allowing us to draw images on top of each other
+    private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
+    private final ComponentMapper<TextureComponent> textureMapper;
+    private final ComponentMapper<TransformComponent> transformMapper;
+    public TextureRenderingSystem(Batch batch) {
+        // gets all entities with a TransformComponent and TextureComponent
+        super(Family.all(TextureComponent.class, TransformComponent.class).get(), new ZComparator());
+
+        //creates out componentMappers
+        textureMapper = ComponentMapper.getFor(TextureComponent.class);
+        transformMapper = ComponentMapper.getFor(TransformComponent.class);
+
+        // create the array for sorting entities
+        renderQueue = new Array<>();
+
+        this.batch = batch;  // set our batch to the one supplied in constructor
+
+        // set up the camera to match our screen size
+        camera.position.set(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f, 0);
+    }
 
     public static Vector2 getScreenSizeInMeters() {
         meterDimensions.set(Gdx.graphics.getWidth() * PIXELS_TO_METRES,
@@ -47,30 +66,6 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
 
     public static float metersToPixels(float meterValue) {
         return meterValue / PIXELS_TO_METRES;
-    }
-
-    private final Batch batch; // a reference to our spritebatch
-    private final Array<Entity> renderQueue; // an array used to allow sorting of images allowing us to draw images on top of each other
-    private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
-
-    private final ComponentMapper<TextureComponent> textureMapper;
-    private final ComponentMapper<TransformComponent> transformMapper;
-
-    public TextureRenderingSystem(Batch batch) {
-        // gets all entities with a TransformComponent and TextureComponent
-        super(Family.all(TextureComponent.class, TransformComponent.class).get(), new ZComparator());
-
-        //creates out componentMappers
-        textureMapper = ComponentMapper.getFor(TextureComponent.class);
-        transformMapper = ComponentMapper.getFor(TransformComponent.class);
-
-        // create the array for sorting entities
-        renderQueue = new Array<>();
-
-        this.batch = batch;  // set our batch to the one supplied in constructor
-
-        // set up the camera to match our screen size
-        camera.position.set(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f, 0);
     }
 
     @Override

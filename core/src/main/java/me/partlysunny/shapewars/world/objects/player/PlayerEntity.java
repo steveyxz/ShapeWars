@@ -14,10 +14,9 @@ import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
-import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class PlayerEntity implements GameObject {

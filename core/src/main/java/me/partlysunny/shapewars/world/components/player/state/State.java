@@ -4,9 +4,7 @@ public enum State {
 
     MOVING(1),
     PASSIVE(0),
-    ATTACKING(2)
-
-    ;
+    ATTACKING(2);
     private final int value;
 
     State(int value) {

@@ -12,7 +12,6 @@ import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
-import me.partlysunny.shapewars.world.components.render.ScaleComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleEntity;
 
 public class EntityManager {
