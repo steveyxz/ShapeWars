@@ -1,0 +1,59 @@
+package me.partlysunny.shapewars.world.objects;
+
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
+import me.partlysunny.shapewars.TextureManager;
+import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
+import me.partlysunny.shapewars.world.components.render.ScaleComponent;
+import me.partlysunny.shapewars.world.objects.obstacle.ObstacleEntity;
+
+public class EntityManager {
+
+    private final PooledEngine w;
+
+    public EntityManager(PooledEngine w) {
+        this.w = w;
+    }
+
+    public static void addObstacle(PooledEngine w, ObstacleEntity oe) {
+        Entity e = w.createEntity();
+        PolygonShape shape = new PolygonShape();
+        int width = (int) oe.width();
+        int height = (int) oe.height();
+        shape.setAsBox(width / 2f, height / 2f);
+        FixtureDef def = new FixtureDef();
+        def.friction = 0.5f;
+        def.shape = shape;
+        RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
+        float y = oe.y();
+        float x = oe.x();
+        rigidBody.initBody(x, y, oe.angle(), def, BodyDef.BodyType.DynamicBody);
+        e.add(rigidBody);
+        GroundFrictionComponent groundFrictionComponent = w.createComponent(GroundFrictionComponent.class);
+        groundFrictionComponent.setFriction(0.1f);
+        e.add(groundFrictionComponent);
+        TextureComponent texture = w.createComponent(TextureComponent.class);
+        Texture textureReal = TextureManager.getTexture(oe.getTexture());
+        texture.init(new TextureRegion(textureReal));
+        ScaleComponent scale = w.createComponent(ScaleComponent.class);
+        scale.init(width, height);
+        e.add(scale);
+        e.add(texture);
+        w.addEntity(e);
+    }
+
+    public PooledEngine w() {
+        return w;
+    }
+
+    public void registerEntity(GameObject g) {
+        g.createEntity(w);
+    }
+}
