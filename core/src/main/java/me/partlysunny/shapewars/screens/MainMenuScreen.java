@@ -80,15 +80,15 @@ public class MainMenuScreen extends ManagedScreen {
                 return true;
             }
         });
-        playButton.setTransform(true);
+        quitButton.setTransform(true);
         quitButton.setSize(400, 150);
-        Container<ImageTextButton> quitButtonContainer = new Container<>(playButton);
+        Container<ImageTextButton> quitButtonContainer = new Container<>(quitButton);
         quitButtonContainer.align(Alignment.CENTER.getAlignment());
 
         VisImage logo = new VisImage(TextureManager.getTexture("mainScreenLogo"));
         //logo.setPosition(0, 100, Alignment.CENTER.getAlignment());
         logo.setSize(400, 150);
-        Container<ImageTextButton> logoContainer = new Container<>(playButton);
+        Container<VisImage> logoContainer = new Container<>(logo);
         logoContainer.align(Alignment.CENTER.getAlignment());
 
         table.add(logoContainer, playButtonContainer, quitButtonContainer);

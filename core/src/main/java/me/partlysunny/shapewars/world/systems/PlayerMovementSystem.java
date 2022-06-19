@@ -36,7 +36,7 @@ public class PlayerMovementSystem extends IteratingSystem {
             map = new PlayerKeyMap();
         }
         //Movement speed
-        float playerSpeed = 0.1f;
+        float playerSpeed = 0.07f;
         Body body = velocity.rigidBody();
         float x = body.getPosition().x;
         float y = body.getPosition().y;
