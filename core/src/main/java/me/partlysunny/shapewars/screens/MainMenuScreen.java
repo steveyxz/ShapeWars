@@ -50,7 +50,7 @@ public class MainMenuScreen extends ManagedScreen {
         table.setFillParent(true);
         stage.addActor(table);
 
-        table.setDebug(true);
+        //table.setDebug(true);
 
         ImageTextButton playButton = new ImageTextButton("Play", VisUI.getSkin(), "default");
         //playButton.setPosition(0, 300, Alignment.CENTER.getAlignment());

@@ -9,7 +9,8 @@ public enum PlayerAction {
     DOWN(Input.Keys.S),
     RIGHT(Input.Keys.D),
     ATTACK(Input.Keys.SPACE),
-    ;
+    WEAPON_SLOT_1(Input.Keys.NUM_1),
+    WEAPON_SLOT_2(Input.Keys.NUM_2);
 
     private final int defaultKey;
 

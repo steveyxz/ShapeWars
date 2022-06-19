@@ -1,6 +1,6 @@
 package me.partlysunny.shapewars.world.components.player.equipment.item.types;
 
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.world.components.player.equipment.item.HasUses;
 import me.partlysunny.shapewars.world.components.player.equipment.item.Item;
 
@@ -8,6 +8,8 @@ public interface WeaponItem extends Item, HasUses {
 
     int damage();
 
-    void attack(Vector2 pos, float angle);
+    float attackDelay();
+
+    void attack(Entity attacker);
 
 }

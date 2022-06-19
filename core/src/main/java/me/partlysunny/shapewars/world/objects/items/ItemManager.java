@@ -1,9 +1,11 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item;
+package me.partlysunny.shapewars.world.objects.items;
+
+import me.partlysunny.shapewars.world.components.player.equipment.item.Item;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ItemManager {
+public final class ItemManager {
 
     private static final Map<String, Item> items = new HashMap<>();
 
@@ -20,7 +22,8 @@ public class ItemManager {
     }
 
     public static void init() {
-
+        registerItem("circleBlaster", new CircleBlaster());
+        registerItem("circlePummeler", new CirclePummeler());
     }
 
 }

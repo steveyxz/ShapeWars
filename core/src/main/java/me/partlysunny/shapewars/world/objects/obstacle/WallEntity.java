@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
@@ -44,6 +45,7 @@ public class WallEntity implements GameObject {
         e.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         Texture finalTexture = TextureManager.getTexture("wall");
+        e.add(w.createComponent(BulletDeleterComponent.class));
         texture.init(new TextureRegion(finalTexture));
         TransformComponent scale = w.createComponent(TransformComponent.class);
         scale.init(width, height);

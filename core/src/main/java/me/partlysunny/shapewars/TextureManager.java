@@ -28,6 +28,9 @@ public class TextureManager {
         registerTexture("wall", new Texture(Gdx.files.internal("wall.png")));
         registerTexture("rock", new Texture(Gdx.files.internal("rock.png")));
         registerTexture("mainScreenLogo", new Texture(Gdx.files.internal("mainScreenLogo.png")));
+        registerTexture("circleBlaster", new Texture(Gdx.files.internal("circleBlaster.png")));
+        registerTexture("circlePummeler", new Texture(Gdx.files.internal("circlePummeler.png")));
+        registerTexture("basicBullet", new Texture(Gdx.files.internal("basicBullet.png")));
     }
 
 }

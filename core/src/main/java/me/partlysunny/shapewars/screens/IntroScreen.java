@@ -7,9 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
@@ -19,8 +17,6 @@ import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.TextureManager;
-
-import javax.swing.*;
 
 public class IntroScreen extends ManagedScreen {
 

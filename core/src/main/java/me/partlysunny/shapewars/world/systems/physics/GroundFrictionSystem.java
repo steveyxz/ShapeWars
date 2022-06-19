@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.systems;
+package me.partlysunny.shapewars.world.systems.physics;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
@@ -25,22 +25,23 @@ public class GroundFrictionSystem extends IteratingSystem {
         Body rigidBody = body.rigidBody();
         Vector2 velocity = rigidBody.getLinearVelocity();
         Vector2 pos = rigidBody.getPosition();
-        if (velocity.x > 1) {
+        float lowerEnd = 0.1f;
+        if (velocity.x > 0.1f) {
             rigidBody.applyLinearImpulse(-friction.friction() * deltaTime, 0, pos.x, pos.y, true);
         }
-        if (velocity.x < -1) {
+        if (velocity.x < -0.1f) {
             rigidBody.applyLinearImpulse(friction.friction() * deltaTime, 0, pos.x, pos.y, true);
         }
-        if (velocity.y > 1) {
+        if (velocity.y > 0.1f) {
             rigidBody.applyLinearImpulse(0, -friction.friction() * deltaTime, pos.x, pos.y, true);
         }
-        if (velocity.y < -1) {
+        if (velocity.y < -0.1f) {
             rigidBody.applyLinearImpulse(0, friction.friction() * deltaTime, pos.x, pos.y, true);
         }
-        if (Math.abs(velocity.x) < 1) {
+        if (Math.abs(velocity.x) < lowerEnd) {
             rigidBody.setLinearVelocity(0, rigidBody.getLinearVelocity().y);
         }
-        if (Math.abs(velocity.y) < 1) {
+        if (Math.abs(velocity.y) < lowerEnd) {
             rigidBody.setLinearVelocity(rigidBody.getLinearVelocity().x, 0);
         }
     }

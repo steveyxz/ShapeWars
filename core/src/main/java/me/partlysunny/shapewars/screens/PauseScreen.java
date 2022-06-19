@@ -2,7 +2,6 @@ package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -10,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
@@ -40,6 +38,7 @@ public class PauseScreen extends ManagedScreen {
     @Override
     public void show() {
         PauseScreen s = this;
+        Gdx.input.setInputProcessor(stage);
 
         if (!VisUI.isLoaded()) {
             VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
@@ -51,14 +50,6 @@ public class PauseScreen extends ManagedScreen {
 
         VisLabel text = new VisLabel("Paused", Color.BLACK);
         table.add(text);
-
-        addInputProcessor(new InputAdapter() {
-            @Override
-            public boolean keyDown(int keycode) {
-                if (keycode == Input.Keys.SPACE) game.getScreenManager().pushScreen("ingame", "blending");
-                return super.keyDown(keycode);
-            }
-        });
 
         stage.addListener(new InputListener() {
             @Override

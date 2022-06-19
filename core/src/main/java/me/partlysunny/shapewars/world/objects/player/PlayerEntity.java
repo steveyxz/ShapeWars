@@ -12,6 +12,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.Box2DFactory;
 import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
@@ -31,7 +32,7 @@ public class PlayerEntity implements GameObject {
         FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
         //Set components
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
-        rigidBody.initBody(0, 0, 0, def, BodyDef.BodyType.DynamicBody);
+        rigidBody.initBody(0, 0, 0, def, BodyDef.BodyType.DynamicBody, true);
         player.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         texture.init(new TextureRegion(TextureManager.getTexture("player")));
@@ -43,6 +44,7 @@ public class PlayerEntity implements GameObject {
         player.add(w.createComponent(GroundFrictionComponent.class));
         player.add(w.createComponent(PlayerCameraFollowComponent.class));
         player.add(w.createComponent(StateComponent.class));
+        player.add(w.createComponent(BulletDeleterComponent.class));
         w.addEntity(player);
         InGameScreen.playerInfo = new PlayerInfo(player);
     }

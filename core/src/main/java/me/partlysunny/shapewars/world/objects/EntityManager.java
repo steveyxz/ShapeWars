@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
@@ -37,7 +38,7 @@ public class EntityManager {
         rigidBody.initBody(x, y, oe.angle(), def, BodyDef.BodyType.DynamicBody);
         e.add(rigidBody);
         GroundFrictionComponent groundFrictionComponent = w.createComponent(GroundFrictionComponent.class);
-        groundFrictionComponent.setFriction(0.01f);
+        groundFrictionComponent.setFriction(2);
         e.add(groundFrictionComponent);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         Texture textureReal = TextureManager.getTexture(oe.getTexture());
@@ -46,6 +47,7 @@ public class EntityManager {
         scale.init(width, height);
         e.add(scale);
         e.add(texture);
+        e.add(w.createComponent(BulletDeleterComponent.class));
         w.addEntity(e);
     }
 

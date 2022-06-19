@@ -1,10 +1,9 @@
-package me.partlysunny.shapewars.world.systems;
+package me.partlysunny.shapewars.world.systems.physics;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
@@ -23,7 +22,7 @@ public class PhysicsSystem extends IteratingSystem {
     private final ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
 
     public PhysicsSystem(World world) {
-        super(Family.all(TransformComponent.class, TransformComponent.class).get());
+        super(Family.all(TransformComponent.class, RigidBodyComponent.class).get());
         this.world = world;
         this.bodiesQueue = new Array<>();
     }
@@ -44,7 +43,8 @@ public class PhysicsSystem extends IteratingSystem {
                 Vector2 position = bodyComp.rigidBody().getPosition();
                 tfm.position.x = position.x;
                 tfm.position.y = position.y;
-                tfm.rotation = bodyComp.rigidBody().getAngle() * MathUtils.radiansToDegrees;
+                // TODO fix rotations they really suck
+                //tfm.rotation = bodyComp.rigidBody().getAngle() * MathUtils.radiansToDegrees;
             }
         }
         bodiesQueue.clear();

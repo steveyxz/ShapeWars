@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars.world.components.player;
 
+import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
@@ -10,6 +11,8 @@ public class PlayerInfo {
     private final Entity playerEntity;
     private float health = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment = new PlayerEquipment();
+    private PlayerKeyMap keyMap = new PlayerKeyMap();
+    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
 
     public PlayerInfo(Entity playerEntity) {
         this.playerEntity = playerEntity;
@@ -35,11 +38,18 @@ public class PlayerInfo {
         return playerEntity;
     }
 
+    public PlayerKeyMap keyMap() {
+        return keyMap;
+    }
+
+    public void setKeyMap(PlayerKeyMap keyMap) {
+        this.keyMap = keyMap;
+    }
+
     public TransformComponent getTransformComponent() {
-        TransformComponent component = playerEntity.getComponent(TransformComponent.class);
-        if (component != null) {
-            return component;
+        if (!transformMapper.has(playerEntity)) {
+            throw new IllegalArgumentException("Player entity does not have transform component!");
         }
-        throw new IllegalArgumentException("Player entity does not have transform component!");
+        return transformMapper.get(playerEntity);
     }
 }

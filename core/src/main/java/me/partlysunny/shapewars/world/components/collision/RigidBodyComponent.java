@@ -16,12 +16,16 @@ public class RigidBodyComponent implements Component, Pool.Poolable {
     }
 
     public void initBody(float x, float y, float rotation, FixtureDef fixture, BodyDef.BodyType type) {
+        initBody(x, y, rotation, fixture, type, false);
+    }
+
+    public void initBody(float x, float y, float rotation, FixtureDef fixture, BodyDef.BodyType type, boolean rotationFixed) {
 
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = type;
         bodyDef.position.set(x, y);
-
         rigidBody = InGameScreen.world.physicsWorld().createBody(bodyDef);
+        rigidBody.setFixedRotation(rotationFixed);
 
         Fixture f = rigidBody.createFixture(fixture);
         fixture.shape.dispose();

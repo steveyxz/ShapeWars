@@ -1,6 +1,10 @@
 package me.partlysunny.shapewars.world.components.player.equipment;
 
+import com.badlogic.ashley.core.Family;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.equipment.item.Item;
+import me.partlysunny.shapewars.world.components.player.equipment.item.components.WeaponComponent;
 import me.partlysunny.shapewars.world.components.player.equipment.item.types.ArmorItem;
 import me.partlysunny.shapewars.world.components.player.equipment.item.types.UtilityItem;
 import me.partlysunny.shapewars.world.components.player.equipment.item.types.WeaponItem;
@@ -16,6 +20,7 @@ public class PlayerEquipment {
     private WeaponItem weaponOne = null;
     private WeaponItem weaponTwo = null;
     private UtilityItem util = null;
+    private int activeWeaponSlot = 0;
 
     public List<Item> unlockedItems() {
         return unlockedItems;
@@ -43,6 +48,8 @@ public class PlayerEquipment {
 
     public void setWeaponOne(WeaponItem weaponOne) {
         this.weaponOne = weaponOne;
+        killWeaponEntities();
+        respawnWeaponEntities();
     }
 
     public WeaponItem weaponTwo() {
@@ -51,6 +58,8 @@ public class PlayerEquipment {
 
     public void setWeaponTwo(WeaponItem weaponTwo) {
         this.weaponTwo = weaponTwo;
+        killWeaponEntities();
+        respawnWeaponEntities();
     }
 
     public UtilityItem util() {
@@ -59,5 +68,40 @@ public class PlayerEquipment {
 
     public void setUtil(UtilityItem util) {
         this.util = util;
+    }
+
+    public int activeWeaponSlot() {
+        return activeWeaponSlot;
+    }
+
+    public void setActiveWeaponSlot(int activeWeaponSlot) {
+        if (activeWeaponSlot > 1 || activeWeaponSlot < 0) {
+            throw new IllegalArgumentException("Must be 0 or 1");
+        }
+        this.activeWeaponSlot = activeWeaponSlot;
+        killWeaponEntities();
+        respawnWeaponEntities();
+    }
+
+    private void killWeaponEntities() {
+        GameWorld world = InGameScreen.world;
+        world.gameWorld().getEntitiesFor(Family.all(WeaponComponent.class).get()).forEach(entity -> world.gameWorld().removeEntity(entity));
+    }
+
+    private void respawnWeaponEntities() {
+        GameWorld world = InGameScreen.world;
+        WeaponItem item = activeWeaponSlot == 1 ? weaponTwo() : weaponOne();
+        if (item == null) {
+            return;
+        }
+        world.gameWorld().addEntity(item.buildEntity(world.gameWorld()));
+    }
+
+    public void tryAttack() {
+        WeaponItem item = activeWeaponSlot == 1 ? weaponTwo() : weaponOne();
+        if (item == null) {
+            return;
+        }
+        item.attack(InGameScreen.playerInfo.playerEntity());
     }
 }

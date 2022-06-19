@@ -14,14 +14,17 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.util.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
+import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
+import me.partlysunny.shapewars.world.components.player.equipment.item.types.WeaponItem;
 import me.partlysunny.shapewars.world.objects.EntityManager;
-import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
+import me.partlysunny.shapewars.world.objects.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
 
-import static me.partlysunny.shapewars.world.systems.TextureRenderingSystem.*;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
 public class InGameScreen extends ManagedScreen {
 
@@ -42,6 +45,14 @@ public class InGameScreen extends ManagedScreen {
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
+        //Init player and wall
+        entityManager.registerEntity(new PlayerEntity());
+        entityManager.registerEntity(new WallEntity());
+        for (int i = 0; i < 50; i++) {
+            //entityManager.registerEntity(new RockEntity());
+        }
+        playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
+        playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
     }
 
     @Override
@@ -52,17 +63,19 @@ public class InGameScreen extends ManagedScreen {
     public void show() {
         Gdx.input.setInputProcessor(stage);
         InGameScreen s = this;
-        //Init player and wall
-        entityManager.registerEntity(new PlayerEntity());
-        entityManager.registerEntity(new WallEntity());
-        for (int i = 0; i < 50; i++) {
-            entityManager.registerEntity(new RockEntity());
-        }
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (keycode == Input.Keys.SPACE && game.getScreenManager().getCurrentScreen().equals(s)) {
-                    game.getScreenManager().pushScreen("paused", "blending");
+                if (game.getScreenManager().getCurrentScreen().equals(s)) {
+                    if (keycode == Input.Keys.SPACE) {
+                        game.getScreenManager().pushScreen("paused", null);
+                    }
+                    if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_1)) {
+                        playerInfo.equipment().setActiveWeaponSlot(0);
+                    }
+                    if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_2)) {
+                        playerInfo.equipment().setActiveWeaponSlot(1);
+                    }
                 }
                 return true;
             }
@@ -87,6 +100,7 @@ public class InGameScreen extends ManagedScreen {
         stage.draw();
         world.gameWorld().update(delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
+        LateRemover.process();
     }
 
     private void doPhysicsStep(float deltaTime) {

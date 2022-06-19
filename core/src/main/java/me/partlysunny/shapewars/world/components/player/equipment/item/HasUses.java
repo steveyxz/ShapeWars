@@ -4,6 +4,6 @@ public interface HasUses {
 
     int maxUses();
 
-    long usesRegenRate();
+    float usesRegenRate();
 
 }

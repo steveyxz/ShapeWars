@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.systems;
+package me.partlysunny.shapewars.world.systems.render;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
@@ -110,6 +110,15 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
                     width, height,
                     transform.scale.x / tex.texture().getRegionWidth(), transform.scale.y / tex.texture().getRegionHeight(),
                     rotation * MathUtils.radiansToDegrees);
+
+            /*
+            if (entity.getComponent(ItemComponent.class) != null) {
+                System.out.println("x1 = " + x1);
+                System.out.println("y1 = " + y1);
+                System.out.println("width = " + width);
+                System.out.println("height = " + height);
+            }
+             */
         }
 
         batch.end();

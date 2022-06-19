@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.systems;
+package me.partlysunny.shapewars.world.systems.player;
 
 import com.badlogic.ashley.core.*;
 import com.badlogic.ashley.utils.ImmutableArray;
