@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.BulletComponent;
+import me.partlysunny.shapewars.bullets.BulletComponent;
 
 public class BulletUpdaterSystem extends IteratingSystem {
 

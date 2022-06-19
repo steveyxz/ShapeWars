@@ -1,8 +1,8 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.components;
+package me.partlysunny.shapewars.item.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;
-import me.partlysunny.shapewars.world.components.player.equipment.item.types.WeaponItem;
+import me.partlysunny.shapewars.item.types.WeaponItem;
 
 public class WeaponComponent implements Component, Pool.Poolable {
 

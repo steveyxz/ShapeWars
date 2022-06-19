@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item;
+package me.partlysunny.shapewars.item;
 
 public interface HasUses {
 

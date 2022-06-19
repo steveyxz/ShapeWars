@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item;
+package me.partlysunny.shapewars.item;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;

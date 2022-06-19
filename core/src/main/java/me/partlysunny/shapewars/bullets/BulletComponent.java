@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets;
+package me.partlysunny.shapewars.bullets;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;

@@ -1,6 +1,6 @@
 package me.partlysunny.shapewars.world.objects.items;
 
-import me.partlysunny.shapewars.world.components.player.equipment.item.Item;
+import me.partlysunny.shapewars.item.Item;
 
 import java.util.HashMap;
 import java.util.Map;

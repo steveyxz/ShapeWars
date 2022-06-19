@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.controllers;
+package me.partlysunny.shapewars.bullets.controllers;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
@@ -15,10 +15,10 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
-import me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.BulletComponent;
-import me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.BulletController;
-import me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.BulletFactory;
-import me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.BulletType;
+import me.partlysunny.shapewars.bullets.BulletComponent;
+import me.partlysunny.shapewars.bullets.BulletController;
+import me.partlysunny.shapewars.bullets.BulletFactory;
+import me.partlysunny.shapewars.bullets.BulletType;
 
 import javax.annotation.Nullable;
 

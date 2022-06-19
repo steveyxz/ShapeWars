@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets;
+package me.partlysunny.shapewars.bullets;
 
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;

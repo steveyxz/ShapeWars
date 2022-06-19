@@ -1,8 +1,8 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.types;
+package me.partlysunny.shapewars.item.types;
 
 import com.badlogic.gdx.math.Vector2;
+import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
-import me.partlysunny.shapewars.world.components.player.equipment.item.Item;
 
 public interface UtilityItem extends Item {
 

@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player.equipment.item.components.bullets.controllers;
+package me.partlysunny.shapewars.bullets.controllers;
 
 import me.partlysunny.shapewars.util.ContactDispatcher;
 

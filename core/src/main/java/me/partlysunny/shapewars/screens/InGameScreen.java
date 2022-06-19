@@ -18,7 +18,7 @@ import me.partlysunny.shapewars.util.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
-import me.partlysunny.shapewars.world.components.player.equipment.item.types.WeaponItem;
+import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
