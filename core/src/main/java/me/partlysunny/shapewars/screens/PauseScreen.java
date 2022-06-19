@@ -2,7 +2,7 @@ package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,10 +16,11 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
+import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
 
-public class PauseScreen extends ScreenAdapter {
+public class PauseScreen extends ManagedScreen {
 
     public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
@@ -33,14 +34,16 @@ public class PauseScreen extends ScreenAdapter {
     }
 
     @Override
-    public void show() {
+    protected void create() {
+    }
 
+    @Override
+    public void show() {
         PauseScreen s = this;
 
         if (!VisUI.isLoaded()) {
             VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
         }
-        Gdx.input.setInputProcessor(stage);
 
         VisTable table = new VisTable();
         table.setFillParent(true);
@@ -49,19 +52,32 @@ public class PauseScreen extends ScreenAdapter {
         VisLabel text = new VisLabel("Paused", Color.BLACK);
         table.add(text);
 
+        addInputProcessor(new InputAdapter() {
+            @Override
+            public boolean keyDown(int keycode) {
+                if (keycode == Input.Keys.SPACE) game.getScreenManager().pushScreen("ingame", "blending");
+                return super.keyDown(keycode);
+            }
+        });
+
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (keycode == Input.Keys.SPACE && game.getScreen().equals(s)) {
-                    game.setScreen(Screens.inGameScreen);
+                if (keycode == Input.Keys.SPACE && game.getScreenManager().getCurrentScreen().equals(s)) {
+                    game.getScreenManager().pushScreen("ingame", "blending");
                 }
                 return true;
             }
         });
     }
 
+    @Override
+    public void hide() {
+
+    }
+
     public void render(float delta) {
-        ScreenUtils.clear(GameInfo.BACKGROUND_COLOR);
+        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.act(delta);
         stage.draw();
     }
@@ -70,6 +86,11 @@ public class PauseScreen extends ScreenAdapter {
     public void dispose() {
         stage.dispose();
         VisUI.dispose();
+    }
+
+    @Override
+    public Color getClearColor() {
+        return GameInfo.BACKGROUND_COLOR;
     }
 
     @Override

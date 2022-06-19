@@ -14,6 +14,10 @@ public class Screens {
         inGameScreen = new InGameScreen(game);
         mainMenuScreen = new MainMenuScreen(game);
         pausedScreen = new PauseScreen(game);
+        game.getScreenManager().addScreen("intro", introScreen);
+        game.getScreenManager().addScreen("ingame", inGameScreen);
+        game.getScreenManager().addScreen("mainMenu", mainMenuScreen);
+        game.getScreenManager().addScreen("paused", pausedScreen);
     }
 
 }

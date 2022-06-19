@@ -16,6 +16,7 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
@@ -43,5 +44,6 @@ public class PlayerEntity implements GameObject {
         player.add(w.createComponent(PlayerCameraFollowComponent.class));
         player.add(w.createComponent(StateComponent.class));
         w.addEntity(player);
+        InGameScreen.playerInfo = new PlayerInfo(player);
     }
 }

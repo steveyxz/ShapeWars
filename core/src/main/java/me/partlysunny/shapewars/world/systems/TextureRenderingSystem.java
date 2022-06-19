@@ -32,6 +32,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
     private final ComponentMapper<TextureComponent> textureMapper;
     private final ComponentMapper<TransformComponent> transformMapper;
+
     public TextureRenderingSystem(Batch batch) {
         // gets all entities with a TransformComponent and TextureComponent
         super(Family.all(TextureComponent.class, TransformComponent.class).get(), new ZComparator());
