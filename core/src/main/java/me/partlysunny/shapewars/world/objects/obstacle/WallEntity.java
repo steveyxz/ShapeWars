@@ -41,7 +41,7 @@ public class WallEntity implements GameObject {
         def.friction = 0.5f;
         def.shape = shape;
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
-        rigidBody.initBody(x, y, 0, def, BodyDef.BodyType.StaticBody);
+        rigidBody.initBody(x, y, 0, def, BodyDef.BodyType.StaticBody, GameInfo.BOUNDARY_WIDTH / 2f);
         e.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         Texture finalTexture = TextureManager.getTexture("wall");

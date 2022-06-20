@@ -35,7 +35,7 @@ public class EntityManager {
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
         float y = oe.y();
         float x = oe.x();
-        rigidBody.initBody(x, y, oe.angle(), def, BodyDef.BodyType.DynamicBody);
+        rigidBody.initBody(x, y, oe.angle(), def, BodyDef.BodyType.DynamicBody, width / 2f);
         e.add(rigidBody);
         GroundFrictionComponent groundFrictionComponent = w.createComponent(GroundFrictionComponent.class);
         groundFrictionComponent.setFriction(2);

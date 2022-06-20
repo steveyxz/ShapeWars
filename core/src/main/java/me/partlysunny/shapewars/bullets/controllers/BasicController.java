@@ -6,9 +6,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import jdk.internal.net.http.common.Pair;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.LateRemover;
+import me.partlysunny.shapewars.util.Pair;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
@@ -86,9 +86,9 @@ public class BasicController implements BulletController {
     public void beginContact(Contact contact) {
         Pair<Entity, Entity> result = handleBasicCollision(contact);
         if (result != null) {
-            HealthComponent health = healthMapper.get(result.second);
-            health.setHealth(health.health() - bulletMapper.get(result.first).damage());
-            LateRemover.tagToRemove(result.first);
+            HealthComponent health = healthMapper.get(result.b());
+            health.addHealth(-bulletMapper.get(result.a()).damage());
+            LateRemover.tagToRemove(result.a());
         }
     }
 

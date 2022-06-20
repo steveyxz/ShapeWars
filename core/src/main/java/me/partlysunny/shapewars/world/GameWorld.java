@@ -12,6 +12,7 @@ import me.partlysunny.shapewars.util.ContactDispatcher;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.bullets.controllers.Controllers;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;
+import me.partlysunny.shapewars.world.systems.mechanics.EnemyAiSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.HealthSystem;
 import me.partlysunny.shapewars.world.systems.physics.GroundFrictionSystem;
 import me.partlysunny.shapewars.world.systems.physics.PhysicsSystem;
@@ -34,6 +35,7 @@ public class GameWorld {
         //Mechanics
         gameWorld.addSystem(new HealthSystem());
         gameWorld.addSystem(new BulletUpdaterSystem());
+        gameWorld.addSystem(new EnemyAiSystem());
         //Physics
         gameWorld.addSystem(new PhysicsSystem(physicsWorld));
         gameWorld.addSystem(new GroundFrictionSystem());

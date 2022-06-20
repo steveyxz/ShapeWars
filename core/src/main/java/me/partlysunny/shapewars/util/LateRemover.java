@@ -23,13 +23,11 @@ public class LateRemover {
     public static void process() {
         PooledEngine world = InGameScreen.world.gameWorld();
         World physics = InGameScreen.world.physicsWorld();
-        for (Entity e : world.getEntitiesFor(Family.all(RigidBodyComponent.class).get())) {
-            if (toRemove.contains(e)) {
-                physics.destroyBody(bodyMapper.get(e).rigidBody());
-            }
-        }
         for (Entity e : world.getEntitiesFor(Family.all().get())) {
             if (toRemove.contains(e)) {
+                if (bodyMapper.has(e)) {
+                    physics.destroyBody(bodyMapper.get(e).rigidBody());
+                }
                 world.removeEntity(e);
             }
         }

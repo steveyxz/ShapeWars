@@ -31,6 +31,7 @@ public class TextureManager {
         registerTexture("circleBlaster", new Texture(Gdx.files.internal("circleBlaster.png")));
         registerTexture("circlePummeler", new Texture(Gdx.files.internal("circlePummeler.png")));
         registerTexture("basicBullet", new Texture(Gdx.files.internal("basicBullet.png")));
+        registerTexture("enemy", new Texture(Gdx.files.internal("enemy.png")));
     }
 
 }

@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -14,13 +15,15 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
-import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.world.objects.EntityManager;
+import me.partlysunny.shapewars.world.objects.enemy.EnemyObject;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
+import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
 
@@ -48,9 +51,12 @@ public class InGameScreen extends ManagedScreen {
         //Init player and wall
         entityManager.registerEntity(new PlayerEntity());
         entityManager.registerEntity(new WallEntity());
-        for (int i = 0; i < 50; i++) {
-            //entityManager.registerEntity(new RockEntity());
+        for (int i = 0; i < 100; i++) {
+            entityManager.registerEntity(new RockEntity());
         }
+        entityManager.registerEntity(new EnemyObject());
+        entityManager.registerEntity(new EnemyObject());
+        entityManager.registerEntity(new EnemyObject());
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
     }
@@ -97,6 +103,7 @@ public class InGameScreen extends ManagedScreen {
         game.batch().setProjectionMatrix(camera.combined);
         doPhysicsStep(Gdx.graphics.getDeltaTime());
         stage.act(Gdx.graphics.getDeltaTime());
+        GdxAI.getTimepiece().update(delta);
         stage.draw();
         world.gameWorld().update(delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);

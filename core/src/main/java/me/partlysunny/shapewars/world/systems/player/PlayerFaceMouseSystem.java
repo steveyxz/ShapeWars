@@ -23,6 +23,7 @@ public class PlayerFaceMouseSystem extends IteratingSystem {
         TransformComponent transformComponent = transformMapper.get(entity);
         float mouseX = Gdx.input.getX();
         float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
+        // TODO sometimes won't face exactly idk why
         float entityX = transformComponent.position.x - InGameScreen.camera.position.x + Gdx.graphics.getWidth() / 2f;
         float entityY = transformComponent.position.y - InGameScreen.camera.position.y + Gdx.graphics.getHeight() / 2f;
         float finalY = mouseY - entityY;

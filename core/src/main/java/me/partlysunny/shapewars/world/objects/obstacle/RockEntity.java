@@ -1,11 +1,28 @@
 package me.partlysunny.shapewars.world.objects.obstacle;
 
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.ai.steer.Steerable;
+import com.badlogic.gdx.ai.steer.SteerableAdapter;
+import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.shapewars.util.Util;
 import me.partlysunny.shapewars.world.objects.EntityManager;
-import me.partlysunny.shapewars.world.objects.GameObject;
 
-public class RockEntity implements ObstacleEntity, GameObject {
+public class RockEntity extends SteerableAdapter<Vector2> implements ObstacleEntity {
+
+    private float x;
+    private float y;
+    private float width;
+    private float height;
+    private float angle;
+
+    public RockEntity() {
+        this.x = Util.getRandomBetween(-200, 200);
+        this.y = Util.getRandomBetween(-200, 200);
+        this.width = Util.getRandomBetween(7, 10);
+        this.height = Util.getRandomBetween(7, 10);
+        this.angle = Util.getRandomBetween(0, 360);
+    }
+
     @Override
     public void createEntity(PooledEngine w) {
         EntityManager.addObstacle(w, this);
@@ -18,26 +35,27 @@ public class RockEntity implements ObstacleEntity, GameObject {
 
     @Override
     public float x() {
-        return Util.getRandomBetween(-200, 200);
+        return x;
     }
 
     @Override
     public float y() {
-        return Util.getRandomBetween(-200, 200);
+        return y;
     }
 
     @Override
     public float width() {
-        return Util.getRandomBetween(7, 10);
+        return width;
     }
 
     @Override
     public float height() {
-        return width();
+        return height;
     }
 
     @Override
     public float angle() {
-        return Util.getRandomBetween(0, 360);
+        return angle;
     }
+
 }
