@@ -18,10 +18,10 @@ public class HealthComponent implements Component, Pool.Poolable {
     }
 
     public void setHealth(float health) {
-        this.health = health;
         if (health > maxHealth) {
             health = maxHealth;
         }
+        this.health = health;
     }
 
     public void addHealth(float health) {

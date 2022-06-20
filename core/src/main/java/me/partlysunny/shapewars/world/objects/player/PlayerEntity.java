@@ -24,7 +24,7 @@ import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class PlayerEntity implements GameObject {
     @Override
-    public void createEntity(PooledEngine w) {
+    public Entity createEntity(PooledEngine w) {
         Entity player = w.createEntity();
         int width = 6;
         CircleShape shape = new CircleShape();
@@ -51,5 +51,6 @@ public class PlayerEntity implements GameObject {
         player.add(playerTarget);
         w.addEntity(player);
         InGameScreen.playerInfo = new PlayerInfo(player);
+        return player;
     }
 }

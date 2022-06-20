@@ -94,6 +94,9 @@ public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
     public boolean reportFixture (Fixture fixture) {
         Steerable<Vector2> steerable = getSteerable(fixture);
         Entity entityWithRigidBody = InGameScreen.world.getEntityWithRigidBody(fixture.getBody());
+        if (entityWithRigidBody == null) {
+            return true;
+        }
         boolean has = dodgeIgnoreMapper.has(entityWithRigidBody);
         if (steerable != owner && accept(steerable) && (!has || !dodgeIgnoreMapper.get(entityWithRigidBody).active())) {
             if (behaviorCallback.reportNeighbor(steerable)) neighborCount++;

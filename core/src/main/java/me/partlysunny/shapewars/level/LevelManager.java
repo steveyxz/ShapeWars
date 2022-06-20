@@ -21,13 +21,12 @@ import java.util.List;
 import java.util.Map;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
-import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
 public class LevelManager {
 
     private final Stage guiStage;
     private int currentLevel = 0;
-    private final EnemySpawner spawner = new EnemySpawner();
+    private final EnemySpawner spawner = new EnemySpawner(this);
     private final List<Entity> aliveEntities = new ArrayList<>();
     private final List<Level> levels = new ArrayList<>();
     private float timeRemaining = 0;
@@ -36,7 +35,7 @@ public class LevelManager {
         loadLevels();
         this.guiStage = guiStage;
         initGui();
-        updateLevel();
+        checkLevelUp();
     }
 
     private void initGui() {
@@ -62,7 +61,9 @@ public class LevelManager {
         time.setScale(0.2f, 0.2f);
 
         InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<VisLabel>) actor).getActor().setText("Current Level: " + this.currentLevel));
-        InGameScreenGuiManager.registerGui("enemies", enemies, actor -> ((Container<VisLabel>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
+        InGameScreenGuiManager.registerGui("enemies", enemies, actor -> {
+            ((Container<VisLabel>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining());
+        });
         InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<VisLabel>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
     }
 
@@ -87,11 +88,15 @@ public class LevelManager {
 
     public void entityDestroyed(Entity e) {
         if (aliveEntities.remove(e)) {
-            updateLevel();
+            checkLevelUp();
         }
     }
 
-    private void updateLevel() {
+    public void addEnemy(Entity e) {
+        aliveEntities.add(e);
+    }
+
+    private void checkLevelUp() {
         if (enemiesRemaining() == 0) {
             currentLevel++;
             Level newLevel = getCurrentLevel();
@@ -116,13 +121,14 @@ public class LevelManager {
     }
 
     public void update(float delta) {
+        System.out.println(enemiesRemaining());
         timeRemaining -= delta;
         if (timeRemaining < 0) {
             if (currentLevel != 1) {
                 currentLevel--;
             }
             killAllEnemies();
-            updateLevel();
+            checkLevelUp();
         }
     }
 

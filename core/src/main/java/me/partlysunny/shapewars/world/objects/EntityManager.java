@@ -23,7 +23,7 @@ public class EntityManager {
         this.w = w;
     }
 
-    public static void addObstacle(PooledEngine w, ObstacleEntity oe) {
+    public static Entity addObstacle(PooledEngine w, ObstacleEntity oe) {
         Entity e = w.createEntity();
         PolygonShape shape = new PolygonShape();
         int width = (int) oe.width();
@@ -49,6 +49,7 @@ public class EntityManager {
         e.add(texture);
         e.add(w.createComponent(BulletDeleterComponent.class));
         w.addEntity(e);
+        return e;
     }
 
     public PooledEngine w() {

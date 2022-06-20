@@ -22,8 +22,9 @@ import me.partlysunny.shapewars.world.objects.GameObject;
 public class WallEntity implements GameObject {
 
     @Override
-    public void createEntity(PooledEngine w) {
+    public Entity createEntity(PooledEngine w) {
         reloadWalls(400, 400);
+        return null;
     }
 
     public static void reloadWalls(int boundaryWidth, int boundaryHeight) {

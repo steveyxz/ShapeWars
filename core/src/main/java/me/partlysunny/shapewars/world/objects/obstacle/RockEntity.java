@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars.world.objects.obstacle;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ai.steer.SteerableAdapter;
 import com.badlogic.gdx.math.Vector2;
@@ -23,8 +24,8 @@ public class RockEntity extends SteerableAdapter<Vector2> implements ObstacleEnt
     }
 
     @Override
-    public void createEntity(PooledEngine w) {
-        EntityManager.addObstacle(w, this);
+    public Entity createEntity(PooledEngine w) {
+        return EntityManager.addObstacle(w, this);
     }
 
     @Override

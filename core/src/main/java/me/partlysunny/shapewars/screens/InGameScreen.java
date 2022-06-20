@@ -22,6 +22,9 @@ import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
+import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
+import me.partlysunny.shapewars.world.objects.enemy.type.BasicEnemy;
+import me.partlysunny.shapewars.world.objects.enemy.type.Enemy;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
@@ -48,19 +51,18 @@ public class InGameScreen extends ManagedScreen {
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
+        EnemyManager.init();
         stage = new Stage(viewport, game.batch());
         guiStage = new Stage(guiViewport, game.batch());
         InGameScreenGuiManager.init(guiStage);
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
-        levelManager = new LevelManager(stage);
-        //Init player and wall
+        //Init basic player and wall
         entityManager.registerEntity(new PlayerEntity());
         entityManager.registerEntity(new WallEntity());
-        for (int i = 0; i < 100; i++) {
-            entityManager.registerEntity(new RockEntity());
-        }
+        //Create level manager (also will start level counter and spawn enemies)
+        levelManager = new LevelManager(stage);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
     }
