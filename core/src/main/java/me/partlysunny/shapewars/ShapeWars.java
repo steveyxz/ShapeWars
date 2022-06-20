@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import de.eskalon.commons.core.ManagedGame;
 import de.eskalon.commons.screen.ManagedScreen;
 import de.eskalon.commons.screen.transition.ScreenTransition;
-import me.partlysunny.shapewars.screens.Screens;
-import me.partlysunny.shapewars.screens.Transitions;
+import me.partlysunny.shapewars.util.constants.Screens;
+import me.partlysunny.shapewars.util.constants.Transitions;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
 
 public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {

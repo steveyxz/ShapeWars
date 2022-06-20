@@ -1,6 +1,6 @@
 package me.partlysunny.shapewars.bullets.controllers;
 
-import me.partlysunny.shapewars.util.ContactDispatcher;
+import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 
 public final class Controllers {
 

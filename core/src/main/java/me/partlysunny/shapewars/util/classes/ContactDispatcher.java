@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.classes;
 
 import com.badlogic.gdx.physics.box2d.*;
 

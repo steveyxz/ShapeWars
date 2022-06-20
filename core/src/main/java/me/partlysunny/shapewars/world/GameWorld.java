@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import me.partlysunny.shapewars.util.ContactDispatcher;
+import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.bullets.controllers.Controllers;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;

@@ -5,10 +5,8 @@ import com.badlogic.gdx.ai.steer.SteerableAdapter;
 import com.badlogic.gdx.ai.utils.Location;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Pool;
-import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.Util;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
-import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 public class PlayerTargetComponent extends SteerableAdapter<Vector2> implements Component, Pool.Poolable {
 

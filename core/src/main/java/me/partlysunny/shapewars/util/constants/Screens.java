@@ -1,6 +1,10 @@
-package me.partlysunny.shapewars.screens;
+package me.partlysunny.shapewars.util.constants;
 
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.screens.IntroScreen;
+import me.partlysunny.shapewars.screens.MainMenuScreen;
+import me.partlysunny.shapewars.screens.PauseScreen;
 
 public class Screens {
 

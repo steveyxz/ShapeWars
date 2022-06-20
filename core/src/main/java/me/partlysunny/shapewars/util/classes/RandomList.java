@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.classes;
 
 import java.util.*;
 import java.util.function.Predicate;

@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars;
+package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.gdx.graphics.Color;
 

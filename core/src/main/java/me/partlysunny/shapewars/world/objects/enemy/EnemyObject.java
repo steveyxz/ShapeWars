@@ -2,39 +2,23 @@ package me.partlysunny.shapewars.world.objects.enemy;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.ai.steer.Limiter;
-import com.badlogic.gdx.ai.steer.SteeringAcceleration;
-import com.badlogic.gdx.ai.steer.SteeringBehavior;
 import com.badlogic.gdx.ai.steer.behaviors.*;
-import com.badlogic.gdx.ai.steer.limiters.LinearAccelerationLimiter;
-import com.badlogic.gdx.ai.steer.utils.rays.CentralRayWithWhiskersConfiguration;
-import com.badlogic.gdx.ai.steer.utils.rays.ParallelSideRayConfiguration;
-import com.badlogic.gdx.ai.steer.utils.rays.RayConfigurationBase;
-import com.badlogic.gdx.ai.steer.utils.rays.SingleRayConfiguration;
-import com.badlogic.gdx.ai.utils.RaycastCollisionDetector;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.Box2DFactory;
-import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
+import me.partlysunny.shapewars.util.factories.Box2DFactory;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
-import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
-import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 public class EnemyObject implements GameObject {
     @Override

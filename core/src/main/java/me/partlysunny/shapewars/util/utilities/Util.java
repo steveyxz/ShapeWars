@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.utilities;
 
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;

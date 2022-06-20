@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.factories;
 
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;

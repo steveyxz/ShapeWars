@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Pool;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.Util;
+import me.partlysunny.shapewars.util.utilities.Util;
 
 public class RigidBodyComponent implements Component, Pool.Poolable {
 

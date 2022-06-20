@@ -1,10 +1,9 @@
 package me.partlysunny.shapewars.world.objects.obstacle;
 
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.ai.steer.Steerable;
 import com.badlogic.gdx.ai.steer.SteerableAdapter;
 import com.badlogic.gdx.math.Vector2;
-import me.partlysunny.shapewars.util.Util;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 
 public class RockEntity extends SteerableAdapter<Vector2> implements ObstacleEntity {

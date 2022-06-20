@@ -2,7 +2,7 @@ package me.partlysunny.shapewars.world.components.player;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
-import me.partlysunny.shapewars.GameInfo;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.equipment.PlayerEquipment;
 
@@ -10,6 +10,7 @@ public class PlayerInfo {
 
     private final Entity playerEntity;
     private float health = GameInfo.PLAYER_MAX_HEALTH;
+    private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment = new PlayerEquipment();
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
@@ -24,6 +25,14 @@ public class PlayerInfo {
 
     public void setHealth(float health) {
         this.health = health;
+    }
+
+    public float maxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(float maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
     public PlayerEquipment equipment() {

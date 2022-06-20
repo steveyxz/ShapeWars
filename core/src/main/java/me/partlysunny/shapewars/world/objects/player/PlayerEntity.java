@@ -9,7 +9,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import me.partlysunny.shapewars.TextureManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.Box2DFactory;
+import me.partlysunny.shapewars.util.factories.Box2DFactory;
 import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;

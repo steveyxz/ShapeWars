@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.bullets;
+package me.partlysunny.shapewars.util.factories;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
@@ -7,6 +7,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import me.partlysunny.shapewars.TextureManager;
+import me.partlysunny.shapewars.bullets.BulletComponent;
+import me.partlysunny.shapewars.bullets.BulletController;
+import me.partlysunny.shapewars.bullets.BulletType;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;

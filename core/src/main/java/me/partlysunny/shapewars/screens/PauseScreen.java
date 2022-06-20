@@ -15,7 +15,7 @@ import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
-import me.partlysunny.shapewars.GameInfo;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
 
 public class PauseScreen extends ManagedScreen {

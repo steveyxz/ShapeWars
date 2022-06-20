@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.utilities;
 
 public class FastTrig {
 

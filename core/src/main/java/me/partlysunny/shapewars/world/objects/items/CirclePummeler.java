@@ -2,7 +2,7 @@ package me.partlysunny.shapewars.world.objects.items;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.item.ItemFactory;
+import me.partlysunny.shapewars.util.factories.ItemFactory;
 import me.partlysunny.shapewars.bullets.controllers.Controllers;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 

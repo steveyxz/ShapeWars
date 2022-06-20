@@ -13,10 +13,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
-import me.partlysunny.shapewars.GameInfo;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.item.types.WeaponItem;
-import me.partlysunny.shapewars.util.LateRemover;
+import me.partlysunny.shapewars.level.LevelManager;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
@@ -36,6 +37,7 @@ public class InGameScreen extends ManagedScreen {
     public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
     public static GameWorld world;
     public static PlayerInfo playerInfo;
+    public static LevelManager levelManager;
     private final ShapeWars game;
     private EntityManager entityManager;
     private float accumulator = 0;
@@ -45,9 +47,11 @@ public class InGameScreen extends ManagedScreen {
     public InGameScreen(ShapeWars game) {
         this.game = game;
         stage = new Stage(viewport, game.batch());
+        InGameScreenGuiManager.init(stage);
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
+        levelManager = new LevelManager(stage);
         //Init player and wall
         entityManager.registerEntity(new PlayerEntity());
         entityManager.registerEntity(new WallEntity());
@@ -94,19 +98,25 @@ public class InGameScreen extends ManagedScreen {
     }
 
     public void render(float delta) {
+        //Update viewport
         viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         viewport.apply();
+        //Clear screen with background color
         ScreenUtils.clear(GameInfo.BACKGROUND_COLOR);
         //Move camera
         camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
-        game.batch().enableBlending();
-        game.batch().setProjectionMatrix(camera.combined);
+        //Ticking and logic
         doPhysicsStep(Gdx.graphics.getDeltaTime());
         stage.act(Gdx.graphics.getDeltaTime());
         GdxAI.getTimepiece().update(delta);
+        InGameScreenGuiManager.update();
+        //Rendering
+        game.batch().enableBlending();
+        game.batch().setProjectionMatrix(camera.combined);
         stage.draw();
         world.gameWorld().update(delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
+        //Process deletion
         LateRemover.process();
     }
 

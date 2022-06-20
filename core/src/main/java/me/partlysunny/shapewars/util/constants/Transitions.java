@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.screens;
+package me.partlysunny.shapewars.util.constants;
 
 import de.eskalon.commons.screen.transition.impl.BlendingTransition;
 import me.partlysunny.shapewars.ShapeWars;

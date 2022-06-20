@@ -1,10 +1,11 @@
-package me.partlysunny.shapewars.util;
+package me.partlysunny.shapewars.util.utilities;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.World;
+import me.partlysunny.shapewars.level.EnemySpawner;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 
@@ -29,6 +30,7 @@ public class LateRemover {
                     physics.destroyBody(bodyMapper.get(e).rigidBody());
                 }
                 world.removeEntity(e);
+                InGameScreen.levelManager.entityDestroyed(e);
             }
         }
         toRemove.clear();
