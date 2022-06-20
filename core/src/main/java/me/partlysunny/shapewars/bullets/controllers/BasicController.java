@@ -22,6 +22,8 @@ import me.partlysunny.shapewars.bullets.BulletType;
 
 import javax.annotation.Nullable;
 
+import static me.partlysunny.shapewars.util.utilities.Util.handleBasicCollision;
+
 public class BasicController implements BulletController {
 
     private static final ComponentMapper<BulletComponent> bulletMapper = ComponentMapper.getFor(BulletComponent.class);
@@ -29,43 +31,7 @@ public class BasicController implements BulletController {
     private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
     private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
 
-    /**
-     * Handle basic collision, will not damage the entities, only validate
-     *
-     * @return A pair of the bullet and the entity or null if invalid
-     */
-    @Nullable
-    public static Pair<Entity, Entity> handleBasicCollision(Contact contact) {
-        GameWorld world = InGameScreen.world;
-        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
-        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
-        if (a == null || b == null) {
-            return null;
-        }
-        Entity bullet = null;
-        Entity other = null;
-        if (bulletMapper.has(a)) {
-            bullet = a;
-            other = b;
-        }
-        if (bulletMapper.has(b)) {
-            if (bullet != null) {
-                LateRemover.tagToRemove(a);
-                LateRemover.tagToRemove(b);
-            }
-            bullet = b;
-            other = a;
-        }
-        if (other == null) {
-            return null;
-        } else if (!healthMapper.has(other) || playerMapper.has(other)) {
-            if (deletionMapper.has(other)) {
-                LateRemover.tagToRemove(bullet);
-            }
-            return null;
-        }
-        return new Pair<>(bullet, other);
-    }
+
 
     @Override
     public void fire(Entity player, float damage) {
