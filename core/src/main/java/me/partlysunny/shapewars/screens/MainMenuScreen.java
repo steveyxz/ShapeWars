@@ -19,7 +19,7 @@ import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
-import me.partlysunny.shapewars.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 
 public class MainMenuScreen extends ManagedScreen {
 

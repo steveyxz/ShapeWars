@@ -3,7 +3,7 @@ package me.partlysunny.shapewars.util.factories;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import me.partlysunny.shapewars.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.screens.InGameScreen;

@@ -13,16 +13,15 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
-import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
-import me.partlysunny.shapewars.world.objects.enemy.EnemyObject;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
@@ -33,8 +32,10 @@ import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSyst
 public class InGameScreen extends ManagedScreen {
 
     public static final Vector2 cameraVelocity = new Vector2(0, 0);
-    public static final OrthographicCamera camera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT); // a reference to our camera
+    public static final OrthographicCamera camera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
+    public static final OrthographicCamera guiCamera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
     public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
+    public static final Viewport guiViewport = new ExtendViewport(guiCamera.viewportWidth, guiCamera.viewportHeight, guiCamera);
     public static GameWorld world;
     public static PlayerInfo playerInfo;
     public static LevelManager levelManager;
@@ -43,11 +44,13 @@ public class InGameScreen extends ManagedScreen {
     private float accumulator = 0;
     private Box2DDebugRenderer debugRenderer;
     private Stage stage;
+    private Stage guiStage;
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
         stage = new Stage(viewport, game.batch());
-        InGameScreenGuiManager.init(stage);
+        guiStage = new Stage(guiViewport, game.batch());
+        InGameScreenGuiManager.init(guiStage);
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
@@ -58,9 +61,6 @@ public class InGameScreen extends ManagedScreen {
         for (int i = 0; i < 100; i++) {
             entityManager.registerEntity(new RockEntity());
         }
-        entityManager.registerEntity(new EnemyObject());
-        entityManager.registerEntity(new EnemyObject());
-        entityManager.registerEntity(new EnemyObject());
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
     }
@@ -109,12 +109,17 @@ public class InGameScreen extends ManagedScreen {
         doPhysicsStep(Gdx.graphics.getDeltaTime());
         stage.act(Gdx.graphics.getDeltaTime());
         GdxAI.getTimepiece().update(delta);
+        levelManager.update(delta);
         InGameScreenGuiManager.update();
         //Rendering
         game.batch().enableBlending();
         game.batch().setProjectionMatrix(camera.combined);
         stage.draw();
         world.gameWorld().update(delta);
+        //Draw UI
+        guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        guiViewport.apply();
+        guiStage.draw();
         //debugRenderer.render(world().physicsWorld(), camera.combined);
         //Process deletion
         LateRemover.process();

@@ -10,6 +10,9 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.metersToPixels;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.pixelsToMeters;
+
 public class PlayerFaceMouseSystem extends IteratingSystem {
 
     private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
@@ -23,18 +26,12 @@ public class PlayerFaceMouseSystem extends IteratingSystem {
         TransformComponent transformComponent = transformMapper.get(entity);
         float mouseX = Gdx.input.getX();
         float mouseY = Gdx.graphics.getHeight() - Gdx.input.getY();
-        // TODO sometimes won't face exactly idk why
-        float entityX = transformComponent.position.x - InGameScreen.camera.position.x + Gdx.graphics.getWidth() / 2f;
-        float entityY = transformComponent.position.y - InGameScreen.camera.position.y + Gdx.graphics.getHeight() / 2f;
+        float x = transformComponent.position.x;
+        float y = transformComponent.position.y;
+        float entityX = metersToPixels(x - InGameScreen.camera.position.x) + Gdx.graphics.getWidth() / 2f;
+        float entityY = metersToPixels(y - InGameScreen.camera.position.y) + Gdx.graphics.getHeight() / 2f;
         float finalY = mouseY - entityY;
         float finalX = mouseX - entityX;
         transformComponent.rotation = MathUtils.atan2(finalY, finalX);
-        //System.out.println("entityX = " + entityX);
-        //System.out.println("entityY = " + entityY);
-        //System.out.println("mouseX = " + mouseX);
-        //System.out.println("mouseY = " + mouseY);
-        //System.out.println("finalX = " + finalX);
-        //System.out.println("finalY = " + finalY);
-        //System.out.println(transformComponent.rotation * MathUtils.radiansToDegrees + 180);
     }
 }

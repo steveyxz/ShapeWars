@@ -8,6 +8,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import de.eskalon.commons.screen.transition.ScreenTransition;
 import me.partlysunny.shapewars.util.constants.Screens;
 import me.partlysunny.shapewars.util.constants.Transitions;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
 
 public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {

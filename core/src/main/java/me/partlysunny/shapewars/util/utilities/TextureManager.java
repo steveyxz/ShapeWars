@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars;
+package me.partlysunny.shapewars.util.utilities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

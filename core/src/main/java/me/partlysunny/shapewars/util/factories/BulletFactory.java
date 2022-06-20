@@ -6,7 +6,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import me.partlysunny.shapewars.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.bullets.BulletController;
 import me.partlysunny.shapewars.bullets.BulletType;
