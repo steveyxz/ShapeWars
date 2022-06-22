@@ -7,9 +7,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.Box2DFactory;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
@@ -17,14 +17,13 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class PlayerEntity implements GameObject {
     @Override
-    public Entity createEntity(PooledEngine w) {
+    public Entity createEntity(PooledEngine w, float originalX, float originalY) {
         Entity player = w.createEntity();
         int width = 6;
         CircleShape shape = new CircleShape();
@@ -33,7 +32,7 @@ public class PlayerEntity implements GameObject {
         FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
         //Set components
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
-        rigidBody.initBody(0, 0, 0, def, BodyDef.BodyType.DynamicBody, width / 2f, true);
+        rigidBody.initBody(originalX, originalY, 0, def, BodyDef.BodyType.DynamicBody, width / 2f, true);
         player.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         texture.init(new TextureRegion(TextureManager.getTexture("player")));
@@ -50,7 +49,6 @@ public class PlayerEntity implements GameObject {
         playerTarget.init(rigidBody);
         player.add(playerTarget);
         w.addEntity(player);
-        InGameScreen.playerInfo = new PlayerInfo(player);
         return player;
     }
 }

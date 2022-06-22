@@ -14,8 +14,8 @@ import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.VisImage;
 import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
-import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 
 public class IntroScreen extends ManagedScreen {

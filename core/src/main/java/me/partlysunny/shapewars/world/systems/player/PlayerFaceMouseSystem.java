@@ -11,7 +11,6 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.metersToPixels;
-import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.pixelsToMeters;
 
 public class PlayerFaceMouseSystem extends IteratingSystem {
 

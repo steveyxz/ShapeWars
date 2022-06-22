@@ -14,6 +14,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.Box2DFactory;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
@@ -21,8 +22,10 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
+import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyRadiusProximity;
+import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
 public abstract class Enemy implements GameObject {
 
@@ -39,14 +42,16 @@ public abstract class Enemy implements GameObject {
 
     protected abstract float getMaxSpeed();
 
+    protected abstract EnemyAttackSelector selector();
+
     @Override
-    public Entity createEntity(PooledEngine w) {
+    public Entity createEntity(PooledEngine w, float originalX, float originalY) {
         Entity enemy = w.createEntity();
         Shape shape = getShape(getWidth());
         FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
         //Set components
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
-        rigidBody.initBody(0, 0, 0, def, BodyDef.BodyType.DynamicBody, getWidth() / 2f, true);
+        rigidBody.initBody(originalX, originalY, 0, def, BodyDef.BodyType.DynamicBody, getWidth() / 2f, true);
         enemy.add(rigidBody);
 
         TransformComponent scale = w.createComponent(TransformComponent.class);
@@ -60,12 +65,18 @@ public abstract class Enemy implements GameObject {
         enemy.add(w.createComponent(BulletDeleterComponent.class));
 
         HealthComponent health = w.createComponent(HealthComponent.class);
-        health.setHealth(getHealth());
+        health.init(getHealth());
         enemy.add(health);
 
         GroundFrictionComponent groundFriction = w.createComponent(GroundFrictionComponent.class);
         groundFriction.setFriction(getFrictionalResistance());
         enemy.add(groundFriction);
+
+        EnemyAttackComponent attack = w.createComponent(EnemyAttackComponent.class);
+        attack.init(selector(), enemy);
+        enemy.add(attack);
+
+        enemy.add(w.createComponent(TintComponent.class));
 
         SteeringComponent steering = w.createComponent(SteeringComponent.class);
         steering.init(rigidBody);

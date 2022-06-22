@@ -6,21 +6,19 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import me.partlysunny.shapewars.bullets.BulletComponent;
+import me.partlysunny.shapewars.bullets.BulletController;
+import me.partlysunny.shapewars.bullets.BulletType;
+import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.classes.Pair;
-import me.partlysunny.shapewars.world.GameWorld;
+import me.partlysunny.shapewars.util.factories.BulletFactory;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
-import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.bullets.BulletController;
-import me.partlysunny.shapewars.util.factories.BulletFactory;
-import me.partlysunny.shapewars.bullets.BulletType;
-
-import javax.annotation.Nullable;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicCollision;
 
@@ -30,7 +28,6 @@ public class BasicController implements BulletController {
     private static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
     private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
     private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
-
 
 
     @Override
@@ -54,6 +51,7 @@ public class BasicController implements BulletController {
         if (result != null) {
             HealthComponent health = healthMapper.get(result.b());
             health.addHealth(-bulletMapper.get(result.a()).damage());
+            VisualEffectManager.getEffect("damage").playEffect(result.b());
             LateRemover.tagToRemove(result.a());
         }
     }

@@ -14,13 +14,10 @@ public class HealthComponent implements Component, Pool.Poolable {
     }
 
     public float health() {
-        return health;
+        return Math.min(maxHealth, health);
     }
 
     public void setHealth(float health) {
-        if (health > maxHealth) {
-            health = maxHealth;
-        }
         this.health = health;
     }
 
@@ -30,6 +27,7 @@ public class HealthComponent implements Component, Pool.Poolable {
 
     @Override
     public void reset() {
+        maxHealth = 0;
         health = 0;
     }
 }

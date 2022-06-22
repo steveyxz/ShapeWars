@@ -5,6 +5,6 @@ import com.badlogic.ashley.core.PooledEngine;
 
 public interface GameObject {
 
-    Entity createEntity(PooledEngine w);
+    Entity createEntity(PooledEngine w, float originalX, float originalY);
 
 }

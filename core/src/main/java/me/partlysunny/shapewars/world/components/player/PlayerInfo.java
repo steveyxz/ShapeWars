@@ -2,28 +2,60 @@ package me.partlysunny.shapewars.world.components.player;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.kotcrab.vis.ui.VisUI;
+import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.item.equipment.PlayerEquipment;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.player.equipment.PlayerEquipment;
+import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 public class PlayerInfo {
 
     private final Entity playerEntity;
-    private float health = GameInfo.PLAYER_MAX_HEALTH;
-    private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
+    private final ShapeWars game;
+    private int health = GameInfo.PLAYER_MAX_HEALTH;
+    private int maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment = new PlayerEquipment();
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
 
-    public PlayerInfo(Entity playerEntity) {
+    public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
+        this.game = game;
+        initGui();
+    }
+
+    private void initGui() {
+        if (!VisUI.isLoaded()) {
+            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
+        }
+        ProgressBar bar = new ProgressBar(0, maxHealth, 1, false, VisUI.getSkin());
+        bar.updateVisualValue();
+        Container<ProgressBar> container = new Container<>(bar);
+        container.setTransform(true);
+        container.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 8 / 12f, TextureRenderingSystem.FRUSTUM_HEIGHT - 10);
+        container.setScale(0.3f, 0.3f);
+        container.validate();
+        InGameScreenGuiManager.registerGui("healthBar", container, actor -> {
+            ProgressBar theBar = ((Container<ProgressBar>) actor).getActor();
+            theBar.setRange(0, maxHealth);
+            theBar.setValue(health);
+            theBar.updateVisualValue();
+        });
     }
 
     public float health() {
         return health;
     }
 
-    public void setHealth(float health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
@@ -31,7 +63,7 @@ public class PlayerInfo {
         return maxHealth;
     }
 
-    public void setMaxHealth(float maxHealth) {
+    public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
 
@@ -60,5 +92,18 @@ public class PlayerInfo {
             throw new IllegalArgumentException("Player entity does not have transform component!");
         }
         return transformMapper.get(playerEntity);
+    }
+
+    public void damage(int health) {
+        setHealth(this.health - health);
+        if (this.health > maxHealth) {
+            this.health = maxHealth;
+        }
+        if (this.health < 0) {
+            InGameScreen.levelManager.lossReset();
+            this.health = maxHealth;
+            playerEntity.getComponent(RigidBodyComponent.class).rigidBody().setTransform(0, 0, 0);
+            game.getScreenManager().pushScreen("death", null);
+        }
     }
 }

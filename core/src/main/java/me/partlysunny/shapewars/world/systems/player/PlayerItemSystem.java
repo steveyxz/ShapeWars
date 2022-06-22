@@ -4,9 +4,9 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 public class PlayerItemSystem extends IteratingSystem {
 

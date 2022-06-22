@@ -14,6 +14,8 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
+import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
@@ -23,10 +25,8 @@ import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
-import me.partlysunny.shapewars.world.objects.enemy.type.BasicEnemy;
-import me.partlysunny.shapewars.world.objects.enemy.type.Enemy;
 import me.partlysunny.shapewars.world.objects.items.ItemManager;
-import me.partlysunny.shapewars.world.objects.obstacle.RockEntity;
+import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
 
@@ -52,6 +52,7 @@ public class InGameScreen extends ManagedScreen {
     public InGameScreen(ShapeWars game) {
         this.game = game;
         EnemyManager.init();
+        ObstacleManager.init();
         stage = new Stage(viewport, game.batch());
         guiStage = new Stage(guiViewport, game.batch());
         InGameScreenGuiManager.init(guiStage);
@@ -59,8 +60,8 @@ public class InGameScreen extends ManagedScreen {
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
         //Init basic player and wall
-        entityManager.registerEntity(new PlayerEntity());
-        entityManager.registerEntity(new WallEntity());
+        InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0), game);
+        entityManager.registerEntity(new WallEntity(), 0, 0);
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
@@ -113,6 +114,7 @@ public class InGameScreen extends ManagedScreen {
         GdxAI.getTimepiece().update(delta);
         levelManager.update(delta);
         InGameScreenGuiManager.update();
+        VisualEffectManager.update(delta);
         //Rendering
         game.batch().enableBlending();
         game.batch().setProjectionMatrix(camera.combined);
@@ -122,6 +124,7 @@ public class InGameScreen extends ManagedScreen {
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiViewport.apply();
         guiStage.draw();
+        ParticleEffectManager.render(game.batch(), delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
         //Process deletion
         LateRemover.process();

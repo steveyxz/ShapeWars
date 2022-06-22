@@ -6,9 +6,9 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
+import me.partlysunny.shapewars.screens.InGameScreen;
 
 public class PlayerAttackingSystem extends IteratingSystem {
 

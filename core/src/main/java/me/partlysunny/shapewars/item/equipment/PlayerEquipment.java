@@ -1,13 +1,13 @@
-package me.partlysunny.shapewars.world.components.player.equipment;
+package me.partlysunny.shapewars.item.equipment;
 
 import com.badlogic.ashley.core.Family;
-import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.UtilityItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.world.GameWorld;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,11 +2,13 @@ package me.partlysunny.shapewars.world.objects.enemy.type;
 
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
+import me.partlysunny.shapewars.util.constants.AttackSets;
+import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
 public class BasicEnemy extends Enemy {
     @Override
     protected float getHealth() {
-        return 1;
+        return 20;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class BasicEnemy extends Enemy {
 
     @Override
     protected float getWidth() {
-        return 3;
+        return 6;
     }
 
     @Override
@@ -34,5 +36,10 @@ public class BasicEnemy extends Enemy {
     @Override
     protected float getMaxSpeed() {
         return 10;
+    }
+
+    @Override
+    protected EnemyAttackSelector selector() {
+        return AttackSets.BASIC_ATTACK;
     }
 }

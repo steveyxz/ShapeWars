@@ -2,7 +2,10 @@
   "levelWidth": 200,
   "levelHeight": 200,
   "time": 120,
-  "contents": {
+  "enemies": {
     "basic": 10
+  },
+  "obstacles": {
+    "rock": 10
   }
 }

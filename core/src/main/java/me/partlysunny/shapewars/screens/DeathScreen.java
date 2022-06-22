@@ -8,17 +8,18 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
+import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.VisLabel;
-import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 
-public class PauseScreen extends ManagedScreen {
+public class DeathScreen extends ManagedScreen {
 
     public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
@@ -26,7 +27,7 @@ public class PauseScreen extends ManagedScreen {
     private final Stage stage;
 
 
-    public PauseScreen(ShapeWars game) {
+    public DeathScreen(ShapeWars game) {
         this.game = game;
         this.stage = new Stage(viewport, game.batch());
     }
@@ -37,24 +38,34 @@ public class PauseScreen extends ManagedScreen {
 
     @Override
     public void show() {
-        PauseScreen s = this;
+        DeathScreen s = this;
         Gdx.input.setInputProcessor(stage);
 
         if (!VisUI.isLoaded()) {
             VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
         }
 
-        VisTable table = new VisTable();
-        table.setFillParent(true);
-        stage.addActor(table);
+        VisLabel youDied = new VisLabel("You Died", Color.BLACK);
+        VisLabel respawn = new VisLabel("Press Enter to respawn", Color.BLACK);
+        youDied.setFontScale(2);
+        respawn.setFontScale(2);
+        youDied.setAlignment(Alignment.CENTER.getAlignment());
+        respawn.setAlignment(Alignment.CENTER.getAlignment());
 
-        VisLabel text = new VisLabel("Paused", Color.BLACK);
-        table.add(text);
+        Container<VisLabel> c1 = new Container<>(youDied);
+        c1.setTransform(true);
+        c1.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() * 7 / 12f);
+        Container<VisLabel> c2 = new Container<>(respawn);
+        c2.setTransform(true);
+        c2.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() * 5 / 12f);
+
+        stage.addActor(c1);
+        stage.addActor(c2);
 
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (keycode == Input.Keys.SPACE && game.getScreenManager().getCurrentScreen().equals(s)) {
+                if (keycode == Input.Keys.ENTER && game.getScreenManager().getCurrentScreen().equals(s)) {
                     game.getScreenManager().pushScreen("ingame", "blending");
                 }
                 return true;

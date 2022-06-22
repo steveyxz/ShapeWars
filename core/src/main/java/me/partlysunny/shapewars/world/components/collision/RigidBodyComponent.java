@@ -3,7 +3,10 @@ package me.partlysunny.shapewars.world.components.collision;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.ai.steer.SteerableAdapter;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Pool;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.utilities.Util;
@@ -16,7 +19,7 @@ public class RigidBodyComponent implements Component, Pool.Poolable {
     }
 
     public void initBody(float x, float y, float rotation, FixtureDef fixture, BodyDef.BodyType type, float radius) {
-        initBody(x, y, rotation, fixture, type, radius,false);
+        initBody(x, y, rotation, fixture, type, radius, false);
     }
 
     public void initBody(float x, float y, float rotation, FixtureDef fixture, BodyDef.BodyType type, float radius, boolean rotationFixed) {

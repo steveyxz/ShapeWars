@@ -25,11 +25,12 @@ import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSyst
 public class LevelManager {
 
     private final Stage guiStage;
-    private int currentLevel = 0;
-    private final EnemySpawner spawner = new EnemySpawner(this);
+    private final LevelSpawner spawner = new LevelSpawner(this);
     private final List<Entity> aliveEntities = new ArrayList<>();
     private final List<Level> levels = new ArrayList<>();
+    private int currentLevel = 0;
     private float timeRemaining = 0;
+    private boolean isLosing = false;
 
     public LevelManager(Stage guiStage) {
         loadLevels();
@@ -75,20 +76,29 @@ public class LevelManager {
             int levelWidth = value.getInt("levelWidth");
             int levelHeight = value.getInt("levelHeight");
             int time = value.getInt("time");
-            JsonValue levelContents = value.get("contents");
             Map<String, Integer> enemies = new HashMap<>();
-            for (JsonValue contentSection : levelContents) {
+            Map<String, Integer> obstacles = new HashMap<>();
+            JsonValue levelEnemies = value.get("enemies");
+            for (JsonValue contentSection : levelEnemies) {
                 String enemyType = contentSection.name;
-                int enemyAmount = levelContents.getInt(contentSection.name);
+                int enemyAmount = levelEnemies.getInt(contentSection.name);
                 enemies.put(enemyType, enemyAmount);
             }
-            this.levels.add(new Level(time, levelWidth, levelHeight, enemies));
+            JsonValue levelObstacles = value.get("obstacles");
+            for (JsonValue contentSection : levelObstacles) {
+                String obstacleType = contentSection.name;
+                int obstacleAmount = levelObstacles.getInt(contentSection.name);
+                obstacles.put(obstacleType, obstacleAmount);
+            }
+            this.levels.add(new Level(time, levelWidth, levelHeight, enemies, obstacles));
         }
     }
 
     public void entityDestroyed(Entity e) {
         if (aliveEntities.remove(e)) {
-            checkLevelUp();
+            if (!isLosing) {
+                checkLevelUp();
+            }
         }
     }
 
@@ -114,6 +124,7 @@ public class LevelManager {
         for (Entity e : aliveEntities) {
             LateRemover.tagToRemove(e);
         }
+        aliveEntities.clear();
     }
 
     public int enemiesRemaining() {
@@ -121,15 +132,19 @@ public class LevelManager {
     }
 
     public void update(float delta) {
-        System.out.println(enemiesRemaining());
         timeRemaining -= delta;
         if (timeRemaining < 0) {
-            if (currentLevel != 1) {
-                currentLevel--;
-            }
-            killAllEnemies();
-            checkLevelUp();
+            lossReset();
         }
+    }
+
+    public void lossReset() {
+        isLosing = true;
+        killAllEnemies();
+        if (currentLevel != 0) {
+            currentLevel--;
+        }
+        checkLevelUp();
     }
 
 }

@@ -5,12 +5,15 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.render.TintComponent;
 
 import java.util.Comparator;
 
@@ -32,6 +35,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
     private final ComponentMapper<TextureComponent> textureMapper;
     private final ComponentMapper<TransformComponent> transformMapper;
+    private final ComponentMapper<TintComponent> tintMapper;
 
     public TextureRenderingSystem(Batch batch) {
         // gets all entities with a TransformComponent and TextureComponent
@@ -40,6 +44,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
         //creates out componentMappers
         textureMapper = ComponentMapper.getFor(TextureComponent.class);
         transformMapper = ComponentMapper.getFor(TransformComponent.class);
+        tintMapper = ComponentMapper.getFor(TintComponent.class);
 
         // create the array for sorting entities
         renderQueue = new Array<>();
@@ -86,9 +91,20 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
         for (Entity entity : renderQueue) {
             TextureComponent tex = textureMapper.get(entity);
             TransformComponent transform = transformMapper.get(entity);
+            Vector3 tint = null;
+            float opacity = 0;
+            if (tintMapper.has(entity)) {
+                TintComponent tintComponent = tintMapper.get(entity);
+                tint = tintComponent.tint();
+                opacity = tintComponent.alpha();
+            }
 
             if (tex.texture() == null || tex.isHidden()) {
                 continue;
+            }
+
+            if (tint != null) {
+                batch.setColor(new Color(tint.x, tint.y, tint.z, opacity));
             }
 
 

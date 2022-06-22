@@ -8,24 +8,19 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
-import me.partlysunny.shapewars.util.constants.GameInfo;
-import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.collision.WallComponent;
+import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class WallEntity implements GameObject {
-
-    @Override
-    public Entity createEntity(PooledEngine w) {
-        reloadWalls(400, 400);
-        return null;
-    }
 
     public static void reloadWalls(int boundaryWidth, int boundaryHeight) {
         PooledEngine w = InGameScreen.world.gameWorld();
@@ -63,7 +58,14 @@ public class WallEntity implements GameObject {
         e.add(scale);
         e.add(texture);
         e.add(w.createComponent(WallComponent.class));
+        e.add(w.createComponent(TintComponent.class));
         w.addEntity(e);
+    }
+
+    @Override
+    public Entity createEntity(PooledEngine w, float originalX, float originalY) {
+        reloadWalls(400, 400);
+        return null;
     }
 
 }

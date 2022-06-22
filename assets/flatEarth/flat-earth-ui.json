@@ -47,6 +47,12 @@
       b: 0.85882354
       a: 1
     }
+    health: {
+      r: 0.937
+      g: 0.341
+      b: 0.352
+      a: 1
+    }
     white: {
       r: 1
       g: 1
@@ -111,7 +117,7 @@
     }
     slider-horizontal-c: {
       name: slider-horizontal
-      color: color
+      color: black
     }
     slider-knob-c: {
       name: slider-knob
@@ -167,7 +173,7 @@
     }
     slider-horizontal-s: {
       name: slider-horizontal
-      color: selection
+      color: health
     }
     slider-vertical-s: {
       name: slider-vertical
