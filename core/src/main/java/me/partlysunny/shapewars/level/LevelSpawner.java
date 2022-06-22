@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
@@ -44,8 +45,8 @@ public class LevelSpawner {
     }
 
     private Vector2 getPositionInLevelAwayFromCenter(float distance, Level level) {
-        int x = Util.getRandomBetween(level.levelWidth() / -2, level.levelWidth() / 2);
-        int y = Util.getRandomBetween(level.levelHeight() / -2, level.levelHeight() / 2);
+        int x = Util.getRandomBetween(level.levelWidth() / -2 + GameInfo.BOUNDARY_WIDTH, level.levelWidth() / 2 - GameInfo.BOUNDARY_WIDTH);
+        int y = Util.getRandomBetween(level.levelHeight() / -2 + GameInfo.BOUNDARY_WIDTH, level.levelHeight() / 2 - GameInfo.BOUNDARY_WIDTH);
         if (Math.abs(x) < distance || Math.abs(y) < distance) {
             return getPositionInLevelAwayFromCenter(distance, level);
         }

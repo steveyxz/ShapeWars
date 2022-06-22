@@ -6,12 +6,14 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
@@ -45,11 +47,11 @@ public class LevelManager {
             VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
         }
 
-        VisLabel currentLevel = new VisLabel("Current Level: " + this.currentLevel, "font", Color.BLACK);
-        VisLabel enemiesRemaining = new VisLabel("Enemies Remaining: " + enemiesRemaining(), "font", Color.BLACK);
-        VisLabel timeLabel = new VisLabel("Time Remaining: " + timeRemaining, "font", Color.BLACK);
+        Label currentLevel = new Label("Current Level: " + this.currentLevel, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
+        Label enemiesRemaining = new Label("Enemies Remaining: " + enemiesRemaining(), new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
+        Label timeLabel = new Label("Time Remaining: " + timeRemaining, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
 
-        Container<VisLabel> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel);
+        Container<Label> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel);
         level.setTransform(true);
         enemies.setTransform(true);
         time.setTransform(true);
@@ -57,15 +59,12 @@ public class LevelManager {
         level.setPosition(20, FRUSTUM_HEIGHT - 5f);
         enemies.setPosition(20, FRUSTUM_HEIGHT - 10f);
         time.setPosition(20, FRUSTUM_HEIGHT - 15f);
-        level.setScale(0.2f, 0.2f);
-        enemies.setScale(0.2f, 0.2f);
-        time.setScale(0.2f, 0.2f);
 
-        InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<VisLabel>) actor).getActor().setText("Current Level: " + this.currentLevel));
+        InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Level: " + this.currentLevel));
         InGameScreenGuiManager.registerGui("enemies", enemies, actor -> {
-            ((Container<VisLabel>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining());
+            ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining());
         });
-        InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<VisLabel>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
+        InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
     }
 
     private void loadLevels() {

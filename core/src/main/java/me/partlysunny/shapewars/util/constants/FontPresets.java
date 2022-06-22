@@ -7,12 +7,14 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
 public class FontPresets {
 
-    public static BitmapFont ALBAM;
-    public static BitmapFont ALBAM_WHITE;
+    public static BitmapFont RALEWAY_BOLD;
+    public static BitmapFont RALEWAY_MEDIUM;
+    public static BitmapFont RALEWAY_LIGHT;
 
     static {
-        ALBAM = loadFont("albam.ttf", 40);
-        ALBAM_WHITE = loadFont("albas.ttf", 40);
+        RALEWAY_BOLD = loadFont("Raleway-Bold.ttf", 40);
+        RALEWAY_MEDIUM = loadFont("Raleway-Medium.ttf", 40);
+        RALEWAY_LIGHT = loadFont("Raleway-ExtraLight.ttf", 40);
     }
 
     private static BitmapFont loadFont(String fontPath, int size) {
@@ -30,6 +32,11 @@ public class FontPresets {
         BitmapFont myFont = generator.generateFont(parameter);
         myFont.setUseIntegerPositions(false);
         return myFont;
+    }
+
+    public static BitmapFont getFontWithSize(BitmapFont font, float size) {
+        font.getData().setScale(size, -size);
+        return font;
     }
 
 }

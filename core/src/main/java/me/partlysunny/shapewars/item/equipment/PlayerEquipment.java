@@ -1,12 +1,23 @@
 package me.partlysunny.shapewars.item.equipment;
 
 import com.badlogic.ashley.core.Family;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.UtilityItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.util.constants.FontPresets;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.GameWorld;
 
 import java.util.ArrayList;
@@ -21,6 +32,49 @@ public class PlayerEquipment {
     private WeaponItem weaponTwo = null;
     private UtilityItem util = null;
     private int activeWeaponSlot = 0;
+    private final TextureRegionDrawable regular;
+    private final TextureRegionDrawable selected;
+
+    public PlayerEquipment() {
+        regular = new TextureRegionDrawable(TextureManager.getTexture("slotBackground"));
+        selected = new TextureRegionDrawable(TextureManager.getTexture("slotBackgroundSelected"));
+        initGui();
+    }
+
+    private void initGui() {
+        if (!VisUI.isLoaded()) {
+            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
+        }
+        //Weapons
+        Container<Image> weapon1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Container<Image> weapon2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Label weapons = new Label("Weapons", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK));
+        Container<Label> weaponsLabel = new Container<>(weapons);
+        weapon1.setTransform(true);
+        weapon2.setTransform(true);
+        weaponsLabel.setTransform(true);
+        weapon1.setSize(8, 8);
+        weapon2.setSize(8, 8);
+        weapon1.setPosition(2, 2);
+        weapon2.setPosition(4 + weapon1.getWidth(), 2);
+        weaponsLabel.setPosition(weapon1.getWidth() + 2, 12);
+        weapon1.setBackground(regular, true);
+        weapon2.setBackground(regular, true);
+
+        InGameScreenGuiManager.registerGui("weapon1", weapon1, e -> {
+            Container<Image> i = (Container<Image>) e;
+            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(weaponOne == null ? "noWeapon" : weaponOne.texture())));
+            i.setBackground(activeWeaponSlot == 0 ? selected : regular);
+        });
+
+        InGameScreenGuiManager.registerGui("weapon2", weapon2, e -> {
+            Container<Image> i = (Container<Image>) e;
+            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(weaponTwo == null ? "noWeapon" : weaponTwo.texture())));
+            i.setBackground(activeWeaponSlot == 1 ? selected : regular);
+        });
+
+        InGameScreenGuiManager.registerGui("weaponsLabel", weaponsLabel, e -> {});
+    }
 
     public List<Item> unlockedItems() {
         return unlockedItems;

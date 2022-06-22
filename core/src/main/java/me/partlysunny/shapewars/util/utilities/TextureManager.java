@@ -23,15 +23,28 @@ public class TextureManager {
     }
 
     public static void initTextures() {
-        registerTexture("player", new Texture(Gdx.files.internal("player.png")));
-        registerTexture("logo", new Texture(Gdx.files.internal("logo.png")));
-        registerTexture("wall", new Texture(Gdx.files.internal("wall.png")));
-        registerTexture("rock", new Texture(Gdx.files.internal("rock.png")));
-        registerTexture("mainScreenLogo", new Texture(Gdx.files.internal("mainScreenLogo.png")));
-        registerTexture("circleBlaster", new Texture(Gdx.files.internal("circleBlaster.png")));
-        registerTexture("circlePummeler", new Texture(Gdx.files.internal("circlePummeler.png")));
-        registerTexture("basicBullet", new Texture(Gdx.files.internal("basicBullet.png")));
-        registerTexture("basic", new Texture(Gdx.files.internal("basic.png")));
+        //Logos
+        doPngTexture("logo");
+        doPngTexture("mainScreenLogo");
+        //Entities
+        doPngTexture("player");
+        doPngTexture("wall");
+        doPngTexture("rock");
+        //UI
+        doPngTexture("slotBackground");
+        doPngTexture("slotBackgroundSelected");
+        //Weapons
+        doPngTexture("noWeapon");
+        doPngTexture("circleBlaster");
+        doPngTexture("circlePummeler");
+        //Bullets
+        doPngTexture("basicBullet");
+        //Enemies
+        doPngTexture("basic");
+    }
+
+    private static void doPngTexture(String value) {
+        registerTexture(value, new Texture(Gdx.files.internal(value + ".png")));
     }
 
 }
