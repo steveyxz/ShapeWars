@@ -37,6 +37,8 @@ public class TextureManager {
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");
         doPngTexture("circlePummeler");
+        //Armor
+        doPngTexture("oldTunic");
         //Bullets
         doPngTexture("basicBullet");
         //Enemies

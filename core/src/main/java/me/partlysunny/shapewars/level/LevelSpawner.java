@@ -39,7 +39,7 @@ public class LevelSpawner {
             ObstacleEntity obstacle = ObstacleManager.getObstacle(type);
             for (int i = 0; i < obstaclesToSpawn.get(type); i++) {
                 getPositionInLevelAwayFromCenter(15, level);
-                obstacle.spawnAt(vector2.x, vector2.y);
+                levelManager.addObstacle(obstacle.spawnAt(vector2.x, vector2.y));
             }
         }
     }

@@ -1,0 +1,11 @@
+{
+  "levelWidth": 300,
+  "levelHeight": 300,
+  "time": 120,
+  "enemies": {
+    "basic": 10
+  },
+  "obstacles": {
+    "rock": 20
+  }
+}

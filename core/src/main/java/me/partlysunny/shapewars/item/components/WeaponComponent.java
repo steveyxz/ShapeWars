@@ -11,6 +11,7 @@ public class WeaponComponent implements Component, Pool.Poolable {
 
     public void init(WeaponItem weaponItem) {
         this.weaponItem = weaponItem;
+        this.attackCooldown = weaponItem.attackDelay();
     }
 
     public void update(float delta) {

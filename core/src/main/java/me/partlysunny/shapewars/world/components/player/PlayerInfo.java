@@ -20,8 +20,8 @@ public class PlayerInfo {
 
     private final Entity playerEntity;
     private final ShapeWars game;
-    private int health = GameInfo.PLAYER_MAX_HEALTH;
-    private int maxHealth = GameInfo.PLAYER_MAX_HEALTH;
+    private float health = GameInfo.PLAYER_MAX_HEALTH;
+    private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment = new PlayerEquipment();
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
@@ -55,7 +55,7 @@ public class PlayerInfo {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(float health) {
         this.health = health;
     }
 
@@ -95,7 +95,12 @@ public class PlayerInfo {
     }
 
     public void damage(int health) {
-        setHealth(this.health - health);
+        float totalDamage = health;
+        float damageReduction = 1;
+        if (equipment.armorOne() != null) damageReduction -= equipment.armorOne().getProtection();
+        if (equipment.armorTwo() != null) damageReduction -= equipment.armorTwo().getProtection();
+        totalDamage *= damageReduction;
+        setHealth(this.health - totalDamage);
         if (this.health > maxHealth) {
             this.health = maxHealth;
         }

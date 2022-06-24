@@ -22,6 +22,7 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
+import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyRadiusProximity;
@@ -75,6 +76,10 @@ public abstract class Enemy implements GameObject {
         EnemyAttackComponent attack = w.createComponent(EnemyAttackComponent.class);
         attack.init(selector(), enemy);
         enemy.add(attack);
+
+        DeathEffectComponent deathEffect = w.createComponent(DeathEffectComponent.class);
+        deathEffect.init("death", enemy, 100);
+        enemy.add(deathEffect);
 
         enemy.add(w.createComponent(TintComponent.class));
 

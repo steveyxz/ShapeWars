@@ -133,10 +133,10 @@ timeline1: 0.2
 timeline2: 0.8082192
 timeline3: 0.9726027
 - Options - 
-attached: false
+attached: true
 continuous: false
 aligned: false
-additive: true
+additive: false
 behind: false
 premultipliedAlpha: false
 spriteMode: single

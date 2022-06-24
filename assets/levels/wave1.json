@@ -3,7 +3,7 @@
   "levelHeight": 200,
   "time": 120,
   "enemies": {
-    "basic": 10
+    "basic": 3
   },
   "obstacles": {
     "rock": 10

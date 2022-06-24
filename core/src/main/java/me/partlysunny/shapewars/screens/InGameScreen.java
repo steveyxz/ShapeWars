@@ -16,6 +16,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
+import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
@@ -25,7 +26,7 @@ import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
-import me.partlysunny.shapewars.world.objects.items.ItemManager;
+import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
@@ -61,11 +62,11 @@ public class InGameScreen extends ManagedScreen {
         entityManager = new EntityManager(world.gameWorld());
         //Init basic player and wall
         InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0), game);
-        entityManager.registerEntity(new WallEntity(), 0, 0);
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
+        playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
     }
 
     @Override

@@ -38,6 +38,6 @@ public class BasicAttack extends EnemyAttack {
 
     @Override
     public float cooldown() {
-        return 5;
+        return 0.1f;
     }
 }

@@ -74,6 +74,34 @@ public class PlayerEquipment {
         });
 
         InGameScreenGuiManager.registerGui("weaponsLabel", weaponsLabel, e -> {});
+
+        //Armor
+        Container<Image> armor2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Container<Image> armor1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Label armors = new Label("Armor", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK));
+        Container<Label> armorsLabel = new Container<>(armors);
+        armor2.setTransform(true);
+        armor1.setTransform(true);
+        armorsLabel.setTransform(true);
+        armor2.setSize(8, 8);
+        armor1.setSize(8, 8);
+        armor2.setPosition(2, 15);
+        armor1.setPosition(2, 16 + armor2.getHeight());
+        armorsLabel.setPosition(armor2.getWidth() - 2, 18 + armor2.getHeight() + armor1.getHeight());
+        armor2.setBackground(regular, true);
+        armor1.setBackground(regular, true);
+
+        InGameScreenGuiManager.registerGui("armor1", armor1, e -> {
+            Container<Image> i = (Container<Image>) e;
+            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(armorOne == null ? "noWeapon" : armorOne.texture())));
+        });
+
+        InGameScreenGuiManager.registerGui("armor2", armor2, e -> {
+            Container<Image> i = (Container<Image>) e;
+            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(armorTwo == null ? "noWeapon" : armorTwo.texture())));
+        });
+
+        InGameScreenGuiManager.registerGui("armorsLabel", armorsLabel, e -> {});
     }
 
     public List<Item> unlockedItems() {

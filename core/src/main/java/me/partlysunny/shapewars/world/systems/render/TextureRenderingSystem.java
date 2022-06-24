@@ -135,6 +135,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
                 System.out.println("height = " + height);
             }
              */
+            batch.setColor(Color.WHITE);
         }
 
         batch.end();

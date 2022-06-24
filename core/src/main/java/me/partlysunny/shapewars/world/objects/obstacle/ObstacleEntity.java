@@ -66,9 +66,9 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         return ObstacleEntity.addObstacle(w, this, (int) originalX, (int) originalY, getWidth(), getHeight(), getAngle());
     }
 
-    public void spawnAt(float x, float y) {
+    public Entity spawnAt(float x, float y) {
         PooledEngine pooledEngine = InGameScreen.world.gameWorld();
-        createEntity(pooledEngine, x, y);
+        return createEntity(pooledEngine, x, y);
     }
 
 

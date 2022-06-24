@@ -34,6 +34,7 @@ public class ParticleEffectManager {
 
     public static void init() {
         registerEffect("enemyMeleeAttack", load("enemyMeleeAttack.p", ""));
+        registerEffect("death", load("death.p", ""));
     }
 
     public static void startEffect(String effect, int x, int y, int duration) {
@@ -50,7 +51,6 @@ public class ParticleEffectManager {
     public static void render(SpriteBatch batch, float delta) {
         batch.begin();
         batch.setProjectionMatrix(InGameScreen.camera.combined);
-        batch.disableBlending();
         for (String s : existingEffects.keySet()) {
             List<PooledEffect> r = new ArrayList<>();
             for (PooledEffect pe : existingEffects.get(s)) {

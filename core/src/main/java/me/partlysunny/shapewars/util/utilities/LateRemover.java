@@ -7,6 +7,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.World;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.WallComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +16,14 @@ public class LateRemover {
 
     private static final List<Entity> toRemove = new ArrayList<>();
     private static final ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
+    private static final List<Entity> tempRemove = new ArrayList<>();
 
     public static void tagToRemove(Entity e) {
         toRemove.add(e);
     }
 
     public static void process() {
+        tempRemove.clear();
         PooledEngine world = InGameScreen.world.gameWorld();
         World physics = InGameScreen.world.physicsWorld();
         for (Entity e : world.getEntitiesFor(Family.all().get())) {
@@ -30,9 +33,12 @@ public class LateRemover {
                     physics.destroyBody(bodyMapper.get(e).rigidBody());
                 }
                 world.removeEntity(e);
+                tempRemove.add(e);
             }
         }
-        toRemove.clear();
+        for (Entity e : tempRemove) {
+            toRemove.remove(e);
+        }
     }
 
 }

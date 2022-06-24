@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.kotcrab.vis.ui.VisUI;
-import com.kotcrab.vis.ui.widget.VisLabel;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -29,6 +28,7 @@ public class LevelManager {
     private final Stage guiStage;
     private final LevelSpawner spawner = new LevelSpawner(this);
     private final List<Entity> aliveEntities = new ArrayList<>();
+    private final List<Entity> aliveObstacles = new ArrayList<>();
     private final List<Level> levels = new ArrayList<>();
     private int currentLevel = 0;
     private float timeRemaining = 0;
@@ -52,6 +52,7 @@ public class LevelManager {
         Label timeLabel = new Label("Time Remaining: " + timeRemaining, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
 
         Container<Label> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel);
+
         level.setTransform(true);
         enemies.setTransform(true);
         time.setTransform(true);
@@ -60,10 +61,12 @@ public class LevelManager {
         enemies.setPosition(20, FRUSTUM_HEIGHT - 10f);
         time.setPosition(20, FRUSTUM_HEIGHT - 15f);
 
-        InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Level: " + this.currentLevel));
-        InGameScreenGuiManager.registerGui("enemies", enemies, actor -> {
-            ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining());
-        });
+        time.validate();
+        enemies.validate();
+        level.validate();
+
+        InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel / 10 + 1) + "-" + (this.currentLevel % 10)));
+        InGameScreenGuiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
         InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
     }
 
@@ -99,18 +102,27 @@ public class LevelManager {
                 checkLevelUp();
             }
         }
+        if (aliveObstacles.remove(e)) {
+            if (!isLosing) {
+                checkLevelUp();
+            }
+        }
     }
 
     public void addEnemy(Entity e) {
         aliveEntities.add(e);
     }
 
+    public void addObstacle(Entity e) {
+        aliveObstacles.add(e);
+    }
+
     private void checkLevelUp() {
         if (enemiesRemaining() == 0) {
             currentLevel++;
             Level newLevel = getCurrentLevel();
-            spawner.spawn(newLevel);
             WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
+            spawner.spawn(newLevel);
             timeRemaining = newLevel.time();
         }
     }
@@ -119,11 +131,15 @@ public class LevelManager {
         return levels.get(currentLevel - 1);
     }
 
-    public void killAllEnemies() {
+    public void killAllObjects() {
         for (Entity e : aliveEntities) {
             LateRemover.tagToRemove(e);
         }
+        for (Entity e : aliveObstacles) {
+            LateRemover.tagToRemove(e);
+        }
         aliveEntities.clear();
+        aliveObstacles.clear();
     }
 
     public int enemiesRemaining() {
@@ -139,11 +155,12 @@ public class LevelManager {
 
     public void lossReset() {
         isLosing = true;
-        killAllEnemies();
+        killAllObjects();
         if (currentLevel != 0) {
             currentLevel--;
         }
         checkLevelUp();
+        isLosing = false;
     }
 
 }

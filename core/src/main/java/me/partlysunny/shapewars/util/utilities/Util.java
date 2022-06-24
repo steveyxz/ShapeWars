@@ -6,12 +6,14 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import me.partlysunny.shapewars.bullets.BulletComponent;
+import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
+import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
 
 import javax.annotation.Nullable;
 import java.util.concurrent.ThreadLocalRandom;
@@ -23,6 +25,7 @@ public class Util {
     private static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
     private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
     private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
+    private static final ComponentMapper<DeathEffectComponent> deathEffectMapper = ComponentMapper.getFor(DeathEffectComponent.class);
 
     public static int getRandomBetween(int a, int b) {
         if (a > b) {
@@ -76,6 +79,19 @@ public class Util {
             return null;
         }
         return new Pair<>(bullet, other);
+    }
+
+    public static void playDamage(Pair<Entity, Entity> result) {
+        Entity bullet = result.a();
+        Entity victim = result.b();
+        HealthComponent health = healthMapper.get(victim);
+        health.addHealth(-bulletMapper.get(bullet).damage());
+        VisualEffectManager.getEffect("damage").playEffect(victim);
+        LateRemover.tagToRemove(bullet);
+        if (deathEffectMapper.has(victim) && health.health() <= 0) {
+            DeathEffectComponent deathEffect = deathEffectMapper.get(victim);
+            deathEffect.die();
+        }
     }
 
     public static Vector2 angleToVector(Vector2 outVector, float angle) {

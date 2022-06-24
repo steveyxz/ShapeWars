@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -17,6 +18,7 @@ import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.VisLabel;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 
 public class DeathScreen extends ManagedScreen {
@@ -45,17 +47,13 @@ public class DeathScreen extends ManagedScreen {
             VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
         }
 
-        VisLabel youDied = new VisLabel("You Died", Color.BLACK);
-        VisLabel respawn = new VisLabel("Press Enter to respawn", Color.BLACK);
-        youDied.setFontScale(2);
-        respawn.setFontScale(2);
-        youDied.setAlignment(Alignment.CENTER.getAlignment());
-        respawn.setAlignment(Alignment.CENTER.getAlignment());
+        Label youDied = new Label("You Died!", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 1.5f), Color.BLACK));
+        Label respawn = new Label("Press enter to respawn.", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 1), Color.BLACK));
 
-        Container<VisLabel> c1 = new Container<>(youDied);
+        Container<Label> c1 = new Container<>(youDied);
         c1.setTransform(true);
         c1.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() * 7 / 12f);
-        Container<VisLabel> c2 = new Container<>(respawn);
+        Container<Label> c2 = new Container<>(respawn);
         c2.setTransform(true);
         c2.setPosition(Gdx.graphics.getWidth() / 2f, Gdx.graphics.getHeight() * 5 / 12f);
 

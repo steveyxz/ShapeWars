@@ -5,17 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class FontPresets {
 
-    public static BitmapFont RALEWAY_BOLD;
-    public static BitmapFont RALEWAY_MEDIUM;
-    public static BitmapFont RALEWAY_LIGHT;
-
-    static {
-        RALEWAY_BOLD = loadFont("Raleway-Bold.ttf", 40);
-        RALEWAY_MEDIUM = loadFont("Raleway-Medium.ttf", 40);
-        RALEWAY_LIGHT = loadFont("Raleway-ExtraLight.ttf", 40);
-    }
+    public static final String RALEWAY_BOLD = "Raleway-Bold.ttf";
+    public static final String RALEWAY_MEDIUM = "Raleway-Medium.ttf";
+    public static final String RALEWAY_LIGHT = "Raleway-ExtraLight.ttf";
+    private static final Map<String, Map<Float, BitmapFont>> sizeMap = new HashMap<>();
 
     private static BitmapFont loadFont(String fontPath, int size) {
         //Generate a font object for font
@@ -34,9 +32,18 @@ public class FontPresets {
         return myFont;
     }
 
-    public static BitmapFont getFontWithSize(BitmapFont font, float size) {
-        font.getData().setScale(size, -size);
-        return font;
+    public static BitmapFont getFontWithSize(String path, float size) {
+        if (sizeMap.containsKey(path)) {
+            if (sizeMap.get(path).containsKey(size)) {
+                return sizeMap.get(path).get(size);
+            }
+        } else {
+            sizeMap.put(path, new HashMap<>());
+        }
+        BitmapFont newFont = loadFont(path, 30);
+        newFont.getData().setScale(size, -size);
+        sizeMap.get(path).put(size, newFont);
+        return newFont;
     }
 
 }

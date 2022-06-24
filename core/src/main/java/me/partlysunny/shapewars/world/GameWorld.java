@@ -21,12 +21,16 @@ import me.partlysunny.shapewars.world.systems.player.*;
 import me.partlysunny.shapewars.world.systems.render.AnimationSystem;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GameWorld {
 
     private final PooledEngine gameWorld;
     private final World physicsWorld;
 
     private ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
+    private Map<Body, Entity> bodyCache = new HashMap<>();
 
     public GameWorld(Stage stage) {
         this.physicsWorld = new World(new Vector2(0, 0), true);
@@ -53,9 +57,13 @@ public class GameWorld {
     }
 
     public Entity getEntityWithRigidBody(Body b) {
+        if (bodyCache.containsKey(b)) {
+            return bodyCache.get(b);
+        }
         for (Entity entity : gameWorld.getEntitiesFor(Family.all(RigidBodyComponent.class).get())) {
             RigidBodyComponent rigidBodyComponent = bodyMapper.get(entity);
             if (rigidBodyComponent.rigidBody().equals(b)) {
+                bodyCache.put(b, entity);
                 return entity;
             }
         }

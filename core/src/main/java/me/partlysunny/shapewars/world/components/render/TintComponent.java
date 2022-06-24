@@ -24,8 +24,8 @@ public class TintComponent implements Component, Pool.Poolable {
 
     @Override
     public void reset() {
-        tint.set(0, 0, 0);
-        this.alpha = 0;
+        tint.set(1, 1, 1);
+        this.alpha = 1;
     }
 
     public float alpha() {
