@@ -7,8 +7,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
+import me.partlysunny.shapewars.level.Level;
+import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
@@ -97,6 +100,15 @@ public class Util {
     public static Vector2 angleToVector(Vector2 outVector, float angle) {
         outVector.set(MathUtils.cos(angle), MathUtils.sin(angle));
         return outVector;
+    }
+
+    public static void getPositionInLevelAwayFromCenter(PositionSet toLoad, float distance, Level level) {
+        int x = Util.getRandomBetween(level.levelWidth() / -2 + GameInfo.BOUNDARY_WIDTH, level.levelWidth() / 2 - GameInfo.BOUNDARY_WIDTH);
+        int y = Util.getRandomBetween(level.levelHeight() / -2 + GameInfo.BOUNDARY_WIDTH, level.levelHeight() / 2 - GameInfo.BOUNDARY_WIDTH);
+        if (Math.abs(x) < distance || Math.abs(y) < distance) {
+            getPositionInLevelAwayFromCenter(toLoad, distance, level);
+        }
+        toLoad.loadPosition(x, y);
     }
 
     public static float vectorToAngle(Vector2 angle) {

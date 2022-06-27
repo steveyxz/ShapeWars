@@ -33,8 +33,9 @@ public class ParticleEffectManager {
     }
 
     public static void init() {
-        registerEffect("enemyMeleeAttack", load("enemyMeleeAttack.p", ""));
-        registerEffect("death", load("death.p", ""));
+        registerEffect("enemyMeleeAttack", load("enemyMeleeAttack.p"));
+        registerEffect("death", load("death.p"));
+        registerEffect("enemySpawnIn", load("enemySpawnIn.p"));
     }
 
     public static void startEffect(String effect, int x, int y, int duration) {
@@ -66,9 +67,9 @@ public class ParticleEffectManager {
         batch.end();
     }
 
-    private static ParticleEffectPool load(String effectPath, String texturePath) {
+    private static ParticleEffectPool load(String effectPath) {
         ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal(effectPath), Gdx.files.internal(texturePath));
+        effect.load(Gdx.files.internal("assets/particles/" + effectPath), Gdx.files.internal("particles"));
         ParticleEffectPool pool = new ParticleEffectPool(effect, 100, 10000);
         return pool;
     }

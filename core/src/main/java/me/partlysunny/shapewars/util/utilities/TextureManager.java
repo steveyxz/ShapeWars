@@ -33,6 +33,9 @@ public class TextureManager {
         //UI
         doPngTexture("slotBackground");
         doPngTexture("slotBackgroundSelected");
+        doPngTexture("mainMenuButton");
+        doPngTexture("mainMenuButtonDown");
+        doPngTexture("mainMenuButtonChecked");
         //Weapons
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");
@@ -43,10 +46,11 @@ public class TextureManager {
         doPngTexture("basicBullet");
         //Enemies
         doPngTexture("basic");
+        doPngTexture("spawnIndicator");
     }
 
     private static void doPngTexture(String value) {
-        registerTexture(value, new Texture(Gdx.files.internal(value + ".png")));
+        registerTexture(value, new Texture(Gdx.files.internal("assets/textures/" + value + ".png")));
     }
 
 }

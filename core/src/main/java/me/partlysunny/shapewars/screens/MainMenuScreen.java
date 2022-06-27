@@ -10,7 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
@@ -18,6 +22,7 @@ import com.kotcrab.vis.ui.widget.VisImage;
 import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 
@@ -50,10 +55,11 @@ public class MainMenuScreen extends ManagedScreen {
         table.setFillParent(true);
         stage.addActor(table);
 
-        //table.setDebug(true);
+        ImageTextButton.ImageTextButtonStyle buttonStyle = new ImageTextButton.ImageTextButtonStyle(new TextureRegionDrawable(TextureManager.getTexture("mainMenuButton")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonDown")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonChecked")), FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 3));
 
-        ImageTextButton playButton = new ImageTextButton("Play", VisUI.getSkin(), "default");
-        //playButton.setPosition(0, 300, Alignment.CENTER.getAlignment());
+        table.setDebug(true);
+
+        ImageTextButton playButton = new ImageTextButton("Play", buttonStyle);
         playButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -64,13 +70,12 @@ public class MainMenuScreen extends ManagedScreen {
             }
         });
         playButton.setTransform(true);
-        playButton.setSize(400, 150);
+        playButton.setScale(0.3f);
 
         Container<ImageTextButton> playButtonContainer = new Container<>(playButton);
-        playButtonContainer.align(Alignment.CENTER.getAlignment());
+        playButtonContainer.setTransform(true);
 
-        ImageTextButton quitButton = new ImageTextButton("Quit", VisUI.getSkin(), "default");
-        //quitButton.setPosition(0, 500, Alignment.CENTER.getAlignment());
+        ImageTextButton quitButton = new ImageTextButton("Quit", buttonStyle);
         quitButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -81,17 +86,22 @@ public class MainMenuScreen extends ManagedScreen {
             }
         });
         quitButton.setTransform(true);
-        quitButton.setSize(400, 150);
+        quitButton.setScale(0.3f);
+
         Container<ImageTextButton> quitButtonContainer = new Container<>(quitButton);
-        quitButtonContainer.align(Alignment.CENTER.getAlignment());
+        quitButtonContainer.setTransform(true);
+        //quitButtonContainer.align(Alignment.CENTER.getAlignment());
 
         VisImage logo = new VisImage(TextureManager.getTexture("mainScreenLogo"));
-        //logo.setPosition(0, 100, Alignment.CENTER.getAlignment());
         logo.setSize(400, 150);
         Container<VisImage> logoContainer = new Container<>(logo);
         logoContainer.align(Alignment.CENTER.getAlignment());
 
-        table.add(logoContainer, playButtonContainer, quitButtonContainer);
+        table.add(logoContainer).fillX().uniformX().uniformY();
+        table.row().pad(10, 0, 10, 0);
+        table.add(playButtonContainer).fillX().uniformX().uniformY();
+        table.row().pad(0, 0, 0, 0);
+        table.add(quitButtonContainer).fillX().uniformX().uniformY();
     }
 
     @Override

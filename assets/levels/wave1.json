@@ -2,9 +2,14 @@
   "levelWidth": 200,
   "levelHeight": 200,
   "time": 120,
-  "enemies": {
-    "basic": 3
-  },
+  "stages": [
+    {
+      "basic": 10
+    },
+    {
+      "basic": 30
+    }
+  ],
   "obstacles": {
     "rock": 10
   }

@@ -1,6 +1,7 @@
 package me.partlysunny.shapewars.level;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
@@ -11,9 +12,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.kotcrab.vis.ui.VisUI;
+import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
+import me.partlysunny.shapewars.util.utilities.Util;
+import me.partlysunny.shapewars.world.components.mechanics.EnemySpawnIndicatorComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
 import java.util.ArrayList;
@@ -21,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
 public class LevelManager {
 
@@ -33,6 +38,12 @@ public class LevelManager {
     private int currentLevel = 0;
     private float timeRemaining = 0;
     private boolean isLosing = false;
+    private boolean isSpawning = false;
+    private float waveSpawnCountdown = 0;
+    private float stageSpawnCountdown = 0;
+    private int currentStage = 0;
+    private boolean isCounting = false;
+    private final PositionSet positions = new PositionSet();
 
     public LevelManager(Stage guiStage) {
         loadLevels();
@@ -50,24 +61,36 @@ public class LevelManager {
         Label currentLevel = new Label("Current Level: " + this.currentLevel, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
         Label enemiesRemaining = new Label("Enemies Remaining: " + enemiesRemaining(), new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
         Label timeLabel = new Label("Time Remaining: " + timeRemaining, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
+        Label countdown = new Label("Next Wave In: " + waveSpawnCountdown, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_BOLD, 0.2f), Color.BLACK));
 
-        Container<Label> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel);
+        Container<Label> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel), counter = new Container<>(countdown);
 
         level.setTransform(true);
         enemies.setTransform(true);
         time.setTransform(true);
+        counter.setTransform(true);
 
         level.setPosition(20, FRUSTUM_HEIGHT - 5f);
         enemies.setPosition(20, FRUSTUM_HEIGHT - 10f);
         time.setPosition(20, FRUSTUM_HEIGHT - 15f);
+        counter.setPosition(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
 
         time.validate();
         enemies.validate();
         level.validate();
+        counter.validate();
 
         InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel / 10 + 1) + "-" + (this.currentLevel % 10)));
         InGameScreenGuiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
         InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
+        InGameScreenGuiManager.registerGui("levelCountdown", counter, actor -> {
+            if (isCounting) {
+                ((Container<Label>) actor).getActor().setText("Next Wave In: " + ((int) Math.ceil(waveSpawnCountdown)));
+            } else {
+                ((Container<Label>) actor).getActor().setText("");
+            }
+            counter.setPosition(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
+        });
     }
 
     private void loadLevels() {
@@ -78,13 +101,17 @@ public class LevelManager {
             int levelWidth = value.getInt("levelWidth");
             int levelHeight = value.getInt("levelHeight");
             int time = value.getInt("time");
-            Map<String, Integer> enemies = new HashMap<>();
+            List<LevelStage> enemies = new ArrayList<>();
             Map<String, Integer> obstacles = new HashMap<>();
-            JsonValue levelEnemies = value.get("enemies");
+            JsonValue levelEnemies = value.get("stages");
             for (JsonValue contentSection : levelEnemies) {
-                String enemyType = contentSection.name;
-                int enemyAmount = levelEnemies.getInt(contentSection.name);
-                enemies.put(enemyType, enemyAmount);
+                Map<String, Integer> stageEnemies = new HashMap<>();
+                for (JsonValue contentEntry : contentSection) {
+                    String enemyType = contentEntry.name;
+                    int enemyAmount = contentSection.getInt(contentEntry.name);
+                    stageEnemies.put(enemyType, enemyAmount);
+                }
+                enemies.add(new LevelStage(stageEnemies));
             }
             JsonValue levelObstacles = value.get("obstacles");
             for (JsonValue contentSection : levelObstacles) {
@@ -93,6 +120,11 @@ public class LevelManager {
                 obstacles.put(obstacleType, obstacleAmount);
             }
             this.levels.add(new Level(time, levelWidth, levelHeight, enemies, obstacles));
+        }
+        for (Level l : this.levels) {
+            for (LevelStage stage : l.stages()) {
+                stage.setParent(l);
+            }
         }
     }
 
@@ -117,18 +149,46 @@ public class LevelManager {
         aliveObstacles.add(e);
     }
 
+    private void regeneratePositions() {
+        positions.resetPositions();
+        for (int i = 0; i < getCurrentStage().enemyCount(); i++) {
+            Util.getPositionInLevelAwayFromCenter(positions, 15, getCurrentLevel());
+        }
+    }
+
     private void checkLevelUp() {
         if (enemiesRemaining() == 0) {
-            currentLevel++;
-            Level newLevel = getCurrentLevel();
-            WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
-            spawner.spawn(newLevel);
-            timeRemaining = newLevel.time();
+            if (currentLevel != 0 && currentStage < getCurrentLevel().stages().size() - 1) {
+                currentStage++;
+                regeneratePositions();
+                insertIndicators();
+                startStageSpawn();
+            } else {
+                currentLevel++;
+                Level newLevel = getCurrentLevel();
+                WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
+                waveSpawnCountdown = 3;
+                isCounting = true;
+                timeRemaining = newLevel.time();
+            }
         }
+    }
+
+    private void insertIndicators() {
+        spawner.spawnIndicators(positions);
+    }
+
+    private void startStageSpawn() {
+        isSpawning = true;
+        stageSpawnCountdown = 2;
     }
 
     public Level getCurrentLevel() {
         return levels.get(currentLevel - 1);
+    }
+
+    public LevelStage getCurrentStage() {
+        return getCurrentLevel().stages().get(currentStage);
     }
 
     public void killAllObjects() {
@@ -142,14 +202,42 @@ public class LevelManager {
         aliveObstacles.clear();
     }
 
+    public void killAllIndicators() {
+        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(EnemySpawnIndicatorComponent.class).get())) {
+            LateRemover.tagToRemove(e);
+        }
+    }
+
     public int enemiesRemaining() {
         return aliveEntities.size();
     }
 
     public void update(float delta) {
-        timeRemaining -= delta;
-        if (timeRemaining < 0) {
-            lossReset();
+        if (isCounting) {
+            waveSpawnCountdown -= delta;
+            if (waveSpawnCountdown < 0) {
+                spawner.spawnObstacles(getCurrentLevel());
+                isCounting = false;
+                waveSpawnCountdown = 0;
+                currentStage = 0;
+                regeneratePositions();
+                insertIndicators();
+                startStageSpawn();
+            }
+        } else if (isSpawning) {
+            stageSpawnCountdown -= delta;
+            if (stageSpawnCountdown < 0) {
+                System.out.println(positions);
+                spawner.spawn(getCurrentLevel().stages().get(currentStage), positions);
+                stageSpawnCountdown = 0;
+                isSpawning = false;
+                killAllIndicators();
+            }
+        } else {
+            timeRemaining -= delta;
+            if (timeRemaining < 0) {
+                lossReset();
+            }
         }
     }
 
