@@ -1,13 +1,12 @@
 package me.partlysunny.shapewars.effects.sound;
 
-import com.badlogic.gdx.Audio;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class EffectManager {
+public class SoundEffectManager {
 
     private static final Map<String, Sound> sounds = new HashMap<>();
 
@@ -23,11 +22,19 @@ public class EffectManager {
         sounds.remove(id);
     }
 
-    private static void loadMp3Regular(String name) {
-        registerSound(name, Gdx.audio.newSound(Gdx.files.internal("assets/sounds/" + name + ".mp3")));
+    private static void loadWavRegular(String name) {
+        registerSound(name, Gdx.audio.newSound(Gdx.files.internal("assets/sounds/" + name + ".wav")));
+    }
+
+    public static void play(String effect, float volume) {
+        getSound(effect).play(volume);
     }
 
     static {
+        loadWavRegular("enemySpawn");
+        loadWavRegular("playerShoot");
+        loadWavRegular("countdown");
+        loadWavRegular("click");
     }
 
 }

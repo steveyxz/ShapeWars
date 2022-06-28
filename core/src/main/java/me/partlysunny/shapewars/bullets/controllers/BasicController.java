@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.bullets.BulletController;
 import me.partlysunny.shapewars.bullets.BulletType;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
@@ -38,6 +39,7 @@ public class BasicController implements BulletController {
         float x = MathUtils.cos(rotation) * bulletSpeed;
         float y = MathUtils.sin(rotation) * bulletSpeed;
         bodyMapper.get(basicBullet).rigidBody().applyForceToCenter(x, y, true);
+        SoundEffectManager.play("playerShoot", 1);
         InGameScreen.world.gameWorld().addEntity(basicBullet);
     }
 

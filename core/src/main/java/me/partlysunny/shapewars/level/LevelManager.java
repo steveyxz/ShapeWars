@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.kotcrab.vis.ui.VisUI;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.classes.PositionSet;
@@ -85,10 +86,17 @@ public class LevelManager {
         InGameScreenGuiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
         InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
         InGameScreenGuiManager.registerGui("levelCountdown", counter, actor -> {
+            Label countdownLabel = ((Container<Label>) actor).getActor();
             if (isCounting) {
-                ((Container<Label>) actor).getActor().setText("Next Wave In: " + ((int) Math.ceil(waveSpawnCountdown)));
+                int shownValue = (int) Math.ceil(waveSpawnCountdown);
+                if (countdownLabel.getText().length != 0) {
+                    if (Integer.parseInt(String.valueOf(countdownLabel.getText().charAt(countdownLabel.getText().length - 1))) != shownValue) {
+                        SoundEffectManager.play("countdown", 1);
+                    }
+                }
+                countdownLabel.setText("Next Wave In: " + shownValue);
             } else {
-                ((Container<Label>) actor).getActor().setText("");
+                countdownLabel.setText("");
             }
             counter.setPosition(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
         });
@@ -230,6 +238,7 @@ public class LevelManager {
         } else if (isSpawning) {
             stageSpawnCountdown -= delta;
             if (stageSpawnCountdown < 0) {
+                SoundEffectManager.play("enemySpawn", 10);
                 spawner.spawn(getCurrentLevel().stages().get(currentStage), positions);
                 stageSpawnCountdown = 0;
                 isSpawning = false;

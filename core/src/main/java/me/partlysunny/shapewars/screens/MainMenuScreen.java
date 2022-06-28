@@ -22,6 +22,7 @@ import com.kotcrab.vis.ui.widget.VisImage;
 import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -66,6 +67,7 @@ public class MainMenuScreen extends ManagedScreen {
                 if (game.getScreenManager().getCurrentScreen().equals(t)) {
                     game.getScreenManager().pushScreen("ingame", "blending");
                 }
+                SoundEffectManager.play("click", 1);
                 return true;
             }
         });
@@ -82,6 +84,7 @@ public class MainMenuScreen extends ManagedScreen {
                 if (game.getScreenManager().getCurrentScreen().equals(t)) {
                     Gdx.app.exit();
                 }
+                SoundEffectManager.play("click", 1);
                 return true;
             }
         });
