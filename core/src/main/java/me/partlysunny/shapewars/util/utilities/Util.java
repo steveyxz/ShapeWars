@@ -14,6 +14,7 @@ import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
+import me.partlysunny.shapewars.world.components.collision.WallComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
@@ -57,6 +58,9 @@ public class Util {
         Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
         Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
         if (a == null || b == null) {
+            return null;
+        }
+        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
             return null;
         }
         Entity bullet = null;

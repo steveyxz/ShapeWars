@@ -1,9 +1,6 @@
 package me.partlysunny.shapewars.world;
 
-import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.ashley.core.*;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -36,7 +33,7 @@ public class GameWorld {
         this.physicsWorld = new World(new Vector2(0, 0), true);
         ContactDispatcher.init(physicsWorld);
         Controllers.init();
-        this.gameWorld = new PooledEngine(100, 1000, 1000, 10000);
+        this.gameWorld = new PooledEngine(100, 1000, 1000, 10000000);
         //Mechanics
         gameWorld.addSystem(new HealthSystem());
         gameWorld.addSystem(new BulletUpdaterSystem());
@@ -58,11 +55,26 @@ public class GameWorld {
 
     public Entity getEntityWithRigidBody(Body b) {
         if (bodyCache.containsKey(b)) {
-            return bodyCache.get(b);
+            if (bodyCache.get(b) != null) {
+                return bodyCache.get(b);
+            } else {
+                bodyCache.remove(b);
+            }
         }
         for (Entity entity : gameWorld.getEntitiesFor(Family.all(RigidBodyComponent.class).get())) {
             RigidBodyComponent rigidBodyComponent = bodyMapper.get(entity);
             if (rigidBodyComponent.rigidBody().equals(b)) {
+                gameWorld.addEntityListener(new EntityListener() {
+                    @Override
+                    public void entityAdded(Entity entity) {
+                    }
+                    @Override
+                    public void entityRemoved(Entity e) {
+                        if (entity.equals(e)) {
+                            bodyCache.remove(b);
+                        }
+                    }
+                });
                 bodyCache.put(b, entity);
                 return entity;
             }

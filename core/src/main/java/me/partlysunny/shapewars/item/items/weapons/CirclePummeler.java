@@ -14,7 +14,7 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 0.8f;
+        return 0.2f;
     }
 
     @Override
@@ -51,12 +51,12 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public int damage() {
-        return 4;
+        return 8;
     }
 
     @Override
     public float attackDelay() {
-        return 0.2f;
+        return 0.1f;
     }
 
     @Override

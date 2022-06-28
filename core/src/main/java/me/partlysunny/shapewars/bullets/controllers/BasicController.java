@@ -9,11 +9,9 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.bullets.BulletController;
 import me.partlysunny.shapewars.bullets.BulletType;
-import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
-import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
@@ -29,6 +27,7 @@ public class BasicController implements BulletController {
     private static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
     private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
     private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
+    private static final ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
 
 
     @Override
@@ -38,7 +37,7 @@ public class BasicController implements BulletController {
         float bulletSpeed = 500;
         float x = MathUtils.cos(rotation) * bulletSpeed;
         float y = MathUtils.sin(rotation) * bulletSpeed;
-        basicBullet.getComponent(RigidBodyComponent.class).rigidBody().applyForceToCenter(x, y, true);
+        bodyMapper.get(basicBullet).rigidBody().applyForceToCenter(x, y, true);
         InGameScreen.world.gameWorld().addEntity(basicBullet);
     }
 

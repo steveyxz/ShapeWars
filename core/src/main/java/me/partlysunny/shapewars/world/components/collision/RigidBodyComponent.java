@@ -13,7 +13,7 @@ import me.partlysunny.shapewars.util.utilities.Util;
 
 public class RigidBodyComponent implements Component, Pool.Poolable {
 
-    private Body rigidBody;
+    private Body rigidBody = null;
 
     public RigidBodyComponent() {
     }

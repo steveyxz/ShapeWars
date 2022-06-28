@@ -26,7 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
 public class LevelManager {
 
@@ -159,7 +160,9 @@ public class LevelManager {
     private void checkLevelUp() {
         if (enemiesRemaining() == 0) {
             if (currentLevel != 0 && currentStage < getCurrentLevel().stages().size() - 1) {
-                currentStage++;
+                if (!isLosing) {
+                    currentStage++;
+                }
                 regeneratePositions();
                 insertIndicators();
                 startStageSpawn();
@@ -227,13 +230,12 @@ public class LevelManager {
         } else if (isSpawning) {
             stageSpawnCountdown -= delta;
             if (stageSpawnCountdown < 0) {
-                System.out.println(positions);
                 spawner.spawn(getCurrentLevel().stages().get(currentStage), positions);
                 stageSpawnCountdown = 0;
                 isSpawning = false;
                 killAllIndicators();
             }
-        } else {
+        } else if (!isLosing) {
             timeRemaining -= delta;
             if (timeRemaining < 0) {
                 lossReset();
@@ -244,9 +246,10 @@ public class LevelManager {
     public void lossReset() {
         isLosing = true;
         killAllObjects();
-        if (currentLevel != 0) {
+        if (currentLevel != 1) {
             currentLevel--;
         }
+        currentStage = 0;
         checkLevelUp();
         isLosing = false;
     }

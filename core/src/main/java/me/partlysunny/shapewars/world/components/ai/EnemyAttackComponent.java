@@ -9,7 +9,7 @@ import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 public class EnemyAttackComponent implements Component, Pool.Poolable {
 
     private EnemyAttackSelector selector = null;
-    private Entity parent;
+    private Entity parent = null;
     private float attackCooldown = 0;
 
     public void init(EnemyAttackSelector selector, Entity parent) {

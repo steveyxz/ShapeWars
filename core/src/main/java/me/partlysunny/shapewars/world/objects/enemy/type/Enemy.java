@@ -97,6 +97,7 @@ public abstract class Enemy implements GameObject {
         enemy.add(steering);
 
         w.addEntity(enemy);
+
         return enemy;
     }
 }

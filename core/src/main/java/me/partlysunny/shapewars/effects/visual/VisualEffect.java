@@ -1,6 +1,9 @@
 package me.partlysunny.shapewars.effects.visual;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.EntityListener;
+import com.badlogic.ashley.core.Family;
+import me.partlysunny.shapewars.screens.InGameScreen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +22,17 @@ public abstract class VisualEffect {
 
     public void playEffect(Entity e) {
         if (!effectCountdown.containsKey(e)) {
+            InGameScreen.world.gameWorld().addEntityListener(new EntityListener() {
+                @Override
+                public void entityAdded(Entity entity) {
+                }
+                @Override
+                public void entityRemoved(Entity entity) {
+                    if (entity.equals(e)) {
+                        effectCountdown.remove(e);
+                    }
+                }
+            });
             startEffect(e);
         }
         effectCountdown.put(e, getDuration());

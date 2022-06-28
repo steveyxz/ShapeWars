@@ -28,11 +28,11 @@ public class LateRemover {
         World physics = InGameScreen.world.physicsWorld();
         for (Entity e : world.getEntitiesFor(Family.all().get())) {
             if (toRemove.contains(e)) {
-                InGameScreen.levelManager.entityDestroyed(e);
                 if (bodyMapper.has(e)) {
                     physics.destroyBody(bodyMapper.get(e).rigidBody());
                 }
                 world.removeEntity(e);
+                InGameScreen.levelManager.entityDestroyed(e);
                 tempRemove.add(e);
             }
         }
