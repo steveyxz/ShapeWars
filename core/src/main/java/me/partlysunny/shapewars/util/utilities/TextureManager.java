@@ -45,7 +45,8 @@ public class TextureManager {
         //Bullets
         doPngTexture("basicBullet");
         //Enemies
-        doPngTexture("basic");
+        doPngTexture("basicEnemy");
+        doPngTexture("tankEnemy");
         doPngTexture("spawnIndicator");
     }
 

@@ -16,6 +16,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
+import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
@@ -26,9 +27,7 @@ import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
-import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
-import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
@@ -111,11 +110,12 @@ public class InGameScreen extends ManagedScreen {
         camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
         //Ticking and logic
         doPhysicsStep(Gdx.graphics.getDeltaTime());
-        stage.act(Gdx.graphics.getDeltaTime());
         GdxAI.getTimepiece().update(delta);
         levelManager.update(delta);
         InGameScreenGuiManager.update();
         VisualEffectManager.update(delta);
+        stage.act(Gdx.graphics.getDeltaTime());
+        LateRemover.process();
         //Rendering
         game.batch().enableBlending();
         game.batch().setProjectionMatrix(camera.combined);
@@ -128,7 +128,6 @@ public class InGameScreen extends ManagedScreen {
         ParticleEffectManager.render(game.batch(), delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
         //Process deletion
-        LateRemover.process();
     }
 
     private void doPhysicsStep(float deltaTime) {

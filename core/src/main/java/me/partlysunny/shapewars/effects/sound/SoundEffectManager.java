@@ -31,10 +31,16 @@ public class SoundEffectManager {
     }
 
     static {
+        //Enemy
         loadWavRegular("enemySpawn");
+        loadWavRegular("enemyDie");
+        //Player
         loadWavRegular("playerShoot");
+        loadWavRegular("bulletCollide");
+        //General
         loadWavRegular("countdown");
         loadWavRegular("click");
+        loadWavRegular("levelStart");
     }
 
 }

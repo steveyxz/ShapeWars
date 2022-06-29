@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.world.objects.enemy;
 
 import me.partlysunny.shapewars.world.objects.enemy.type.BasicEnemy;
 import me.partlysunny.shapewars.world.objects.enemy.type.Enemy;
+import me.partlysunny.shapewars.world.objects.enemy.type.TankEnemy;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +25,7 @@ public class EnemyManager {
 
     public static void init() {
         EnemyManager.registerEnemy("basic", new BasicEnemy());
+        EnemyManager.registerEnemy("tank", new TankEnemy());
     }
 
 }

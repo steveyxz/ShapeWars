@@ -5,15 +5,15 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
-public class BasicEnemy extends Enemy {
+public class TankEnemy extends Enemy {
     @Override
     protected float getHealth() {
-        return 20;
+        return 60;
     }
 
     @Override
     protected String getTexture() {
-        return "basicEnemy";
+        return "tankEnemy";
     }
 
     @Override
@@ -23,7 +23,7 @@ public class BasicEnemy extends Enemy {
 
     @Override
     protected float getWidth() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class BasicEnemy extends Enemy {
 
     @Override
     protected float getMaxSpeed() {
-        return 10;
+        return 5;
     }
 
     @Override
     protected EnemyAttackSelector selector() {
-        return AttackSets.BASIC_ATTACK;
+        return AttackSets.FAST_TANKY_ATTACK;
     }
 }

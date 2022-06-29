@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import me.partlysunny.shapewars.bullets.BulletComponent;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.level.Level;
 import me.partlysunny.shapewars.util.classes.PositionSet;
@@ -98,7 +99,9 @@ public class Util {
         if (deathEffectMapper.has(victim) && health.health() <= 0) {
             DeathEffectComponent deathEffect = deathEffectMapper.get(victim);
             deathEffect.die();
+            SoundEffectManager.play("enemyDie", 1);
         }
+        SoundEffectManager.play("bulletCollide", 1);
     }
 
     public static Vector2 angleToVector(Vector2 outVector, float angle) {
@@ -111,6 +114,7 @@ public class Util {
         int y = Util.getRandomBetween(level.levelHeight() / -2 + GameInfo.BOUNDARY_WIDTH, level.levelHeight() / 2 - GameInfo.BOUNDARY_WIDTH);
         if (Math.abs(x) < distance || Math.abs(y) < distance) {
             getPositionInLevelAwayFromCenter(toLoad, distance, level);
+            return;
         }
         toLoad.loadPosition(x, y);
     }

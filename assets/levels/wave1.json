@@ -4,10 +4,10 @@
   "time": 120,
   "stages": [
     {
-      "basic": 50
+      "basic": 3
     },
     {
-      "basic": 30
+      "basic": 5
     }
   ],
   "obstacles": {

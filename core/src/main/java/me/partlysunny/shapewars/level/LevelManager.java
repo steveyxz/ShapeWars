@@ -39,7 +39,7 @@ public class LevelManager {
     private final List<Level> levels = new ArrayList<>();
     private int currentLevel = 0;
     private float timeRemaining = 0;
-    private boolean isLosing = false;
+    public boolean isLosing = false;
     private boolean isSpawning = false;
     private float waveSpawnCountdown = 0;
     private float stageSpawnCountdown = 0;
@@ -93,6 +93,8 @@ public class LevelManager {
                     if (Integer.parseInt(String.valueOf(countdownLabel.getText().charAt(countdownLabel.getText().length - 1))) != shownValue) {
                         SoundEffectManager.play("countdown", 1);
                     }
+                } else {
+                    SoundEffectManager.play("countdown", 1);
                 }
                 countdownLabel.setText("Next Wave In: " + shownValue);
             } else {
@@ -167,20 +169,21 @@ public class LevelManager {
 
     private void checkLevelUp() {
         if (enemiesRemaining() == 0) {
-            if (currentLevel != 0 && currentStage < getCurrentLevel().stages().size() - 1) {
-                if (!isLosing) {
+            if (!isLosing && !isSpawning && !isCounting) {
+                if (currentLevel != 0 && currentStage < getCurrentLevel().stages().size() - 1) {
                     currentStage++;
+                    killAllIndicators();
+                    regeneratePositions();
+                    insertIndicators();
+                    startStageSpawn();
+                } else {
+                    currentLevel++;
+                    Level newLevel = getCurrentLevel();
+                    WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
+                    waveSpawnCountdown = 3;
+                    isCounting = true;
+                    timeRemaining = newLevel.time();
                 }
-                regeneratePositions();
-                insertIndicators();
-                startStageSpawn();
-            } else {
-                currentLevel++;
-                Level newLevel = getCurrentLevel();
-                WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
-                waveSpawnCountdown = 3;
-                isCounting = true;
-                timeRemaining = newLevel.time();
             }
         }
     }
@@ -224,30 +227,33 @@ public class LevelManager {
     }
 
     public void update(float delta) {
-        if (isCounting) {
-            waveSpawnCountdown -= delta;
-            if (waveSpawnCountdown < 0) {
-                spawner.spawnObstacles(getCurrentLevel());
-                isCounting = false;
-                waveSpawnCountdown = 0;
-                currentStage = 0;
-                regeneratePositions();
-                insertIndicators();
-                startStageSpawn();
-            }
-        } else if (isSpawning) {
-            stageSpawnCountdown -= delta;
-            if (stageSpawnCountdown < 0) {
-                SoundEffectManager.play("enemySpawn", 10);
-                spawner.spawn(getCurrentLevel().stages().get(currentStage), positions);
-                stageSpawnCountdown = 0;
-                isSpawning = false;
-                killAllIndicators();
-            }
-        } else if (!isLosing) {
-            timeRemaining -= delta;
-            if (timeRemaining < 0) {
-                lossReset();
+        if (!isLosing) {
+            if (isCounting) {
+                waveSpawnCountdown -= delta;
+                if (waveSpawnCountdown < 0) {
+                    spawner.spawnObstacles(getCurrentLevel());
+                    isCounting = false;
+                    waveSpawnCountdown = 0;
+                    currentStage = 0;
+                    regeneratePositions();
+                    insertIndicators();
+                    startStageSpawn();
+                    SoundEffectManager.play("levelStart", 1);
+                }
+            } else if (isSpawning) {
+                stageSpawnCountdown -= delta;
+                if (stageSpawnCountdown < 0) {
+                    SoundEffectManager.play("enemySpawn", 10);
+                    spawner.spawn(getCurrentLevel().stages().get(currentStage), positions);
+                    stageSpawnCountdown = 0;
+                    isSpawning = false;
+                    killAllIndicators();
+                }
+            } else {
+                timeRemaining -= delta;
+                if (timeRemaining < 0) {
+                    lossReset();
+                }
             }
         }
     }
@@ -259,8 +265,8 @@ public class LevelManager {
             currentLevel--;
         }
         currentStage = 0;
-        checkLevelUp();
         isLosing = false;
+        checkLevelUp();
     }
 
 }

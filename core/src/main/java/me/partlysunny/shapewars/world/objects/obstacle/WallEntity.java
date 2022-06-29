@@ -29,10 +29,12 @@ public class WallEntity implements GameObject {
         }
         float boundaryX = -(boundaryWidth / 2f);
         float boundaryY = -(boundaryHeight / 2f);
-        //Left
-        addWall(w, boundaryX, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
+        //Right marker ??? i have no f**king clue
+        addWall(w, boundaryX + boundaryWidth, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
         //Right
         addWall(w, boundaryX + boundaryWidth, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
+        //Left
+        addWall(w, boundaryX, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
         //Bottom
         addWall(w, 0, boundaryY, boundaryWidth + GameInfo.BOUNDARY_WIDTH, GameInfo.BOUNDARY_WIDTH);
         //Top
@@ -41,6 +43,7 @@ public class WallEntity implements GameObject {
 
     private static void addWall(PooledEngine w, float x, float y, int width, int height) {
         Entity e = w.createEntity();
+
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(width / 2f, height / 2f);
         FixtureDef def = new FixtureDef();
@@ -49,14 +52,18 @@ public class WallEntity implements GameObject {
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
         rigidBody.initBody(x, y, 0, def, BodyDef.BodyType.StaticBody, GameInfo.BOUNDARY_WIDTH / 2f);
         e.add(rigidBody);
+
+        e.add(w.createComponent(BulletDeleterComponent.class));
+
         TextureComponent texture = w.createComponent(TextureComponent.class);
         Texture finalTexture = TextureManager.getTexture("wall");
-        e.add(w.createComponent(BulletDeleterComponent.class));
         texture.init(new TextureRegion(finalTexture));
-        TransformComponent scale = w.createComponent(TransformComponent.class);
-        scale.init(width, height);
-        e.add(scale);
         e.add(texture);
+
+        TransformComponent transform = w.createComponent(TransformComponent.class);
+        transform.init(width, height);
+        e.add(transform);
+
         e.add(w.createComponent(WallComponent.class));
         e.add(w.createComponent(TintComponent.class));
         w.addEntity(e);
