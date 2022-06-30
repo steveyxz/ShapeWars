@@ -6,13 +6,14 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 
 public class GroundFrictionSystem extends IteratingSystem {
 
     private final ComponentMapper<GroundFrictionComponent> frictionMapper = ComponentMapper.getFor(GroundFrictionComponent.class);
-    private final ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
+
 
     public GroundFrictionSystem() {
         super(Family.all(GroundFrictionComponent.class, RigidBodyComponent.class).get());
@@ -20,7 +21,7 @@ public class GroundFrictionSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        RigidBodyComponent body = bodyMapper.get(entity);
+        RigidBodyComponent body = Mappers.bodyMapper.get(entity);
         GroundFrictionComponent friction = frictionMapper.get(entity);
         Body rigidBody = body.rigidBody();
         Vector2 velocity = rigidBody.getLinearVelocity();

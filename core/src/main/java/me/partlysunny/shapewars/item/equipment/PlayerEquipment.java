@@ -26,14 +26,14 @@ import java.util.List;
 public class PlayerEquipment {
 
     private final List<Item> unlockedItems = new ArrayList<>();
+    private final TextureRegionDrawable regular;
+    private final TextureRegionDrawable selected;
     private ArmorItem armorOne = null;
     private ArmorItem armorTwo = null;
     private WeaponItem weaponOne = null;
     private WeaponItem weaponTwo = null;
     private UtilityItem util = null;
     private int activeWeaponSlot = 0;
-    private final TextureRegionDrawable regular;
-    private final TextureRegionDrawable selected;
 
     public PlayerEquipment() {
         regular = new TextureRegionDrawable(TextureManager.getTexture("slotBackground"));
@@ -73,7 +73,8 @@ public class PlayerEquipment {
             i.setBackground(activeWeaponSlot == 1 ? selected : regular);
         });
 
-        InGameScreenGuiManager.registerGui("weaponsLabel", weaponsLabel, e -> {});
+        InGameScreenGuiManager.registerGui("weaponsLabel", weaponsLabel, e -> {
+        });
 
         //Armor
         Container<Image> armor2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
@@ -101,7 +102,8 @@ public class PlayerEquipment {
             i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(armorTwo == null ? "noWeapon" : armorTwo.texture())));
         });
 
-        InGameScreenGuiManager.registerGui("armorsLabel", armorsLabel, e -> {});
+        InGameScreenGuiManager.registerGui("armorsLabel", armorsLabel, e -> {
+        });
     }
 
     public List<Item> unlockedItems() {

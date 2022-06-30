@@ -3,6 +3,7 @@ package me.partlysunny.shapewars.world.systems.player;
 import com.badlogic.ashley.core.*;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.Gdx;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 
@@ -12,7 +13,6 @@ import static me.partlysunny.shapewars.screens.InGameScreen.cameraVelocity;
 public class CameraFollowingSystem extends EntitySystem {
 
     private ComponentMapper<PlayerCameraFollowComponent> cameraFollowMapper = ComponentMapper.getFor(PlayerCameraFollowComponent.class);
-    private ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
 
     private ImmutableArray<Entity> entities;
 
@@ -26,7 +26,7 @@ public class CameraFollowingSystem extends EntitySystem {
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
             PlayerCameraFollowComponent playerCamera = cameraFollowMapper.get(e);
-            RigidBodyComponent rigidBody = bodyMapper.get(e);
+            RigidBodyComponent rigidBody = Mappers.bodyMapper.get(e);
             float speed = -playerCamera.speed();
             float x = rigidBody.rigidBody().getPosition().x;
             float y = rigidBody.rigidBody().getPosition().y;

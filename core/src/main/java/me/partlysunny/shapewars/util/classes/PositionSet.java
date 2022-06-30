@@ -1,7 +1,6 @@
 package me.partlysunny.shapewars.util.classes;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Pool;
 import de.damios.guacamole.gdx.pool.Vector2Pool;
 
 import java.util.ArrayList;

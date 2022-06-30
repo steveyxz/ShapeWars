@@ -6,12 +6,13 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 public class PlayerItemSystem extends IteratingSystem {
 
     private ComponentMapper<ItemComponent> itemMapper = ComponentMapper.getFor(ItemComponent.class);
-    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
+
 
     public PlayerItemSystem() {
         super(Family.all(ItemComponent.class, TransformComponent.class, WeaponComponent.class).get());
@@ -20,9 +21,9 @@ public class PlayerItemSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         ItemComponent item = itemMapper.get(entity);
-        TransformComponent transform = transformMapper.get(entity);
+        TransformComponent transform = Mappers.transformMapper.get(entity);
         Entity player = item.player();
-        TransformComponent playerTransform = transformMapper.get(player);
+        TransformComponent playerTransform = Mappers.transformMapper.get(player);
         transform.position.set(playerTransform.position);
         float rotation = playerTransform.rotation;
         float x = (float) (3.5 * Math.cos(rotation));

@@ -29,8 +29,6 @@ public class WallEntity implements GameObject {
         }
         float boundaryX = -(boundaryWidth / 2f);
         float boundaryY = -(boundaryHeight / 2f);
-        //Right marker ??? i have no f**king clue
-        addWall(w, boundaryX + boundaryWidth, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
         //Right
         addWall(w, boundaryX + boundaryWidth, 0, GameInfo.BOUNDARY_WIDTH, boundaryHeight);
         //Left
@@ -39,6 +37,11 @@ public class WallEntity implements GameObject {
         addWall(w, 0, boundaryY, boundaryWidth + GameInfo.BOUNDARY_WIDTH, GameInfo.BOUNDARY_WIDTH);
         //Top
         addWall(w, 0, boundaryY + boundaryHeight, boundaryWidth + GameInfo.BOUNDARY_WIDTH, GameInfo.BOUNDARY_WIDTH);
+        int count = 0;
+        for (Entity wall : w.getEntitiesFor(Family.all(WallComponent.class).get())) {
+            System.out.println(count);
+            count++;
+        }
     }
 
     private static void addWall(PooledEngine w, float x, float y, int width, int height) {

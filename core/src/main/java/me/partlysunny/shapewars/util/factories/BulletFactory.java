@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.util.factories;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.bullets.BulletController;
 import me.partlysunny.shapewars.bullets.BulletType;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
@@ -19,7 +19,7 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 public final class BulletFactory {
 
     private static final BulletFactory INSTANCE = new BulletFactory();
-    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
+
 
     public static BulletFactory getInstance() {
         return INSTANCE;
@@ -36,7 +36,7 @@ public final class BulletFactory {
         bulletComponent.init(shooter, damage, controller);
         textureComponent.init(new TextureRegion(TextureManager.getTexture(type.texture())));
         transformComponent.init(type.width(), type.height());
-        TransformComponent shooterPos = transformMapper.get(shooter);
+        TransformComponent shooterPos = Mappers.transformMapper.get(shooter);
         float rotation = shooterPos.rotation;
         float x = MathUtils.cos(rotation) * 6;
         float y = MathUtils.sin(rotation) * 6;

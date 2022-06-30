@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
@@ -31,8 +32,8 @@ public class BasicAttack extends EnemyAttack {
 
     @Override
     protected void attack(Entity enemyEntity, Entity player) {
-        RigidBodyComponent enemyBody = bodyMapper.get(enemyEntity);
-        RigidBodyComponent playerBody = bodyMapper.get(player);
+        RigidBodyComponent enemyBody = Mappers.bodyMapper.get(enemyEntity);
+        RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);
         //Dash at the player
         float dashFactor = dashFactor();
         float x = (playerBody.rigidBody().getPosition().x - enemyBody.rigidBody().getPosition().x) * dashFactor;

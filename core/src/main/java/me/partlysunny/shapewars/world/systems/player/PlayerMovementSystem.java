@@ -7,6 +7,7 @@ import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import me.partlysunny.shapewars.util.constants.GameInfo;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
@@ -19,7 +20,7 @@ import static com.badlogic.gdx.Gdx.input;
 public class PlayerMovementSystem extends IteratingSystem {
 
     private final ComponentMapper<PlayerControlComponent> controllerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
-    private final ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
+
     private final ComponentMapper<StateComponent> stateMapper = ComponentMapper.getFor(StateComponent.class);
 
     public PlayerMovementSystem() {
@@ -29,7 +30,7 @@ public class PlayerMovementSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         PlayerControlComponent controller = controllerMapper.get(entity);
-        RigidBodyComponent velocity = bodyMapper.get(entity);
+        RigidBodyComponent velocity = Mappers.bodyMapper.get(entity);
         StateComponent state = stateMapper.get(entity);
         PlayerKeyMap map = controller.keyMap();
         if (map == null) {

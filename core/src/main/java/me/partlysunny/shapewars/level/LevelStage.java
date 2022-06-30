@@ -5,8 +5,8 @@ import java.util.Map;
 public class LevelStage {
 
     private final Map<String, Integer> enemies;
-    private Level parent = null;
     private final int enemyCount;
+    private Level parent = null;
 
     public LevelStage(Map<String, Integer> enemies) {
         this.enemies = enemies;

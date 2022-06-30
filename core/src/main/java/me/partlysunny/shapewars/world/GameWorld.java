@@ -1,12 +1,16 @@
 package me.partlysunny.shapewars.world;
 
-import com.badlogic.ashley.core.*;
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.EntityListener;
+import com.badlogic.ashley.core.Family;
+import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import me.partlysunny.shapewars.bullets.controllers.Controllers;
 import me.partlysunny.shapewars.util.classes.ContactDispatcher;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.EnemyAiSystem;
@@ -26,7 +30,6 @@ public class GameWorld {
     private final PooledEngine gameWorld;
     private final World physicsWorld;
 
-    private ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
     private Map<Body, Entity> bodyCache = new HashMap<>();
 
     public GameWorld(Stage stage) {
@@ -62,12 +65,13 @@ public class GameWorld {
             }
         }
         for (Entity entity : gameWorld.getEntitiesFor(Family.all(RigidBodyComponent.class).get())) {
-            RigidBodyComponent rigidBodyComponent = bodyMapper.get(entity);
+            RigidBodyComponent rigidBodyComponent = Mappers.bodyMapper.get(entity);
             if (rigidBodyComponent.rigidBody().equals(b)) {
                 gameWorld.addEntityListener(new EntityListener() {
                     @Override
                     public void entityAdded(Entity entity) {
                     }
+
                     @Override
                     public void entityRemoved(Entity e) {
                         if (entity.equals(e)) {

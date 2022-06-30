@@ -2,7 +2,6 @@ package me.partlysunny.shapewars.effects.visual;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntityListener;
-import com.badlogic.ashley.core.Family;
 import me.partlysunny.shapewars.screens.InGameScreen;
 
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ public abstract class VisualEffect {
                 @Override
                 public void entityAdded(Entity entity) {
                 }
+
                 @Override
                 public void entityRemoved(Entity entity) {
                     if (entity.equals(e)) {

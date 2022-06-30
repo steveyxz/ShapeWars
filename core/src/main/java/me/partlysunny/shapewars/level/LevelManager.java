@@ -37,15 +37,15 @@ public class LevelManager {
     private final List<Entity> aliveEntities = new ArrayList<>();
     private final List<Entity> aliveObstacles = new ArrayList<>();
     private final List<Level> levels = new ArrayList<>();
+    private final PositionSet positions = new PositionSet();
+    public boolean isLosing = false;
     private int currentLevel = 0;
     private float timeRemaining = 0;
-    public boolean isLosing = false;
     private boolean isSpawning = false;
     private float waveSpawnCountdown = 0;
     private float stageSpawnCountdown = 0;
     private int currentStage = 0;
     private boolean isCounting = false;
-    private final PositionSet positions = new PositionSet();
 
     public LevelManager(Stage guiStage) {
         loadLevels();
@@ -235,9 +235,9 @@ public class LevelManager {
                     isCounting = false;
                     waveSpawnCountdown = 0;
                     currentStage = 0;
+                    startStageSpawn();
                     regeneratePositions();
                     insertIndicators();
-                    startStageSpawn();
                     SoundEffectManager.play("levelStart", 1);
                 }
             } else if (isSpawning) {

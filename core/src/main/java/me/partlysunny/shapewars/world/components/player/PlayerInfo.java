@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.components.player;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
@@ -12,6 +11,7 @@ import me.partlysunny.shapewars.item.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
@@ -24,7 +24,7 @@ public class PlayerInfo {
     private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment = new PlayerEquipment();
     private PlayerKeyMap keyMap = new PlayerKeyMap();
-    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
+
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
@@ -88,10 +88,10 @@ public class PlayerInfo {
     }
 
     public TransformComponent getTransformComponent() {
-        if (!transformMapper.has(playerEntity)) {
+        if (!Mappers.transformMapper.has(playerEntity)) {
             throw new IllegalArgumentException("Player entity does not have transform component!");
         }
-        return transformMapper.get(playerEntity);
+        return Mappers.transformMapper.get(playerEntity);
     }
 
     public void damage(int health) {

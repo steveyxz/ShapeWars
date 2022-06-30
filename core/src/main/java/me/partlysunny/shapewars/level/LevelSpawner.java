@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.level;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.math.Vector2;
@@ -9,7 +8,6 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemySpawnObject;
 import me.partlysunny.shapewars.world.objects.enemy.type.Enemy;
@@ -23,7 +21,6 @@ public class LevelSpawner {
 
     private final LevelManager levelManager;
     private final Vector2 vector2 = new Vector2();
-    private ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
 
     public LevelSpawner(LevelManager levelManager) {
         this.levelManager = levelManager;

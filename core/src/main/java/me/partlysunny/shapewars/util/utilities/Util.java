@@ -9,13 +9,12 @@ import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.level.Level;
-import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
+import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
-import me.partlysunny.shapewars.world.components.collision.WallComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
@@ -102,6 +101,13 @@ public class Util {
             SoundEffectManager.play("enemyDie", 1);
         }
         SoundEffectManager.play("bulletCollide", 1);
+    }
+
+    public static float getVolumeOfSoundFromPos(float playerX, float playerY, float soundX, float soundY, float initialVolume) {
+        float distX = soundX - playerX;
+        float distY = soundY - playerY;
+        float dist = (float) Math.sqrt(Math.abs(distX * distX + distY * distY));
+        return 1 / dist * initialVolume;
     }
 
     public static Vector2 angleToVector(Vector2 outVector, float angle) {

@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.TextureComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
@@ -34,7 +35,6 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     private final Array<Entity> renderQueue; // an array used to allow sorting of images allowing us to draw images on top of each other
     private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
     private final ComponentMapper<TextureComponent> textureMapper;
-    private final ComponentMapper<TransformComponent> transformMapper;
     private final ComponentMapper<TintComponent> tintMapper;
 
     public TextureRenderingSystem(Batch batch) {
@@ -43,7 +43,6 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
 
         //creates out componentMappers
         textureMapper = ComponentMapper.getFor(TextureComponent.class);
-        transformMapper = ComponentMapper.getFor(TransformComponent.class);
         tintMapper = ComponentMapper.getFor(TintComponent.class);
 
         // create the array for sorting entities
@@ -90,7 +89,7 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
         // loop through each entity in our render queue
         for (Entity entity : renderQueue) {
             TextureComponent tex = textureMapper.get(entity);
-            TransformComponent transform = transformMapper.get(entity);
+            TransformComponent transform = Mappers.transformMapper.get(entity);
             Vector3 tint = null;
             float opacity = 0;
             if (tintMapper.has(entity)) {

@@ -5,6 +5,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.Vector2;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
@@ -12,8 +13,7 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 public class EnemyAiSystem extends IteratingSystem {
 
     private ComponentMapper<SteeringComponent> steeringMapper = ComponentMapper.getFor(SteeringComponent.class);
-    private ComponentMapper<RigidBodyComponent> bodyMapper = ComponentMapper.getFor(RigidBodyComponent.class);
-    private ComponentMapper<TransformComponent> transformMapper = ComponentMapper.getFor(TransformComponent.class);
+
 
     public EnemyAiSystem() {
         super(Family.all(SteeringComponent.class, RigidBodyComponent.class, TransformComponent.class).get());
@@ -30,8 +30,8 @@ public class EnemyAiSystem extends IteratingSystem {
     }
 
     private void applySteering(SteeringComponent steering, Entity e, float deltaTime) {
-        RigidBodyComponent body = bodyMapper.get(e);
-        TransformComponent transform = transformMapper.get(e);
+        RigidBodyComponent body = Mappers.bodyMapper.get(e);
+        TransformComponent transform = Mappers.transformMapper.get(e);
         boolean accelerations = false;
 
         if (!steering.steeringOutput().isZero()) {
