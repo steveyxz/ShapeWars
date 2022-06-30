@@ -18,6 +18,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 
 import java.util.ArrayList;
@@ -42,9 +43,7 @@ public class PlayerEquipment {
     }
 
     private void initGui() {
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
         //Weapons
         Container<Image> weapon1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
         Container<Image> weapon2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));

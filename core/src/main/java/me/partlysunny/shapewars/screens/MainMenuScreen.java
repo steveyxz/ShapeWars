@@ -23,6 +23,7 @@ import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.Util;
 
 public class MainMenuScreen extends ManagedScreen {
 
@@ -44,9 +45,7 @@ public class MainMenuScreen extends ManagedScreen {
     @Override
     public void show() {
         MainMenuScreen t = this;
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
         Gdx.input.setInputProcessor(stage);
 
         VisTable table = new VisTable();

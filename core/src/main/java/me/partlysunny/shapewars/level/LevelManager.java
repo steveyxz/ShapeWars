@@ -56,9 +56,7 @@ public class LevelManager {
 
     private void initGui() {
 
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
 
         Label currentLevel = new Label("Current Level: " + this.currentLevel, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
         Label enemiesRemaining = new Label("Enemies Remaining: " + enemiesRemaining(), new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));

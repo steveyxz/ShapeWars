@@ -18,6 +18,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
+import me.partlysunny.shapewars.util.utilities.Util;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
@@ -45,9 +46,7 @@ public class DeathScreen extends ManagedScreen {
         DeathScreen s = this;
         Gdx.input.setInputProcessor(stage);
 
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
 
         Label youDied = new Label("You Died!", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 1.5f), Color.BLACK));
         Label respawn = new Label("Press enter to respawn.", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 1), Color.BLACK));

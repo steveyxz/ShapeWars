@@ -25,7 +25,7 @@ public class FontPresets {
         parameter.magFilter = Texture.TextureFilter.Linear;
         parameter.minFilter = Texture.TextureFilter.Linear;
 
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/" + fontPath));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("assets/fonts/" + fontPath));
 
         BitmapFont myFont = generator.generateFont(parameter);
         myFont.setUseIntegerPositions(false);

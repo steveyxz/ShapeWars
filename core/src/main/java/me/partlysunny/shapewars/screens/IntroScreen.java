@@ -17,6 +17,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.Util;
 
 public class IntroScreen extends ManagedScreen {
 
@@ -39,9 +40,7 @@ public class IntroScreen extends ManagedScreen {
 
     @Override
     public void show() {
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
         VisTable table = new VisTable();
         table.setFillParent(true);
         stage.addActor(table);

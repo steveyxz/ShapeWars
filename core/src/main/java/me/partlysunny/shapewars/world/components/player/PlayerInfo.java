@@ -12,6 +12,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
@@ -33,9 +34,7 @@ public class PlayerInfo {
     }
 
     private void initGui() {
-        if (!VisUI.isLoaded()) {
-            VisUI.load(new Skin(Gdx.files.internal("flatEarth/flat-earth-ui.json")));
-        }
+        Util.loadVisUI();
         ProgressBar bar = new ProgressBar(0, maxHealth, 1, false, VisUI.getSkin());
         bar.updateVisualValue();
         Container<ProgressBar> container = new Container<>(bar);

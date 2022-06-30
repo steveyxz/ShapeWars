@@ -2,9 +2,12 @@ package me.partlysunny.shapewars.util.utilities;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
@@ -45,6 +48,12 @@ public class Util {
             return getRandomBetween(0, -a + b) + a;
         }
         return RAND.nextInt(b - a) + a;
+    }
+
+    public static void loadVisUI() {
+        if (!VisUI.isLoaded()) {
+            VisUI.load(new Skin(Gdx.files.internal("assets/flatEarth/flat-earth-ui.json")));
+        }
     }
 
     /**

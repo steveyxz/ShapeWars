@@ -17,7 +17,7 @@ dependencies {
 def os = System.properties['os.name'].toLowerCase()
 
 run {
-    workingDir = rootProject.file('assets').path
+    workingDir = rootProject.projectDir.path
     setIgnoreExitValue(true)
 
     if (os.contains('mac')) {
@@ -35,6 +35,7 @@ jar {
     from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 // these "exclude" lines remove some unnecessary duplicate files in the output JAR.
     exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA')
+    exclude('fonts/*', 'levels/*', 'flatEarth/*', 'particles/*', 'sounds/*', 'textures/*')
     dependencies {
         exclude('META-INF/INDEX.LIST', 'META-INF/maven/**')
     }

@@ -69,7 +69,7 @@ public class ParticleEffectManager {
 
     private static ParticleEffectPool load(String effectPath) {
         ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal("assets/particles/" + effectPath), Gdx.files.internal("particles"));
+        effect.load(Gdx.files.internal("assets/particles/" + effectPath), Gdx.files.internal("assets/particles"));
         ParticleEffectPool pool = new ParticleEffectPool(effect, 100, 10000);
         return pool;
     }
