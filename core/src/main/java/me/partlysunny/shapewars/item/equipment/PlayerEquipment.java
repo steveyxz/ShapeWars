@@ -1,14 +1,11 @@
 package me.partlysunny.shapewars.item.equipment;
 
 import com.badlogic.ashley.core.Family;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.item.types.ArmorItem;

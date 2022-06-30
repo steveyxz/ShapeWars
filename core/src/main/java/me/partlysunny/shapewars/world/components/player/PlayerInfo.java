@@ -1,10 +1,8 @@
 package me.partlysunny.shapewars.world.components.player;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.item.equipment.PlayerEquipment;
