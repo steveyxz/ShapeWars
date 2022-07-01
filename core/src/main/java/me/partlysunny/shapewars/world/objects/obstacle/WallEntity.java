@@ -20,13 +20,19 @@ import me.partlysunny.shapewars.world.components.collision.WallComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WallEntity implements GameObject {
+
+    private static final List<Entity> walls = new ArrayList<>();
 
     public static void reloadWalls(int boundaryWidth, int boundaryHeight) {
         PooledEngine w = InGameScreen.world.gameWorld();
-        for (Entity wall : w.getEntitiesFor(Family.all(WallComponent.class).get())) {
+        for (Entity wall : walls) {
             LateRemover.tagToRemove(wall);
         }
+        walls.clear();
         float boundaryX = -(boundaryWidth / 2f);
         float boundaryY = -(boundaryHeight / 2f);
         //Right
@@ -37,11 +43,6 @@ public class WallEntity implements GameObject {
         addWall(w, 0, boundaryY, boundaryWidth + GameInfo.BOUNDARY_WIDTH, GameInfo.BOUNDARY_WIDTH);
         //Top
         addWall(w, 0, boundaryY + boundaryHeight, boundaryWidth + GameInfo.BOUNDARY_WIDTH, GameInfo.BOUNDARY_WIDTH);
-        int count = 0;
-        for (Entity wall : w.getEntitiesFor(Family.all(WallComponent.class).get())) {
-            System.out.println(count);
-            count++;
-        }
     }
 
     private static void addWall(PooledEngine w, float x, float y, int width, int height) {
@@ -70,6 +71,7 @@ public class WallEntity implements GameObject {
         e.add(w.createComponent(WallComponent.class));
         e.add(w.createComponent(TintComponent.class));
         w.addEntity(e);
+        walls.add(e);
     }
 
     @Override

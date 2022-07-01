@@ -14,6 +14,7 @@ import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
@@ -165,7 +166,7 @@ public class PlayerEquipment {
 
     private void killWeaponEntities() {
         GameWorld world = InGameScreen.world;
-        world.gameWorld().getEntitiesFor(Family.all(WeaponComponent.class).get()).forEach(entity -> world.gameWorld().removeEntity(entity));
+        world.gameWorld().getEntitiesFor(Family.all(WeaponComponent.class).get()).forEach(LateRemover::tagToRemove);
     }
 
     private void respawnWeaponEntities() {

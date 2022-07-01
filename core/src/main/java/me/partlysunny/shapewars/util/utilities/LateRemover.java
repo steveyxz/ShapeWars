@@ -6,6 +6,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.World;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
+import me.partlysunny.shapewars.world.components.collision.WallComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,11 @@ public class LateRemover {
                     physics.destroyBody(Mappers.bodyMapper.get(e).rigidBody());
                 }
                 world.removeEntity(e);
-                InGameScreen.levelManager.entityDestroyed(e);
                 tempRemove.add(e);
             }
         }
         for (Entity e : tempRemove) {
+            InGameScreen.levelManager.entityDestroyed(e);
             toRemove.remove(e);
         }
     }

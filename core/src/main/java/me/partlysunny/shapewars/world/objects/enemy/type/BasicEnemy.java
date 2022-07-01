@@ -35,7 +35,7 @@ public class BasicEnemy extends Enemy {
 
     @Override
     protected float getMaxSpeed() {
-        return 10;
+        return 5;
     }
 
     @Override

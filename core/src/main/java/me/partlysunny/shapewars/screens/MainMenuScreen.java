@@ -9,13 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.VisImage;
-import com.kotcrab.vis.ui.widget.VisTable;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
@@ -47,13 +47,12 @@ public class MainMenuScreen extends ManagedScreen {
         Util.loadVisUI();
         Gdx.input.setInputProcessor(stage);
 
-        VisTable table = new VisTable();
-        table.setFillParent(true);
-        stage.addActor(table);
+        VerticalGroup group = new VerticalGroup();
+        group.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         ImageTextButton.ImageTextButtonStyle buttonStyle = new ImageTextButton.ImageTextButtonStyle(new TextureRegionDrawable(TextureManager.getTexture("mainMenuButton")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonDown")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonChecked")), FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 3));
 
-        table.setDebug(true);
+        group.setDebug(true);
 
         ImageTextButton playButton = new ImageTextButton("Play", buttonStyle);
         playButton.addListener(new InputListener() {
@@ -66,11 +65,7 @@ public class MainMenuScreen extends ManagedScreen {
                 return true;
             }
         });
-        playButton.setTransform(true);
-        playButton.setScale(0.3f);
-
-        Container<ImageTextButton> playButtonContainer = new Container<>(playButton);
-        playButtonContainer.setTransform(true);
+        Container<ImageTextButton> playButtonContainer = addProperties(playButton);
 
         ImageTextButton quitButton = new ImageTextButton("Quit", buttonStyle);
         quitButton.addListener(new InputListener() {
@@ -83,23 +78,27 @@ public class MainMenuScreen extends ManagedScreen {
                 return true;
             }
         });
-        quitButton.setTransform(true);
-        quitButton.setScale(0.3f);
-
-        Container<ImageTextButton> quitButtonContainer = new Container<>(quitButton);
-        quitButtonContainer.setTransform(true);
-        //quitButtonContainer.align(Alignment.CENTER.getAlignment());
+        Container<ImageTextButton> quitButtonContainer = addProperties(quitButton);
 
         VisImage logo = new VisImage(TextureManager.getTexture("mainScreenLogo"));
         logo.setSize(400, 150);
         Container<VisImage> logoContainer = new Container<>(logo);
         logoContainer.align(Alignment.CENTER.getAlignment());
 
-        table.add(logoContainer).fillX().uniformX().uniformY();
-        table.row().pad(10, 0, 10, 0);
-        table.add(playButtonContainer).fillX().uniformX().uniformY();
-        table.row().pad(0, 0, 0, 0);
-        table.add(quitButtonContainer).fillX().uniformX().uniformY();
+        group.addActor(logoContainer);
+        group.addActor(playButton);
+        group.addActor(quitButton);
+        stage.addActor(group);
+    }
+
+    private Container<ImageTextButton> addProperties(ImageTextButton button) {
+        button.setTransform(true);
+        button.setOrigin(Alignment.CENTER.getAlignment());
+        button.setScale(0.3f);
+
+        Container<ImageTextButton> container = new Container<>(button);
+        container.setTransform(true);
+        return container;
     }
 
     @Override
