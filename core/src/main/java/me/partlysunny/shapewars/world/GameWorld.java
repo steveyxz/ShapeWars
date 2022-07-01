@@ -12,10 +12,12 @@ import me.partlysunny.shapewars.bullets.controllers.Controllers;
 import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.objects.enemy.attack.MeleeHandle;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;
-import me.partlysunny.shapewars.world.systems.mechanics.EnemyAiSystem;
-import me.partlysunny.shapewars.world.systems.mechanics.EnemyAttackSystem;
+import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyAiSystem;
+import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyAttackSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.HealthSystem;
+import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyStateSystem;
 import me.partlysunny.shapewars.world.systems.physics.GroundFrictionSystem;
 import me.partlysunny.shapewars.world.systems.physics.PhysicsSystem;
 import me.partlysunny.shapewars.world.systems.player.*;
@@ -42,6 +44,7 @@ public class GameWorld {
         gameWorld.addSystem(new BulletUpdaterSystem());
         gameWorld.addSystem(new EnemyAiSystem());
         gameWorld.addSystem(new EnemyAttackSystem());
+        gameWorld.addSystem(new EnemyStateSystem());
         //Physics
         gameWorld.addSystem(new PhysicsSystem(physicsWorld));
         gameWorld.addSystem(new GroundFrictionSystem());
@@ -54,6 +57,9 @@ public class GameWorld {
         //Rendering systems
         gameWorld.addSystem(new AnimationSystem());
         gameWorld.addSystem(new TextureRenderingSystem(stage.getBatch()));
+
+        //Enemy Melee Attacks
+        ContactDispatcher.registerListener(new MeleeHandle());
     }
 
     public Entity getEntityWithRigidBody(Body b) {

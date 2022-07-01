@@ -20,6 +20,8 @@ import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponen
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
@@ -47,6 +49,12 @@ public abstract class Enemy implements GameObject {
 
     @Override
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {
+        Entity enemy = createEnemy(w, originalX, originalY);
+        w.addEntity(enemy);
+        return enemy;
+    }
+
+    protected Entity createEnemy(PooledEngine w, float originalX, float originalY) {
         Entity enemy = w.createEntity();
         Shape shape = getShape(getWidth());
         FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
@@ -83,6 +91,9 @@ public abstract class Enemy implements GameObject {
 
         enemy.add(w.createComponent(TintComponent.class));
 
+        enemy.add(w.createComponent(EnemyStateComponent.class));
+        enemy.add(w.createComponent(EnemyMeleeDamageComponent.class));
+
         SteeringComponent steering = w.createComponent(SteeringComponent.class);
         steering.init(rigidBody);
         steering.setMaxLinearSpeed(getMaxSpeed());
@@ -95,8 +106,6 @@ public abstract class Enemy implements GameObject {
                 .add(pursue);
         steering.setBehavior(prioritySteeringSB);
         enemy.add(steering);
-
-        w.addEntity(enemy);
 
         return enemy;
     }

@@ -16,7 +16,7 @@ import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
-import static me.partlysunny.shapewars.util.utilities.Util.handleBasicCollision;
+import static me.partlysunny.shapewars.util.utilities.Util.handleBasicPlayerBulletCollision;
 
 public class BasicController implements BulletController {
 
@@ -38,7 +38,7 @@ public class BasicController implements BulletController {
 
     @Override
     public void beginContact(Contact contact) {
-        Pair<Entity, Entity> result = handleBasicCollision(contact);
+        Pair<Entity, Entity> result = handleBasicPlayerBulletCollision(contact);
         if (result != null) {
             Util.playDamage(result);
         }

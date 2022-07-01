@@ -13,6 +13,8 @@ import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponen
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
@@ -40,4 +42,6 @@ public final class Mappers {
     public static final ComponentMapper<BulletComponent> bulletMapper = ComponentMapper.getFor(BulletComponent.class);
     public static final ComponentMapper<WeaponComponent> weaponMapper = ComponentMapper.getFor(WeaponComponent.class);
     public static final ComponentMapper<ItemComponent> itemMapper = ComponentMapper.getFor(ItemComponent.class);
+    public static final ComponentMapper<EnemyStateComponent> enemyStateMapper = ComponentMapper.getFor(EnemyStateComponent.class);
+    public static final ComponentMapper<EnemyMeleeDamageComponent> enemyMeleeDamageMapper = ComponentMapper.getFor(EnemyMeleeDamageComponent.class);
 }

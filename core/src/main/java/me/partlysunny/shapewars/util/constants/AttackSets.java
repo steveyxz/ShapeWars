@@ -8,5 +8,5 @@ public final class AttackSets {
 
     public static final EnemyAttackSelector BASIC_ATTACK = new EnemyAttackSelector().add(new BasicAttack(1));
     public static final EnemyAttackSelector FAST_TANKY_ATTACK = new EnemyAttackSelector().add(new SpeedyBasicAttack(1));
-
+    public static final EnemyAttackSelector BASIC_RANGED = new EnemyAttackSelector();
 }

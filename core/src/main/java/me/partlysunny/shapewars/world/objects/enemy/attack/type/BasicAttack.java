@@ -6,6 +6,7 @@ import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
@@ -22,12 +23,12 @@ public class BasicAttack extends EnemyAttack {
         return 15;
     }
 
-    protected int damage() {
-        return 5;
+    protected float dashFactor() {
+        return 1;
     }
 
-    protected float dashFactor() {
-        return 10;
+    protected int getDamage() {
+        return 2;
     }
 
     @Override
@@ -40,9 +41,9 @@ public class BasicAttack extends EnemyAttack {
         float y = (playerBody.rigidBody().getPosition().y - enemyBody.rigidBody().getPosition().y) * dashFactor;
         vel.set(x, y);
         enemyBody.rigidBody().setLinearVelocity(vel.x, vel.y);
-        //Damage the player
-        InGameScreen.playerInfo.damage(damage());
-        ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().x), (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().y), 100);
+        Mappers.enemyMeleeDamageMapper.get(enemyEntity).setDamage(getDamage());
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.PURSUING, 0.5f);
     }
 
     @Override

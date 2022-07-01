@@ -19,6 +19,7 @@ import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponen
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
+import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 
 public class PlayerEntity implements GameObject {
@@ -45,6 +46,7 @@ public class PlayerEntity implements GameObject {
         player.add(w.createComponent(PlayerCameraFollowComponent.class));
         player.add(w.createComponent(StateComponent.class));
         player.add(w.createComponent(BulletDeleterComponent.class));
+        player.add(w.createComponent(TintComponent.class));
         PlayerTargetComponent playerTarget = w.createComponent(PlayerTargetComponent.class);
         playerTarget.init(rigidBody);
         player.add(playerTarget);

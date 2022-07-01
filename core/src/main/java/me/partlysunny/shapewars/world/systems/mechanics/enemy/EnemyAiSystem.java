@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.systems.mechanics;
+package me.partlysunny.shapewars.world.systems.mechanics.enemy;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
@@ -8,6 +8,8 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
 
 public class EnemyAiSystem extends IteratingSystem {
 
@@ -18,8 +20,9 @@ public class EnemyAiSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SteeringComponent steering = Mappers.steeringMapper.get(entity);
+        EnemyStateComponent state = Mappers.enemyStateMapper.get(entity);
 
-        if (steering.behavior() != null) {
+        if (steering.behavior() != null && state.state() == EnemyState.PURSUING) {
             steering.behavior().calculateSteering(steering.steeringOutput());
             applySteering(steering, entity, deltaTime);
         }
@@ -27,7 +30,6 @@ public class EnemyAiSystem extends IteratingSystem {
 
     private void applySteering(SteeringComponent steering, Entity e, float deltaTime) {
         RigidBodyComponent body = Mappers.bodyMapper.get(e);
-        TransformComponent transform = Mappers.transformMapper.get(e);
         boolean accelerations = false;
 
         if (!steering.steeringOutput().isZero()) {

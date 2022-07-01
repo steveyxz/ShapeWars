@@ -1,22 +1,19 @@
 package me.partlysunny.shapewars.world.objects.enemy.type;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
-public class BasicEnemy extends Enemy {
+public class BlasterEnemy extends Enemy {
     @Override
     protected float getHealth() {
-        return 20;
+        return 25;
     }
 
     @Override
     protected String getTexture() {
-        return "basicEnemy";
+        return "blasterEnemy";
     }
 
     @Override
@@ -38,11 +35,11 @@ public class BasicEnemy extends Enemy {
 
     @Override
     protected float getMaxSpeed() {
-        return 5;
+        return 7;
     }
 
     @Override
     protected EnemyAttackSelector selector() {
-        return AttackSets.BASIC_ATTACK;
+        return AttackSets.BASIC_RANGED;
     }
 }

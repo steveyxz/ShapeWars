@@ -54,7 +54,7 @@ public class Util {
      * @return A pair of the bullet and the entity or null if invalid
      */
     @Nullable
-    public static Pair<Entity, Entity> handleBasicCollision(Contact contact) {
+    public static Pair<Entity, Entity> handleBasicPlayerBulletCollision(Contact contact) {
         GameWorld world = InGameScreen.world;
         Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
         Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
@@ -87,6 +87,36 @@ public class Util {
             return null;
         }
         return new Pair<>(bullet, other);
+    }
+
+    @Nullable
+    public static Pair<Entity, Entity> handleBasicEnemyMeleeCollision(Contact contact) {
+        GameWorld world = InGameScreen.world;
+        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
+        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
+        if (a == null || b == null) {
+            return null;
+        }
+        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
+            return null;
+        }
+        Entity enemy = null;
+        Entity player = null;
+        if (Mappers.playerStateMapper.has(a)) {
+            player = a;
+            enemy = b;
+        }
+        if (Mappers.playerStateMapper.has(b)) {
+            if (enemy != null) {
+                return null;
+            }
+            player = b;
+            enemy = a;
+        }
+        if (player == null || !Mappers.enemyStateMapper.has(enemy)) {
+            return null;
+        }
+        return new Pair<>(enemy, player);
     }
 
     public static void playDamage(Pair<Entity, Entity> result) {
