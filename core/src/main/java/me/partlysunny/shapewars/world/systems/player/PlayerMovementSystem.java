@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.systems.player;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -19,9 +18,6 @@ import static com.badlogic.gdx.Gdx.input;
 
 public class PlayerMovementSystem extends IteratingSystem {
 
-    private final ComponentMapper<PlayerControlComponent> controllerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
-
-    private final ComponentMapper<StateComponent> stateMapper = ComponentMapper.getFor(StateComponent.class);
 
     public PlayerMovementSystem() {
         super(Family.all(PlayerControlComponent.class, RigidBodyComponent.class, StateComponent.class).get());
@@ -29,9 +25,9 @@ public class PlayerMovementSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        PlayerControlComponent controller = controllerMapper.get(entity);
+        PlayerControlComponent controller = Mappers.controlMapper.get(entity);
         RigidBodyComponent velocity = Mappers.bodyMapper.get(entity);
-        StateComponent state = stateMapper.get(entity);
+        StateComponent state = Mappers.playerStateMapper.get(entity);
         PlayerKeyMap map = controller.keyMap();
         if (map == null) {
             map = new PlayerKeyMap();

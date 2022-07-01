@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.systems.mechanics;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -12,16 +11,13 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 public class EnemyAiSystem extends IteratingSystem {
 
-    private ComponentMapper<SteeringComponent> steeringMapper = ComponentMapper.getFor(SteeringComponent.class);
-
-
     public EnemyAiSystem() {
         super(Family.all(SteeringComponent.class, RigidBodyComponent.class, TransformComponent.class).get());
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        SteeringComponent steering = steeringMapper.get(entity);
+        SteeringComponent steering = Mappers.steeringMapper.get(entity);
 
         if (steering.behavior() != null) {
             steering.behavior().calculateSteering(steering.steeringOutput());

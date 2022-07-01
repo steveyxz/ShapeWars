@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.bullets.controllers;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -15,20 +14,11 @@ import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicCollision;
 
 public class BasicController implements BulletController {
-
-    private static final ComponentMapper<BulletComponent> bulletMapper = ComponentMapper.getFor(BulletComponent.class);
-    private static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
-    private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
-    private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
-
 
     @Override
     public void fire(Entity player, float damage) {

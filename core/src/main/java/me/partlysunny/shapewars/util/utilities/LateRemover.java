@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.World;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.collision.WallComponent;
 
 import java.util.ArrayList;
 import java.util.List;

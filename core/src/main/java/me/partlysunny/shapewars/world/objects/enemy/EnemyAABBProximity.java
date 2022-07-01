@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.objects.enemy;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.ai.steer.Proximity;
 import com.badlogic.gdx.ai.steer.Steerable;
@@ -9,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.QueryCallback;
 import com.badlogic.gdx.physics.box2d.World;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
+import me.partlysunny.shapewars.util.constants.Mappers;
 
 public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
 
@@ -19,7 +18,6 @@ public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
     protected ProximityCallback<Vector2> behaviorCallback;
     protected float detectionRadius;
     private int neighborCount;
-    private ComponentMapper<AiDodgeIgnoreComponent> dodgeIgnoreMapper = ComponentMapper.getFor(AiDodgeIgnoreComponent.class);
 
     public EnemyAABBProximity(Steerable<Vector2> owner, World world, float detectionRadius) {
         this.owner = owner;
@@ -101,8 +99,8 @@ public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
         if (entityWithRigidBody == null) {
             return true;
         }
-        boolean has = dodgeIgnoreMapper.has(entityWithRigidBody);
-        if (steerable != owner && accept(steerable) && (!has || !dodgeIgnoreMapper.get(entityWithRigidBody).active())) {
+        boolean has = Mappers.dodgeIgnoreMapper.has(entityWithRigidBody);
+        if (steerable != owner && accept(steerable) && (!has || !Mappers.dodgeIgnoreMapper.get(entityWithRigidBody).active())) {
             if (behaviorCallback.reportNeighbor(steerable)) neighborCount++;
         }
         return true;

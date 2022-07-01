@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.util.utilities;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
@@ -8,7 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.kotcrab.vis.ui.VisUI;
-import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.level.Level;
@@ -16,10 +14,9 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.GameInfo;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.GameWorld;
-import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
 
 import javax.annotation.Nullable;
@@ -28,11 +25,6 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Util {
 
     public static final ThreadLocalRandom RAND = ThreadLocalRandom.current();
-    private static final ComponentMapper<BulletComponent> bulletMapper = ComponentMapper.getFor(BulletComponent.class);
-    private static final ComponentMapper<HealthComponent> healthMapper = ComponentMapper.getFor(HealthComponent.class);
-    private static final ComponentMapper<PlayerControlComponent> playerMapper = ComponentMapper.getFor(PlayerControlComponent.class);
-    private static final ComponentMapper<BulletDeleterComponent> deletionMapper = ComponentMapper.getFor(BulletDeleterComponent.class);
-    private static final ComponentMapper<DeathEffectComponent> deathEffectMapper = ComponentMapper.getFor(DeathEffectComponent.class);
 
     public static int getRandomBetween(int a, int b) {
         if (a > b) {
@@ -74,11 +66,11 @@ public class Util {
         }
         Entity bullet = null;
         Entity other = null;
-        if (bulletMapper.has(a)) {
+        if (Mappers.bulletMapper.has(a)) {
             bullet = a;
             other = b;
         }
-        if (bulletMapper.has(b)) {
+        if (Mappers.bulletMapper.has(b)) {
             if (bullet != null) {
                 LateRemover.tagToRemove(a);
                 LateRemover.tagToRemove(b);
@@ -88,8 +80,8 @@ public class Util {
         }
         if (other == null) {
             return null;
-        } else if (!healthMapper.has(other) || playerMapper.has(other)) {
-            if (deletionMapper.has(other)) {
+        } else if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other)) {
+            if (Mappers.deletionMapper.has(other)) {
                 LateRemover.tagToRemove(bullet);
             }
             return null;
@@ -100,12 +92,12 @@ public class Util {
     public static void playDamage(Pair<Entity, Entity> result) {
         Entity bullet = result.a();
         Entity victim = result.b();
-        HealthComponent health = healthMapper.get(victim);
-        health.addHealth(-bulletMapper.get(bullet).damage());
+        HealthComponent health = Mappers.healthMapper.get(victim);
+        health.addHealth(-Mappers.bulletMapper.get(bullet).damage());
         VisualEffectManager.getEffect("damage").playEffect(victim);
         LateRemover.tagToRemove(bullet);
-        if (deathEffectMapper.has(victim) && health.health() <= 0) {
-            DeathEffectComponent deathEffect = deathEffectMapper.get(victim);
+        if (Mappers.deathEffectMapper.has(victim) && health.health() <= 0) {
+            DeathEffectComponent deathEffect = Mappers.deathEffectMapper.get(victim);
             deathEffect.die();
             SoundEffectManager.play("enemyDie", 1);
         }

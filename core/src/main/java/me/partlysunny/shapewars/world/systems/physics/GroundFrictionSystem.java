@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.systems.physics;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
@@ -12,8 +11,6 @@ import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponen
 
 public class GroundFrictionSystem extends IteratingSystem {
 
-    private final ComponentMapper<GroundFrictionComponent> frictionMapper = ComponentMapper.getFor(GroundFrictionComponent.class);
-
 
     public GroundFrictionSystem() {
         super(Family.all(GroundFrictionComponent.class, RigidBodyComponent.class).get());
@@ -22,7 +19,7 @@ public class GroundFrictionSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         RigidBodyComponent body = Mappers.bodyMapper.get(entity);
-        GroundFrictionComponent friction = frictionMapper.get(entity);
+        GroundFrictionComponent friction = Mappers.frictionMapper.get(entity);
         Body rigidBody = body.rigidBody();
         Vector2 velocity = rigidBody.getLinearVelocity();
         Vector2 pos = rigidBody.getPosition();

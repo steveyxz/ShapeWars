@@ -17,7 +17,7 @@ import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.mechanics.EnemySpawnIndicatorComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemySpawnIndicatorComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
 import java.util.ArrayList;

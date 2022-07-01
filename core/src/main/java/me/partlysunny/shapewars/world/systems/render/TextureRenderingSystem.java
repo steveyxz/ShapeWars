@@ -1,6 +1,5 @@
 package me.partlysunny.shapewars.world.systems.render;
 
-import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
@@ -34,16 +33,10 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     private final Batch batch; // a reference to our spritebatch
     private final Array<Entity> renderQueue; // an array used to allow sorting of images allowing us to draw images on top of each other
     private final Comparator<Entity> comparator = new ZComparator(); // a comparator to sort images based on the z position of the transfromComponent
-    private final ComponentMapper<TextureComponent> textureMapper;
-    private final ComponentMapper<TintComponent> tintMapper;
 
     public TextureRenderingSystem(Batch batch) {
         // gets all entities with a TransformComponent and TextureComponent
         super(Family.all(TextureComponent.class, TransformComponent.class).get(), new ZComparator());
-
-        //creates out componentMappers
-        textureMapper = ComponentMapper.getFor(TextureComponent.class);
-        tintMapper = ComponentMapper.getFor(TintComponent.class);
 
         // create the array for sorting entities
         renderQueue = new Array<>();
@@ -88,12 +81,12 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
 
         // loop through each entity in our render queue
         for (Entity entity : renderQueue) {
-            TextureComponent tex = textureMapper.get(entity);
+            TextureComponent tex = Mappers.textureMapper.get(entity);
             TransformComponent transform = Mappers.transformMapper.get(entity);
             Vector3 tint = null;
             float opacity = 0;
-            if (tintMapper.has(entity)) {
-                TintComponent tintComponent = tintMapper.get(entity);
+            if (Mappers.tintMapper.has(entity)) {
+                TintComponent tintComponent = Mappers.tintMapper.get(entity);
                 tint = tintComponent.tint();
                 opacity = tintComponent.alpha();
             }
