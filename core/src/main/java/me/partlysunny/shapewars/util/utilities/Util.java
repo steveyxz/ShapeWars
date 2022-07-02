@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.kotcrab.vis.ui.VisUI;
+import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.level.Level;
@@ -80,13 +81,46 @@ public class Util {
         }
         if (other == null) {
             return null;
-        } else if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other)) {
+        } else if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other) || Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_PLAYERS) {
             if (Mappers.deletionMapper.has(other)) {
                 LateRemover.tagToRemove(bullet);
             }
             return null;
         }
         return new Pair<>(bullet, other);
+    }
+
+    @Nullable
+    public static Pair<Entity, Entity> handleBasicEnemyBulletCollision(Contact contact) {
+        GameWorld world = InGameScreen.world;
+        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
+        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
+        if (a == null || b == null) {
+            return null;
+        }
+        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
+            return null;
+        }
+        Entity bullet = null;
+        Entity player = null;
+        if (Mappers.bulletMapper.has(a)) {
+            bullet = a;
+            player = b;
+        }
+        if (Mappers.bulletMapper.has(b)) {
+            if (bullet != null) {
+                LateRemover.tagToRemove(a);
+                LateRemover.tagToRemove(b);
+            }
+            bullet = b;
+            player = a;
+        }
+        if (player == null) {
+            return null;
+        } else if (Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_ENTITIES || !Mappers.controlMapper.has(player)) {
+            return null;
+        }
+        return new Pair<>(bullet, player);
     }
 
     @Nullable

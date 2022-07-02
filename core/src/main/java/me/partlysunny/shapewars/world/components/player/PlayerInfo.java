@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
+import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
@@ -101,6 +103,9 @@ public class PlayerInfo {
         if (this.health > maxHealth) {
             this.health = maxHealth;
         }
+        RigidBodyComponent playerBody = Mappers.bodyMapper.get(playerEntity);
+        ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().x), (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().y), 100);
+        VisualEffectManager.getEffect("damage").playEffect(playerEntity);
         if (this.health < 0) {
             InGameScreen.levelManager.lossReset();
             this.health = maxHealth;

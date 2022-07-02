@@ -29,10 +29,7 @@ public class MeleeHandle implements ContactListener {
             if (Mappers.enemyMeleeDamageMapper.has(enemy)) {
                 EnemyStateComponent enemyState = Mappers.enemyStateMapper.get(enemy);
                 if (enemyState.state() == EnemyState.ATTACKING) {
-                    RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);
                     EnemyMeleeDamageComponent enemyDamage = Mappers.enemyMeleeDamageMapper.get(enemy);
-                    ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().x), (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().y), 100);
-                    VisualEffectManager.getEffect("damage").playEffect(player);
                     InGameScreen.playerInfo.damage(enemyDamage.damage());
                     enemyState.setState(EnemyState.PURSUING, 0.1f);
                 }

@@ -44,9 +44,11 @@ public class TextureManager {
         doPngTexture("oldTunic");
         //Bullets
         doPngTexture("basicBullet");
+        doPngTexture("enemyBlasterBullet");
         //Enemies
         doPngTexture("basicEnemy");
         doPngTexture("tankEnemy");
+        doPngTexture("blasterEnemy");
         doPngTexture("spawnIndicator");
     }
 

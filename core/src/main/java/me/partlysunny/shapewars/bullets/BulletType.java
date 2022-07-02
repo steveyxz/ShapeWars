@@ -34,7 +34,10 @@ public class BulletType {
 
     public enum ProjectileHitBox {
 
-        BASIC_BULLET(1, 0);
+        BASIC_BULLET(1, 0),
+        BLASTER_BULLET(2, 4)
+
+        ;
 
         private final int radius;
         private final int sideCount;

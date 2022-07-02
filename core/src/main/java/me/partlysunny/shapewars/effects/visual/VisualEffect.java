@@ -17,6 +17,8 @@ public abstract class VisualEffect {
 
     protected abstract void startEffect(Entity e);
 
+    protected abstract void effectUpdate(Entity e, float delta);
+
     protected abstract void endEffect(Entity e);
 
     public void playEffect(Entity e) {
@@ -41,6 +43,7 @@ public abstract class VisualEffect {
     public void update(float delta) {
         List<Entity> r = new ArrayList<>();
         for (Entity e : effectCountdown.keySet()) {
+            effectUpdate(e, delta);
             effectCountdown.put(e, effectCountdown.get(e) - delta);
             if (effectCountdown.get(e) < 0) {
                 endEffect(e);
