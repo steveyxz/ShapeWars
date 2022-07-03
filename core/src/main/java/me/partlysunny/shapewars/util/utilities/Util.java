@@ -2,11 +2,16 @@ package me.partlysunny.shapewars.util.utilities;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.StringBuilder;
 import com.kotcrab.vis.ui.VisUI;
+import com.kotcrab.vis.ui.building.utilities.Alignment;
+import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
@@ -26,6 +31,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Util {
 
     public static final ThreadLocalRandom RAND = ThreadLocalRandom.current();
+    private static final GlyphLayout layout = new GlyphLayout();
 
     public static int getRandomBetween(int a, int b) {
         if (a > b) {
@@ -47,6 +53,18 @@ public class Util {
         if (!VisUI.isLoaded()) {
             VisUI.load(new Skin(Gdx.files.internal("assets/flatEarth/flat-earth-ui.json")));
         }
+    }
+
+    public static void formatTooltip(Tooltip t) {
+        t.getContentCell().align(Alignment.CENTER.getAlignment());
+        ((Label) t.getContent()).setAlignment(Alignment.CENTER.getAlignment());
+        ((Label) t.getContent()).setWrap(true);
+        t.setSize(30, 30);
+        t.getContentCell().width(26);
+        StringBuilder text = ((Label) t.getContent()).getText();
+        layout.setText(((Label) t.getContent()).getStyle().font, text);
+        float height = layout.height;
+        t.getContentCell().padBottom(height * 3f);
     }
 
     /**

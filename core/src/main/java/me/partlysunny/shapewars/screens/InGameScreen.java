@@ -7,7 +7,6 @@ import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -19,10 +18,12 @@ import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.items.ItemManager;
+import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.player.PlayerKiller;
-import me.partlysunny.shapewars.player.equipment.PlayerEquipmentUi;
+import me.partlysunny.shapewars.player.equipment.InventoryMenuManager;
+import me.partlysunny.shapewars.player.equipment.PlayerChangeArmorUi;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
@@ -67,8 +68,12 @@ public class InGameScreen extends ManagedScreen {
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
-        //playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
-        //playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
+        playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
+        playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
+        playerInfo.equipment().unlockArmor("oldTunic");
+        playerInfo.equipment().unlockWeapon("circleBlaster");
+        playerInfo.equipment().unlockWeapon("circlePummeler");
+        InventoryMenuManager.init(stage);
     }
 
     @Override
@@ -79,7 +84,6 @@ public class InGameScreen extends ManagedScreen {
         Gdx.input.setInputProcessor(new InputMultiplexer(guiStage, stage));
         InGameScreen s = this;
         playerInfo.initGui();
-        new PlayerEquipmentUi(playerInfo.equipment(), guiStage);
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {

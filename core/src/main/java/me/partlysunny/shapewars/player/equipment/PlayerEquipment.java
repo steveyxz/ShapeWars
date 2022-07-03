@@ -1,21 +1,16 @@
 package me.partlysunny.shapewars.player.equipment;
 
 import com.badlogic.ashley.core.Family;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
-import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.item.types.ArmorItem;
-import me.partlysunny.shapewars.item.types.UtilityItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
@@ -26,7 +21,6 @@ import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 
-import javax.tools.Tool;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,25 +58,33 @@ public class PlayerEquipment {
         weapon1.setSize(8, 8);
         weapon1.setPosition(2, 2);
         weapon1.setBackground(regular, true);
+        weapon1.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                ((PlayerChangeWeaponUi) InventoryMenuManager.getMenu("weapon")).setSlotToChange(0);
+                InventoryMenuManager.set("weapon");
+                return true;
+            }
+        });
 
         weapon2.setTransform(true);
         weapon2.setSize(8, 8);
         weapon2.setPosition(4 + weapon1.getWidth(), 2);
         weapon2.setBackground(regular, true);
+        weapon2.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                ((PlayerChangeWeaponUi) InventoryMenuManager.getMenu("weapon")).setSlotToChange(1);
+                InventoryMenuManager.set("weapon");
+                return true;
+            }
+        });
 
         weaponsLabel.setTransform(true);
         weaponsLabel.setPosition(weapon1.getWidth() + 2, 12);
 
         Tooltip weapon1TT = new Tooltip.Builder(new Label("Weapon 1", labelStyle)).target(weapon1).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
         Tooltip weapon2TT = new Tooltip.Builder(new Label("Weapon 2", labelStyle)).target(weapon2).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
-
-        weapon1TT.getContentCell().align(Alignment.CENTER.getAlignment());
-        ((Label) weapon1TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        weapon1TT.setSize(15, 15);
-
-        weapon2TT.getContentCell().align(Alignment.CENTER.getAlignment());
-        ((Label) weapon2TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        weapon2TT.setSize(15, 15);
 
         Timer.schedule(new Timer.Task() {
             @Override
@@ -91,13 +93,17 @@ public class PlayerEquipment {
                 weapon2TT.setPosition(weapon2.getX(), weapon2.getY() + weapon2.getHeight() + 1);
                 if (weaponOne != null) {
                     ((Label) weapon1TT.getContent()).setText(weaponOne.getDescription());
+                    Util.formatTooltip(weapon1TT);
                 } else {
                     ((Label) weapon1TT.getContent()).setText("No weapon!");
+                    Util.formatTooltip(weapon1TT);
                 }
                 if (weaponTwo != null) {
                     ((Label) weapon2TT.getContent()).setText(weaponTwo.getDescription());
+                    Util.formatTooltip(weapon2TT);
                 } else {
                     ((Label) weapon2TT.getContent()).setText("No weapon!");
+                    Util.formatTooltip(weapon2TT);
                 }
             }
         }, 0, 0.1f);
@@ -118,8 +124,8 @@ public class PlayerEquipment {
         });
 
         //Armor
-        Container<Image> armor2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
         Container<Image> armor1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Container<Image> armor2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
         Label armors = new Label("Armor", labelStyle);
         Container<Label> armorsLabel = new Container<>(armors);
 
@@ -127,25 +133,33 @@ public class PlayerEquipment {
         armor2.setSize(8, 8);
         armor2.setPosition(2, 15);
         armor2.setBackground(regular, true);
+        armor2.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                ((PlayerChangeArmorUi) InventoryMenuManager.getMenu("armor")).setSlotToChange(1);
+                InventoryMenuManager.set("armor");
+                return true;
+            }
+        });
 
         armor1.setTransform(true);
         armor1.setSize(8, 8);
         armor1.setPosition(2, 16 + armor2.getHeight());
         armor1.setBackground(regular, true);
+        armor1.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                ((PlayerChangeArmorUi) InventoryMenuManager.getMenu("armor")).setSlotToChange(0);
+                InventoryMenuManager.set("armor");
+                return true;
+            }
+        });
 
         armorsLabel.setTransform(true);
         armorsLabel.setPosition(armor2.getWidth() - 2, 18 + armor2.getHeight() + armor1.getHeight());
 
         Tooltip armor1TT = new Tooltip.Builder(new Label("Armor 1", labelStyle)).target(armor1).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
         Tooltip armor2TT = new Tooltip.Builder(new Label("Armor 2", labelStyle)).target(armor2).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
-
-        armor1TT.getContentCell().align(Alignment.CENTER.getAlignment());
-        ((Label) armor1TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        armor1TT.setSize(15, 15);
-
-        armor2TT.getContentCell().align(Alignment.CENTER.getAlignment());
-        ((Label) armor2TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        armor2TT.setSize(15, 15);
 
         Timer.schedule(new Timer.Task() {
             @Override
@@ -154,13 +168,17 @@ public class PlayerEquipment {
                 armor2TT.setPosition(armor2.getX() + armor2.getWidth() + 1, armor2.getY());
                 if (armorOne != null) {
                     ((Label) armor1TT.getContent()).setText(armorOne.getDescription());
+                    Util.formatTooltip(armor1TT);
                 } else {
                     ((Label) armor1TT.getContent()).setText("No armor!");
+                    Util.formatTooltip(armor1TT);
                 }
                 if (armorTwo != null) {
                     ((Label) armor2TT.getContent()).setText(armorTwo.getDescription());
+                    Util.formatTooltip(armor2TT);
                 } else {
                     ((Label) armor2TT.getContent()).setText("No armor!");
+                    Util.formatTooltip(armor2TT);
                 }
             }
         }, 0, 0.1f);
@@ -188,6 +206,9 @@ public class PlayerEquipment {
     }
 
     public void setArmorOne(ArmorItem armorOne) {
+        if (armorTwo == armorOne) {
+            this.armorTwo = null;
+        }
         this.armorOne = armorOne;
     }
 
@@ -196,6 +217,9 @@ public class PlayerEquipment {
     }
 
     public void setArmorTwo(ArmorItem armorTwo) {
+        if (armorOne == armorTwo) {
+            this.armorOne = null;
+        }
         this.armorTwo = armorTwo;
     }
 
@@ -275,7 +299,7 @@ public class PlayerEquipment {
         return unlockedWeapons;
     }
 
-    public List<String> unlockedArmor() {
+    public List<String> unlockedArmors() {
         return unlockedArmor;
     }
 
