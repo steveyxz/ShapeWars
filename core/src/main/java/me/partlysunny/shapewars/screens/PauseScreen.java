@@ -53,7 +53,7 @@ public class PauseScreen extends ManagedScreen {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (keycode == Input.Keys.SPACE && game.getScreenManager().getCurrentScreen().equals(s)) {
+                if ((keycode == Input.Keys.SPACE || keycode == Input.Keys.ESCAPE) && game.getScreenManager().getCurrentScreen().equals(s)) {
                     game.getScreenManager().pushScreen("ingame", "blending");
                 }
                 return true;

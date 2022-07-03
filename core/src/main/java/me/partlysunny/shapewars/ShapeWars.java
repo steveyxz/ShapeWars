@@ -9,6 +9,7 @@ import de.eskalon.commons.screen.transition.ScreenTransition;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.items.ItemManager;
+import me.partlysunny.shapewars.player.SettingsManager;
 import me.partlysunny.shapewars.util.constants.Screens;
 import me.partlysunny.shapewars.util.constants.Transitions;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -18,11 +19,13 @@ public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private BitmapFont font;
+    public static final SettingsManager settings = new SettingsManager();
 
 
     @Override
     public void create() {
         super.create();
+        settings.load();
         ItemManager.init();
         TextureManager.initTextures();
         ParticleEffectManager.init();
@@ -32,7 +35,7 @@ public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
         batch = new SpriteBatch();
         Screens.init(this);
         Transitions.init(this);
-        screenManager.pushScreen("ingame", "blending");
+        screenManager.pushScreen("mainMenu", "blending");
     }
 
     @Override

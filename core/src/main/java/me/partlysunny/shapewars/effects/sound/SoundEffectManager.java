@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.effects.sound;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
@@ -45,13 +46,15 @@ public class SoundEffectManager {
     }
 
     public static void play(String effect, float volume) {
-        getSound(effect).play(volume);
+        if (ShapeWars.settings.sound()) getSound(effect).play(volume * ShapeWars.settings.soundVolume());
     }
 
     public static void play(String effect, float volume, float soundX, float soundY) {
-        TransformComponent playerTransform = Mappers.transformMapper.get(InGameScreen.playerInfo.playerEntity());
-        volume = Util.getVolumeOfSoundFromPos(playerTransform.position.x, playerTransform.position.y, soundX, soundY, volume);
-        getSound(effect).play(volume);
+        if (ShapeWars.settings.sound()) {
+            TransformComponent playerTransform = Mappers.transformMapper.get(InGameScreen.playerInfo.playerEntity());
+            volume = Util.getVolumeOfSoundFromPos(playerTransform.position.x, playerTransform.position.y, soundX, soundY, volume);
+            getSound(effect).play(volume * ShapeWars.settings.soundVolume());
+        }
     }
 
 }

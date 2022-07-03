@@ -88,7 +88,7 @@ public class InGameScreen extends ManagedScreen {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 if (game.getScreenManager().getCurrentScreen().equals(s)) {
-                    if (keycode == Input.Keys.SPACE) {
+                    if (keycode == Input.Keys.SPACE || keycode == Input.Keys.ESCAPE) {
                         game.getScreenManager().pushScreen("paused", null);
                     }
                     if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_1)) {
