@@ -24,6 +24,7 @@ public class PlayerAttackingSystem extends IteratingSystem {
             if (weapon.canAttack()) {
                 weapon.weaponItem().attack(InGameScreen.playerInfo.playerEntity());
                 weapon.resetAttackCooldown();
+                InGameScreen.playerInfo.ammoManager().useAmmo(weapon.weaponItem().texture());
             }
         }
         weapon.update(deltaTime);

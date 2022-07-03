@@ -44,6 +44,7 @@ public final class BulletFactory {
         float x = MathUtils.cos(rotation) * 8;
         float y = MathUtils.sin(rotation) * 8;
         rigidBodyComponent.initBody(shooterPos.position.x + x, shooterPos.position.y + y, shooterPos.rotation, type.hitbox().genDef(), BodyDef.BodyType.DynamicBody, type.width() / 2f);
+        transformComponent.position.set(shooterPos.position.x + x, shooterPos.position.y + y, 0);
 
         bullet.add(transformComponent);
         bullet.add(textureComponent);

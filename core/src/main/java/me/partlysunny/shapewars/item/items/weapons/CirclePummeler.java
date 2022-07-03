@@ -9,12 +9,12 @@ import me.partlysunny.shapewars.util.factories.ItemFactory;
 public class CirclePummeler implements WeaponItem {
     @Override
     public int maxUses() {
-        return 40;
+        return 20;
     }
 
     @Override
     public float usesRegenRate() {
-        return 0.2f;
+        return 0.7f;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public float attackDelay() {
-        return 0.1f;
+        return 0.2f;
     }
 
     @Override

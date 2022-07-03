@@ -16,6 +16,9 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerKeyMap;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PlayerInfo {
 
     private final Entity playerEntity;
@@ -25,12 +28,13 @@ public class PlayerInfo {
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
-
+    private final AmmoManager ammoManager;
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
         this.game = game;
         this.equipment = new PlayerEquipment();
+        this.ammoManager = new AmmoManager();
     }
 
     public void initGui() {
@@ -89,6 +93,10 @@ public class PlayerInfo {
 
     public void setKeyMap(PlayerKeyMap keyMap) {
         this.keyMap = keyMap;
+    }
+
+    public AmmoManager ammoManager() {
+        return ammoManager;
     }
 
     public TransformComponent getTransformComponent() {

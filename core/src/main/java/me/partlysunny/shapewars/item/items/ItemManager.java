@@ -20,6 +20,10 @@ public final class ItemManager {
         return items.get(id);
     }
 
+    public static String[] items() {
+        return items.keySet().toArray(new String[0]);
+    }
+
     public static void unregisterItem(String id) {
         items.remove(id);
     }

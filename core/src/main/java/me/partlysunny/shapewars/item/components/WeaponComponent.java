@@ -3,6 +3,8 @@ package me.partlysunny.shapewars.item.components;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.AmmoManager;
+import me.partlysunny.shapewars.screens.InGameScreen;
 
 public class WeaponComponent implements Component, Pool.Poolable {
 
@@ -12,6 +14,7 @@ public class WeaponComponent implements Component, Pool.Poolable {
     public void init(WeaponItem weaponItem) {
         this.weaponItem = weaponItem;
         this.attackCooldown = weaponItem.attackDelay();
+
     }
 
     public void update(float delta) {
@@ -19,6 +22,7 @@ public class WeaponComponent implements Component, Pool.Poolable {
         if (attackCooldown < 0) {
             attackCooldown = 0;
         }
+        InGameScreen.playerInfo.ammoManager().update(delta, weaponItem.texture());
     }
 
     public WeaponItem weaponItem() {
@@ -26,7 +30,7 @@ public class WeaponComponent implements Component, Pool.Poolable {
     }
 
     public boolean canAttack() {
-        return attackCooldown == 0;
+        return attackCooldown == 0 && InGameScreen.playerInfo.ammoManager().canUse(weaponItem.texture());
     }
 
     public float attackCooldown() {

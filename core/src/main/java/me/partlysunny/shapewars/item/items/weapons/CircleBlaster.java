@@ -56,7 +56,7 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public float attackDelay() {
-        return 0.5f;
+        return 0.8f;
     }
 
     @Override
