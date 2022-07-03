@@ -8,9 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
+import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -40,6 +42,7 @@ public class PlayerChangeArmorUi extends InventoryMenu {
         Table table = new Table();
         table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
         table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
+        table.setBackground(TextureRegionDrawableCache.get("equipmentSwapBackground"));
 
         stage.addListener(new InputListener() {
             @Override
@@ -56,19 +59,33 @@ public class PlayerChangeArmorUi extends InventoryMenu {
 
     private void updateTable(Table table) {
         table.setVisible(shown);
+        if (!shown) {
+            return;
+        }
+
         table.clear();
 
-        List<String> unlockedArmor = equipment.unlockedArmors();
+        table.row().width(40).padBottom(4);
+        Label actor = new Label("Change Armor " + (slotToChange + 1), labelStyle);
+        actor.setAlignment(Alignment.CENTER.getAlignment());
+        table.add(actor);
 
-        int rows = (int) Math.ceil(unlockedArmor.size() / 9f);
+        Table inventory = new Table();
+        inventory.setSize(table.getWidth(), table.getHeight() - 4);
+
+        List<String> unlockedArmors = equipment.unlockedArmors();
+
+        int rowMax = 5;
+        int rows = (int) Math.ceil(unlockedArmors.size() / (float)rowMax);
 
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < 9; j++) {
-                int index = i * 9 + j;
-                if (index >= unlockedArmor.size()) {
+            inventory.row().pad(0.5f);
+            for (int j = 0; j < rowMax; j++) {
+                int index = i * rowMax + j;
+                if (index >= unlockedArmors.size()) {
                     break;
                 }
-                String armor = unlockedArmor.get(index);
+                String armor = unlockedArmors.get(index);
                 ArmorItem item = (ArmorItem) ItemManager.getItem(armor);
                 Container<Image> armorContainer = new Container<>(new Image(TextureManager.getTexture(item.texture())));
                 armorContainer.setBackground(equipment.regular(), true);
@@ -88,10 +105,11 @@ public class PlayerChangeArmorUi extends InventoryMenu {
                 });
                 Tooltip armorTT = new Tooltip.Builder(new Label(item.getDescription(), labelStyle)).target(armorContainer).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
                 Util.formatTooltip(armorTT);
-                table.add(armorContainer).size(6, 6).pad(0.5f);
+                inventory.add(armorContainer).size(6, 6).pad(0.5f);
             }
-            table.row().pad(0.5f);
         }
+        table.row();
+        table.add(inventory);
     }
 
     public PlayerEquipment equipment() {

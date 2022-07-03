@@ -43,14 +43,13 @@ public class PlayerEquipment {
     public PlayerEquipment() {
         regular = TextureRegionDrawableCache.get( "slotBackground");
         selected = TextureRegionDrawableCache.get("slotBackgroundSelected");
-        initGui();
     }
 
     public void initGui() {
         Util.loadVisUI();
         //Weapons
-        Container<Image> weapon1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
-        Container<Image> weapon2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Container<Image> weapon1 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
+        Container<Image> weapon2 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
         Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
         Label weapons = new Label("Weapons", labelStyle);
         Container<Label> weaponsLabel = new Container<>(weapons);
@@ -124,8 +123,8 @@ public class PlayerEquipment {
         });
 
         //Armor
-        Container<Image> armor1 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
-        Container<Image> armor2 = new Container<>(new Image(TextureManager.getTexture("noWeapon")));
+        Container<Image> armor1 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
+        Container<Image> armor2 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
         Label armors = new Label("Armor", labelStyle);
         Container<Label> armorsLabel = new Container<>(armors);
 

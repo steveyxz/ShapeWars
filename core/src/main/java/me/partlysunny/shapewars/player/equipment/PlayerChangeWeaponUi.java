@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.WeaponItem;
@@ -40,6 +41,8 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         Table table = new Table();
         table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
         table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
+        table.setBackground(TextureRegionDrawableCache.get("equipmentSwapBackground"));
+        table.setDebug(true);
 
         stage.addListener(new InputListener() {
             @Override
@@ -56,17 +59,31 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
 
     private void updateTable(Table table) {
         table.setVisible(shown);
+        if (!shown) {
+            return;
+        }
+
         table.clear();
+
+        table.row().width(40).padBottom(4);
+        Label actor = new Label("Change Weapon " + (slotToChange + 1), labelStyle);
+        actor.setAlignment(Alignment.CENTER.getAlignment());
+        table.add(actor);
+
+        Table inventory = new Table();
+        inventory.setSize(table.getWidth(), table.getHeight() - 4);
 
         List<String> unlockedWeapon = equipment.unlockedWeapons();
 
-        int rows = (int) Math.ceil(unlockedWeapon.size() / 9f);
+        int rowMax = 5;
+        int rows = (int) Math.ceil(unlockedWeapon.size() / (float)rowMax);
 
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < 9; j++) {
-                int index = i * 9 + j;
+            inventory.row().pad(0.5f);
+            for (int j = 0; j < rowMax; j++) {
+                int index = i * rowMax + j;
                 if (index >= unlockedWeapon.size()) {
-                    return;
+                    break;
                 }
                 String weapon = unlockedWeapon.get(index);
                 WeaponItem item = (WeaponItem) ItemManager.getItem(weapon);
@@ -88,10 +105,11 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
                 });
                 Tooltip weaponTT = new Tooltip.Builder(new Label(item.getDescription(), labelStyle)).target(weaponContainer).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
                 Util.formatTooltip(weaponTT);
-                table.add(weaponContainer).size(6, 6).pad(0.5f);
+                inventory.add(weaponContainer).size(6, 6).pad(0.5f);
             }
-            table.row().pad(0.5f);
         }
+        table.row();
+        table.add(inventory);
 
     }
 
