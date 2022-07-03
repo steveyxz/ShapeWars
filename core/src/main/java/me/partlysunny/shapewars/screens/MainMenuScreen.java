@@ -4,13 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kotcrab.vis.ui.VisUI;
@@ -18,16 +21,21 @@ import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.VisImage;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.effects.sound.MusicManager;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
+
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
 public class MainMenuScreen extends ManagedScreen {
 
     public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
+    public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
     private final ShapeWars game;
     private final Stage stage;
 
@@ -43,16 +51,12 @@ public class MainMenuScreen extends ManagedScreen {
 
     @Override
     public void show() {
+        MusicManager.play("shapeWarsTheme", true, 0.5f);
         MainMenuScreen t = this;
         Util.loadVisUI();
         Gdx.input.setInputProcessor(stage);
 
-        VerticalGroup group = new VerticalGroup();
-        group.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-
-        ImageTextButton.ImageTextButtonStyle buttonStyle = new ImageTextButton.ImageTextButtonStyle(new TextureRegionDrawable(TextureManager.getTexture("mainMenuButton")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonDown")), new TextureRegionDrawable(TextureManager.getTexture("mainMenuButtonChecked")), FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 3));
-
-        group.setDebug(true);
+        ImageTextButton.ImageTextButtonStyle buttonStyle = new ImageTextButton.ImageTextButtonStyle(TextureRegionDrawableCache.get("mainMenuButton"), TextureRegionDrawableCache.get("mainMenuButtonDown"), TextureRegionDrawableCache.get("mainMenuButtonChecked"), FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 3));
 
         ImageTextButton playButton = new ImageTextButton("Play", buttonStyle);
         playButton.addListener(new InputListener() {
@@ -66,6 +70,7 @@ public class MainMenuScreen extends ManagedScreen {
             }
         });
         Container<ImageTextButton> playButtonContainer = addProperties(playButton);
+        playButtonContainer.setPosition(camera.viewportHeight / 2f, camera.viewportHeight / 2f);
 
         ImageTextButton quitButton = new ImageTextButton("Quit", buttonStyle);
         quitButton.addListener(new InputListener() {
@@ -79,22 +84,28 @@ public class MainMenuScreen extends ManagedScreen {
             }
         });
         Container<ImageTextButton> quitButtonContainer = addProperties(quitButton);
+        quitButtonContainer.setPosition(camera.viewportWidth / 2f, camera.viewportHeight / 4f);
 
         VisImage logo = new VisImage(TextureManager.getTexture("mainScreenLogo"));
-        logo.setSize(400, 150);
-        Container<VisImage> logoContainer = new Container<>(logo);
-        logoContainer.align(Alignment.CENTER.getAlignment());
+        logo.setSize(800, 300);
+        logo.setPosition(-1000, camera.viewportHeight * 3 / 4f - logo.getHeight() / 3f);
 
-        group.addActor(logoContainer);
-        group.addActor(playButton);
-        group.addActor(quitButton);
-        stage.addActor(group);
+        playButtonContainer.setColor(1, 1, 1, 0);
+        quitButtonContainer.setColor(1, 1, 1, 0);
+
+        playButtonContainer.addAction(Actions.alpha(1, 1.5f, Interpolation.pow2In));
+        quitButtonContainer.addAction(Actions.alpha(1, 1.5f, Interpolation.pow2In));
+        logo.addAction(Actions.moveTo(camera.viewportWidth / 2f - logo.getWidth() / 2f, camera.viewportHeight * 3 / 4f - logo.getHeight() / 3f, 2f, Interpolation.pow2In));
+
+        stage.addActor(logo);
+        stage.addActor(playButtonContainer);
+        stage.addActor(quitButtonContainer);
     }
 
     private Container<ImageTextButton> addProperties(ImageTextButton button) {
         button.setTransform(true);
         button.setOrigin(Alignment.CENTER.getAlignment());
-        button.setScale(0.3f);
+        button.setScale(0.4f);
 
         Container<ImageTextButton> container = new Container<>(button);
         container.setTransform(true);

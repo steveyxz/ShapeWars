@@ -22,6 +22,7 @@ import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 
@@ -38,13 +39,16 @@ public class PlayerEquipment {
     private ArmorItem armorTwo = null;
     private WeaponItem weaponOne = null;
     private WeaponItem weaponTwo = null;
+    //For the UI
+    private boolean hasChangedWeaponOne = false;
+    private boolean hasChangedWeaponTwo = false;
     private List<String> unlockedWeapons = new ArrayList<>();
     private List<String> unlockedArmor = new ArrayList<>();
     private int activeWeaponSlot = 0;
 
     public PlayerEquipment() {
-        regular = new TextureRegionDrawable(TextureManager.getTexture("slotBackground"));
-        selected = new TextureRegionDrawable(TextureManager.getTexture("slotBackgroundSelected"));
+        regular = TextureRegionDrawableCache.get( "slotBackground");
+        selected = TextureRegionDrawableCache.get("slotBackgroundSelected");
         initGui();
     }
 
@@ -69,16 +73,16 @@ public class PlayerEquipment {
         weaponsLabel.setTransform(true);
         weaponsLabel.setPosition(weapon1.getWidth() + 2, 12);
 
-        Tooltip weapon1TT = new Tooltip.Builder(new Label("Weapon 1", labelStyle)).target(weapon1).style(new Tooltip.TooltipStyle(new TextureRegionDrawable(TextureManager.getTexture("tooltipBackground")))).build();
-        Tooltip weapon2TT = new Tooltip.Builder(new Label("Weapon 2", labelStyle)).target(weapon2).style(new Tooltip.TooltipStyle(new TextureRegionDrawable(TextureManager.getTexture("tooltipBackground")))).build();
+        Tooltip weapon1TT = new Tooltip.Builder(new Label("Weapon 1", labelStyle)).target(weapon1).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
+        Tooltip weapon2TT = new Tooltip.Builder(new Label("Weapon 2", labelStyle)).target(weapon2).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
 
         weapon1TT.getContentCell().align(Alignment.CENTER.getAlignment());
         ((Label) weapon1TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        weapon1TT.setSize(30, 30);
+        weapon1TT.setSize(15, 15);
 
         weapon2TT.getContentCell().align(Alignment.CENTER.getAlignment());
         ((Label) weapon2TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        weapon2TT.setSize(30, 30);
+        weapon2TT.setSize(15, 15);
 
         Timer.schedule(new Timer.Task() {
             @Override
@@ -100,13 +104,13 @@ public class PlayerEquipment {
 
         InGameScreenGuiManager.registerGui("weapon1", weapon1, e -> {
             Container<Image> i = (Container<Image>) e;
-            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(weaponOne == null ? "noWeapon" : weaponOne.texture())));
+            i.getActor().setDrawable(TextureRegionDrawableCache.get(weaponOne == null ? "noWeapon" : weaponOne.texture()));
             i.setBackground(activeWeaponSlot == 0 ? selected : regular);
         });
 
         InGameScreenGuiManager.registerGui("weapon2", weapon2, e -> {
             Container<Image> i = (Container<Image>) e;
-            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(weaponTwo == null ? "noWeapon" : weaponTwo.texture())));
+            i.getActor().setDrawable(TextureRegionDrawableCache.get(weaponTwo == null ? "noWeapon" : weaponTwo.texture()));
             i.setBackground(activeWeaponSlot == 1 ? selected : regular);
         });
 
@@ -132,16 +136,16 @@ public class PlayerEquipment {
         armorsLabel.setTransform(true);
         armorsLabel.setPosition(armor2.getWidth() - 2, 18 + armor2.getHeight() + armor1.getHeight());
 
-        Tooltip armor1TT = new Tooltip.Builder(new Label("Armor 1", labelStyle)).target(armor1).style(new Tooltip.TooltipStyle(new TextureRegionDrawable(TextureManager.getTexture("tooltipBackground")))).build();
-        Tooltip armor2TT = new Tooltip.Builder(new Label("Armor 2", labelStyle)).target(armor2).style(new Tooltip.TooltipStyle(new TextureRegionDrawable(TextureManager.getTexture("tooltipBackground")))).build();
+        Tooltip armor1TT = new Tooltip.Builder(new Label("Armor 1", labelStyle)).target(armor1).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
+        Tooltip armor2TT = new Tooltip.Builder(new Label("Armor 2", labelStyle)).target(armor2).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
 
         armor1TT.getContentCell().align(Alignment.CENTER.getAlignment());
         ((Label) armor1TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        armor1TT.setSize(30, 30);
+        armor1TT.setSize(15, 15);
 
         armor2TT.getContentCell().align(Alignment.CENTER.getAlignment());
         ((Label) armor2TT.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        armor2TT.setSize(30, 30);
+        armor2TT.setSize(15, 15);
 
         Timer.schedule(new Timer.Task() {
             @Override
@@ -163,12 +167,12 @@ public class PlayerEquipment {
 
         InGameScreenGuiManager.registerGui("armor1", armor1, e -> {
             Container<Image> i = (Container<Image>) e;
-            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(armorOne == null ? "noWeapon" : armorOne.texture())));
+            i.getActor().setDrawable(TextureRegionDrawableCache.get(armorOne == null ? "noWeapon" : armorOne.texture()));
         });
 
         InGameScreenGuiManager.registerGui("armor2", armor2, e -> {
             Container<Image> i = (Container<Image>) e;
-            i.getActor().setDrawable(new TextureRegionDrawable(TextureManager.getTexture(armorTwo == null ? "noWeapon" : armorTwo.texture())));
+            i.getActor().setDrawable(TextureRegionDrawableCache.get(armorTwo == null ? "noWeapon" : armorTwo.texture()));
         });
 
         InGameScreenGuiManager.registerGui("armorsLabel", armorsLabel, e -> {
@@ -213,6 +217,7 @@ public class PlayerEquipment {
         if (weaponTwo == weaponOne) {
             this.weaponTwo = null;
         }
+        hasChangedWeaponOne = true;
         killWeaponEntities();
         respawnWeaponEntities();
     }
@@ -226,6 +231,7 @@ public class PlayerEquipment {
         if (weaponOne == weaponTwo) {
             this.weaponOne = null;
         }
+        hasChangedWeaponTwo = true;
         killWeaponEntities();
         respawnWeaponEntities();
     }
@@ -271,5 +277,29 @@ public class PlayerEquipment {
 
     public List<String> unlockedArmor() {
         return unlockedArmor;
+    }
+
+    public TextureRegionDrawable regular() {
+        return regular;
+    }
+
+    public TextureRegionDrawable selected() {
+        return selected;
+    }
+
+    public boolean hasChangedWeaponOne() {
+        return hasChangedWeaponOne;
+    }
+
+    public void setHasChangedWeaponOne(boolean hasChangedWeaponOne) {
+        this.hasChangedWeaponOne = hasChangedWeaponOne;
+    }
+
+    public boolean hasChangedWeaponTwo() {
+        return hasChangedWeaponTwo;
+    }
+
+    public void setHasChangedWeaponTwo(boolean hasChangedWeaponTwo) {
+        this.hasChangedWeaponTwo = hasChangedWeaponTwo;
     }
 }

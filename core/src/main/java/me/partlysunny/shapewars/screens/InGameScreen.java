@@ -22,6 +22,7 @@ import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.player.PlayerKiller;
+import me.partlysunny.shapewars.player.equipment.PlayerEquipmentUi;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
@@ -78,6 +79,7 @@ public class InGameScreen extends ManagedScreen {
         Gdx.input.setInputProcessor(new InputMultiplexer(guiStage, stage));
         InGameScreen s = this;
         playerInfo.initGui();
+        new PlayerEquipmentUi(playerInfo.equipment(), guiStage);
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
