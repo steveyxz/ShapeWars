@@ -29,6 +29,7 @@ public class PlayerChangeArmorUi extends InventoryMenu {
     private final PlayerEquipment equipment;
     private final Stage stage;
     private int slotToChange = 0;
+    private int rememberedSize = 0;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
 
 
@@ -54,20 +55,23 @@ public class PlayerChangeArmorUi extends InventoryMenu {
             }
         });
 
-        InGameScreenGuiManager.registerGui("armorUI", table, e -> updateTable((Table) e));
+        InGameScreenGuiManager.registerGui("armorUI", table, e -> {
+            if (equipment.unlockedArmors().size() > rememberedSize) {
+                updateTable((Table) e);
+                rememberedSize = equipment.unlockedArmors().size();
+            }
+            ((Label) table.findActor("title")).setText("Change Armor " + (slotToChange + 1));
+            table.setVisible(shown);
+        });
     }
 
     private void updateTable(Table table) {
-        table.setVisible(shown);
-        if (!shown) {
-            return;
-        }
-
         table.clear();
 
         table.row().width(40).padBottom(4);
         Label actor = new Label("Change Armor " + (slotToChange + 1), labelStyle);
         actor.setAlignment(Alignment.CENTER.getAlignment());
+        actor.setName("title");
         table.add(actor);
 
         Table inventory = new Table();

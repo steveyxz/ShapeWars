@@ -29,6 +29,7 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
     private final Stage stage;
     private int slotToChange = 0;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
+    private int rememberedSize = 0;
 
 
     public PlayerChangeWeaponUi(PlayerEquipment equipment, Stage stage) {
@@ -42,7 +43,6 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
         table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
         table.setBackground(TextureRegionDrawableCache.get("equipmentSwapBackground"));
-        table.setDebug(true);
 
         stage.addListener(new InputListener() {
             @Override
@@ -53,21 +53,25 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
                 return false;
             }
         });
-
-        InGameScreenGuiManager.registerGui("weaponUI", table, e -> updateTable((Table) e));
+        InGameScreenGuiManager.registerGui("weaponUI", table, e -> {
+            if (equipment.unlockedWeapons().size() > rememberedSize) {
+                updateTable((Table) e);
+                rememberedSize = equipment.unlockedWeapons().size();
+            }
+            ((Label) table.findActor("title")).setText("Change Weapon " + (slotToChange + 1));
+            table.setVisible(shown);
+        });
     }
 
     private void updateTable(Table table) {
         table.setVisible(shown);
-        if (!shown) {
-            return;
-        }
 
         table.clear();
 
         table.row().width(40).padBottom(4);
         Label actor = new Label("Change Weapon " + (slotToChange + 1), labelStyle);
         actor.setAlignment(Alignment.CENTER.getAlignment());
+        actor.setName("title");
         table.add(actor);
 
         Table inventory = new Table();
