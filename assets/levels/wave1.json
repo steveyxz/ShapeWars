@@ -1,7 +1,7 @@
 {
   "levelWidth": 200,
   "levelHeight": 200,
-  "time": 120,
+  "time": 60,
   "stages": [
     {
       "basic": 3

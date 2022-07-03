@@ -2,7 +2,7 @@ package me.partlysunny.shapewars.world.systems.render;
 
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.TextureComponent;
+import me.partlysunny.shapewars.world.components.render.TextureComponent;
 
 import java.util.Comparator;
 

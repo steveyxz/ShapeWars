@@ -62,7 +62,7 @@ public class MainMenuScreen extends ManagedScreen {
                     game.getScreenManager().pushScreen("ingame", "blending");
                 }
                 SoundEffectManager.play("click", 1);
-                return true;
+                return false;
             }
         });
         Container<ImageTextButton> playButtonContainer = addProperties(playButton);
@@ -75,7 +75,7 @@ public class MainMenuScreen extends ManagedScreen {
                     Gdx.app.exit();
                 }
                 SoundEffectManager.play("click", 1);
-                return true;
+                return false;
             }
         });
         Container<ImageTextButton> quitButtonContainer = addProperties(quitButton);

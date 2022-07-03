@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components;
+package me.partlysunny.shapewars.world.components.player;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;

@@ -1,12 +1,19 @@
 
 flat-earth-ui.png
-size: 512,512
+size: 2048, 2048
 format: RGBA8888
-filter: Linear,Linear
+filter: Linear, Linear
 repeat: none
+Raleway-Medium
+  rotate: false
+  xy: 803, 1716
+  size: 506, 63
+  orig: 506, 63
+  offset: 0, 0
+  index: -1
 button
   rotate: false
-  xy: 91, 136
+  xy: 1311, 1724
   size: 56, 42
   split: 18, 18, 0, 0
   pad: 13, 14, 3, 2
@@ -15,14 +22,14 @@ button
   index: -1
 button-close
   rotate: false
-  xy: 222, 326
+  xy: 1369, 1742
   size: 24, 24
   orig: 24, 24
   offset: 0, 0
   index: -1
 button-pressed
   rotate: false
-  xy: 91, 92
+  xy: 181, 215
   size: 56, 42
   split: 18, 18, 0, 0
   pad: 13, 14, 3, 2
@@ -31,79 +38,121 @@ button-pressed
   index: -1
 checkbox
   rotate: false
-  xy: 183, 304
+  xy: 481, 821
   size: 29, 24
   orig: 29, 24
   offset: 0, 0
   index: -1
 checkbox-pressed
   rotate: false
-  xy: 183, 278
+  xy: 1, 1
   size: 29, 24
   orig: 29, 24
   offset: 0, 0
   index: -1
+checkbox_off
+  rotate: false
+  xy: 1, 517
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+checkbox_on
+  rotate: false
+  xy: 803, 1445
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+checkbox_over
+  rotate: false
+  xy: 1, 259
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
 earth
   rotate: false
-  xy: 1, 321
+  xy: 1, 93
   size: 178, 164
   orig: 178, 164
   offset: 0, 0
   index: -1
 font-button-export
   rotate: false
-  xy: 1, 180
+  xy: 259, 634
   size: 139, 139
   orig: 139, 139
   offset: 0, 0
   index: -1
 font-export
   rotate: false
-  xy: 1, 90
+  xy: 661, 887
   size: 88, 88
   orig: 88, 88
   offset: 0, 0
   index: -1
 font-title-export
   rotate: false
-  xy: 264, 262
+  xy: 803, 1194
   size: 247, 249
   orig: 247, 249
   offset: 0, 0
   index: -1
 list
   rotate: false
-  xy: 142, 280
+  xy: 259, 593
   size: 39, 39
   split: 1, 1, 1, 1
   pad: 2, 2, 2, 2
   orig: 39, 39
   offset: 0, 0
   index: -1
+mainMenuButton
+  rotate: false
+  xy: 1, 775
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+mainMenuButtonChecked
+  rotate: false
+  xy: 1, 1379
+  size: 800, 400
+  orig: 800, 400
+  offset: 0, 0
+  index: -1
+mainMenuButtonDown
+  rotate: false
+  xy: 1, 977
+  size: 800, 400
+  orig: 800, 400
+  offset: 0, 0
+  index: -1
 radio-pressed
   rotate: false
-  xy: 183, 252
+  xy: 67, 67
   size: 29, 24
   orig: 29, 24
   offset: 0, 0
   index: -1
 scrollbar
   rotate: false
-  xy: 161, 182
+  xy: 300, 622
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 scrollbar-android
   rotate: false
-  xy: 1, 1
+  xy: 1311, 1719
   size: 3, 3
   orig: 3, 3
   offset: 0, 0
   index: -1
 select-box
   rotate: false
-  xy: 181, 330
+  xy: 661, 865
   size: 39, 20
   split: 4, 15, 4, 4
   pad: 2, 16, 2, 2
@@ -112,7 +161,7 @@ select-box
   index: -1
 select-box-pressed
   rotate: false
-  xy: 142, 258
+  xy: 751, 955
   size: 39, 20
   split: 4, 15, 4, 4
   pad: 2, 16, 2, 2
@@ -121,21 +170,21 @@ select-box-pressed
   index: -1
 slider-fancy
   rotate: false
-  xy: 1, 500
+  xy: 803, 1703
   size: 261, 11
   orig: 261, 11
   offset: 0, 0
   index: -1
 slider-fancy-knob
   rotate: false
-  xy: 1, 487
+  xy: 1311, 1768
   size: 261, 11
   orig: 261, 11
   offset: 0, 0
   index: -1
 slider-horizontal
   rotate: false
-  xy: 142, 181
+  xy: 1066, 1703
   size: 17, 11
   split: 4, 4, 0, 0
   pad: 0, 0, 0, 0
@@ -144,14 +193,14 @@ slider-horizontal
   index: -1
 slider-knob
   rotate: false
-  xy: 214, 267
+  xy: 239, 239
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
   index: -1
 slider-vertical
   rotate: false
-  xy: 247, 399
+  xy: 1061, 1684
   size: 11, 17
   split: 0, 0, 4, 4
   pad: 0, 0, 0, 0
@@ -160,7 +209,7 @@ slider-vertical
   index: -1
 splitpane-horizontal
   rotate: false
-  xy: 85, 77
+  xy: 1052, 1432
   size: 4, 11
   split: 1, 1, 1, 1
   pad: 0, 0, 0, 0
@@ -169,7 +218,7 @@ splitpane-horizontal
   index: -1
 splitpane-vertical
   rotate: false
-  xy: 214, 261
+  xy: 1574, 1775
   size: 11, 4
   split: 1, 1, 1, 1
   pad: 0, 0, 0, 0
@@ -178,7 +227,7 @@ splitpane-vertical
   index: -1
 textfield
   rotate: false
-  xy: 142, 226
+  xy: 803, 1078
   size: 30, 30
   split: 4, 4, 4, 4
   pad: 4, 4, 1, 1
@@ -187,51 +236,58 @@ textfield
   index: -1
 tooltip
   rotate: false
-  xy: 181, 352
+  xy: 1, 27
   size: 64, 64
   split: 13, 13, 12, 12
   pad: 10, 10, 10, 10
   orig: 64, 64
   offset: 0, 0
   index: -1
+tooltipBackground
+  rotate: false
+  xy: 403, 847
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
 touchpad
   rotate: false
-  xy: 1, 6
+  xy: 803, 1110
   size: 82, 82
   orig: 82, 82
   offset: 0, 0
   index: -1
 touchpad-knob
   rotate: false
-  xy: 142, 194
+  xy: 887, 1162
   size: 30, 30
   orig: 30, 30
   offset: 0, 0
   index: -1
 tree-minus
   rotate: false
-  xy: 214, 307
+  xy: 181, 196
   size: 22, 17
   orig: 22, 17
   offset: 0, 0
   index: -1
 tree-plus
   rotate: false
-  xy: 214, 287
+  xy: 259, 573
   size: 21, 18
   orig: 21, 18
   offset: 0, 0
   index: -1
 white
   rotate: false
-  xy: 91, 89
+  xy: 400, 772
   size: 1, 1
   orig: 1, 1
   offset: 0, 0
   index: -1
 window
   rotate: false
-  xy: 181, 418
+  xy: 403, 778
   size: 76, 67
   split: 2, 2, 32, 2
   pad: 2, 2, 34, 2

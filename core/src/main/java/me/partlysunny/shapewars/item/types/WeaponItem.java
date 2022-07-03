@@ -12,4 +12,8 @@ public interface WeaponItem extends Item, HasUses {
 
     void attack(Entity attacker);
 
+    default String getDescription() {
+        return name() + "\n" + description() + "\nDamage: " + damage() + "\nAttack Delay: " + attackDelay();
+    }
+
 }

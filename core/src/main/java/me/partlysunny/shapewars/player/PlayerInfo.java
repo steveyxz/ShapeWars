@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.player;
+package me.partlysunny.shapewars.player;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
@@ -7,14 +7,13 @@ import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
-import me.partlysunny.shapewars.item.equipment.PlayerEquipment;
-import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerKeyMap;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 public class PlayerInfo {
@@ -23,18 +22,23 @@ public class PlayerInfo {
     private final ShapeWars game;
     private float health = GameInfo.PLAYER_MAX_HEALTH;
     private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
-    private PlayerEquipment equipment = new PlayerEquipment();
+    private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
+    private boolean hasInitGui = false;
 
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
         this.game = game;
-        initGui();
+        this.equipment = new PlayerEquipment();
     }
 
-    private void initGui() {
+    public void initGui() {
+        if (hasInitGui) {
+            return;
+        }
         Util.loadVisUI();
+        equipment.initGui();
         ProgressBar bar = new ProgressBar(0, maxHealth, 1, false, VisUI.getSkin());
         bar.updateVisualValue();
         Container<ProgressBar> container = new Container<>(bar);
@@ -48,6 +52,7 @@ public class PlayerInfo {
             theBar.setValue(health);
             theBar.updateVisualValue();
         });
+        hasInitGui = true;
     }
 
     public float health() {
@@ -103,14 +108,11 @@ public class PlayerInfo {
         if (this.health > maxHealth) {
             this.health = maxHealth;
         }
-        RigidBodyComponent playerBody = Mappers.bodyMapper.get(playerEntity);
-        ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().x), (int) TextureRenderingSystem.metersToPixels(playerBody.rigidBody().getPosition().y), 100);
+        TransformComponent playerBody = Mappers.transformMapper.get(playerEntity);
+        ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.position.x), (int) TextureRenderingSystem.metersToPixels(playerBody.position.y), 100);
         VisualEffectManager.getEffect("damage").playEffect(playerEntity);
-        if (this.health < 0) {
-            InGameScreen.levelManager.lossReset();
-            this.health = maxHealth;
-            playerEntity.getComponent(RigidBodyComponent.class).rigidBody().setTransform(0, 0, 0);
-            game.getScreenManager().pushScreen("death", null);
+        if (this.health <= 0) {
+            PlayerKiller.kill();
         }
     }
 }

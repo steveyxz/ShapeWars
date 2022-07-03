@@ -17,6 +17,7 @@ import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemySpawnIndicatorComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
@@ -164,24 +165,33 @@ public class LevelManager {
     }
 
     private void checkLevelUp() {
+        //If no enemies
         if (enemiesRemaining() == 0) {
+            //And is not killing off enemies / in spawn stage / counting down
             if (!isLosing && !isSpawning && !isCounting) {
+                //If not at really beginning and not at the final stage
                 if (currentLevel != 0 && currentStage < getCurrentLevel().stages().size() - 1) {
+                    //Increment stage
                     currentStage++;
                     killAllIndicators();
                     regeneratePositions();
                     insertIndicators();
                     startStageSpawn();
                 } else {
+                    //Increment level
                     currentLevel++;
-                    Level newLevel = getCurrentLevel();
-                    WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
-                    waveSpawnCountdown = 3;
-                    isCounting = true;
-                    timeRemaining = newLevel.time();
+                    loadCurrentLevel();
                 }
             }
         }
+    }
+
+    private void loadCurrentLevel() {
+        Level newLevel = getCurrentLevel();
+        WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
+        waveSpawnCountdown = 3;
+        isCounting = true;
+        timeRemaining = newLevel.time();
     }
 
     private void insertIndicators() {
@@ -249,8 +259,10 @@ public class LevelManager {
                 timeRemaining -= delta;
                 if (timeRemaining < 0) {
                     lossReset();
+                    InGameScreen.playerInfo.playerEntity().getComponent(RigidBodyComponent.class).rigidBody().setTransform(0, 0, 0);
                 }
             }
+            checkLevelUp();
         }
     }
 
@@ -262,7 +274,7 @@ public class LevelManager {
         }
         currentStage = 0;
         isLosing = false;
-        checkLevelUp();
+        loadCurrentLevel();
     }
 
 }

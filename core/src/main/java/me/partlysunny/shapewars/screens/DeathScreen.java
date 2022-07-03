@@ -18,6 +18,7 @@ import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.Util;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 

@@ -9,4 +9,7 @@ public interface ArmorItem extends Item {
 
     void onHit(Entity attacker);
 
+    default String getDescription() {
+        return name() + "\n" + description() + "\nProtection: " + getProtection();
+    }
 }

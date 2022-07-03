@@ -36,6 +36,7 @@ public class TextureManager {
         doPngTexture("mainMenuButton");
         doPngTexture("mainMenuButtonDown");
         doPngTexture("mainMenuButtonChecked");
+        doPngTexture("tooltipBackground");
         //Weapons
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");

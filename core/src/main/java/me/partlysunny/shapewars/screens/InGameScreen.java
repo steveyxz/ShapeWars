@@ -2,10 +2,12 @@ package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.ai.GdxAI;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -17,14 +19,14 @@ import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.items.ItemManager;
-import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
+import me.partlysunny.shapewars.player.PlayerKiller;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
-import me.partlysunny.shapewars.world.components.player.PlayerInfo;
+import me.partlysunny.shapewars.player.PlayerInfo;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
@@ -64,18 +66,18 @@ public class InGameScreen extends ManagedScreen {
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
-        playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
-        playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
+        //playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
+        //playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
     }
 
     @Override
     protected void create() {
-        viewport.apply();
     }
 
     public void show() {
-        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setInputProcessor(new InputMultiplexer(guiStage, stage));
         InGameScreen s = this;
+        playerInfo.initGui();
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
@@ -90,14 +92,13 @@ public class InGameScreen extends ManagedScreen {
                         playerInfo.equipment().setActiveWeaponSlot(1);
                     }
                 }
-                return true;
+                return false;
             }
         });
     }
 
     @Override
     public void hide() {
-
     }
 
     public void render(float delta) {
@@ -116,6 +117,7 @@ public class InGameScreen extends ManagedScreen {
         VisualEffectManager.update(delta);
         stage.act(Gdx.graphics.getDeltaTime());
         LateRemover.process();
+        PlayerKiller.update(game);
         //Rendering
         game.batch().enableBlending();
         game.batch().setProjectionMatrix(camera.combined);
@@ -124,10 +126,10 @@ public class InGameScreen extends ManagedScreen {
         //Draw UI
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiViewport.apply();
+        guiStage.act(delta);
         guiStage.draw();
         ParticleEffectManager.render(game.batch(), delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
-        //Process deletion
     }
 
     private void doPhysicsStep(float deltaTime) {

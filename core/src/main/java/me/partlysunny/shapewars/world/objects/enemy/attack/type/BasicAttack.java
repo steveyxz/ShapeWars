@@ -28,7 +28,7 @@ public class BasicAttack extends EnemyAttack {
     }
 
     protected int getDamage() {
-        return 2;
+        return 4;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class BasicAttack extends EnemyAttack {
 
     @Override
     public float cooldown() {
-        return 2f;
+        return 0.01f;
     }
 }
