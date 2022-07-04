@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
+import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
@@ -14,6 +15,7 @@ import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.ScreenGuiManager;
+import me.partlysunny.shapewars.ui.ResizeableProgressBar;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
@@ -47,11 +49,8 @@ public class PlayerEquipment {
     public void initGui() {
         Util.loadVisUI();
         //Weapons
+
         Container<Image> weapon1 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
-        Container<Image> weapon2 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
-        Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
-        Label weapons = new Label("Weapons", labelStyle);
-        Container<Label> weaponsLabel = new Container<>(weapons);
         weapon1.setTransform(true);
         weapon1.setSize(8, 8);
         weapon1.setPosition(2, 2);
@@ -65,6 +64,11 @@ public class PlayerEquipment {
             }
         });
 
+        Container<AmmoBar> weapon1AmmoBar = new Container<>(new AmmoBar(0));
+        weapon1AmmoBar.getActor().setSize(1, 8);
+        weapon1AmmoBar.setPosition(weapon1.getX() + weapon1.getWidth() + weapon1AmmoBar.getActor().getWidth() / 2f, weapon1.getY() + weapon1AmmoBar.getActor().getHeight() / 2f);
+
+        Container<Image> weapon2 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
         weapon2.setTransform(true);
         weapon2.setSize(8, 8);
         weapon2.setPosition(4 + weapon1.getWidth(), 2);
@@ -78,6 +82,13 @@ public class PlayerEquipment {
             }
         });
 
+        Container<AmmoBar> weapon2AmmoBar = new Container<>(new AmmoBar(1));
+        weapon2AmmoBar.getActor().setSize(1, 8);
+        weapon2AmmoBar.setPosition(weapon2.getX() + weapon2.getWidth() + weapon2AmmoBar.getActor().getWidth() / 2f, weapon2.getY() + weapon2AmmoBar.getActor().getHeight() / 2f);
+
+        Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
+        Label weapons = new Label("Weapons", labelStyle);
+        Container<Label> weaponsLabel = new Container<>(weapons);
         weaponsLabel.setTransform(true);
         weaponsLabel.setPosition(weapon1.getWidth() + 2, 12);
 
@@ -112,10 +123,16 @@ public class PlayerEquipment {
             i.setBackground(activeWeaponSlot == 0 ? selected : regular);
         });
 
+        InGameScreen.guiManager.registerGui("weapon1ammo", weapon1AmmoBar, e -> {
+        });
+
         InGameScreen.guiManager.registerGui("weapon2", weapon2, e -> {
             Container<Image> i = (Container<Image>) e;
             i.getActor().setDrawable(TextureRegionDrawableCache.get(weaponTwo == null ? "noWeapon" : weaponTwo.texture()));
             i.setBackground(activeWeaponSlot == 1 ? selected : regular);
+        });
+
+        InGameScreen.guiManager.registerGui("weapon2ammo", weapon2AmmoBar, e -> {
         });
 
         InGameScreen.guiManager.registerGui("weaponsLabel", weaponsLabel, e -> {

@@ -16,7 +16,7 @@ public class AmmoManager {
         for (String item : ItemManager.items()) {
             Item weapon = ItemManager.getItem(item);
             if (weapon instanceof WeaponItem) {
-                if (((WeaponItem) weapon).usesRegenRate() != -1) {
+                if (((WeaponItem) weapon).maxUses() != -1) {
                     ammoMap.put(item, ((WeaponItem) weapon).maxUses());
                     counter.put(item, ((WeaponItem) weapon).attackDelay());
                 }
@@ -40,14 +40,19 @@ public class AmmoManager {
 
     public boolean canUse(String weapon) {
         WeaponItem w = (WeaponItem) ItemManager.getItem(weapon);
-        if (w.usesRegenRate() == -1) {
+        if (w.maxUses() == -1) {
             return true;
         }
         return ammoMap.get(weapon) > 0;
     }
 
     public void useAmmo(String weapon) {
-        ammoMap.put(weapon, ammoMap.get(weapon) - 1);
+        if (ammoMap.containsKey(weapon)) {
+            ammoMap.put(weapon, ammoMap.get(weapon) - 1);
+        }
     }
 
+    public int ammoRemaining(String texture) {
+        return ammoMap.get(texture);
+    }
 }

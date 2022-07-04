@@ -35,7 +35,7 @@ public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
         batch = new SpriteBatch();
         Screens.init(this);
         Transitions.init(this);
-        screenManager.pushScreen("intro", "blending");
+        screenManager.pushScreen("ingame", "blending");
     }
 
     @Override

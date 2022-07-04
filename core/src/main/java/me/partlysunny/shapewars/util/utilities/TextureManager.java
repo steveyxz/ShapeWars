@@ -40,6 +40,8 @@ public class TextureManager {
         doPngTexture("equipmentSwapBackground");
         doPngTexture("settings");
         doPngTexture("settingsDown");
+        doPngTexture("progressBar");
+        doPngTexture("progressBarKnob");
         //Weapons
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");

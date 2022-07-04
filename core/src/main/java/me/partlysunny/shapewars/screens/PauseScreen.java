@@ -33,7 +33,7 @@ public class PauseScreen extends BasicGuiScreen {
         Util.loadVisUI();
 
         VisTable table = new VisTable();
-        table.setFillParent(true);
+        table.setPosition(camera.viewportWidth / 2f, camera.viewportHeight / 2f);
         stage.addActor(table);
 
         Label text = new Label("Paused", new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 1.5f), Color.BLACK));

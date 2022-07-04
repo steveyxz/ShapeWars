@@ -14,7 +14,7 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 1;
+        return 1.4f;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public float attackDelay() {
-        return 0.8f;
+        return 0.6f;
     }
 
     @Override
