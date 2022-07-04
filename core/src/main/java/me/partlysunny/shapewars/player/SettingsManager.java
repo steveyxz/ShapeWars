@@ -63,11 +63,8 @@ public class SettingsManager {
     public void save() {
         Preferences settings = Gdx.app.getPreferences("userSettings");
         settings.putBoolean("music", music);
-        settings.flush();
         settings.putFloat("musicVolume", musicVolume);
-        settings.flush();
         settings.putBoolean("sound", sound);
-        settings.flush();
         settings.putFloat("soundVolume", soundVolume);
         settings.flush();
     }
