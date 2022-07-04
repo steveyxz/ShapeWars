@@ -12,6 +12,7 @@ import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 import me.partlysunny.shapewars.world.objects.enemy.attack.MeleeHandle;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyAiSystem;
@@ -54,6 +55,7 @@ public class GameWorld {
         gameWorld.addSystem(new PlayerItemSystem());
         gameWorld.addSystem(new PlayerFaceMouseSystem());
         gameWorld.addSystem(new PlayerAttackingSystem());
+        gameWorld.addSystem(new PlayerMeleeAttackSystem());
         //Rendering systems
         gameWorld.addSystem(new AnimationSystem());
         gameWorld.addSystem(new TextureRenderingSystem(stage.getBatch()));

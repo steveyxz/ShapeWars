@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisTable;
 import me.partlysunny.shapewars.ShapeWars;
+import me.partlysunny.shapewars.effects.sound.MusicManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.Util;
 
@@ -82,4 +83,9 @@ public class SettingsScreen extends BasicGuiScreen {
         });
     }
 
+    @Override
+    public void show() {
+        super.show();
+        MusicManager.stop(2);
+    }
 }

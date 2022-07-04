@@ -2,9 +2,13 @@ package me.partlysunny.shapewars.item.items.weapons;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.math.MathUtils;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
+import me.partlysunny.shapewars.util.factories.PlayerMeleeAttackFactory;
 
 public class WoodenStick implements WeaponItem {
     @Override
@@ -61,6 +65,7 @@ public class WoodenStick implements WeaponItem {
 
     @Override
     public void attack(Entity attacker) {
-
+        float rotation = Mappers.transformMapper.get(attacker).rotation * MathUtils.radiansToDegrees;
+        InGameScreen.world.gameWorld().addEntity(PlayerMeleeAttackFactory.getInstance().generateMeleeAttack(rotation, 120, 4));
     }
 }

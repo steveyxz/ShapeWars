@@ -5,6 +5,7 @@ import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
@@ -44,4 +45,5 @@ public final class Mappers {
     public static final ComponentMapper<ItemComponent> itemMapper = ComponentMapper.getFor(ItemComponent.class);
     public static final ComponentMapper<EnemyStateComponent> enemyStateMapper = ComponentMapper.getFor(EnemyStateComponent.class);
     public static final ComponentMapper<EnemyMeleeDamageComponent> enemyMeleeDamageMapper = ComponentMapper.getFor(EnemyMeleeDamageComponent.class);
+    public static final ComponentMapper<PlayerMeleeAttackComponent> playerMeleeAttackMapper = ComponentMapper.getFor(PlayerMeleeAttackComponent.class);
 }

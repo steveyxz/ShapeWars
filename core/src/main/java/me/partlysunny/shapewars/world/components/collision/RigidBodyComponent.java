@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.world.components.collision;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.ai.steer.SteerableAdapter;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -27,6 +28,7 @@ public class RigidBodyComponent implements Component, Pool.Poolable {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = type;
         bodyDef.position.set(x, y);
+        bodyDef.angle = rotation;
         rigidBody = InGameScreen.world.physicsWorld().createBody(bodyDef);
         rigidBody.setFixedRotation(rotationFixed);
 

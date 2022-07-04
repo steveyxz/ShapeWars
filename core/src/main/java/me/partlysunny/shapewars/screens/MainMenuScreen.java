@@ -58,7 +58,6 @@ public class MainMenuScreen extends BasicGuiScreen {
 
     @Override
     public void hide() {
-        MusicManager.stop(2);
     }
 
     @Override

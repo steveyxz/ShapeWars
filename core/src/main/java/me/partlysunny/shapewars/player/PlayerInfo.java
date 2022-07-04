@@ -11,6 +11,7 @@ import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.screens.ScreenGuiManager;
+import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
@@ -34,6 +35,7 @@ public class PlayerInfo {
         this.game = game;
         this.equipment = new PlayerEquipment();
         this.ammoManager = new AmmoManager();
+        ContactDispatcher.registerListener(new PlayerMeleeHandle());
     }
 
     public void initGui() {

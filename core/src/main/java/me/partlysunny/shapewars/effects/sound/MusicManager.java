@@ -13,6 +13,10 @@ public class MusicManager {
 
     private static final Map<String, Music> tracks = new HashMap<>();
     private static String currentlyPlaying = "";
+    private static String nextTrack = "";
+    private static float nextVolume = 0;
+    private static boolean nextLooping = true;
+    private static boolean stopping = false;
 
     public static void registerTrack(String id, Music track) {
         tracks.put(id, track);
@@ -36,13 +40,19 @@ public class MusicManager {
 
     public static void play(String track, boolean loop, float volume) {
         if (ShapeWars.settings.music()) {
-            if (!currentlyPlaying.equals("")) {
-                getTrack(currentlyPlaying).stop();
+            if (stopping) {
+                nextVolume = volume * ShapeWars.settings.musicVolume();
+                nextTrack = track;
+                nextLooping = loop;
+            } else {
+                if (!currentlyPlaying.equals("")) {
+                    getTrack(currentlyPlaying).stop();
+                }
+                getTrack(track).setVolume(volume * ShapeWars.settings.musicVolume());
+                getTrack(track).setLooping(loop);
+                getTrack(track).play();
+                currentlyPlaying = track;
             }
-            getTrack(track).setVolume(volume * ShapeWars.settings.musicVolume());
-            getTrack(track).setLooping(loop);
-            getTrack(track).play();
-            currentlyPlaying = track;
         }
     }
 
@@ -54,12 +64,20 @@ public class MusicManager {
 
     public static void stop(float fadeOutIn) {
         if (!currentlyPlaying.equals("")) {
+            stopping = true;
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
                     float newVolume = getTrack(currentlyPlaying).getVolume() - (1 / 20f);
                     if (newVolume < 0) {
                         getTrack(currentlyPlaying).stop();
+                        stopping = false;
+                        if (!nextTrack.equals("")) {
+                            play(nextTrack, nextLooping, nextVolume);
+                            nextTrack = "";
+                            nextLooping = true;
+                            nextVolume = 0;
+                        }
                         cancel();
                         return;
                     }
