@@ -52,18 +52,22 @@ public class SettingsManager {
         Preferences settings = Gdx.app.getPreferences("userSettings");
         if (!settings.contains("music")) {
             save();
+            return;
         }
-        setMusic(settings.getBoolean("music"));
-        setMusicVolume(settings.getFloat("musicVolume"));
-        setSound(settings.getBoolean("sound"));
-        setSoundVolume(settings.getFloat("soundVolume"));
+        music = (settings.getBoolean("music"));
+        musicVolume = (settings.getFloat("musicVolume"));
+        sound = (settings.getBoolean("sound"));
+        soundVolume = (settings.getFloat("soundVolume"));
     }
 
     public void save() {
         Preferences settings = Gdx.app.getPreferences("userSettings");
         settings.putBoolean("music", music);
+        settings.flush();
         settings.putFloat("musicVolume", musicVolume);
+        settings.flush();
         settings.putBoolean("sound", sound);
+        settings.flush();
         settings.putFloat("soundVolume", soundVolume);
         settings.flush();
     }
