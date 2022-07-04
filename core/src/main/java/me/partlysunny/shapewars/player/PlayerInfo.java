@@ -1,6 +1,7 @@
 package me.partlysunny.shapewars.player;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.kotcrab.vis.ui.VisUI;
@@ -43,6 +44,8 @@ public class PlayerInfo {
         equipment.initGui();
         ProgressBar bar = new ProgressBar(0, maxHealth, 1, false, VisUI.getSkin());
         bar.updateVisualValue();
+        bar.setAnimateDuration(0.5f);
+        bar.setAnimateInterpolation(Interpolation.linear);
         Container<ProgressBar> container = new Container<>(bar);
         container.setTransform(true);
         container.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 8 / 12f, TextureRenderingSystem.FRUSTUM_HEIGHT - 10);
@@ -52,7 +55,6 @@ public class PlayerInfo {
             ProgressBar theBar = ((Container<ProgressBar>) actor).getActor();
             theBar.setRange(0, maxHealth);
             theBar.setValue(health);
-            theBar.updateVisualValue();
         });
         hasInitGui = true;
     }

@@ -1,6 +1,7 @@
 package me.partlysunny.shapewars.world.objects.enemy.attack;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
@@ -19,6 +20,9 @@ import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicEnemyMeleeCollision;
 
 public class MeleeHandle implements ContactListener {
+
+    private final Vector3 f = new Vector3();
+
     @Override
     public void beginContact(Contact contact) {
         Pair<Entity, Entity> result = handleBasicEnemyMeleeCollision(contact);
@@ -31,7 +35,11 @@ public class MeleeHandle implements ContactListener {
                 if (enemyState.state() == EnemyState.ATTACKING) {
                     EnemyMeleeDamageComponent enemyDamage = Mappers.enemyMeleeDamageMapper.get(enemy);
                     InGameScreen.playerInfo.damage(enemyDamage.damage());
-                    enemyState.setState(EnemyState.PURSUING, 0.1f);
+                    enemyState.setState(EnemyState.PURSUING);
+                    f.set(Mappers.transformMapper.get(player).position);
+                    f.sub(Mappers.transformMapper.get(enemy).position);
+                    f.scl(-10);
+                    Mappers.bodyMapper.get(enemy).rigidBody().applyForceToCenter(f.x, f.y, true);
                 }
             }
         }
