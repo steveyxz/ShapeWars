@@ -41,12 +41,12 @@ public class WoodenStick implements WeaponItem {
 
     @Override
     public float renderSizeX() {
-        return 1;
+        return 5;
     }
 
     @Override
     public float renderSizeY() {
-        return 6;
+        return 10;
     }
 
     @Override

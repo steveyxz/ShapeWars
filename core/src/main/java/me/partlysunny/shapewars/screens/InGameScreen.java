@@ -75,6 +75,7 @@ public class InGameScreen extends ManagedScreen {
         playerInfo.equipment().unlockArmor("oldTunic");
         playerInfo.equipment().unlockWeapon("circleBlaster");
         playerInfo.equipment().unlockWeapon("circlePummeler");
+        playerInfo.equipment().unlockWeapon("woodenStick");
         InventoryMenuManager.init(stage);
     }
 

@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.Tooltip;
@@ -53,6 +54,7 @@ public class PlayerEquipment {
         Container<Image> weapon1 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
         weapon1.setTransform(true);
         weapon1.setSize(8, 8);
+        weapon1.getActor().setScaling(Scaling.fit);
         weapon1.setPosition(2, 2);
         weapon1.setBackground(regular, true);
         weapon1.addListener(new InputListener() {
@@ -71,6 +73,7 @@ public class PlayerEquipment {
         Container<Image> weapon2 = new Container<>(new Image(TextureRegionDrawableCache.get("noWeapon")));
         weapon2.setTransform(true);
         weapon2.setSize(8, 8);
+        weapon2.getActor().setScaling(Scaling.fit);
         weapon2.setPosition(4 + weapon1.getWidth(), 2);
         weapon2.setBackground(regular, true);
         weapon2.addListener(new InputListener() {
@@ -147,6 +150,7 @@ public class PlayerEquipment {
         armor2.setTransform(true);
         armor2.setSize(8, 8);
         armor2.setPosition(2, 15);
+        armor2.getActor().setScaling(Scaling.fit);
         armor2.setBackground(regular, true);
         armor2.addListener(new InputListener() {
             @Override
@@ -160,6 +164,7 @@ public class PlayerEquipment {
         armor1.setTransform(true);
         armor1.setSize(8, 8);
         armor1.setPosition(2, 16 + armor2.getHeight());
+        armor1.getActor().setScaling(Scaling.fit);
         armor1.setBackground(regular, true);
         armor1.addListener(new InputListener() {
             @Override

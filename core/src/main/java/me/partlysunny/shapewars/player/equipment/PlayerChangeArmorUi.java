@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Scaling;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
@@ -92,6 +93,7 @@ public class PlayerChangeArmorUi extends InventoryMenu {
                 String armor = unlockedArmors.get(index);
                 ArmorItem item = (ArmorItem) ItemManager.getItem(armor);
                 Container<Image> armorContainer = new Container<>(new Image(TextureManager.getTexture(item.texture())));
+                armorContainer.getActor().setScaling(Scaling.fit);
                 armorContainer.setBackground(equipment.regular(), true);
                 armorContainer.addListener(new InputListener() {
                     @Override

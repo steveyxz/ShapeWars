@@ -4,6 +4,7 @@ import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.items.armor.OldTunic;
 import me.partlysunny.shapewars.item.items.weapons.CircleBlaster;
 import me.partlysunny.shapewars.item.items.weapons.CirclePummeler;
+import me.partlysunny.shapewars.item.items.weapons.WoodenStick;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,6 +33,7 @@ public final class ItemManager {
         //Weapons
         registerItem("circleBlaster", new CircleBlaster());
         registerItem("circlePummeler", new CirclePummeler());
+        registerItem("woodenStick", new WoodenStick());
         //Armor
         registerItem("oldTunic", new OldTunic());
     }

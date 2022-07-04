@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.Scaling;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
@@ -94,6 +95,7 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
                 WeaponItem item = (WeaponItem) ItemManager.getItem(weapon);
                 Container<Image> weaponContainer = new Container<>(new Image(TextureManager.getTexture(item.texture())));
                 weaponContainer.setBackground(equipment.regular(), true);
+                weaponContainer.getActor().setScaling(Scaling.fit);
                 weaponContainer.addListener(new InputListener() {
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
