@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.effects.visual;
 
 import me.partlysunny.shapewars.effects.visual.type.BulletFadeEffect;
 import me.partlysunny.shapewars.effects.visual.type.DamageEffect;
+import me.partlysunny.shapewars.effects.visual.type.PlayerSwingEffect;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class VisualEffectManager {
     public static void init() {
         registerEffect("damage", new DamageEffect());
         registerEffect("bulletFade", new BulletFadeEffect());
+        registerEffect("playerSwing", new PlayerSwingEffect());
     }
 
     public static void update(float delta) {

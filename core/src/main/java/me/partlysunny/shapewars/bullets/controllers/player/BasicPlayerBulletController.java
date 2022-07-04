@@ -15,6 +15,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
@@ -42,7 +43,8 @@ public class BasicPlayerBulletController implements BulletController {
     public void beginContact(Contact contact) {
         Pair<Entity, Entity> result = handleBasicPlayerBulletCollision(contact);
         if (result != null) {
-            Util.playDamage(result);
+            Util.playDamage(result.b(), (int) Mappers.bulletMapper.get(result.a()).damage());
+            LateRemover.tagToRemove(result.a());
         }
     }
 

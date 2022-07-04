@@ -18,13 +18,13 @@ public final class PlayerMeleeAttackFactory {
 
     private static final PlayerMeleeAttackFactory INSTANCE = new PlayerMeleeAttackFactory();
     //Lower resolution = better shape
-    private static final int resolution = 5;
+    private static final int resolution = 2;
 
     public static PlayerMeleeAttackFactory getInstance() {
         return INSTANCE;
     }
 
-    public Entity generateMeleeAttack(float rotation, float coverAngle, float radius) {
+    public Entity generateMeleeAttack(float rotation, float coverAngle, float radius, int damage) {
 
         PooledEngine engine = InGameScreen.world.gameWorld();
         Entity playerEntity = InGameScreen.playerInfo.playerEntity();
@@ -37,7 +37,7 @@ public final class PlayerMeleeAttackFactory {
         int pointCount = (int) (coverAngle / resolution);
         float[] vertices = new float[pointCount * 2];
         for (int i = 0; i < pointCount; i++) {
-            float angle = i * resolution;
+            float angle = i * resolution - (coverAngle / 2f);
             float x = MathUtils.cos(angle * MathUtils.degreesToRadians) * radius;
             float y = MathUtils.sin(angle * MathUtils.degreesToRadians) * radius;
             vertices[i * 2] = x;
@@ -51,7 +51,7 @@ public final class PlayerMeleeAttackFactory {
         attack.add(collision);
 
         PlayerMeleeAttackComponent meleeAttack = engine.createComponent(PlayerMeleeAttackComponent.class);
-        meleeAttack.init(0.2f, attack, rotation, 12);
+        meleeAttack.init(0.2f, attack, rotation, 12, damage);
         attack.add(meleeAttack);
 
         return attack;

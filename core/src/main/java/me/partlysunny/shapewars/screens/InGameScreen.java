@@ -139,7 +139,7 @@ public class InGameScreen extends ManagedScreen {
         guiStage.act(delta);
         guiStage.draw();
         ParticleEffectManager.render(game.batch(), delta);
-        debugRenderer.render(world().physicsWorld(), camera.combined);
+        //debugRenderer.render(world().physicsWorld(), camera.combined);
     }
 
     private void doPhysicsStep(float deltaTime) {

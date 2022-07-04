@@ -142,6 +142,36 @@ public class Util {
     }
 
     @Nullable
+    public static Pair<Entity, Entity> handleBasicPlayerMeleeCollision(Contact contact) {
+        GameWorld world = InGameScreen.world;
+        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
+        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
+        if (a == null || b == null) {
+            return null;
+        }
+        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
+            return null;
+        }
+        Entity playerAttack = null;
+        Entity enemy = null;
+        if (Mappers.enemyStateMapper.has(a)) {
+            enemy = a;
+            playerAttack = b;
+        }
+        if (Mappers.enemyStateMapper.has(b)) {
+            if (playerAttack != null) {
+                return null;
+            }
+            enemy = b;
+            playerAttack = a;
+        }
+        if (enemy == null || !Mappers.playerMeleeAttackMapper.has(playerAttack)) {
+            return null;
+        }
+        return new Pair<>(playerAttack, enemy);
+    }
+
+    @Nullable
     public static Pair<Entity, Entity> handleBasicEnemyMeleeCollision(Contact contact) {
         GameWorld world = InGameScreen.world;
         Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
@@ -171,13 +201,10 @@ public class Util {
         return new Pair<>(enemy, player);
     }
 
-    public static void playDamage(Pair<Entity, Entity> result) {
-        Entity bullet = result.a();
-        Entity victim = result.b();
+    public static void playDamage(Entity victim, int damage) {
         HealthComponent health = Mappers.healthMapper.get(victim);
-        health.addHealth(-Mappers.bulletMapper.get(bullet).damage());
+        health.addHealth(-damage);
         VisualEffectManager.getEffect("damage").playEffect(victim);
-        LateRemover.tagToRemove(bullet);
         if (Mappers.deathEffectMapper.has(victim) && health.health() <= 0) {
             DeathEffectComponent deathEffect = Mappers.deathEffectMapper.get(victim);
             deathEffect.die();

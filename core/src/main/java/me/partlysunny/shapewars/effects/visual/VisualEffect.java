@@ -11,7 +11,7 @@ import java.util.Map;
 
 public abstract class VisualEffect {
 
-    private final Map<Entity, Float> effectCountdown = new HashMap<>();
+    protected final Map<Entity, Float> effectCountdown = new HashMap<>();
 
     protected abstract float getDuration();
 

@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars.player.equipment;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -41,6 +42,7 @@ public class PlayerEquipment {
     private List<String> unlockedWeapons = new ArrayList<>();
     private List<String> unlockedArmor = new ArrayList<>();
     private int activeWeaponSlot = 0;
+    private Entity shownWeapon = null;
 
     public PlayerEquipment() {
         regular = TextureRegionDrawableCache.get( "slotBackground");
@@ -304,7 +306,9 @@ public class PlayerEquipment {
         if (item == null) {
             return;
         }
-        world.gameWorld().addEntity(item.buildEntity(world.gameWorld()));
+        Entity entity = item.buildEntity(world.gameWorld());
+        shownWeapon = entity;
+        world.gameWorld().addEntity(entity);
     }
 
     public void tryAttack() {
@@ -313,6 +317,10 @@ public class PlayerEquipment {
             return;
         }
         item.attack(InGameScreen.playerInfo.playerEntity());
+    }
+
+    public Entity shownWeapon() {
+        return shownWeapon;
     }
 
     public List<String> unlockedWeapons() {

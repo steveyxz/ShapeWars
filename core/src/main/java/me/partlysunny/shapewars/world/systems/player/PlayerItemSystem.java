@@ -20,6 +20,9 @@ public class PlayerItemSystem extends IteratingSystem {
         TransformComponent transform = Mappers.transformMapper.get(entity);
         Entity player = item.player();
         TransformComponent playerTransform = Mappers.transformMapper.get(player);
+        if (Mappers.weaponMapper.has(entity) && Mappers.weaponMapper.get(entity).isSwinging()) {
+            return;
+        }
         transform.position.set(playerTransform.position);
         float rotation = playerTransform.rotation;
         float x = (float) (3.5 * Math.cos(rotation));

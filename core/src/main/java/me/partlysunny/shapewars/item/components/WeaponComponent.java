@@ -10,11 +10,11 @@ public class WeaponComponent implements Component, Pool.Poolable {
 
     private float attackCooldown = 0;
     private WeaponItem weaponItem = null;
+    private boolean isSwinging = false;
 
     public void init(WeaponItem weaponItem) {
         this.weaponItem = weaponItem;
         this.attackCooldown = weaponItem.attackDelay();
-
     }
 
     public void update(float delta) {
@@ -41,9 +41,18 @@ public class WeaponComponent implements Component, Pool.Poolable {
         attackCooldown = weaponItem.attackDelay();
     }
 
+    public boolean isSwinging() {
+        return isSwinging;
+    }
+
+    public void setSwinging(boolean swinging) {
+        isSwinging = swinging;
+    }
+
     @Override
     public void reset() {
         weaponItem = null;
         attackCooldown = 0;
+        isSwinging = false;
     }
 }

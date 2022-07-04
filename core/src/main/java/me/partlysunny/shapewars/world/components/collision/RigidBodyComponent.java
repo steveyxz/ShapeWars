@@ -28,7 +28,7 @@ public class RigidBodyComponent implements Component, Pool.Poolable {
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = type;
         bodyDef.position.set(x, y);
-        bodyDef.angle = rotation;
+        bodyDef.angle = rotation * MathUtils.degreesToRadians;
         rigidBody = InGameScreen.world.physicsWorld().createBody(bodyDef);
         rigidBody.setFixedRotation(rotationFixed);
 
