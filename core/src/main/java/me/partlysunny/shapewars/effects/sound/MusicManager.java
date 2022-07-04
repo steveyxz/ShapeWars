@@ -76,5 +76,6 @@ public class MusicManager {
 
     static {
         loadMp3Regular("shapeWarsTheme");
+        loadMp3Regular("squaresAndCircles");
     }
 }

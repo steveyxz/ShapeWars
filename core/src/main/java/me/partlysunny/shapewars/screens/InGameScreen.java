@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import de.eskalon.commons.screen.ManagedScreen;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
+import me.partlysunny.shapewars.effects.sound.MusicManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
@@ -82,6 +83,7 @@ public class InGameScreen extends ManagedScreen {
     }
 
     public void show() {
+        MusicManager.play("squaresAndCircles", true, 0.5f);
         Gdx.input.setInputProcessor(new InputMultiplexer(guiStage, stage));
         InGameScreen s = this;
         playerInfo.initGui();
