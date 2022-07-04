@@ -19,27 +19,16 @@ import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.Util;
 
-public class PauseScreen extends ManagedScreen {
-
-    public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
-    private final ShapeWars game;
-    private final Stage stage;
+public class PauseScreen extends BasicGuiScreen {
 
 
     public PauseScreen(ShapeWars game) {
-        this.game = game;
-        this.stage = new Stage(viewport, game.batch());
+        super(game);
     }
 
     @Override
-    protected void create() {
-    }
-
-    @Override
-    public void show() {
+    protected void createGui() {
         PauseScreen s = this;
-        Gdx.input.setInputProcessor(stage);
 
         Util.loadVisUI();
 
@@ -59,33 +48,6 @@ public class PauseScreen extends ManagedScreen {
                 return true;
             }
         });
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    public void render(float delta) {
-        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        stage.act(delta);
-        stage.draw();
-    }
-
-    @Override
-    public void dispose() {
-        stage.dispose();
-        VisUI.dispose();
-    }
-
-    @Override
-    public Color getClearColor() {
-        return GameInfo.BACKGROUND_COLOR;
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
     }
 
 }

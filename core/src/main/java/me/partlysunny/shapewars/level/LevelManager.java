@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -79,10 +79,10 @@ public class LevelManager {
         level.validate();
         counter.validate();
 
-        InGameScreenGuiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel / 10 + 1) + "-" + (this.currentLevel % 10)));
-        InGameScreenGuiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
-        InGameScreenGuiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
-        InGameScreenGuiManager.registerGui("levelCountdown", counter, actor -> {
+        InGameScreen.guiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel / 10 + 1) + "-" + (this.currentLevel % 10)));
+        InGameScreen.guiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
+        InGameScreen.guiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
+        InGameScreen.guiManager.registerGui("levelCountdown", counter, actor -> {
             Label countdownLabel = ((Container<Label>) actor).getActor();
             if (isCounting) {
                 int shownValue = (int) Math.ceil(waveSpawnCountdown);

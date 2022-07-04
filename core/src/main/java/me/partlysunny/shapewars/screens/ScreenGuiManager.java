@@ -8,31 +8,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class InGameScreenGuiManager {
+public class ScreenGuiManager {
 
-    private static final Map<String, Actor> guis = new HashMap<>();
-    private static final Map<String, Consumer<Actor>> update = new HashMap<>();
-    private static Stage stage;
+    private final Map<String, Actor> guis = new HashMap<>();
+    private final Map<String, Consumer<Actor>> update = new HashMap<>();
+    private Stage stage;
 
-    public static void init(Stage stage) {
-        InGameScreenGuiManager.stage = stage;
+    public void init(Stage stage) {
+        this.stage = stage;
     }
 
-    public static void registerGui(String id, Actor gui, @Nullable Consumer<Actor> action) {
+    public void registerGui(String id, Actor gui, @Nullable Consumer<Actor> action) {
         guis.put(id, gui);
         update.put(id, action);
         stage.addActor(gui);
     }
 
-    public static Actor getGui(String id) {
+    public Actor getGui(String id) {
         return guis.get(id);
     }
 
-    public static void unregisterGui(String id) {
+    public void unregisterGui(String id) {
         guis.remove(id);
     }
 
-    public static void update() {
+    public void update() {
         for (String key : update.keySet()) {
             Consumer<Actor> action = update.get(key);
             Actor actor = guis.get(key);

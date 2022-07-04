@@ -23,7 +23,6 @@ import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.player.PlayerKiller;
 import me.partlysunny.shapewars.player.equipment.InventoryMenuManager;
-import me.partlysunny.shapewars.player.equipment.PlayerChangeArmorUi;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.world.GameWorld;
@@ -45,6 +44,7 @@ public class InGameScreen extends ManagedScreen {
     public static final Viewport guiViewport = new ExtendViewport(guiCamera.viewportWidth, guiCamera.viewportHeight, guiCamera);
     public static GameWorld world;
     public static PlayerInfo playerInfo;
+    public static ScreenGuiManager guiManager;
     public static LevelManager levelManager;
     private final ShapeWars game;
     private EntityManager entityManager;
@@ -59,7 +59,8 @@ public class InGameScreen extends ManagedScreen {
         ObstacleManager.init();
         stage = new Stage(viewport, game.batch());
         guiStage = new Stage(guiViewport, game.batch());
-        InGameScreenGuiManager.init(guiStage);
+        guiManager = new ScreenGuiManager();
+        guiManager.init(guiStage);
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
@@ -119,7 +120,7 @@ public class InGameScreen extends ManagedScreen {
         doPhysicsStep(Gdx.graphics.getDeltaTime());
         GdxAI.getTimepiece().update(delta);
         levelManager.update(delta);
-        InGameScreenGuiManager.update();
+        guiManager.update();
         VisualEffectManager.update(delta);
         stage.act(Gdx.graphics.getDeltaTime());
         LateRemover.process();

@@ -22,29 +22,27 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
-public class DeathScreen extends ManagedScreen {
+public class DeathScreen extends BasicGuiScreen {
 
-    public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
-    private final ShapeWars game;
-    private final Stage stage;
     private Container<Label> youDiedLabel;
     private Container<Label> respawnLabel;
 
 
     public DeathScreen(ShapeWars game) {
-        this.game = game;
-        this.stage = new Stage(viewport, game.batch());
+        super(game);
     }
 
     @Override
-    protected void create() {
+    protected void additionalActs(float delta) {
+        youDiedLabel.setTransform(true);
+        youDiedLabel.setPosition(metersToPixels(FRUSTUM_WIDTH) / 2f, metersToPixels(FRUSTUM_HEIGHT) * 7 / 12f);
+        respawnLabel.setTransform(true);
+        respawnLabel.setPosition(metersToPixels(FRUSTUM_WIDTH) / 2f, metersToPixels(FRUSTUM_HEIGHT) * 5 / 12f);
     }
 
     @Override
-    public void show() {
+    protected void createGui() {
         DeathScreen s = this;
-        Gdx.input.setInputProcessor(stage);
 
         Util.loadVisUI();
 
@@ -66,39 +64,6 @@ public class DeathScreen extends ManagedScreen {
                 return true;
             }
         });
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    public void render(float delta) {
-        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        stage.act(delta);
-
-        youDiedLabel.setTransform(true);
-        youDiedLabel.setPosition(metersToPixels(FRUSTUM_WIDTH) / 2f, metersToPixels(FRUSTUM_HEIGHT) * 7 / 12f);
-        respawnLabel.setTransform(true);
-        respawnLabel.setPosition(metersToPixels(FRUSTUM_WIDTH) / 2f, metersToPixels(FRUSTUM_HEIGHT) * 5 / 12f);
-
-        stage.draw();
-    }
-
-    @Override
-    public void dispose() {
-        stage.dispose();
-        VisUI.dispose();
-    }
-
-    @Override
-    public Color getClearColor() {
-        return GameInfo.BACKGROUND_COLOR;
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
     }
 
 }

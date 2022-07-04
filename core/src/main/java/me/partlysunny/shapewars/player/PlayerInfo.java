@@ -8,16 +8,14 @@ import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
-import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerKeyMap;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerInfo {
 
@@ -50,7 +48,7 @@ public class PlayerInfo {
         container.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 8 / 12f, TextureRenderingSystem.FRUSTUM_HEIGHT - 10);
         container.setScale(0.3f, 0.3f);
         container.validate();
-        InGameScreenGuiManager.registerGui("healthBar", container, actor -> {
+        InGameScreen.guiManager.registerGui("healthBar", container, actor -> {
             ProgressBar theBar = ((Container<ProgressBar>) actor).getActor();
             theBar.setRange(0, maxHealth);
             theBar.setValue(health);

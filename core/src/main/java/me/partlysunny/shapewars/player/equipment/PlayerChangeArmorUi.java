@@ -12,8 +12,8 @@ import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
-import me.partlysunny.shapewars.item.types.WeaponItem;
-import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
@@ -55,7 +55,7 @@ public class PlayerChangeArmorUi extends InventoryMenu {
             }
         });
 
-        InGameScreenGuiManager.registerGui("armorUI", table, e -> {
+        InGameScreen.guiManager.registerGui("armorUI", table, e -> {
             if (equipment.unlockedArmors().size() > rememberedSize) {
                 updateTable((Table) e);
                 rememberedSize = equipment.unlockedArmors().size();

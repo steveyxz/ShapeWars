@@ -13,10 +13,9 @@ import me.partlysunny.shapewars.item.components.WeaponComponent;
 import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.screens.InGameScreenGuiManager;
+import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
-import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
@@ -107,19 +106,19 @@ public class PlayerEquipment {
             }
         }, 0, 0.1f);
 
-        InGameScreenGuiManager.registerGui("weapon1", weapon1, e -> {
+        InGameScreen.guiManager.registerGui("weapon1", weapon1, e -> {
             Container<Image> i = (Container<Image>) e;
             i.getActor().setDrawable(TextureRegionDrawableCache.get(weaponOne == null ? "noWeapon" : weaponOne.texture()));
             i.setBackground(activeWeaponSlot == 0 ? selected : regular);
         });
 
-        InGameScreenGuiManager.registerGui("weapon2", weapon2, e -> {
+        InGameScreen.guiManager.registerGui("weapon2", weapon2, e -> {
             Container<Image> i = (Container<Image>) e;
             i.getActor().setDrawable(TextureRegionDrawableCache.get(weaponTwo == null ? "noWeapon" : weaponTwo.texture()));
             i.setBackground(activeWeaponSlot == 1 ? selected : regular);
         });
 
-        InGameScreenGuiManager.registerGui("weaponsLabel", weaponsLabel, e -> {
+        InGameScreen.guiManager.registerGui("weaponsLabel", weaponsLabel, e -> {
         });
 
         //Armor
@@ -182,17 +181,17 @@ public class PlayerEquipment {
             }
         }, 0, 0.1f);
 
-        InGameScreenGuiManager.registerGui("armor1", armor1, e -> {
+        InGameScreen.guiManager.registerGui("armor1", armor1, e -> {
             Container<Image> i = (Container<Image>) e;
             i.getActor().setDrawable(TextureRegionDrawableCache.get(armorOne == null ? "noWeapon" : armorOne.texture()));
         });
 
-        InGameScreenGuiManager.registerGui("armor2", armor2, e -> {
+        InGameScreen.guiManager.registerGui("armor2", armor2, e -> {
             Container<Image> i = (Container<Image>) e;
             i.getActor().setDrawable(TextureRegionDrawableCache.get(armorTwo == null ? "noWeapon" : armorTwo.texture()));
         });
 
-        InGameScreenGuiManager.registerGui("armorsLabel", armorsLabel, e -> {
+        InGameScreen.guiManager.registerGui("armorsLabel", armorsLabel, e -> {
         });
     }
 

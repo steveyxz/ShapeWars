@@ -18,47 +18,20 @@ import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.Util;
 
-public class IntroScreen extends ManagedScreen {
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
+import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
-    public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    public static final Viewport viewport = new FitViewport(camera.viewportWidth, camera.viewportHeight, camera);
-    private final ShapeWars game;
-    private final Stage stage;
+public class IntroScreen extends BasicGuiScreen {
+
     private float loadingTime = 4f;
 
 
     public IntroScreen(ShapeWars game) {
-        this.game = game;
-        this.stage = new Stage(viewport, game.batch());
+        super(game);
     }
 
     @Override
-    protected void create() {
-        viewport.apply();
-    }
-
-    @Override
-    public void show() {
-        Util.loadVisUI();
-        VisTable table = new VisTable();
-        table.setFillParent(true);
-        stage.addActor(table);
-
-        VisImage logo = new VisImage(TextureManager.getTexture("logo"));
-        Container<VisImage> logoContainer = new Container<>(logo);
-        logoContainer.align(Alignment.CENTER.getAlignment());
-
-        table.add(logo);
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    public void render(float delta) {
-        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        viewport.apply();
+    protected void additionalActs(float delta) {
         if (loadingTime > 0f) {
             loadingTime -= delta;
             if (loadingTime < 0f) {
@@ -66,22 +39,17 @@ public class IntroScreen extends ManagedScreen {
                 game.getScreenManager().pushScreen("mainMenu", "blending");
             }
         }
-        stage.act(delta);
-        stage.draw();
     }
 
     @Override
-    public void dispose() {
-        stage.dispose();
-        VisUI.dispose();
-    }
+    protected void createGui() {
+        Util.loadVisUI();
 
-    @Override
-    public Color getClearColor() {
-        return GameInfo.BACKGROUND_COLOR;
-    }
+        VisImage logo = new VisImage(TextureManager.getTexture("logo"));
+        Container<VisImage> logoContainer = new Container<>(logo);
+        logoContainer.setSize(512, 512);
+        logoContainer.setPosition(camera.viewportWidth / 2f - logoContainer.getWidth() / 2f, camera.viewportWidth / 2f - logoContainer.getHeight() / 2f);
 
-    @Override
-    public void resize(int width, int height) {
+        stage.addActor(logoContainer);
     }
 }

@@ -33,16 +33,36 @@ import me.partlysunny.shapewars.util.utilities.Util;
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
-public class MainMenuScreen extends ManagedScreen {
-
-    public static final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-    public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
-    private final ShapeWars game;
-    private final Stage stage;
+public class MainMenuScreen extends BasicGuiScreen {
 
     public MainMenuScreen(ShapeWars game) {
-        this.game = game;
-        this.stage = new Stage(viewport, game.batch());
+        super(game);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        MusicManager.play("shapeWarsTheme", true, 0.5f);
+        Util.loadVisUI();
+    }
+
+    private Container<ImageTextButton> addProperties(ImageTextButton button) {
+        button.setTransform(true);
+        button.setOrigin(Alignment.CENTER.getAlignment());
+        button.setScale(0.4f);
+
+        Container<ImageTextButton> container = new Container<>(button);
+        container.setTransform(true);
+        return container;
+    }
+
+    @Override
+    public void hide() {
+        MusicManager.stop(2);
+    }
+
+    @Override
+    protected void createGui() {
         MainMenuScreen t = this;
         ImageTextButton.ImageTextButtonStyle buttonStyle = new ImageTextButton.ImageTextButtonStyle(TextureRegionDrawableCache.get("mainMenuButton"), TextureRegionDrawableCache.get("mainMenuButtonDown"), TextureRegionDrawableCache.get("mainMenuButtonChecked"), FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 3));
         buttonStyle.over = TextureRegionDrawableCache.get("mainMenuButtonChecked");
@@ -112,56 +132,5 @@ public class MainMenuScreen extends ManagedScreen {
         stage.addActor(playButtonContainer);
         stage.addActor(settingsContainer);
         stage.addActor(quitButtonContainer);
-    }
-
-    @Override
-    protected void create() {
-        viewport.apply();
-    }
-
-    @Override
-    public void show() {
-        MusicManager.play("shapeWarsTheme", true, 0.5f);
-        Util.loadVisUI();
-        Gdx.input.setInputProcessor(stage);
-    }
-
-    private Container<ImageTextButton> addProperties(ImageTextButton button) {
-        button.setTransform(true);
-        button.setOrigin(Alignment.CENTER.getAlignment());
-        button.setScale(0.4f);
-
-        Container<ImageTextButton> container = new Container<>(button);
-        container.setTransform(true);
-        return container;
-    }
-
-    @Override
-    public void hide() {
-        MusicManager.stop(2);
-    }
-
-    @Override
-    public void render(float delta) {
-        viewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        viewport.apply();
-        stage.act(delta);
-        stage.draw();
-    }
-
-    @Override
-    public void dispose() {
-        stage.dispose();
-        VisUI.dispose();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
-    }
-
-    @Override
-    public Color getClearColor() {
-        return GameInfo.BACKGROUND_COLOR;
     }
 }
