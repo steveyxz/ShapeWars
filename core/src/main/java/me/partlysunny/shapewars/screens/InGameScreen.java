@@ -76,6 +76,7 @@ public class InGameScreen extends ManagedScreen {
         playerInfo.equipment().unlockWeapon("circleBlaster");
         playerInfo.equipment().unlockWeapon("circlePummeler");
         playerInfo.equipment().unlockWeapon("woodenStick");
+        playerInfo.equipment().addUtilItems("basicHpPot", 5);
         InventoryMenuManager.init(stage);
     }
 
@@ -100,6 +101,9 @@ public class InGameScreen extends ManagedScreen {
                     }
                     if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_2)) {
                         playerInfo.equipment().setActiveWeaponSlot(1);
+                    }
+                    if (keycode == Input.Keys.H) {
+                        playerInfo.equipment().useItem("basicHpPot");
                     }
                 }
                 return false;

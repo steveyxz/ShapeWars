@@ -14,7 +14,9 @@ import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.Item;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
+import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
+import me.partlysunny.shapewars.item.types.UtilityItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
@@ -24,7 +26,9 @@ import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PlayerEquipment {
 
@@ -38,8 +42,9 @@ public class PlayerEquipment {
     //For the UI
     private boolean hasChangedWeaponOne = false;
     private boolean hasChangedWeaponTwo = false;
-    private List<String> unlockedWeapons = new ArrayList<>();
-    private List<String> unlockedArmor = new ArrayList<>();
+    private final List<String> unlockedWeapons = new ArrayList<>();
+    private final List<String> unlockedArmor = new ArrayList<>();
+    private final Map<String, Integer> utilities = new HashMap<>();
     private int activeWeaponSlot = 0;
     private Entity shownWeapon = null;
 
@@ -219,8 +224,12 @@ public class PlayerEquipment {
     }
 
     public void update(float delta) {
-        InGameScreen.playerInfo.ammoManager().update(delta, weaponOne.texture());
-        InGameScreen.playerInfo.ammoManager().update(delta, weaponTwo.texture());
+        if (weaponOne != null) {
+            InGameScreen.playerInfo.ammoManager().update(delta, weaponOne.texture());
+        }
+        if (weaponTwo != null) {
+            InGameScreen.playerInfo.ammoManager().update(delta, weaponTwo.texture());
+        }
     }
 
     public List<Item> unlockedItems() {
@@ -236,6 +245,33 @@ public class PlayerEquipment {
             this.armorTwo = null;
         }
         this.armorOne = armorOne;
+    }
+
+    public void addUtilItems(String item, int count) {
+        if (count < 0) {
+            throw new IllegalArgumentException("Only positive values!!!");
+        }
+        if (utilities.containsKey(item)) {
+            utilities.put(item, utilities.get(item) + count);
+        } else {
+            utilities.put(item, count);
+        }
+    }
+
+    public void useItem(String item) {
+        if (!utilities.containsKey(item) || utilities.get(item) == 0) {
+            return;
+        }
+        UtilityItem util = (UtilityItem) ItemManager.getItem(item);
+        util.use(InGameScreen.playerInfo.playerEntity());
+        utilities.put(item, utilities.get(item) - 1);
+        if (utilities.get(item) == 0) {
+            utilities.remove(item);
+        }
+    }
+
+    public Map<String, Integer> utilities() {
+        return utilities;
     }
 
     public ArmorItem armorTwo() {
