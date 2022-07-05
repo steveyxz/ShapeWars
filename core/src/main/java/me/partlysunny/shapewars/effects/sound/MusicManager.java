@@ -20,6 +20,7 @@ public class MusicManager {
     static {
         loadMp3Regular("shapeWarsTheme");
         loadMp3Regular("squaresAndCircles");
+        loadMp3Regular("triangleDash");
     }
 
     public static void registerTrack(String id, Music track) {
@@ -63,6 +64,7 @@ public class MusicManager {
     public static void stop() {
         if (!currentlyPlaying.equals("")) {
             getTrack(currentlyPlaying).stop();
+            currentlyPlaying = "";
         }
     }
 
@@ -74,7 +76,7 @@ public class MusicManager {
                 public void run() {
                     float newVolume = getTrack(currentlyPlaying).getVolume() - (1 / 20f);
                     if (newVolume < 0) {
-                        getTrack(currentlyPlaying).stop();
+                        stop();
                         stopping = false;
                         if (!nextTrack.equals("")) {
                             play(nextTrack, nextLooping, nextVolume);
@@ -93,5 +95,9 @@ public class MusicManager {
 
     private static void loadMp3Regular(String name) {
         registerTrack(name, Gdx.audio.newMusic(Gdx.files.internal("assets/sounds/" + name + ".mp3")));
+    }
+
+    public static boolean isPlaying() {
+        return !(currentlyPlaying.equals("") && nextTrack.equals(""));
     }
 }
