@@ -18,6 +18,7 @@ import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.ArmorItem;
 import me.partlysunny.shapewars.item.types.UtilityItem;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -290,11 +291,15 @@ public class PlayerEquipment {
     }
 
     public void unlockWeapon(String weapon) {
-        unlockedWeapons.add(weapon);
+        if (!unlockedWeapons.contains(weapon)) {
+            unlockedWeapons.add(weapon);
+        }
     }
 
     public void unlockArmor(String armor) {
-        unlockedArmor.add(armor);
+        if (!unlockedWeapons.contains(armor)) {
+            unlockedArmor.add(armor);
+        }
     }
 
 

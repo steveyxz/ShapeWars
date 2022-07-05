@@ -13,6 +13,8 @@ import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.InventoryMenu;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -30,7 +32,7 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
     private final Stage stage;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
     private int slotToChange = 0;
-    private int rememberedSize = 0;
+    private int rememberedSize = -1;
 
 
     public PlayerChangeWeaponUi(PlayerEquipment equipment, Stage stage) {

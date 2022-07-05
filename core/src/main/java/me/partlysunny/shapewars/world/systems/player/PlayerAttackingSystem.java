@@ -7,7 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
-import me.partlysunny.shapewars.player.equipment.InventoryMenuManager;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 

@@ -33,6 +33,8 @@ public class TextureManager {
         //UI
         doPngTexture("slotBackground");
         doPngTexture("slotBackgroundSelected");
+        doPngTexture("filterSelectOver");
+        doPngTexture("filterSelectUp");
         doPngTexture("mainMenuButton");
         doPngTexture("mainMenuButtonDown");
         doPngTexture("mainMenuButtonChecked");
@@ -49,6 +51,8 @@ public class TextureManager {
         doPngTexture("woodenStick");
         //Armor
         doPngTexture("oldTunic");
+        //Utilities
+        doPngTexture("basicHpPot");
         //Bullets
         doPngTexture("basicBullet");
         doPngTexture("enemyBlasterBullet");

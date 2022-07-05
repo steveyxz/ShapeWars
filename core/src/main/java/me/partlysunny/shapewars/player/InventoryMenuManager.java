@@ -1,6 +1,9 @@
-package me.partlysunny.shapewars.player.equipment;
+package me.partlysunny.shapewars.player;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import me.partlysunny.shapewars.player.equipment.PlayerChangeArmorUi;
+import me.partlysunny.shapewars.player.equipment.PlayerChangeWeaponUi;
+import me.partlysunny.shapewars.player.shop.ShopUi;
 import me.partlysunny.shapewars.screens.InGameScreen;
 
 import java.util.HashMap;
@@ -40,6 +43,7 @@ public class InventoryMenuManager {
     public static void init(Stage stage) {
         registerMenu("armor", new PlayerChangeArmorUi(InGameScreen.playerInfo.equipment(), stage));
         registerMenu("weapon", new PlayerChangeWeaponUi(InGameScreen.playerInfo.equipment(), stage));
+        registerMenu("shop", new ShopUi(InGameScreen.playerInfo.equipment(), stage));
     }
 
     public static boolean isOpen() {

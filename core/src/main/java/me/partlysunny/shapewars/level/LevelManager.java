@@ -236,6 +236,7 @@ public class LevelManager {
             if (isCounting) {
                 waveSpawnCountdown -= delta;
                 if (waveSpawnCountdown < 0) {
+                    killAllObjects();
                     spawner.spawnObstacles(getCurrentLevel());
                     isCounting = false;
                     waveSpawnCountdown = 0;

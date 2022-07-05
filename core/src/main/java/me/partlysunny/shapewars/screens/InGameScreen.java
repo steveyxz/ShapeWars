@@ -24,7 +24,7 @@ import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.level.LevelManager;
 import me.partlysunny.shapewars.player.PlayerInfo;
 import me.partlysunny.shapewars.player.PlayerKiller;
-import me.partlysunny.shapewars.player.equipment.InventoryMenuManager;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -35,8 +35,6 @@ import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
-
-import java.util.List;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
@@ -74,13 +72,13 @@ public class InGameScreen extends ManagedScreen {
         InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0), game);
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
-        playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
-        playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
-        playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
-        playerInfo.equipment().unlockArmor("oldTunic");
-        playerInfo.equipment().unlockWeapon("circleBlaster");
-        playerInfo.equipment().unlockWeapon("circlePummeler");
-        playerInfo.equipment().unlockWeapon("woodenStick");
+        //playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
+        //playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
+        //playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
+        //playerInfo.equipment().unlockArmor("oldTunic");
+        //playerInfo.equipment().unlockWeapon("circleBlaster");
+        //playerInfo.equipment().unlockWeapon("circlePummeler");
+        //playerInfo.equipment().unlockWeapon("woodenStick");
         playerInfo.equipment().addUtilItems("basicHpPot", 5);
         InventoryMenuManager.init(stage);
     }
@@ -106,8 +104,8 @@ public class InGameScreen extends ManagedScreen {
                     if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_2)) {
                         playerInfo.equipment().setActiveWeaponSlot(1);
                     }
-                    if (keycode == Input.Keys.H) {
-                        playerInfo.equipment().useItem("basicHpPot");
+                    if (keycode == Input.Keys.X) {
+                        InventoryMenuManager.set("shop");
                     }
                 }
                 return false;
@@ -200,14 +198,14 @@ public class InGameScreen extends ManagedScreen {
 
         public void update(float delta) {
             if (!MusicManager.isPlaying()) {
-                if (delay <= -1) {
+                if (delay < 0) {
                     delay = (float) Util.getRandomBetween(MIN_DELAY, MAX_DELAY);
                 }
                 delay -= delta;
                 if (delay < 0) {
                     delay = -1;
                     String track = possibleTracks.raffle();
-                    MusicManager.play(track, false, 0.5f);
+                    MusicManager.play(track, false, 1f);
                 }
             }
         }

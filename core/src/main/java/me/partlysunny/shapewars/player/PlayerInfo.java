@@ -28,6 +28,7 @@ public class PlayerInfo {
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
+    private int money = 0;
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
@@ -105,6 +106,14 @@ public class PlayerInfo {
             throw new IllegalArgumentException("Player entity does not have transform component!");
         }
         return Mappers.transformMapper.get(playerEntity);
+    }
+
+    public void giveMoney(int amount) {
+        money += amount;
+    }
+
+    public boolean canAfford(int price) {
+        return price <= money;
     }
 
     public void damage(int health) {

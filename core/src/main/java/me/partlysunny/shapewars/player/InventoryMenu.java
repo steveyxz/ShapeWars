@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.player.equipment;
+package me.partlysunny.shapewars.player;
 
 public class InventoryMenu {
 
