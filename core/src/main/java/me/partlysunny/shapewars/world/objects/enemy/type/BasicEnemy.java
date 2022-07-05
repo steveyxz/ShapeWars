@@ -1,11 +1,8 @@
 package me.partlysunny.shapewars.world.objects.enemy.type;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
 public class BasicEnemy extends Enemy {

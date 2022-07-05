@@ -4,9 +4,6 @@ import com.badlogic.ashley.core.ComponentMapper;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
-import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
-import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
@@ -17,10 +14,13 @@ import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.components.render.AnimationComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
+import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 
 public final class Mappers {

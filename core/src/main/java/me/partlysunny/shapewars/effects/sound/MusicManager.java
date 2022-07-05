@@ -1,7 +1,6 @@
 package me.partlysunny.shapewars.effects.sound;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.MusicLoader;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.utils.Timer;
 import me.partlysunny.shapewars.ShapeWars;
@@ -17,6 +16,11 @@ public class MusicManager {
     private static float nextVolume = 0;
     private static boolean nextLooping = true;
     private static boolean stopping = false;
+
+    static {
+        loadMp3Regular("shapeWarsTheme");
+        loadMp3Regular("squaresAndCircles");
+    }
 
     public static void registerTrack(String id, Music track) {
         tracks.put(id, track);
@@ -87,13 +91,7 @@ public class MusicManager {
         }
     }
 
-
     private static void loadMp3Regular(String name) {
         registerTrack(name, Gdx.audio.newMusic(Gdx.files.internal("assets/sounds/" + name + ".mp3")));
-    }
-
-    static {
-        loadMp3Regular("shapeWarsTheme");
-        loadMp3Regular("squaresAndCircles");
     }
 }

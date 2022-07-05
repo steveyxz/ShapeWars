@@ -6,16 +6,12 @@ import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
-import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
-import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicEnemyMeleeCollision;
 

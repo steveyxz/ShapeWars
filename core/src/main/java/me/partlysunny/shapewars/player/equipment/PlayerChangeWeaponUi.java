@@ -14,7 +14,6 @@ import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.item.items.ItemManager;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
@@ -29,8 +28,8 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
 
     private final PlayerEquipment equipment;
     private final Stage stage;
-    private int slotToChange = 0;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
+    private int slotToChange = 0;
     private int rememberedSize = 0;
 
 
@@ -82,7 +81,7 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         List<String> unlockedWeapon = equipment.unlockedWeapons();
 
         int rowMax = 5;
-        int rows = (int) Math.ceil(unlockedWeapon.size() / (float)rowMax);
+        int rows = (int) Math.ceil(unlockedWeapon.size() / (float) rowMax);
 
         for (int i = 0; i < rows; i++) {
             inventory.row().pad(0.5f);
@@ -131,5 +130,5 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
     public void setSlotToChange(int slotToChange) {
         this.slotToChange = slotToChange;
     }
-    
+
 }

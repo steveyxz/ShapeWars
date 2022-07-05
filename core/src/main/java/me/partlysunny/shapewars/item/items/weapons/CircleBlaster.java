@@ -2,8 +2,8 @@ package me.partlysunny.shapewars.item.items.weapons;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
 public class CircleBlaster implements WeaponItem {

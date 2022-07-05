@@ -3,8 +3,6 @@ package me.partlysunny.shapewars.player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 
-import java.util.prefs.PreferenceChangeEvent;
-
 public class SettingsManager {
 
     private boolean music = true;

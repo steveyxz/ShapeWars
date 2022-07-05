@@ -11,12 +11,12 @@ import java.util.List;
 
 public class PlayerMeleeAttackComponent implements Component, Pool.Poolable {
 
+    private final List<Entity> hasHit = new ArrayList<>();
     private float lifeRemaining = 0;
     private Entity parent = null;
     private float xMovement = 0;
     private float yMovement = 0;
     private int damage = 0;
-    private final List<Entity> hasHit = new ArrayList<>();
 
     public void init(float life, Entity parent, float angle, float vel, int damage) {
         this.lifeRemaining = life;

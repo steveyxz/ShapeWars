@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.utils.Pool;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
-import me.partlysunny.shapewars.util.utilities.LateRemover;
 
 public class BulletComponent implements Component, Pool.Poolable {
 

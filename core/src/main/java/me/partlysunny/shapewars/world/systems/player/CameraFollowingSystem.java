@@ -7,8 +7,8 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.Gdx;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 
 import static me.partlysunny.shapewars.screens.InGameScreen.camera;
 import static me.partlysunny.shapewars.screens.InGameScreen.cameraVelocity;

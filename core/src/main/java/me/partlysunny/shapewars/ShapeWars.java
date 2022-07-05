@@ -16,11 +16,10 @@ import me.partlysunny.shapewars.util.utilities.TextureManager;
 
 public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
 
+    public static final SettingsManager settings = new SettingsManager();
     private SpriteBatch batch;
     private ShapeRenderer shapeRenderer;
     private BitmapFont font;
-    public static final SettingsManager settings = new SettingsManager();
-
 
     @Override
     public void create() {

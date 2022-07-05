@@ -10,7 +10,6 @@ import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.screens.ScreenGuiManager;
 import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
@@ -23,12 +22,12 @@ public class PlayerInfo {
 
     private final Entity playerEntity;
     private final ShapeWars game;
+    private final AmmoManager ammoManager;
     private float health = GameInfo.PLAYER_MAX_HEALTH;
     private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
-    private final AmmoManager ammoManager;
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;

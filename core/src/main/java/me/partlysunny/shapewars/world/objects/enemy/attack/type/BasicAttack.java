@@ -2,13 +2,10 @@ package me.partlysunny.shapewars.world.objects.enemy.attack.type;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
-import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
-import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
-import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 public class BasicAttack extends EnemyAttack {
 

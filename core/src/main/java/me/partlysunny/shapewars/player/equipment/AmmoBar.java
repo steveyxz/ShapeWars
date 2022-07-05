@@ -1,12 +1,10 @@
 package me.partlysunny.shapewars.player.equipment;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
-import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
@@ -33,7 +31,7 @@ public class AmmoBar extends Actor {
         if (i == null || i.maxUses() == -1) {
             return;
         }
-        float progress = InGameScreen.playerInfo.ammoManager().ammoRemaining(i.texture()) / (float)i.maxUses();
+        float progress = InGameScreen.playerInfo.ammoManager().ammoRemaining(i.texture()) / (float) i.maxUses();
 
         loadingBarBackground.draw(batch, getX(), getY(), getWidth() * getScaleX(), getHeight() * getScaleY());
         loadingBar.draw(batch, getX(), getY(), getWidth() * getScaleX(), progress * getHeight() * getScaleY());
