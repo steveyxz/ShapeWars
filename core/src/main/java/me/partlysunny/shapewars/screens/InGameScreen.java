@@ -121,11 +121,19 @@ public class InGameScreen extends ManagedScreen {
         camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
         //Ticking and logic
         doPhysicsStep(Gdx.graphics.getDeltaTime());
+        //Update AI
         GdxAI.getTimepiece().update(delta);
+        //Update level (check level up, countdowns)
         levelManager.update(delta);
+        //Update UI components
         guiManager.update();
+        //Visual effects (damage, swing)
         VisualEffectManager.update(delta);
+        //Update equipment (ammo recharge)
+        playerInfo.equipment().update(delta);
+        //Act out the current stage
         stage.act(Gdx.graphics.getDeltaTime());
+        //Process late killers / removers (so that they don't collide with the physics step)
         LateRemover.process();
         PlayerKiller.update(game);
         //Rendering

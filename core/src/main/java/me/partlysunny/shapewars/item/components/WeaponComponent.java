@@ -22,7 +22,6 @@ public class WeaponComponent implements Component, Pool.Poolable {
         if (attackCooldown < 0) {
             attackCooldown = 0;
         }
-        InGameScreen.playerInfo.ammoManager().update(delta, weaponItem.texture());
     }
 
     public WeaponItem weaponItem() {

@@ -219,6 +219,11 @@ public class PlayerEquipment {
         });
     }
 
+    public void update(float delta) {
+        InGameScreen.playerInfo.ammoManager().update(delta, weaponOne.texture());
+        InGameScreen.playerInfo.ammoManager().update(delta, weaponTwo.texture());
+    }
+
     public List<Item> unlockedItems() {
         return unlockedItems;
     }
