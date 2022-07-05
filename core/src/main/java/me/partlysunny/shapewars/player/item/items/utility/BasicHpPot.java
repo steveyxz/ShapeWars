@@ -1,8 +1,8 @@
-package me.partlysunny.shapewars.item.items.utility;
+package me.partlysunny.shapewars.player.item.items.utility;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.item.types.UtilityItem;
+import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 

@@ -1,14 +1,14 @@
-package me.partlysunny.shapewars.item.items;
+package me.partlysunny.shapewars.player.item.items;
 
-import me.partlysunny.shapewars.item.Item;
-import me.partlysunny.shapewars.item.items.armor.OldTunic;
-import me.partlysunny.shapewars.item.items.utility.BasicHpPot;
-import me.partlysunny.shapewars.item.items.weapons.CircleBlaster;
-import me.partlysunny.shapewars.item.items.weapons.CirclePummeler;
-import me.partlysunny.shapewars.item.items.weapons.WoodenStick;
-import me.partlysunny.shapewars.item.types.ArmorItem;
-import me.partlysunny.shapewars.item.types.UtilityItem;
-import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.item.Item;
+import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
+import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
+import me.partlysunny.shapewars.player.item.items.weapons.CircleBlaster;
+import me.partlysunny.shapewars.player.item.items.weapons.CirclePummeler;
+import me.partlysunny.shapewars.player.item.items.weapons.WoodenStick;
+import me.partlysunny.shapewars.player.item.types.ArmorItem;
+import me.partlysunny.shapewars.player.item.types.UtilityItem;
+import me.partlysunny.shapewars.player.item.types.WeaponItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;

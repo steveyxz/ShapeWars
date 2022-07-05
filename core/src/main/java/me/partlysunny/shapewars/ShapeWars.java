@@ -8,7 +8,7 @@ import de.eskalon.commons.screen.ManagedScreen;
 import de.eskalon.commons.screen.transition.ScreenTransition;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
-import me.partlysunny.shapewars.item.items.ItemManager;
+import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.SettingsManager;
 import me.partlysunny.shapewars.util.constants.Screens;
 import me.partlysunny.shapewars.util.constants.Transitions;

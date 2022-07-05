@@ -26,7 +26,7 @@ public class EnemyBlasterBulletController implements BulletController {
     public void fire(Entity shooter, float damage) {
         Entity enemyBlasterBullet = BulletFactory.getInstance().generateBullet(InGameScreen.world.gameWorld(), new BulletType("enemyBlasterBullet", BulletType.ProjectileHitBox.BASIC_BULLET), damage, shooter, Controllers.BASIC, BulletRestrictions.ONLY_PLAYERS);
         float rotation = shooter.getComponent(TransformComponent.class).rotation;
-        float bulletSpeed = 1200;
+        float bulletSpeed = 1800;
         float x = MathUtils.cos(rotation) * bulletSpeed;
         float y = MathUtils.sin(rotation) * bulletSpeed;
         Mappers.bodyMapper.get(enemyBlasterBullet).rigidBody().applyForceToCenter(x, y, true);

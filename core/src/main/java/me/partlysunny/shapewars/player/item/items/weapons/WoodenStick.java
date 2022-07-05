@@ -1,10 +1,10 @@
-package me.partlysunny.shapewars.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.math.MathUtils;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
-import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
@@ -45,17 +45,17 @@ public class WoodenStick implements WeaponItem {
 
     @Override
     public float renderSizeX() {
-        return 5;
+        return 8;
     }
 
     @Override
     public float renderSizeY() {
-        return 10;
+        return 16;
     }
 
     @Override
     public int damage() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -67,6 +67,6 @@ public class WoodenStick implements WeaponItem {
     public void attack(Entity attacker) {
         VisualEffectManager.getEffect("playerSwing").playEffect(InGameScreen.playerInfo.equipment().shownWeapon());
         float rotation = Mappers.transformMapper.get(attacker).rotation * MathUtils.radiansToDegrees;
-        InGameScreen.world.gameWorld().addEntity(PlayerMeleeAttackFactory.getInstance().generateMeleeAttack(rotation, 120, 4, damage()));
+        InGameScreen.world.gameWorld().addEntity(PlayerMeleeAttackFactory.getInstance().generateMeleeAttack(rotation, 120, 4, damage(), 0.3f));
     }
 }

@@ -1,8 +1,8 @@
 package me.partlysunny.shapewars.player;
 
-import me.partlysunny.shapewars.item.Item;
-import me.partlysunny.shapewars.item.items.ItemManager;
-import me.partlysunny.shapewars.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.item.Item;
+import me.partlysunny.shapewars.player.item.items.ItemManager;
+import me.partlysunny.shapewars.player.item.types.WeaponItem;
 
 import java.util.HashMap;
 import java.util.Map;

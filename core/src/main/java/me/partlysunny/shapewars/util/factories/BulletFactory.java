@@ -41,8 +41,8 @@ public final class BulletFactory {
         transformComponent.init(type.width(), type.height());
         TransformComponent shooterPos = Mappers.transformMapper.get(shooter);
         float rotation = shooterPos.rotation;
-        float x = MathUtils.cos(rotation) * 8;
-        float y = MathUtils.sin(rotation) * 8;
+        float x = MathUtils.cos(rotation) * 5;
+        float y = MathUtils.sin(rotation) * 5;
         rigidBodyComponent.initBody(shooterPos.position.x + x, shooterPos.position.y + y, shooterPos.rotation, type.hitbox().genDef(), BodyDef.BodyType.DynamicBody, type.width() / 2f);
         transformComponent.position.set(shooterPos.position.x + x, shooterPos.position.y + y, 0);
 

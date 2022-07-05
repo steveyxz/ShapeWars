@@ -1,11 +1,22 @@
-package me.partlysunny.shapewars.item.items.armor;
+package me.partlysunny.shapewars.player.item.items.weapons;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.item.types.ArmorItem;
+import me.partlysunny.shapewars.player.item.types.WeaponItem;
+import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class OldTunic implements ArmorItem {
+public class CircleBlaster implements WeaponItem {
+    @Override
+    public int maxUses() {
+        return 20;
+    }
+
+    @Override
+    public float usesRegenRate() {
+        return 1.4f;
+    }
+
     @Override
     public Entity buildEntity(PooledEngine engine) {
         Entity entity = engine.createEntity();
@@ -15,17 +26,17 @@ public class OldTunic implements ArmorItem {
 
     @Override
     public String name() {
-        return "Old Tunic";
+        return "Circle Blaster";
     }
 
     @Override
     public String description() {
-        return "Battered tunic, worn by a warrior many years ago.";
+        return "Blasts circles";
     }
 
     @Override
     public String texture() {
-        return "oldTunic";
+        return "circleBlaster";
     }
 
     @Override
@@ -39,11 +50,17 @@ public class OldTunic implements ArmorItem {
     }
 
     @Override
-    public float getProtection() {
-        return 0.1f;
+    public int damage() {
+        return 5;
     }
 
     @Override
-    public void onHit(Entity attacker) {
+    public float attackDelay() {
+        return 0.6f;
+    }
+
+    @Override
+    public void attack(Entity attacker) {
+        Controllers.BASIC.fire(attacker, damage());
     }
 }

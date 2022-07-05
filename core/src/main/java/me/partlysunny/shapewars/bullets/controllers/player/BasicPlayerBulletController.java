@@ -27,7 +27,7 @@ public class BasicPlayerBulletController implements BulletController {
     public void fire(Entity shooter, float damage) {
         Entity basicBullet = BulletFactory.getInstance().generateBullet(InGameScreen.world.gameWorld(), new BulletType("basicBullet", BulletType.ProjectileHitBox.BASIC_BULLET), damage, shooter, Controllers.BASIC, BulletRestrictions.ONLY_ENTITIES);
         float rotation = shooter.getComponent(TransformComponent.class).rotation;
-        float bulletSpeed = 500;
+        float bulletSpeed = 1800;
         float x = MathUtils.cos(rotation) * bulletSpeed;
         float y = MathUtils.sin(rotation) * bulletSpeed;
         Mappers.bodyMapper.get(basicBullet).rigidBody().applyForceToCenter(x, y, true);

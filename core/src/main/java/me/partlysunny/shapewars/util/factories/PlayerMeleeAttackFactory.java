@@ -22,7 +22,7 @@ public final class PlayerMeleeAttackFactory {
         return INSTANCE;
     }
 
-    public Entity generateMeleeAttack(float rotation, float coverAngle, float radius, int damage) {
+    public Entity generateMeleeAttack(float rotation, float coverAngle, float radius, int damage, float life) {
 
         PooledEngine engine = InGameScreen.world.gameWorld();
         Entity playerEntity = InGameScreen.playerInfo.playerEntity();
@@ -49,7 +49,7 @@ public final class PlayerMeleeAttackFactory {
         attack.add(collision);
 
         PlayerMeleeAttackComponent meleeAttack = engine.createComponent(PlayerMeleeAttackComponent.class);
-        meleeAttack.init(0.2f, attack, rotation, 12, damage);
+        meleeAttack.init(life, attack, rotation, 12, damage);
         attack.add(meleeAttack);
 
         return attack;

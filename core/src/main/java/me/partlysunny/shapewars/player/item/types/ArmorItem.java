@@ -1,7 +1,7 @@
-package me.partlysunny.shapewars.item.types;
+package me.partlysunny.shapewars.player.item.types;
 
 import com.badlogic.ashley.core.Entity;
-import me.partlysunny.shapewars.item.Item;
+import me.partlysunny.shapewars.player.item.Item;
 
 public interface ArmorItem extends Item {
 

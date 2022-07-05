@@ -1,9 +1,9 @@
-package me.partlysunny.shapewars.item.components;
+package me.partlysunny.shapewars.player.item.components;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.utils.Pool;
-import me.partlysunny.shapewars.item.Item;
+import me.partlysunny.shapewars.player.item.Item;
 
 public class ItemComponent implements Component, Pool.Poolable {
 

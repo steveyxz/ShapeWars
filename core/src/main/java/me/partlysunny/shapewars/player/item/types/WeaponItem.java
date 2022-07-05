@@ -1,8 +1,8 @@
-package me.partlysunny.shapewars.item.types;
+package me.partlysunny.shapewars.player.item.types;
 
 import com.badlogic.ashley.core.Entity;
-import me.partlysunny.shapewars.item.HasUses;
-import me.partlysunny.shapewars.item.Item;
+import me.partlysunny.shapewars.player.item.HasUses;
+import me.partlysunny.shapewars.player.item.Item;
 import me.partlysunny.shapewars.screens.InGameScreen;
 
 public interface WeaponItem extends Item, HasUses {

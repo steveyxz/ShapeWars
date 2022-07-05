@@ -33,7 +33,7 @@ public class BasicBlasterAttack extends EnemyAttack {
         TransformComponent playerPos = Mappers.transformMapper.get(player);
         RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);
 
-        int predictionFrames = 2;
+        int predictionFrames = 1;
         float xDif = (playerPos.position.x + (playerBody.rigidBody().getLinearVelocity().x * predictionFrames)) - enemyPos.position.x;
         float yDif = (playerPos.position.y + playerBody.rigidBody().getLinearVelocity().y * predictionFrames) - enemyPos.position.y;
 

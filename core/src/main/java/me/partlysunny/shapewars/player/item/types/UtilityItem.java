@@ -1,9 +1,7 @@
-package me.partlysunny.shapewars.item.types;
+package me.partlysunny.shapewars.player.item.types;
 
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.math.Vector2;
-import me.partlysunny.shapewars.item.Item;
-import me.partlysunny.shapewars.player.PlayerInfo;
+import me.partlysunny.shapewars.player.item.Item;
 
 public interface UtilityItem extends Item {
 
