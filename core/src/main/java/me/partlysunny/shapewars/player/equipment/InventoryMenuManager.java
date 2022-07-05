@@ -5,6 +5,7 @@ import me.partlysunny.shapewars.screens.InGameScreen;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class InventoryMenuManager {
 
@@ -39,5 +40,9 @@ public class InventoryMenuManager {
     public static void init(Stage stage) {
         registerMenu("armor", new PlayerChangeArmorUi(InGameScreen.playerInfo.equipment(), stage));
         registerMenu("weapon", new PlayerChangeWeaponUi(InGameScreen.playerInfo.equipment(), stage));
+    }
+
+    public static boolean isOpen() {
+        return !Objects.equals(current, "");
     }
 }

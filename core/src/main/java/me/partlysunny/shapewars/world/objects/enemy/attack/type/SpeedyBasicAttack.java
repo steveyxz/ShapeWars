@@ -7,7 +7,7 @@ public class SpeedyBasicAttack extends BasicAttack {
 
     @Override
     public float cooldown() {
-        return 0.2f;
+        return 0.8f;
     }
 
     @Override

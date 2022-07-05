@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import me.partlysunny.shapewars.item.components.ItemComponent;
 import me.partlysunny.shapewars.item.components.WeaponComponent;
+import me.partlysunny.shapewars.player.equipment.InventoryMenuManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 
@@ -20,7 +21,7 @@ public class PlayerAttackingSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         WeaponComponent weapon = Mappers.weaponMapper.get(entity);
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !InventoryMenuManager.isOpen()) {
             if (weapon.canAttack()) {
                 weapon.weaponItem().attack(InGameScreen.playerInfo.playerEntity());
                 weapon.resetAttackCooldown();
