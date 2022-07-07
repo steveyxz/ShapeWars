@@ -40,6 +40,7 @@ public class TextureManager {
         doPngTexture("mainMenuButtonChecked");
         doPngTexture("tooltipBackground");
         doPngTexture("equipmentSwapBackground");
+        doPngTexture("utilBackground");
         doPngTexture("settings");
         doPngTexture("settingsDown");
         doPngTexture("progressBar");
@@ -47,6 +48,8 @@ public class TextureManager {
         doPngTexture("moneySign");
         doPngTexture("shop");
         doPngTexture("shopDown");
+        doPngTexture("util");
+        doPngTexture("utilDown");
         //Weapons
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");

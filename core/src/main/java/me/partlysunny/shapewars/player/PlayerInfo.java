@@ -29,13 +29,13 @@ public class PlayerInfo {
     private final Entity playerEntity;
     private final ShapeWars game;
     private final AmmoManager ammoManager;
+    private final GlyphLayout layout = new GlyphLayout();
     private float health = GameInfo.PLAYER_MAX_HEALTH;
     private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
     private int money = 0;
-    private final GlyphLayout layout = new GlyphLayout();
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
@@ -66,15 +66,16 @@ public class PlayerInfo {
             theBar.setValue(health);
         });
 
-        Button.ButtonStyle style = new Button.ButtonStyle(TextureRegionDrawableCache.get("shop"), TextureRegionDrawableCache.get("shopDown"), TextureRegionDrawableCache.get("shop"));
-        style.over = TextureRegionDrawableCache.get("shopDown");
-        style.up.setMinHeight(8);
-        style.up.setMinWidth(8);
-        style.over.setMinHeight(8);
-        style.over.setMinWidth(8);
-        style.down.setMinHeight(8);
-        style.down.setMinWidth(8);
-        Container<Button> shopButton = new Container<>(new Button(style));
+        Button.ButtonStyle shopStyle = new Button.ButtonStyle(TextureRegionDrawableCache.get("shop"), TextureRegionDrawableCache.get("shopDown"), TextureRegionDrawableCache.get("shop"));
+        shopStyle.over = TextureRegionDrawableCache.get("shopDown");
+        shopStyle.up.setMinHeight(8);
+        shopStyle.up.setMinWidth(8);
+        shopStyle.over.setMinHeight(8);
+        shopStyle.over.setMinWidth(8);
+        shopStyle.down.setMinHeight(8);
+        shopStyle.down.setMinWidth(8);
+
+        Container<Button> shopButton = new Container<>(new Button(shopStyle));
         shopButton.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -86,7 +87,32 @@ public class PlayerInfo {
         shopButton.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 11 / 12f, 2);
         shopButton.setSize(8, 8);
 
-        InGameScreen.guiManager.registerGui("shopButton", shopButton, e -> {});
+        InGameScreen.guiManager.registerGui("shopButton", shopButton, e -> {
+        });
+
+        Button.ButtonStyle utilStyle = new Button.ButtonStyle(TextureRegionDrawableCache.get("util"), TextureRegionDrawableCache.get("utilDown"), TextureRegionDrawableCache.get("util"));
+        utilStyle.over = TextureRegionDrawableCache.get("utilDown");
+        utilStyle.up.setMinHeight(8);
+        utilStyle.up.setMinWidth(8);
+        utilStyle.over.setMinHeight(8);
+        utilStyle.over.setMinWidth(8);
+        utilStyle.down.setMinHeight(8);
+        utilStyle.down.setMinWidth(8);
+
+        Container<Button> utilButton = new Container<>(new Button(utilStyle));
+        utilButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                InventoryMenuManager.set("util");
+                return false;
+            }
+        });
+
+        utilButton.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 11 / 12f, 4 + shopButton.getHeight());
+        utilButton.setSize(8, 8);
+
+        InGameScreen.guiManager.registerGui("utilButton", utilButton, e -> {
+        });
 
         Container<Image> moneySymbol = new Container<>(new Image(TextureManager.getTexture("moneySign")));
 
@@ -96,7 +122,8 @@ public class PlayerInfo {
         moneySymbol.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 10 / 12f, 2);
         moneySymbol.setSize(7, 7);
 
-        InGameScreen.guiManager.registerGui("moneySymbol", moneySymbol, e -> {});
+        InGameScreen.guiManager.registerGui("moneySymbol", moneySymbol, e -> {
+        });
 
         Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.2f), Color.BLACK);
         Container<Label> money = new Container<>(new Label(String.valueOf(this.money), labelStyle));
@@ -181,8 +208,13 @@ public class PlayerInfo {
             this.health = maxHealth;
         }
         TransformComponent playerBody = Mappers.transformMapper.get(playerEntity);
-        ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.position.x), (int) TextureRenderingSystem.metersToPixels(playerBody.position.y), 100);
-        VisualEffectManager.getEffect("damage").playEffect(playerEntity);
+        if (health > 0) {
+            ParticleEffectManager.startEffect("enemyMeleeAttack", (int) TextureRenderingSystem.metersToPixels(playerBody.position.x), (int) TextureRenderingSystem.metersToPixels(playerBody.position.y), 100);
+            VisualEffectManager.getEffect("damage").playEffect(playerEntity);
+        }
+        if (health < 0) {
+            ParticleEffectManager.startEffect("heart", (int) TextureRenderingSystem.metersToPixels(playerBody.position.x), (int) TextureRenderingSystem.metersToPixels(playerBody.position.y), 100);
+        }
         if (this.health <= 0) {
             PlayerKiller.kill();
         }

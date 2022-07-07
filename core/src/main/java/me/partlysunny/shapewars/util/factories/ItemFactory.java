@@ -4,14 +4,14 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import me.partlysunny.shapewars.player.item.Item;
-import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
-import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
 
 public final class ItemFactory {

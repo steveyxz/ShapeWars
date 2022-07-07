@@ -3,10 +3,10 @@ package me.partlysunny.shapewars.world.systems.player;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
-import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
-import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 
 public class PlayerItemSystem extends IteratingSystem {
 

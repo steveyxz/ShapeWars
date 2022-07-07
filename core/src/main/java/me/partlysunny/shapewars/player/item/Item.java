@@ -14,6 +14,7 @@ public interface Item {
     String texture();
 
     float renderSizeX();
+
     int price();
 
     float renderSizeY();

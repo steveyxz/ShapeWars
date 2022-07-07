@@ -36,6 +36,7 @@ public class ParticleEffectManager {
         registerEffect("enemyMeleeAttack", load("enemyMeleeAttack.p"));
         registerEffect("death", load("death.p"));
         registerEffect("enemySpawnIn", load("enemySpawnIn.p"));
+        registerEffect("heart", load("heart.p"));
     }
 
     public static void startEffect(String effect, int x, int y, int duration) {

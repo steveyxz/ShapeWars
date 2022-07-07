@@ -2,9 +2,9 @@ package me.partlysunny.shapewars.effects.visual.type;
 
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.effects.visual.VisualEffect;
-import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 
 public class PlayerSwingEffect extends VisualEffect {
     @Override

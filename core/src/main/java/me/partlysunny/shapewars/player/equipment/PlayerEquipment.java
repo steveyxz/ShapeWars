@@ -12,12 +12,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.widget.Tooltip;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.player.item.Item;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
-import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -36,6 +36,9 @@ public class PlayerEquipment {
     private final List<Item> unlockedItems = new ArrayList<>();
     private final TextureRegionDrawable regular;
     private final TextureRegionDrawable selected;
+    private final List<String> unlockedWeapons = new ArrayList<>();
+    private final List<String> unlockedArmor = new ArrayList<>();
+    private final Map<String, Integer> utilities = new HashMap<>();
     private ArmorItem armorOne = null;
     private ArmorItem armorTwo = null;
     private WeaponItem weaponOne = null;
@@ -43,9 +46,7 @@ public class PlayerEquipment {
     //For the UI
     private boolean hasChangedWeaponOne = false;
     private boolean hasChangedWeaponTwo = false;
-    private final List<String> unlockedWeapons = new ArrayList<>();
-    private final List<String> unlockedArmor = new ArrayList<>();
-    private final Map<String, Integer> utilities = new HashMap<>();
+    private boolean hasUtilChanged = false;
     private int activeWeaponSlot = 0;
     private Entity shownWeapon = null;
 
@@ -260,6 +261,15 @@ public class PlayerEquipment {
         } else {
             utilities.put(item, count);
         }
+        hasUtilChanged = true;
+    }
+
+    public boolean hasUtilChanged() {
+        return hasUtilChanged;
+    }
+
+    public void setHasUtilChanged(boolean hasUtilChanged) {
+        this.hasUtilChanged = hasUtilChanged;
     }
 
     public void useItem(String item) {
@@ -272,6 +282,7 @@ public class PlayerEquipment {
         if (utilities.get(item) == 0) {
             utilities.remove(item);
         }
+        hasUtilChanged = true;
     }
 
     public Map<String, Integer> utilities() {

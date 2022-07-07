@@ -11,10 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Scaling;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
-import me.partlysunny.shapewars.player.item.items.ItemManager;
-import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.InventoryMenu;
 import me.partlysunny.shapewars.player.InventoryMenuManager;
+import me.partlysunny.shapewars.player.item.items.ItemManager;
+import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -28,20 +28,16 @@ import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSyst
 
 public class PlayerChangeArmorUi extends InventoryMenu {
 
-    private final PlayerEquipment equipment;
-    private final Stage stage;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
     private int slotToChange = 0;
     private int rememberedSize = -1;
 
 
     public PlayerChangeArmorUi(PlayerEquipment equipment, Stage stage) {
-        this.equipment = equipment;
-        this.stage = stage;
-        buildUi();
+        super(equipment, stage);
     }
 
-    private void buildUi() {
+    protected void buildUi() {
         Table table = new Table();
         table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
         table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);

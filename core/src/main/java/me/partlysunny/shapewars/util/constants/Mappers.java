@@ -2,8 +2,6 @@ package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
-import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
@@ -17,6 +15,8 @@ import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponen
 import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
+import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.components.render.AnimationComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;

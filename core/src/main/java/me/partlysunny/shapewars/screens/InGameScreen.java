@@ -19,9 +19,11 @@ import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.sound.MusicManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.level.LevelManager;
+import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.player.PlayerInfo;
 import me.partlysunny.shapewars.player.PlayerKiller;
-import me.partlysunny.shapewars.player.InventoryMenuManager;
+import me.partlysunny.shapewars.player.item.items.ItemManager;
+import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -47,12 +49,12 @@ public class InGameScreen extends ManagedScreen {
     public static ScreenGuiManager guiManager;
     public static LevelManager levelManager;
     private final ShapeWars game;
+    private final GameMusicSwitcher switcher = new GameMusicSwitcher();
     private EntityManager entityManager;
     private float accumulator = 0;
     private Box2DDebugRenderer debugRenderer;
     private Stage stage;
     private Stage guiStage;
-    private final GameMusicSwitcher switcher = new GameMusicSwitcher();
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
@@ -69,14 +71,8 @@ public class InGameScreen extends ManagedScreen {
         InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0), game);
         //Create level manager (also will start level counter and spawn enemies)
         levelManager = new LevelManager(stage);
-        //playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
-        //playerInfo.equipment().setWeaponTwo((WeaponItem) ItemManager.getItem("circlePummeler"));
-        //playerInfo.equipment().setArmorOne((ArmorItem) ItemManager.getItem("oldTunic"));
-        //playerInfo.equipment().unlockArmor("oldTunic");
-        //playerInfo.equipment().unlockWeapon("circleBlaster");
-        //playerInfo.equipment().unlockWeapon("circlePummeler");
-        //playerInfo.equipment().unlockWeapon("woodenStick");
-        playerInfo.equipment().addUtilItems("basicHpPot", 5);
+        playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
+        playerInfo.equipment().unlockWeapon("circleBlaster");
         InventoryMenuManager.init(stage);
     }
 
@@ -181,11 +177,10 @@ public class InGameScreen extends ManagedScreen {
 
     private static final class GameMusicSwitcher {
 
-        private final RandomList<String> possibleTracks = new RandomList<>();
-        private float delay = -1;
-
         private static final int MAX_DELAY = 10;
         private static final int MIN_DELAY = 4;
+        private final RandomList<String> possibleTracks = new RandomList<>();
+        private float delay = -1;
 
         public GameMusicSwitcher() {
             possibleTracks.add("squaresAndCircles", 2);

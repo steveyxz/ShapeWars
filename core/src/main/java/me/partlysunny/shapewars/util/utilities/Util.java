@@ -6,8 +6,9 @@ import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
@@ -57,14 +58,23 @@ public class Util {
 
     public static void formatTooltip(Tooltip t) {
         t.getContentCell().align(Alignment.CENTER.getAlignment());
-        ((Label) t.getContent()).setAlignment(Alignment.CENTER.getAlignment());
-        ((Label) t.getContent()).setWrap(true);
+        if (t.getContent() instanceof Label) {
+            ((Label) t.getContent()).setAlignment(Alignment.CENTER.getAlignment());
+            ((Label) t.getContent()).setWrap(true);
+            StringBuilder text = ((Label) t.getContent()).getText();
+            layout.setText(((Label) t.getContent()).getStyle().font, text);
+            float height = layout.height;
+            t.getContentCell().padBottom(height * 3f);
+        }
+        if (t.getContent() instanceof Table) {
+            for (Actor a : ((Table) t.getContent()).getChildren()) {
+                ((Label) a).setAlignment(Alignment.CENTER.getAlignment());
+                ((Label) a).setWrap(true);
+            }
+            t.getContentCell().padBottom(t.getContent().getHeight());
+        }
         t.setSize(30, 30);
         t.getContentCell().width(26);
-        StringBuilder text = ((Label) t.getContent()).getText();
-        layout.setText(((Label) t.getContent()).getStyle().font, text);
-        float height = layout.height;
-        t.getContentCell().padBottom(height * 3f);
     }
 
     /**

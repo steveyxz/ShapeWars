@@ -6,7 +6,9 @@ import me.partlysunny.shapewars.player.item.Item;
 public interface ArmorItem extends Item {
 
     float getProtection();
+
     int getBonusHealth();
+
     void onHit(Entity attacker);
 
     default String getDescription() {

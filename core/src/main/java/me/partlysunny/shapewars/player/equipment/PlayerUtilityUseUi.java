@@ -4,44 +4,41 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.utils.Scaling;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.player.InventoryMenu;
 import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
-import me.partlysunny.shapewars.player.item.types.WeaponItem;
+import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 
-import java.util.List;
+import java.util.Iterator;
+import java.util.Map;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_HEIGHT;
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.FRUSTUM_WIDTH;
 
-public class PlayerChangeWeaponUi extends InventoryMenu {
+public class PlayerUtilityUseUi extends InventoryMenu {
 
-    private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
-    private int slotToChange = 0;
-    private int rememberedSize = -1;
+    private static final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
+    private static final Label.LabelStyle remainingStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.RED);
 
-
-    public PlayerChangeWeaponUi(PlayerEquipment equipment, Stage stage) {
+    public PlayerUtilityUseUi(PlayerEquipment equipment, Stage stage) {
         super(equipment, stage);
     }
 
+    @Override
     protected void buildUi() {
         Table table = new Table();
-        table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
-        table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
-        table.setBackground(TextureRegionDrawableCache.get("equipmentSwapBackground"));
+        table.setPosition(FRUSTUM_WIDTH * 3 / 4f, FRUSTUM_HEIGHT / 4f);
+        table.setSize(FRUSTUM_WIDTH / 4, FRUSTUM_HEIGHT / 2f);
+        table.setBackground(TextureRegionDrawableCache.get("utilBackground"));
 
         stage.addListener(new InputListener() {
             @Override
@@ -52,12 +49,15 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
                 return false;
             }
         });
-        InGameScreen.guiManager.registerGui("weaponUI", table, e -> {
-            if (equipment.unlockedWeapons().size() > rememberedSize) {
+
+        updateTable(table);
+
+        InGameScreen.guiManager.registerGui("utilUI", table, e -> {
+            if (equipment.hasUtilChanged()) {
                 updateTable((Table) e);
-                rememberedSize = equipment.unlockedWeapons().size();
+                equipment.setHasUtilChanged(false);
             }
-            ((Label) table.findActor("title")).setText("Change Weapon " + (slotToChange + 1));
+            ((Label) table.findActor("title")).setText("Utility Items");
             table.setVisible(shown);
         });
     }
@@ -68,7 +68,7 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         table.clear();
 
         table.row().width(40).padBottom(4);
-        Label actor = new Label("Change Weapon " + (slotToChange + 1), labelStyle);
+        Label actor = new Label("Utility Items", labelStyle);
         actor.setAlignment(Alignment.CENTER.getAlignment());
         actor.setName("title");
         table.add(actor);
@@ -76,20 +76,21 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         Table inventory = new Table();
         inventory.setSize(table.getWidth(), table.getHeight() - 4);
 
-        List<String> unlockedWeapon = equipment.unlockedWeapons();
+        Map<String, Integer> utilItems = equipment.utilities();
 
-        int rowMax = 5;
-        int rows = (int) Math.ceil(unlockedWeapon.size() / (float) rowMax);
+        int rowMax = 2;
+        int rows = (int) Math.ceil(utilItems.size() / (float) rowMax);
+        Iterator<Map.Entry<String, Integer>> it = utilItems.entrySet().iterator();
 
         for (int i = 0; i < rows; i++) {
             inventory.row().pad(0.5f);
             for (int j = 0; j < rowMax; j++) {
                 int index = i * rowMax + j;
-                if (index >= unlockedWeapon.size()) {
+                if (index >= utilItems.size()) {
                     break;
                 }
-                String weapon = unlockedWeapon.get(index);
-                WeaponItem item = (WeaponItem) ItemManager.getItem(weapon);
+                Map.Entry<String, Integer> utilItem = it.next();
+                UtilityItem item = (UtilityItem) ItemManager.getItem(utilItem.getKey());
                 Container<Image> weaponContainer = new Container<>(new Image(TextureManager.getTexture(item.texture())));
                 weaponContainer.setBackground(equipment.regular(), true);
                 weaponContainer.getActor().setScaling(Scaling.fit);
@@ -97,17 +98,21 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
                     @Override
                     public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                         if (shown) {
-                            if (slotToChange == 0) {
-                                equipment.setWeaponOne(item);
-                            } else {
-                                equipment.setWeaponTwo(item);
-                            }
-                            InventoryMenuManager.close();
+                            InGameScreen.playerInfo.equipment().useItem(utilItem.getKey());
+                            updateTable(table);
                         }
                         return false;
                     }
                 });
-                Tooltip weaponTT = new Tooltip.Builder(new Label(item.getDescription(), labelStyle)).target(weaponContainer).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
+                Label description = new Label(item.getDescription(), labelStyle);
+                Label usesRemaining = new Label("You have " + utilItem.getValue() + " remaining", remainingStyle);
+                Table mainTable = new Table();
+                mainTable.setName("mainTable");
+                mainTable.row().padTop(10);
+                mainTable.add(description).width(26);
+                mainTable.row().padTop(10);
+                mainTable.add(usesRemaining).width(26);
+                Tooltip weaponTT = new Tooltip.Builder(mainTable).target(weaponContainer).style(new Tooltip.TooltipStyle(TextureRegionDrawableCache.get("tooltipBackground"))).build();
                 Util.formatTooltip(weaponTT);
                 inventory.add(weaponContainer).size(6, 6).pad(0.5f);
             }
@@ -116,17 +121,4 @@ public class PlayerChangeWeaponUi extends InventoryMenu {
         table.add(inventory);
 
     }
-
-    public PlayerEquipment equipment() {
-        return equipment;
-    }
-
-    public int slotToChange() {
-        return slotToChange;
-    }
-
-    public void setSlotToChange(int slotToChange) {
-        this.slotToChange = slotToChange;
-    }
-
 }

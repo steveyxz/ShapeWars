@@ -11,12 +11,11 @@ import com.badlogic.gdx.utils.Scaling;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.player.InventoryMenuManager;
-import me.partlysunny.shapewars.player.equipment.PlayerChangeArmorUi;
+import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
-import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -104,14 +103,19 @@ public enum ShopFilter {
     }),
     MISC((s, e) -> new Container<>());
 
-    private static void update() {
-        ((ShopUi) InventoryMenuManager.getMenu("shop")).updateTable((Table) InGameScreen.guiManager.getGui("shopUI"));
-    }
-
     private final BiFunction<String, PlayerEquipment, Container<Image>> buildCell;
 
     ShopFilter(BiFunction<String, PlayerEquipment, Container<Image>> buildCell) {
         this.buildCell = buildCell;
+    }
+
+    private static void update() {
+        ((ShopUi) InventoryMenuManager.getMenu("shop")).updateTable((Table) InGameScreen.guiManager.getGui("shopUI"));
+    }
+
+    private static void setMessage(String message, Color color) {
+        ((ShopUi) InventoryMenuManager.getMenu("shop")).setMessage(message);
+        ((ShopUi) InventoryMenuManager.getMenu("shop")).setMessageColor(color);
     }
 
     @Override
@@ -121,10 +125,5 @@ public enum ShopFilter {
 
     public Container<Image> getItemFrom(String s, PlayerEquipment e) {
         return buildCell.apply(s, e);
-    }
-
-    private static void setMessage(String message, Color color) {
-        ((ShopUi) InventoryMenuManager.getMenu("shop")).setMessage(message);
-        ((ShopUi) InventoryMenuManager.getMenu("shop")).setMessageColor(color);
     }
 }

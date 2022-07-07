@@ -9,10 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
-import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.InventoryMenu;
 import me.partlysunny.shapewars.player.InventoryMenuManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
+import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
@@ -25,8 +25,6 @@ import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSyst
 
 public class ShopUi extends InventoryMenu {
 
-    private final PlayerEquipment equipment;
-    private final Stage stage;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
     private final Label.LabelStyle messageStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.06f), Color.BLACK);
     private ShopFilter filter = ShopFilter.MISC;
@@ -36,12 +34,10 @@ public class ShopUi extends InventoryMenu {
 
 
     public ShopUi(PlayerEquipment equipment, Stage stage) {
-        this.equipment = equipment;
-        this.stage = stage;
-        buildUi();
+        super(equipment, stage);
     }
 
-    private void buildUi() {
+    protected void buildUi() {
         Table table = new Table();
         table.setPosition(FRUSTUM_WIDTH / 4f, FRUSTUM_HEIGHT / 4f);
         table.setSize(FRUSTUM_WIDTH / 2f, FRUSTUM_HEIGHT / 2f);
