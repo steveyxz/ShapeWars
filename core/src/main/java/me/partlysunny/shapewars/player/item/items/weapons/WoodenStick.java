@@ -49,6 +49,11 @@ public class WoodenStick implements WeaponItem {
     }
 
     @Override
+    public int price() {
+        return 15;
+    }
+
+    @Override
     public float renderSizeY() {
         return 16;
     }

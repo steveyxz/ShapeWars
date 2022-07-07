@@ -10,6 +10,7 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 public class SoundEffectManager {
 
@@ -23,9 +24,12 @@ public class SoundEffectManager {
         //Player
         loadWavRegular("playerShoot");
         loadWavRegular("bulletCollide");
+        //UI
+        loadWavRegular("click");
+        loadWavRegular("shopBuy");
+        loadWavRegular("shopCannotAfford");
         //General
         loadWavRegular("countdown");
-        loadWavRegular("click");
         loadWavRegular("levelStart");
     }
 

@@ -13,8 +13,8 @@ public interface Item {
 
     String texture();
 
-    float renderSizeX()
-            ;
+    float renderSizeX();
+    int price();
 
     float renderSizeY();
 }

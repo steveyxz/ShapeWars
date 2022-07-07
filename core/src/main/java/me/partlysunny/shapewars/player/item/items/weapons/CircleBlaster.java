@@ -45,6 +45,11 @@ public class CircleBlaster implements WeaponItem {
     }
 
     @Override
+    public int price() {
+        return 0;
+    }
+
+    @Override
     public float renderSizeY() {
         return 6;
     }

@@ -225,12 +225,15 @@ public class PlayerEquipment {
     }
 
     public void update(float delta) {
+        //Ammo
         if (weaponOne != null) {
             InGameScreen.playerInfo.ammoManager().update(delta, weaponOne.texture());
         }
         if (weaponTwo != null) {
             InGameScreen.playerInfo.ammoManager().update(delta, weaponTwo.texture());
         }
+        //Health
+        InGameScreen.playerInfo.setMaxHealth(100 + (armorOne == null ? 0 : armorOne.getBonusHealth()) + (armorTwo == null ? 0 : armorTwo.getBonusHealth()));
     }
 
     public List<Item> unlockedItems() {

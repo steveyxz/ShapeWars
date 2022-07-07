@@ -35,6 +35,11 @@ public class BasicHpPot implements UtilityItem {
     }
 
     @Override
+    public int price() {
+        return 10;
+    }
+
+    @Override
     public float renderSizeY() {
         return 4;
     }

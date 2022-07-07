@@ -9,6 +9,7 @@ import me.partlysunny.shapewars.player.item.items.weapons.WoodenStick;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
+import me.partlysunny.shapewars.screens.InGameScreen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,10 +67,46 @@ public final class ItemManager {
     }
 
     public static List<String> getAllArmors() {
-        return allArmors;
+        return getAllArmors(false);
+    }
+
+    public static List<String> getAllArmors(boolean onlyLocked) {
+        if (!onlyLocked) {
+            return allArmors;
+        }
+        List<String> returned = new ArrayList<>(allArmors);
+        List<String> remove = new ArrayList<>();
+        for (int i = 0; i < returned.size(); i++) {
+            String s = returned.get(i);
+            if (InGameScreen.playerInfo.equipment().unlockedArmors().contains(s)) {
+                remove.add(s);
+            }
+        }
+        for (String s : remove) {
+            returned.remove(s);
+        }
+        return returned;
     }
 
     public static List<String> getAllWeapons() {
-        return allWeapons;
+        return getAllWeapons(false);
+    }
+
+    public static List<String> getAllWeapons(boolean onlyLocked) {
+        if (!onlyLocked) {
+            return allWeapons;
+        }
+        List<String> returned = new ArrayList<>(allWeapons);
+        List<String> remove = new ArrayList<>();
+        for (int i = 0; i < returned.size(); i++) {
+            String s = returned.get(i);
+            if (InGameScreen.playerInfo.equipment().unlockedWeapons().contains(s)) {
+                remove.add(s);
+            }
+        }
+        for (String s : remove) {
+            returned.remove(s);
+        }
+        return returned;
     }
 }

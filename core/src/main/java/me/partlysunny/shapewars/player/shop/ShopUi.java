@@ -28,8 +28,11 @@ public class ShopUi extends InventoryMenu {
     private final PlayerEquipment equipment;
     private final Stage stage;
     private final Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.07f), Color.BLACK);
+    private final Label.LabelStyle messageStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.06f), Color.BLACK);
     private ShopFilter filter = ShopFilter.MISC;
     private ShopFilter rememberedFilter = ShopFilter.WEAPONS;
+    private String message = "";
+    private Color messageColor = Color.BLACK;
 
 
     public ShopUi(PlayerEquipment equipment, Stage stage) {
@@ -60,18 +63,20 @@ public class ShopUi extends InventoryMenu {
                 rememberedFilter = filter;
             }
             ((Label) table.findActor("title")).setText(filter.toString() + " Shop");
+            ((Label) table.findActor("message")).setText(message);
+            ((Label) table.findActor("message")).getStyle().fontColor = messageColor;
             table.setVisible(shown);
         });
     }
 
-    private void updateTable(Table table) {
+    public void updateTable(Table table) {
         table.clear();
 
         table.row().width(40).padBottom(4);
-        Label actor = new Label(filter.toString() + " Shop", labelStyle);
-        actor.setAlignment(Alignment.CENTER.getAlignment());
-        actor.setName("title");
-        table.add(actor);
+        Label title = new Label(filter.toString() + " Shop", labelStyle);
+        title.setAlignment(Alignment.CENTER.getAlignment());
+        title.setName("title");
+        table.add(title);
 
         Table filterMenu = new Table();
         filterMenu.setSize(table.getWidth(), 30);
@@ -90,11 +95,11 @@ public class ShopUi extends InventoryMenu {
         List<String> items;
         switch (filter) {
             case ARMOR: {
-                items = ItemManager.getAllArmors();
+                items = ItemManager.getAllArmors(true);
                 break;
             }
             case WEAPONS: {
-                items = ItemManager.getAllWeapons();
+                items = ItemManager.getAllWeapons(true);
                 break;
             }
             case UTILITY: {
@@ -121,6 +126,15 @@ public class ShopUi extends InventoryMenu {
         }
         table.row();
         table.add(shop);
+
+        table.row().width(40).padTop(4);
+
+        Label message = new Label(this.message, messageStyle);
+        message.setAlignment(Alignment.CENTER.getAlignment());
+        message.getStyle().fontColor = messageColor;
+        message.setName("message");
+
+        table.add(message);
     }
 
     private TextButton createFilterButton(Table t, ShopFilter link) {
@@ -142,6 +156,22 @@ public class ShopUi extends InventoryMenu {
             }
         });
         return filterButton;
+    }
+
+    public String message() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Color messageColor() {
+        return messageColor;
+    }
+
+    public void setMessageColor(Color messageColor) {
+        this.messageColor = messageColor;
     }
 
     private void process(Drawable d) {

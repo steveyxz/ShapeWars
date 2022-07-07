@@ -187,4 +187,8 @@ public class PlayerInfo {
             PlayerKiller.kill();
         }
     }
+
+    public void pay(int price) {
+        money -= price;
+    }
 }

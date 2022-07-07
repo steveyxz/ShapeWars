@@ -45,6 +45,11 @@ public class CirclePummeler implements WeaponItem {
     }
 
     @Override
+    public int price() {
+        return 20;
+    }
+
+    @Override
     public float renderSizeY() {
         return 6;
     }

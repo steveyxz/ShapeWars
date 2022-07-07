@@ -34,6 +34,11 @@ public class OldTunic implements ArmorItem {
     }
 
     @Override
+    public int price() {
+        return 25;
+    }
+
+    @Override
     public float renderSizeY() {
         return 6;
     }
@@ -41,6 +46,11 @@ public class OldTunic implements ArmorItem {
     @Override
     public float getProtection() {
         return 0.1f;
+    }
+
+    @Override
+    public int getBonusHealth() {
+        return 10;
     }
 
     @Override
