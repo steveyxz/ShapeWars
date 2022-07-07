@@ -1,9 +1,12 @@
 package me.partlysunny.shapewars.player;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.Interpolation;
-import com.badlogic.gdx.scenes.scene2d.ui.Container;
-import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.kotcrab.vis.ui.VisUI;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
@@ -11,8 +14,11 @@ import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.ContactDispatcher;
+import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
+import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerKeyMap;
@@ -29,6 +35,7 @@ public class PlayerInfo {
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
     private int money = 0;
+    private final GlyphLayout layout = new GlyphLayout();
 
     public PlayerInfo(Entity playerEntity, ShapeWars game) {
         this.playerEntity = playerEntity;
@@ -58,6 +65,53 @@ public class PlayerInfo {
             theBar.setRange(0, maxHealth);
             theBar.setValue(health);
         });
+
+        Button.ButtonStyle style = new Button.ButtonStyle(TextureRegionDrawableCache.get("shop"), TextureRegionDrawableCache.get("shopDown"), TextureRegionDrawableCache.get("shop"));
+        style.over = TextureRegionDrawableCache.get("shopDown");
+        style.up.setMinHeight(8);
+        style.up.setMinWidth(8);
+        style.over.setMinHeight(8);
+        style.over.setMinWidth(8);
+        style.down.setMinHeight(8);
+        style.down.setMinWidth(8);
+        Container<Button> shopButton = new Container<>(new Button(style));
+        shopButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                InventoryMenuManager.set("shop");
+                return false;
+            }
+        });
+
+        shopButton.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 11 / 12f, 2);
+        shopButton.setSize(8, 8);
+
+        InGameScreen.guiManager.registerGui("shopButton", shopButton, e -> {});
+
+        Container<Image> moneySymbol = new Container<>(new Image(TextureManager.getTexture("moneySign")));
+
+        moneySymbol.getActor().getDrawable().setMinHeight(7);
+        moneySymbol.getActor().getDrawable().setMinWidth(7);
+
+        moneySymbol.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 10 / 12f, 2);
+        moneySymbol.setSize(7, 7);
+
+        InGameScreen.guiManager.registerGui("moneySymbol", moneySymbol, e -> {});
+
+        Label.LabelStyle labelStyle = new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.2f), Color.BLACK);
+        Container<Label> money = new Container<>(new Label(String.valueOf(this.money), labelStyle));
+        layout.setText(labelStyle.font, String.valueOf(this.money));
+        money.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 10 / 12f - 1 - layout.width / 2f, 1 - layout.height);
+
+        InGameScreen.guiManager.registerGui("moneyAmount", money, e -> {
+            if (money.getActor().getText().toString().equals(String.valueOf(this.money))) {
+                return;
+            }
+            money.getActor().setText(String.valueOf(this.money));
+            layout.setText(labelStyle.font, String.valueOf(this.money));
+            money.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 10 / 12f - 1 - layout.width / 2f, 1 - layout.height);
+        });
+
         hasInitGui = true;
     }
 

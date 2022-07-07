@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.player.item.Item;
-import me.partlysunny.shapewars.player.item.components.WeaponComponent;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
@@ -25,6 +24,7 @@ import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 
 import java.util.ArrayList;
 import java.util.HashMap;

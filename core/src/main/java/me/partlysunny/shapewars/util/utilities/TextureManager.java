@@ -44,6 +44,9 @@ public class TextureManager {
         doPngTexture("settingsDown");
         doPngTexture("progressBar");
         doPngTexture("progressBarKnob");
+        doPngTexture("moneySign");
+        doPngTexture("shop");
+        doPngTexture("shopDown");
         //Weapons
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");

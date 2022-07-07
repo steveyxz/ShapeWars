@@ -102,7 +102,6 @@ public class InGameScreen extends ManagedScreen {
                         playerInfo.equipment().setActiveWeaponSlot(1);
                     }
                     if (keycode == Input.Keys.X) {
-                        InventoryMenuManager.set("shop");
                     }
                 }
                 return false;

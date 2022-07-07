@@ -2,8 +2,8 @@ package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.player.item.components.ItemComponent;
-import me.partlysunny.shapewars.player.item.components.WeaponComponent;
+import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;

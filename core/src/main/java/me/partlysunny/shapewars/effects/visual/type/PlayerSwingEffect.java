@@ -2,7 +2,7 @@ package me.partlysunny.shapewars.effects.visual.type;
 
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.effects.visual.VisualEffect;
-import me.partlysunny.shapewars.player.item.components.WeaponComponent;
+import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
