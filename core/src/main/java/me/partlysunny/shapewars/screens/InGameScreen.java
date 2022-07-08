@@ -143,8 +143,8 @@ public class InGameScreen extends ManagedScreen {
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiViewport.apply();
         guiStage.act(delta);
-        guiStage.draw();
         ParticleEffectManager.render(game.batch(), delta);
+        guiStage.draw();
         //Music
         switcher.update(delta);
         //debugRenderer.render(world().physicsWorld(), camera.combined);
