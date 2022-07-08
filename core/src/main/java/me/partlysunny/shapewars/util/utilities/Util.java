@@ -7,8 +7,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.utils.Align;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.building.utilities.Alignment;
@@ -23,7 +24,12 @@ import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.GameWorld;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
 
 import javax.annotation.Nullable;
@@ -33,6 +39,7 @@ public class Util {
 
     public static final ThreadLocalRandom RAND = ThreadLocalRandom.current();
     private static final GlyphLayout layout = new GlyphLayout();
+    private static final Vector2 vec = new Vector2();
 
     public static int getRandomBetween(int a, int b) {
         if (a > b) {
@@ -146,6 +153,11 @@ public class Util {
         if (player == null) {
             return null;
         } else if (Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_ENTITIES || !Mappers.controlMapper.has(player)) {
+            if (Mappers.obstacleMapper.has(player) && Mappers.bulletMapper.has(bullet)) {
+                //If the "player" is an obstacle then just damage it (if bullet is enemy bullet as well)
+                Mappers.healthMapper.get(player).addHealth(-Mappers.bulletMapper.get(bullet).damage());
+                VisualEffectManager.getEffect("damage").playEffect(player);
+            }
             return null;
         }
         return new Pair<>(bullet, player);
@@ -164,18 +176,35 @@ public class Util {
         }
         Entity playerAttack = null;
         Entity enemy = null;
-        if (Mappers.enemyStateMapper.has(a)) {
-            enemy = a;
-            playerAttack = b;
-        }
-        if (Mappers.enemyStateMapper.has(b)) {
-            if (playerAttack != null) {
-                return null;
-            }
+        if (Mappers.playerMeleeAttackMapper.has(a)) {
             enemy = b;
             playerAttack = a;
         }
-        if (enemy == null || !Mappers.playerMeleeAttackMapper.has(playerAttack)) {
+        if (Mappers.playerMeleeAttackMapper.has(b)) {
+            if (playerAttack != null) {
+                return null;
+            }
+            enemy = a;
+            playerAttack = b;
+        }
+        if (playerAttack == null) {
+            return null;
+        }
+        if (!Mappers.enemyStateMapper.has(enemy)) {
+            //If it isn't an enemy just damage it if it has hp
+            if (Mappers.healthMapper.has(enemy)) {
+                PlayerMeleeAttackComponent attack = Mappers.playerMeleeAttackMapper.get(playerAttack);
+                if (attack.canHit(enemy)) {
+                    Mappers.healthMapper.get(enemy).addHealth(-attack.damage());
+                    VisualEffectManager.getEffect("damage").playEffect(enemy);
+                    attack.hit(enemy);
+                    doKnockback(enemy, 120);
+                }
+            }
+            //Also delete bullets
+            if (Mappers.bulletMapper.has(enemy)) {
+                LateRemover.tagToRemove(enemy);
+            }
             return null;
         }
         return new Pair<>(playerAttack, enemy);
@@ -209,6 +238,28 @@ public class Util {
             return null;
         }
         return new Pair<>(enemy, player);
+    }
+
+    public static void doKnockback(Entity target, float force) {
+        Entity player = InGameScreen.playerInfo.playerEntity();
+        if (Mappers.bodyMapper.has(target)) {
+            RigidBodyComponent r = Mappers.bodyMapper.get(target);
+
+            TransformComponent playerPos = Mappers.transformMapper.get(player);
+
+            vec.set(r.rigidBody().getPosition().x - playerPos.position.x, r.rigidBody().getPosition().y - playerPos.position.y);
+            vec.nor();
+            vec.scl(force);
+
+            r.rigidBody().applyForceToCenter(vec, true);
+
+            if (Mappers.enemyStateMapper.has(target)) {
+                EnemyStateComponent s = Mappers.enemyStateMapper.get(target);
+
+                s.setState(EnemyState.STATIONARY);
+                s.setState(EnemyState.PURSUING, 0.2f);
+            }
+        }
     }
 
     public static void playDamage(Entity victim, int damage) {

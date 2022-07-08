@@ -12,6 +12,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
+import me.partlysunny.shapewars.world.components.collision.ObstacleComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
@@ -44,6 +45,7 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         e.add(texture);
         e.add(w.createComponent(BulletDeleterComponent.class));
         e.add(w.createComponent(TintComponent.class));
+        e.add(w.createComponent(ObstacleComponent.class));
         HealthComponent health = w.createComponent(HealthComponent.class);
         health.init(oe.getHealth());
         e.add(health);

@@ -1,11 +1,13 @@
 package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
+import jdk.internal.joptsimple.OptionSet;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
+import me.partlysunny.shapewars.world.components.collision.ObstacleComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
@@ -46,4 +48,5 @@ public final class Mappers {
     public static final ComponentMapper<EnemyStateComponent> enemyStateMapper = ComponentMapper.getFor(EnemyStateComponent.class);
     public static final ComponentMapper<EnemyMeleeDamageComponent> enemyMeleeDamageMapper = ComponentMapper.getFor(EnemyMeleeDamageComponent.class);
     public static final ComponentMapper<PlayerMeleeAttackComponent> playerMeleeAttackMapper = ComponentMapper.getFor(PlayerMeleeAttackComponent.class);
+    public static final ComponentMapper<ObstacleComponent> obstacleMapper = ComponentMapper.getFor(ObstacleComponent.class);
 }
