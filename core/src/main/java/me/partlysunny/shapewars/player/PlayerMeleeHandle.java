@@ -29,16 +29,16 @@ public class PlayerMeleeHandle implements ContactListener {
 
     @Override
     public void endContact(Contact contact) {
-
+        //Nothing
     }
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
-
+        //Nothing
     }
 
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
-
+        //Nothing
     }
 }

@@ -68,9 +68,9 @@ public class InGameScreen extends ManagedScreen {
         debugRenderer = new Box2DDebugRenderer();
         entityManager = new EntityManager(world.gameWorld());
         //Init basic player and wall
-        InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0), game);
+        InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0));
         //Create level manager (also will start level counter and spawn enemies)
-        levelManager = new LevelManager(stage);
+        levelManager = new LevelManager();
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().unlockWeapon("circleBlaster");
         InventoryMenuManager.init(stage);

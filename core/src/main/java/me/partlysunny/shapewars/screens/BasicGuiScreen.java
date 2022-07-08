@@ -46,6 +46,7 @@ public abstract class BasicGuiScreen extends ManagedScreen {
 
     @Override
     public void hide() {
+        //Nothing happens here
     }
 
     @Override
@@ -73,9 +74,11 @@ public abstract class BasicGuiScreen extends ManagedScreen {
     }
 
     protected void additionalActs(float delta) {
+        //Any additional stuff to do in the acting phase (every frame) can go here
     }
 
     protected void preGui() {
+        //Override in children if you want something to happen before UI initializes
     }
 
     protected abstract void createGui();

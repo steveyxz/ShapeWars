@@ -19,8 +19,8 @@ import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponen
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;

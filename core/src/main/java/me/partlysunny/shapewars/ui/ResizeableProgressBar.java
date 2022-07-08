@@ -20,7 +20,8 @@ public class ResizeableProgressBar extends ProgressBar {
     @Override
     public float getPrefWidth() {
         if (isVertical()) {
-            Drawable knob = getStyle().knob, bg = getBackgroundDrawable();
+            Drawable knob = getStyle().knob;
+            Drawable bg = getBackgroundDrawable();
             return Math.max(knob == null ? 0 : knob.getMinWidth(), bg == null ? 0 : bg.getMinWidth()) * (getWidth() / 140f);
         } else
             return getWidth();

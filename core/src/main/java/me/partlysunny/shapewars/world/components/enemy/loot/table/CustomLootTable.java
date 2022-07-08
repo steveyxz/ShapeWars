@@ -1,20 +1,19 @@
-package me.partlysunny.shapewars.world.components.mechanics.enemy.loot.table;
+package me.partlysunny.shapewars.world.components.enemy.loot.table;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.loot.entry.LootEntryManager;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.LootEntryManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CustomLootTable {
 
     private final RandomList<TableEntryWrapper> entries;
-    private int rolls;
     private final Vector2 vec = new Vector2();
+    private int rolls;
 
     public CustomLootTable(int rolls, List<TableEntryWrapper> entries) {
         RandomList<TableEntryWrapper> l = new RandomList<>();
@@ -32,7 +31,7 @@ public class CustomLootTable {
                 toRemove = e;
             }
         }
-        if (!(toRemove == null)) {
+        if (toRemove != null) {
             entries.remove(toRemove);
         }
     }
@@ -54,7 +53,6 @@ public class CustomLootTable {
     }
 
     public void dropTableAt(Entity e) {
-        List<String> hasSaid = new ArrayList<>();
         for (int i = 0; i < rolls; i++) {
             TableEntryWrapper raffle = entries.raffle();
             if (raffle.entry() == null) {

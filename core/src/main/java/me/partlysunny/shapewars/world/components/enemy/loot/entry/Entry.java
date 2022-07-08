@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.mechanics.enemy.loot.entry;
+package me.partlysunny.shapewars.world.components.enemy.loot.entry;
 
 import com.badlogic.gdx.math.Vector2;
 

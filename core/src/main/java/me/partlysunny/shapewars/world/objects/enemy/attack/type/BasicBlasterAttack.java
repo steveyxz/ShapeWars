@@ -7,7 +7,7 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
 public class BasicBlasterAttack extends EnemyAttack {

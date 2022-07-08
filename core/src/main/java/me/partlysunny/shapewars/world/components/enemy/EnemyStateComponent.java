@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.mechanics.enemy;
+package me.partlysunny.shapewars.world.components.enemy;
 
 import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.utils.Pool;

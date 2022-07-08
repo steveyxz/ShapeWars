@@ -9,9 +9,9 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicEnemyMeleeCollision;
 

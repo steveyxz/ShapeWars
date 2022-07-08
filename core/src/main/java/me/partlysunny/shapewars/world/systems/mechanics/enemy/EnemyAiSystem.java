@@ -8,8 +8,8 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyState;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 
 public class EnemyAiSystem extends IteratingSystem {
 

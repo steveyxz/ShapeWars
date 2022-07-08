@@ -27,7 +27,6 @@ import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 public class PlayerInfo {
 
     private final Entity playerEntity;
-    private final ShapeWars game;
     private final AmmoManager ammoManager;
     private final GlyphLayout layout = new GlyphLayout();
     private float health = GameInfo.PLAYER_MAX_HEALTH;
@@ -37,9 +36,8 @@ public class PlayerInfo {
     private boolean hasInitGui = false;
     private int money = 100000;
 
-    public PlayerInfo(Entity playerEntity, ShapeWars game) {
+    public PlayerInfo(Entity playerEntity) {
         this.playerEntity = playerEntity;
-        this.game = game;
         this.equipment = new PlayerEquipment();
         this.ammoManager = new AmmoManager();
         ContactDispatcher.registerListener(new PlayerMeleeHandle());

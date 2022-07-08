@@ -1,10 +1,10 @@
 package me.partlysunny.shapewars.bullets;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
-import me.partlysunny.shapewars.util.utilities.FastTrig;
 
 public class BulletType {
 
@@ -56,8 +56,8 @@ public class BulletType {
                 float[] points = new float[sideCount * 2];
                 for (int i = 0; i < sideCount * 2; i += 2) {
                     float angle = (i / 2f) * (360f / sideCount) - ((360f / sideCount) / 2f);
-                    float x = (float) (radius * FastTrig.cos(angle));
-                    float y = (float) (radius * FastTrig.sin(angle));
+                    float x = radius * MathUtils.cos(angle);
+                    float y = radius * MathUtils.sin(angle);
                     points[i] = x;
                     points[i + 1] = y;
                 }

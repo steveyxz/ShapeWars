@@ -12,15 +12,12 @@ import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 
 public class AmmoBar extends Actor {
 
-    private Drawable loadingBarBackground;
-    private Drawable loadingBar;
-    private int slot = 0;
+    private final Drawable loadingBarBackground;
+    private final Drawable loadingBar;
+    private final int slot;
 
     public AmmoBar(int slot) {
         this.slot = slot;
-        TextureAtlas skinAtlas = VisUI.getSkin().getAtlas();
-        NinePatch loadingBarBackgroundPatch = new NinePatch(skinAtlas.findRegion("slider-vertical"), 5, 5, 4, 4);
-        NinePatch loadingBarPatch = new NinePatch(skinAtlas.findRegion("slider-knob"), 5, 5, 4, 4);
         loadingBar = TextureRegionDrawableCache.get("progressBarKnob");
         loadingBarBackground = TextureRegionDrawableCache.get("progressBar");
     }

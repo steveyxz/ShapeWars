@@ -1,7 +1,6 @@
 package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import jdk.internal.joptsimple.OptionSet;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
 import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
@@ -11,8 +10,8 @@ import me.partlysunny.shapewars.world.components.collision.ObstacleComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyMeleeDamageComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;

@@ -45,7 +45,7 @@ public final class ItemFactory {
     }
 
     private void addUtilityBasics(PooledEngine engine, Entity entity, UtilityItem itemType) {
-
+        //Implement later if needed
     }
 
     private void addWeaponBasics(PooledEngine engine, Entity entity, WeaponItem itemType) {
@@ -55,7 +55,7 @@ public final class ItemFactory {
     }
 
     private void addArmorBasics(PooledEngine engine, Entity entity, ArmorItem itemType) {
-
+        //Implement later if needed
     }
 
 }

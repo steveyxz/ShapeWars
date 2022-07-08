@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.mechanics.enemy.loot.table;
+package me.partlysunny.shapewars.world.components.enemy.loot.table;
 
 import java.util.HashMap;
 import java.util.Map;

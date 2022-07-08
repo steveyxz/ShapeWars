@@ -7,9 +7,6 @@ public class GroundFrictionComponent implements Component, Pool.Poolable {
 
     private float friction = 1f;
 
-    public GroundFrictionComponent() {
-    }
-
     public float friction() {
         return friction;
     }

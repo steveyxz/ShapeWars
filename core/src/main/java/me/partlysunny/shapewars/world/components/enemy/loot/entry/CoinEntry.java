@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.components.mechanics.enemy.loot.entry;
+package me.partlysunny.shapewars.world.components.enemy.loot.entry;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
@@ -8,7 +8,8 @@ import me.partlysunny.shapewars.util.utilities.Util;
 
 public class CoinEntry implements Entry {
 
-    private final int min, max;
+    private final int min;
+    private final int max;
     private final int maxVisibleCoins;
 
     public CoinEntry(int min, int max, int maxVisibleCoins) {

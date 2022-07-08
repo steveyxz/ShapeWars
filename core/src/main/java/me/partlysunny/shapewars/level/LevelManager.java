@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.JsonReader;
@@ -17,7 +16,7 @@ import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
-import me.partlysunny.shapewars.world.components.mechanics.enemy.EnemySpawnIndicatorComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemySpawnIndicatorComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
 import java.util.ArrayList;
@@ -30,7 +29,6 @@ import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSyst
 
 public class LevelManager {
 
-    private final Stage guiStage;
     private final LevelSpawner spawner = new LevelSpawner(this);
     private final List<Entity> aliveEntities = new ArrayList<>();
     private final List<Entity> aliveObstacles = new ArrayList<>();
@@ -45,9 +43,8 @@ public class LevelManager {
     private int currentStage = 0;
     private boolean isCounting = false;
 
-    public LevelManager(Stage guiStage) {
+    public LevelManager() {
         loadLevels();
-        this.guiStage = guiStage;
         initGui();
         checkLevelUp();
     }

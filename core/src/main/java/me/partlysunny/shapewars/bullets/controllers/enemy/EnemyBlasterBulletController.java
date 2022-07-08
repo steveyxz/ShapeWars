@@ -36,6 +36,7 @@ public class EnemyBlasterBulletController implements BulletController {
 
     @Override
     public void updateBullet(BulletComponent component, float delta) {
+        //Basic bullet doesn't need updating
     }
 
     @Override
@@ -49,14 +50,17 @@ public class EnemyBlasterBulletController implements BulletController {
 
     @Override
     public void endContact(Contact contact) {
+        //Nothing special
     }
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
+        //Unnecessary
     }
 
     @Override
     public void postSolve(Contact contact, ContactImpulse impulse) {
+        //Unnecessary
     }
 
 }
