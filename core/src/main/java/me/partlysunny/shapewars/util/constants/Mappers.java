@@ -2,9 +2,8 @@ package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
 import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
-import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.ObstacleComponent;

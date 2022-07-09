@@ -7,16 +7,13 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
-public class BasicAttack extends EnemyAttack {
+public class BasicAttack implements EnemyAttack {
 
     private Vector2 vel = new Vector2();
 
-    public BasicAttack(int weight) {
-        super(weight);
-    }
 
     @Override
-    protected float maxDistance() {
+    public float maxDistance() {
         return 15;
     }
 
@@ -29,7 +26,7 @@ public class BasicAttack extends EnemyAttack {
     }
 
     @Override
-    protected void attack(Entity enemyEntity, Entity player) {
+    public void attack(Entity enemyEntity, Entity player) {
         RigidBodyComponent enemyBody = Mappers.bodyMapper.get(enemyEntity);
         RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);
         //Dash at the player

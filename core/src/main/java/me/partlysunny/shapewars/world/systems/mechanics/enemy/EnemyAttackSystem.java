@@ -4,7 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.ai.EnemyAttackComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
 
 public class EnemyAttackSystem extends IteratingSystem {
 

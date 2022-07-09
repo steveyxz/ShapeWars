@@ -10,16 +10,12 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
-public class BasicBlasterAttack extends EnemyAttack {
+public class BasicBlasterAttack implements EnemyAttack {
 
     private Vector2 vec = new Vector2();
 
-    public BasicBlasterAttack(int weight) {
-        super(weight);
-    }
-
     @Override
-    protected float maxDistance() {
+    public float maxDistance() {
         return 90;
     }
 
@@ -28,7 +24,7 @@ public class BasicBlasterAttack extends EnemyAttack {
     }
 
     @Override
-    protected void attack(Entity enemyEntity, Entity player) {
+    public void attack(Entity enemyEntity, Entity player) {
         TransformComponent enemyPos = Mappers.transformMapper.get(enemyEntity);
         TransformComponent playerPos = Mappers.transformMapper.get(player);
         RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);

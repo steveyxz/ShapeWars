@@ -68,6 +68,7 @@ public class TextureManager {
         doPngTexture("tankEnemy");
         doPngTexture("blasterEnemy");
         doPngTexture("spawnIndicator");
+        doPngTexture("commanderEnemy");
     }
 
     private static void doPngTexture(String value) {

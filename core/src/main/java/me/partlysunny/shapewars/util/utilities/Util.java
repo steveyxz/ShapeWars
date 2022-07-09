@@ -59,6 +59,14 @@ public class Util {
         return RAND.nextInt(b - a) + a;
     }
 
+    public static double getRandomBetween(double min, double max) {
+        return min + (max - min) * RAND.nextDouble();
+    }
+
+    public static float getRandomBetween(float min, float max) {
+        return min + (max - min) * RAND.nextFloat();
+    }
+
     public static void loadVisUI() {
         if (!VisUI.isLoaded()) {
             VisUI.load(new Skin(Gdx.files.internal("assets/flatEarth/flat-earth-ui.json")));
@@ -100,7 +108,7 @@ public class Util {
         Entity bullet = conversion.b();
         Entity other = conversion.a();
         if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other) || Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_PLAYERS) {
-            if (Mappers.deletionMapper.has(other)) {
+            if (Mappers.deletionMapper.has(other) && Mappers.bulletMapper.get(bullet).restrictions() != BulletRestrictions.ONLY_PLAYERS) {
                 LateRemover.tagToRemove(bullet);
             }
             return null;
@@ -121,6 +129,9 @@ public class Util {
                 //If the "player" is an obstacle then just damage it (if bullet is enemy bullet as well)
                 Mappers.healthMapper.get(player).addHealth(-Mappers.bulletMapper.get(bullet).damage());
                 VisualEffectManager.getEffect("damage").playEffect(player);
+            }
+            if (Mappers.deletionMapper.has(player) && Mappers.bulletMapper.get(bullet).restrictions() != BulletRestrictions.ONLY_ENTITIES && Mappers.bulletMapper.get(bullet).shooter() != player) {
+                LateRemover.tagToRemove(bullet);
             }
             return null;
         }
@@ -281,5 +292,11 @@ public class Util {
             Body rigidBody = body.rigidBody();
             rigidBody.setLinearVelocity(rigidBody.getLinearVelocity().x * by, rigidBody.getLinearVelocity().y * by);
         }
+    }
+
+    public static void getRandomPosAround(Vector2 out, float x, float y, float maxDistance, float minDistance) {
+        float xDist = getRandomBetween(minDistance, maxDistance) * (RAND.nextBoolean() ? 1 : -1);
+        float yDist = getRandomBetween(minDistance, maxDistance) * (RAND.nextBoolean() ? 1 : -1);
+        out.set(x + xDist, y + yDist);
     }
 }

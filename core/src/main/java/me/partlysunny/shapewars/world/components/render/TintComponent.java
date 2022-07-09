@@ -12,6 +12,18 @@ public class TintComponent implements Component, Pool.Poolable {
     public void setTint(float r, float g, float b, float a) {
         tint.set(r, g, b);
         this.alpha = a;
+        validate();
+    }
+
+    private void validate() {
+        if (alpha < 0) alpha = 0;
+        if (tint.x < 0) tint.x = 0;
+        if (tint.y < 0) tint.y = 0;
+        if (tint.z < 0) tint.z = 0;
+        if (alpha > 1) alpha = 1;
+        if (tint.x > 1) tint.x = 1;
+        if (tint.y > 1) tint.y = 1;
+        if (tint.z > 1) tint.z = 1;
     }
 
     public Vector3 tint() {
