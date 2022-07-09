@@ -3,7 +3,12 @@ package me.partlysunny.shapewars.world.objects.enemy.type;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinEntry;
+import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
+import me.partlysunny.shapewars.world.components.enemy.loot.table.TableEntryWrapper;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
+
+import javax.annotation.Nullable;
 
 public class BlasterEnemy extends Enemy {
     @Override
@@ -41,5 +46,11 @@ public class BlasterEnemy extends Enemy {
     @Override
     protected EnemyAttackSelector selector() {
         return AttackSets.BASIC_RANGED;
+    }
+
+    @Nullable
+    @Override
+    protected CustomLootTable loot() {
+        return CustomLootTable.LootTableBuilder.builder().addEntry(new TableEntryWrapper(new CoinEntry(3, 5, 3), 1)).build();
     }
 }

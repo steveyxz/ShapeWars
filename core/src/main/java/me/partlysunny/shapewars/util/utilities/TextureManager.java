@@ -30,6 +30,7 @@ public class TextureManager {
         doPngTexture("player");
         doPngTexture("wall");
         doPngTexture("rock");
+        doPngTexture("coin");
         //UI
         doPngTexture("slotBackground");
         doPngTexture("slotBackgroundSelected");

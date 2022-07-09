@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.player;
+package me.partlysunny.shapewars.world.components.enemy.loot;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -8,22 +8,13 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 
-public class PlayerMeleeHandle implements ContactListener {
+public class LootPickupHandle implements ContactListener {
     @Override
     public void beginContact(Contact contact) {
-        Pair<Entity, Entity> result = Util.handleBasicPlayerMeleeCollision(contact);
+        Pair<Entity, Entity> result = Util.handleLootItemPickup(contact);
         if (result != null) {
-            Entity attack = result.b();
-            Entity enemy = result.a();
-
-            PlayerMeleeAttackComponent meleeAttack = Mappers.playerMeleeAttackMapper.get(attack);
-            if (meleeAttack.canHit(enemy)) {
-                Util.playDamage(enemy, meleeAttack.damage());
-                Util.doKnockback(enemy, 90);
-                meleeAttack.hit(enemy);
-            }
+            Mappers.lootItemMapper.get(result.a()).pickup();
         }
     }
 

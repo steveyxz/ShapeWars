@@ -7,6 +7,7 @@ import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.LootEntryManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomLootTable {
@@ -59,7 +60,36 @@ public class CustomLootTable {
                 continue;
             }
             Vector3 position = Mappers.transformMapper.get(e).position;
-            LootEntryManager.getEntry(raffle.entry()).execute(vec.set(position.x, position.y));
+            raffle.entry().execute(vec.set(position.x, position.y));
         }
+    }
+
+    public static final class LootTableBuilder {
+
+        public static LootTableBuilder builder() {
+            return new LootTableBuilder();
+        }
+
+        private int rolls = 1;
+        private final List<TableEntryWrapper> entries;
+
+        public LootTableBuilder() {
+            this.entries = new ArrayList<>();
+        }
+
+        public LootTableBuilder addEntry(TableEntryWrapper entry) {
+            entries.add(entry);
+            return this;
+        }
+
+        public LootTableBuilder setRolls(int rolls) {
+            this.rolls = rolls;
+            return this;
+        }
+
+        public CustomLootTable build() {
+            return new CustomLootTable(rolls, entries);
+        }
+
     }
 }

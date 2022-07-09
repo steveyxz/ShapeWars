@@ -44,8 +44,8 @@ public class BasicPlayerBulletController implements BulletController {
     public void beginContact(Contact contact) {
         Pair<Entity, Entity> result = handleBasicPlayerBulletCollision(contact);
         if (result != null) {
-            Util.playDamage(result.b(), (int) Mappers.bulletMapper.get(result.a()).damage());
-            LateRemover.tagToRemove(result.a());
+            Util.playDamage(result.a(), (int) Mappers.bulletMapper.get(result.b()).damage());
+            LateRemover.tagToRemove(result.b());
         }
     }
 

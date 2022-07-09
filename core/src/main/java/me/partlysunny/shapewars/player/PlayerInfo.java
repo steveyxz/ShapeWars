@@ -21,6 +21,7 @@ import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.loot.LootPickupHandle;
 import me.partlysunny.shapewars.world.components.player.PlayerKeyMap;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
@@ -41,6 +42,7 @@ public class PlayerInfo {
         this.equipment = new PlayerEquipment();
         this.ammoManager = new AmmoManager();
         ContactDispatcher.registerListener(new PlayerMeleeHandle());
+        ContactDispatcher.registerListener(new LootPickupHandle());
     }
 
     public void initGui() {

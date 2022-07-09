@@ -18,6 +18,8 @@ import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.loot.LootComponent;
+import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
@@ -29,6 +31,8 @@ import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyRadiusProximity;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
+
+import javax.annotation.Nullable;
 
 public abstract class Enemy implements GameObject {
 
@@ -46,6 +50,8 @@ public abstract class Enemy implements GameObject {
     protected abstract float getMaxSpeed();
 
     protected abstract EnemyAttackSelector selector();
+    @Nullable
+    protected abstract CustomLootTable loot();
 
     @Override
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {
@@ -106,6 +112,13 @@ public abstract class Enemy implements GameObject {
                 .add(pursue);
         steering.setBehavior(prioritySteeringSB);
         enemy.add(steering);
+
+        CustomLootTable enemyLoot = loot();
+        if (enemyLoot != null) {
+            LootComponent loot = w.createComponent(LootComponent.class);
+            loot.init(enemyLoot);
+            enemy.add(loot);
+        }
 
         return enemy;
     }

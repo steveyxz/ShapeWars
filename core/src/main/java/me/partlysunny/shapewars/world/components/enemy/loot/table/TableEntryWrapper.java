@@ -1,24 +1,26 @@
 package me.partlysunny.shapewars.world.components.enemy.loot.table;
 
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.Entry;
+
 public class TableEntryWrapper {
 
-    private String entry;
+    private Entry entry;
     private int weight;
 
     public TableEntryWrapper() {
-        this("", 0);
+        this(null, 0);
     }
 
-    public TableEntryWrapper(String entry, int weight) {
+    public TableEntryWrapper(Entry entry, int weight) {
         this.entry = entry;
         this.weight = weight;
     }
 
-    public String entry() {
+    public Entry entry() {
         return entry;
     }
 
-    public void setEntry(String entry) {
+    public void setEntry(Entry entry) {
         this.entry = entry;
     }
 

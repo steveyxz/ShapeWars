@@ -18,6 +18,7 @@ import me.partlysunny.shapewars.world.systems.mechanics.HealthSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyAiSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyAttackSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.enemy.EnemyStateSystem;
+import me.partlysunny.shapewars.world.systems.mechanics.enemy.LootItemUpdaterSystem;
 import me.partlysunny.shapewars.world.systems.physics.GroundFrictionSystem;
 import me.partlysunny.shapewars.world.systems.physics.PhysicsSystem;
 import me.partlysunny.shapewars.world.systems.player.*;
@@ -45,6 +46,7 @@ public class GameWorld {
         gameWorld.addSystem(new EnemyAiSystem());
         gameWorld.addSystem(new EnemyAttackSystem());
         gameWorld.addSystem(new EnemyStateSystem());
+        gameWorld.addSystem(new LootItemUpdaterSystem());
         //Physics
         gameWorld.addSystem(new PhysicsSystem(physicsWorld));
         gameWorld.addSystem(new GroundFrictionSystem());

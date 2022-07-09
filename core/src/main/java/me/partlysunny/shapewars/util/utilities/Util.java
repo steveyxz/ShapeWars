@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars.util.utilities;
 
+import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -91,68 +92,30 @@ public class Util {
      */
     @Nullable
     public static Pair<Entity, Entity> handleBasicPlayerBulletCollision(Contact contact) {
-        GameWorld world = InGameScreen.world;
-        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
-        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
-        if (a == null || b == null) {
+        Pair<Entity, Entity> conversion = convertContact(contact, Mappers.bulletMapper, true);
+        if (conversion == null) {
             return null;
         }
-        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
-            return null;
-        }
-        Entity bullet = null;
-        Entity other = null;
-        if (Mappers.bulletMapper.has(a)) {
-            bullet = a;
-            other = b;
-        }
-        if (Mappers.bulletMapper.has(b)) {
-            if (bullet != null) {
-                LateRemover.tagToRemove(a);
-                LateRemover.tagToRemove(b);
-            }
-            bullet = b;
-            other = a;
-        }
-        if (other == null) {
-            return null;
-        } else if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other) || Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_PLAYERS) {
+        Entity bullet = conversion.b();
+        Entity other = conversion.a();
+        if (!Mappers.healthMapper.has(other) || Mappers.controlMapper.has(other) || Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_PLAYERS) {
             if (Mappers.deletionMapper.has(other)) {
                 LateRemover.tagToRemove(bullet);
             }
             return null;
         }
-        return new Pair<>(bullet, other);
+        return conversion;
     }
 
     @Nullable
     public static Pair<Entity, Entity> handleBasicEnemyBulletCollision(Contact contact) {
-        GameWorld world = InGameScreen.world;
-        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
-        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
-        if (a == null || b == null) {
+        Pair<Entity, Entity> conversion = convertContact(contact, Mappers.bulletMapper, true);
+        if (conversion == null) {
             return null;
         }
-        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
-            return null;
-        }
-        Entity bullet = null;
-        Entity player = null;
-        if (Mappers.bulletMapper.has(a)) {
-            bullet = a;
-            player = b;
-        }
-        if (Mappers.bulletMapper.has(b)) {
-            if (bullet != null) {
-                LateRemover.tagToRemove(a);
-                LateRemover.tagToRemove(b);
-            }
-            bullet = b;
-            player = a;
-        }
-        if (player == null) {
-            return null;
-        } else if (Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_ENTITIES || !Mappers.controlMapper.has(player)) {
+        Entity bullet = conversion.b();
+        Entity player = conversion.a();
+        if (Mappers.bulletMapper.get(bullet).restrictions() == BulletRestrictions.ONLY_ENTITIES || !Mappers.playerStateMapper.has(player)) {
             if (Mappers.obstacleMapper.has(player) && Mappers.bulletMapper.has(bullet)) {
                 //If the "player" is an obstacle then just damage it (if bullet is enemy bullet as well)
                 Mappers.healthMapper.get(player).addHealth(-Mappers.bulletMapper.get(bullet).damage());
@@ -160,40 +123,20 @@ public class Util {
             }
             return null;
         }
-        return new Pair<>(bullet, player);
+        return conversion;
     }
 
     @Nullable
     public static Pair<Entity, Entity> handleBasicPlayerMeleeCollision(Contact contact) {
-        GameWorld world = InGameScreen.world;
-        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
-        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
-        if (a == null || b == null) {
+        Pair<Entity, Entity> conversion = convertContact(contact, Mappers.playerMeleeAttackMapper);
+        if (conversion == null) {
             return null;
         }
-        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
-            return null;
-        }
-        Entity playerAttack = null;
-        Entity enemy = null;
-        if (Mappers.playerMeleeAttackMapper.has(a)) {
-            enemy = b;
-            playerAttack = a;
-        }
-        if (Mappers.playerMeleeAttackMapper.has(b)) {
-            if (playerAttack != null) {
-                return null;
-            }
-            enemy = a;
-            playerAttack = b;
-        }
-        if (playerAttack == null) {
-            return null;
-        }
+        Entity enemy = conversion.a();
         if (!Mappers.enemyStateMapper.has(enemy)) {
             //If it isn't an enemy just damage it if it has hp
             if (Mappers.healthMapper.has(enemy)) {
-                PlayerMeleeAttackComponent attack = Mappers.playerMeleeAttackMapper.get(playerAttack);
+                PlayerMeleeAttackComponent attack = Mappers.playerMeleeAttackMapper.get(conversion.b());
                 if (attack.canHit(enemy)) {
                     Mappers.healthMapper.get(enemy).addHealth(-attack.damage());
                     VisualEffectManager.getEffect("damage").playEffect(enemy);
@@ -207,37 +150,16 @@ public class Util {
             }
             return null;
         }
-        return new Pair<>(playerAttack, enemy);
+        return conversion;
     }
 
     @Nullable
     public static Pair<Entity, Entity> handleBasicEnemyMeleeCollision(Contact contact) {
-        GameWorld world = InGameScreen.world;
-        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
-        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
-        if (a == null || b == null) {
+        Pair<Entity, Entity> conversion = convertContact(contact, Mappers.playerStateMapper);
+        if (conversion == null || !Mappers.enemyStateMapper.has(conversion.a())) {
             return null;
         }
-        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
-            return null;
-        }
-        Entity enemy = null;
-        Entity player = null;
-        if (Mappers.playerStateMapper.has(a)) {
-            player = a;
-            enemy = b;
-        }
-        if (Mappers.playerStateMapper.has(b)) {
-            if (enemy != null) {
-                return null;
-            }
-            player = b;
-            enemy = a;
-        }
-        if (player == null || !Mappers.enemyStateMapper.has(enemy)) {
-            return null;
-        }
-        return new Pair<>(enemy, player);
+        return conversion;
     }
 
     public static void doKnockback(Entity target, float force) {
@@ -299,4 +221,57 @@ public class Util {
     public static float vectorToAngle(Vector2 angle) {
         return MathUtils.atan2(angle.y, angle.x);
     }
+
+    public static Pair<Entity, Entity> handleLootItemPickup(Contact contact) {
+        Pair<Entity, Entity> conversion = convertContact(contact, Mappers.playerStateMapper);
+        if (conversion == null || !Mappers.lootItemMapper.has(conversion.a())) {
+            return null;
+        }
+        return conversion;
+    }
+
+    private static Pair<Entity, Entity> convertContact(Contact contact, ComponentMapper focusedMapper) {
+        return convertContact(contact, focusedMapper, false);
+    }
+
+    /**
+     * Converts a contact into two entities, with one focused one
+     * @param contact The contact
+     * @param focusedMapper The mapper that this is focused (the check for if this is suitable), usually the most prominent component
+     * @param deleteIfIdentical If you should delete the entities if they both have the focused component
+     * @return The converted contact
+     */
+    private static Pair<Entity, Entity> convertContact(Contact contact, ComponentMapper focusedMapper, boolean deleteIfIdentical) {
+        GameWorld world = InGameScreen.world;
+        Entity a = world.getEntityWithRigidBody(contact.getFixtureA().getBody());
+        Entity b = world.getEntityWithRigidBody(contact.getFixtureB().getBody());
+        if (a == null || b == null) {
+            return null;
+        }
+        if (a.isScheduledForRemoval() || a.isRemoving() || b.isScheduledForRemoval() || b.isRemoving()) {
+            return null;
+        }
+        Entity focus = null;
+        Entity other = null;
+        if (focusedMapper.has(b)) {
+            other = a;
+            focus = b;
+        }
+        if (focusedMapper.has(a)) {
+            if (focus != null) {
+                if (deleteIfIdentical) {
+                    LateRemover.tagToRemove(a);
+                    LateRemover.tagToRemove(b);
+                }
+                return null;
+            }
+            other = b;
+            focus = a;
+        }
+        if (focus == null) {
+            return null;
+        }
+        return new Pair<>(other, focus);
+    }
+
 }

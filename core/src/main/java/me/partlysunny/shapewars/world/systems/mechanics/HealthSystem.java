@@ -18,6 +18,9 @@ public class HealthSystem extends IteratingSystem {
         HealthComponent health = Mappers.healthMapper.get(entity);
         if (health.health() <= 0) {
             LateRemover.tagToRemove(entity);
+            if (Mappers.lootMapper.has(entity)) {
+                Mappers.lootMapper.get(entity).table().dropTableAt(entity);
+            }
         }
     }
 }
