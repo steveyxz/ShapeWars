@@ -217,6 +217,7 @@ public class PlayerInfo {
         }
         if (this.health <= 0) {
             PlayerKiller.kill();
+            money = 0;
         }
     }
 

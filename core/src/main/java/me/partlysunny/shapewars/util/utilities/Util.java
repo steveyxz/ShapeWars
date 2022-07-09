@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -274,4 +275,11 @@ public class Util {
         return new Pair<>(other, focus);
     }
 
+    public static void scaleDownVelocity(Entity e, float by) {
+        if (Mappers.bodyMapper.has(e)) {
+            RigidBodyComponent body = Mappers.bodyMapper.get(e);
+            Body rigidBody = body.rigidBody();
+            rigidBody.setLinearVelocity(rigidBody.getLinearVelocity().x * by, rigidBody.getLinearVelocity().y * by);
+        }
+    }
 }

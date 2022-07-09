@@ -17,7 +17,10 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
+import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicPlayerBulletCollision;
 
@@ -46,6 +49,14 @@ public class BasicPlayerBulletController implements BulletController {
         if (result != null) {
             Util.playDamage(result.a(), (int) Mappers.bulletMapper.get(result.b()).damage());
             LateRemover.tagToRemove(result.b());
+
+            //Turn the enemy back into pursuing (cancels any current attack, only if it actually is an enemy)
+            EnemyStateComponent enemyState = Mappers.enemyStateMapper.get(result.a());
+            if (enemyState != null) {
+                enemyState.setState(EnemyState.PURSUING, 0);
+            } else {
+                Util.scaleDownVelocity(result.a(), 0.02f);
+            }
         }
     }
 

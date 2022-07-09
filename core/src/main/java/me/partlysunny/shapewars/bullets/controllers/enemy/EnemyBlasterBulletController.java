@@ -15,6 +15,7 @@ import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 
 import static me.partlysunny.shapewars.util.utilities.Util.handleBasicEnemyBulletCollision;
@@ -43,6 +44,7 @@ public class EnemyBlasterBulletController implements BulletController {
         Pair<Entity, Entity> result = handleBasicEnemyBulletCollision(contact);
         if (result != null) {
             InGameScreen.playerInfo.damage((int) Mappers.bulletMapper.get(result.b()).damage());
+            Util.scaleDownVelocity(result.a(), 0.02f);
         }
     }
 
