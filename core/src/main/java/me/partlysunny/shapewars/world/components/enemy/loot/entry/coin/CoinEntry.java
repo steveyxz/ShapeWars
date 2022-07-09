@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
@@ -85,6 +86,7 @@ public class CoinEntry implements Entry {
         lootItem.init(coin, entity -> {
             CoinComponent c = Mappers.coinMapper.get(entity);
             InGameScreen.playerInfo.giveMoney(c.amount());
+            SoundEffectManager.play("pickupCoin", 1);
             LateRemover.tagToRemove(entity);
         });
         coin.add(lootItem);

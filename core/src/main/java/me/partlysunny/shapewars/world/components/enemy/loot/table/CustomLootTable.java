@@ -66,12 +66,12 @@ public class CustomLootTable {
 
     public static final class LootTableBuilder {
 
+        private int rolls = 1;
+        private final List<TableEntryWrapper> entries;
+
         public static LootTableBuilder builder() {
             return new LootTableBuilder();
         }
-
-        private int rolls = 1;
-        private final List<TableEntryWrapper> entries;
 
         public LootTableBuilder() {
             this.entries = new ArrayList<>();
