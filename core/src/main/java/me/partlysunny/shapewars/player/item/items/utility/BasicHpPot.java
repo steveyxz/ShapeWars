@@ -21,7 +21,7 @@ public class BasicHpPot implements UtilityItem {
 
     @Override
     public String description() {
-        return "Heals 5 HP";
+        return "Heals 10 HP";
     }
 
     @Override
@@ -36,7 +36,7 @@ public class BasicHpPot implements UtilityItem {
 
     @Override
     public int price() {
-        return 10;
+        return 8;
     }
 
     @Override
@@ -46,6 +46,6 @@ public class BasicHpPot implements UtilityItem {
 
     @Override
     public void use(Entity player) {
-        InGameScreen.playerInfo.damage(-5);
+        InGameScreen.playerInfo.damage(-10);
     }
 }

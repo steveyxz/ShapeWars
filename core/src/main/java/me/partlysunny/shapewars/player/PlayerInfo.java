@@ -35,7 +35,7 @@ public class PlayerInfo {
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
-    private int money = 100000;
+    private int money = 0;
 
     public PlayerInfo(Entity playerEntity) {
         this.playerEntity = playerEntity;

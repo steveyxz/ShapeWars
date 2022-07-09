@@ -3,6 +3,7 @@ package me.partlysunny.shapewars.world.components.enemy.loot;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Pool;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
@@ -40,7 +41,17 @@ public class LootItemComponent implements Component, Pool.Poolable {
 
         float dist = (float) Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 
+        RigidBodyComponent lootItemBody = Mappers.bodyMapper.get(entity);
+        Body body = lootItemBody.rigidBody();
         if (dist > maxDist) {
+            body.setLinearVelocity(body.getLinearVelocity().x * 0.6f, body.getLinearVelocity().y * 0.6f);
+            float lowerBound = 0.01f;
+            if (body.getLinearVelocity().x < lowerBound) {
+                body.setLinearVelocity(0, body.getLinearVelocity().y);
+            }
+            if (body.getLinearVelocity().y < lowerBound) {
+                body.setLinearVelocity(body.getLinearVelocity().x, 0);
+            }
             return;
         }
 
@@ -48,8 +59,7 @@ public class LootItemComponent implements Component, Pool.Poolable {
         vec.nor();
         vec.scl(movementMultiplier);
 
-        RigidBodyComponent lootItemBody = Mappers.bodyMapper.get(entity);
-        lootItemBody.rigidBody().setLinearVelocity(delta * vec.x, delta * vec.y);
+        body.setLinearVelocity(delta * vec.x, delta * vec.y);
     }
 
     public void pickup() {
