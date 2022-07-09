@@ -1,0 +1,19 @@
+{
+  "levelWidth": 250,
+  "levelHeight": 250,
+  "time": 200,
+  "stages": [
+    {
+      "tank": 8,
+      "blaster": 5
+    },
+    {
+      "tank": 10,
+      "blaster": 7,
+      "basic": 3
+    }
+  ],
+  "obstacles": {
+    "rock": 20
+  }
+}

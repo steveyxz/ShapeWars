@@ -13,6 +13,7 @@ import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootItemComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.item.UtilityComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
@@ -55,4 +56,5 @@ public final class Mappers {
     public static final ComponentMapper<LootComponent> lootMapper = ComponentMapper.getFor(LootComponent.class);
     public static final ComponentMapper<LootItemComponent> lootItemMapper = ComponentMapper.getFor(LootItemComponent.class);
     public static final ComponentMapper<CoinComponent> coinMapper = ComponentMapper.getFor(CoinComponent.class);
+    public static final ComponentMapper<UtilityComponent> utilityMapper = ComponentMapper.getFor(UtilityComponent.class);
 }

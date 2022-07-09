@@ -4,6 +4,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinEntry;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.item.UtilityItemEntry;
 import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
 import me.partlysunny.shapewars.world.components.enemy.loot.table.TableEntryWrapper;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
@@ -51,6 +52,6 @@ public class TankEnemy extends Enemy {
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return CustomLootTable.LootTableBuilder.builder().addEntry(new TableEntryWrapper(new CoinEntry(3, 6, 3), 1)).build();
+        return CustomLootTable.LootTableBuilder.builder().setRolls(2).addEntry(new TableEntryWrapper(new CoinEntry(2, 4, 2), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "basicHpPot"), 1)).build();
     }
 }
