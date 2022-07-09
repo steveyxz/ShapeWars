@@ -21,12 +21,10 @@ public class PlayerAttackingSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         WeaponComponent weapon = Mappers.weaponMapper.get(entity);
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !InventoryMenuManager.isOpen()) {
-            if (weapon.canAttack()) {
-                weapon.weaponItem().attack(InGameScreen.playerInfo.playerEntity());
-                weapon.resetAttackCooldown();
-                InGameScreen.playerInfo.ammoManager().useAmmo(weapon.weaponItem().texture());
-            }
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && !InventoryMenuManager.isOpen() && weapon.canAttack()) {
+            weapon.weaponItem().attack(InGameScreen.playerInfo.playerEntity());
+            weapon.resetAttackCooldown();
+            InGameScreen.playerInfo.ammoManager().useAmmo(weapon.weaponItem().texture());
         }
         weapon.update(deltaTime);
     }

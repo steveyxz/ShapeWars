@@ -46,15 +46,14 @@ public class InGameScreen extends ManagedScreen {
     public static final Viewport guiViewport = new ExtendViewport(guiCamera.viewportWidth, guiCamera.viewportHeight, guiCamera);
     public static GameWorld world;
     public static PlayerInfo playerInfo;
-    public static ScreenGuiManager guiManager;
+    public static final ScreenGuiManager guiManager = new ScreenGuiManager();
     public static LevelManager levelManager;
     private final ShapeWars game;
     private final GameMusicSwitcher switcher = new GameMusicSwitcher();
-    private EntityManager entityManager;
     private float accumulator = 0;
-    private Box2DDebugRenderer debugRenderer;
-    private Stage stage;
-    private Stage guiStage;
+    private final Box2DDebugRenderer debugRenderer;
+    private final Stage stage;
+    private final Stage guiStage;
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
@@ -62,11 +61,10 @@ public class InGameScreen extends ManagedScreen {
         ObstacleManager.init();
         stage = new Stage(viewport, game.batch());
         guiStage = new Stage(guiViewport, game.batch());
-        guiManager = new ScreenGuiManager();
         guiManager.init(guiStage);
         world = new GameWorld(stage);
         debugRenderer = new Box2DDebugRenderer();
-        entityManager = new EntityManager(world.gameWorld());
+        EntityManager entityManager = new EntityManager(world.gameWorld());
         //Init basic player and wall
         InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0));
         //Create level manager (also will start level counter and spawn enemies)

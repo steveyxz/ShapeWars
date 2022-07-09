@@ -25,6 +25,7 @@ public class DamageEffect extends VisualEffect {
 
     @Override
     protected void effectUpdate(Entity e, float delta) {
+        //Damage effect doesn't do stuff over time
     }
 
     @Override

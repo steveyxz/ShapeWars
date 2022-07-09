@@ -133,15 +133,11 @@ public class LevelManager {
     }
 
     public void entityDestroyed(Entity e) {
-        if (aliveEntities.remove(e)) {
-            if (!isLosing) {
-                checkLevelUp();
-            }
+        if (aliveEntities.remove(e) && !isLosing) {
+            checkLevelUp();
         }
-        if (aliveObstacles.remove(e)) {
-            if (!isLosing) {
-                checkLevelUp();
-            }
+        if (aliveObstacles.remove(e) && !isLosing) {
+            checkLevelUp();
         }
     }
 

@@ -100,8 +100,8 @@ public class EnemyAABBProximity implements Proximity<Vector2>, QueryCallback {
             return true;
         }
         boolean has = Mappers.dodgeIgnoreMapper.has(entityWithRigidBody);
-        if (steerable != owner && accept(steerable) && (!has || !Mappers.dodgeIgnoreMapper.get(entityWithRigidBody).active())) {
-            if (behaviorCallback.reportNeighbor(steerable)) neighborCount++;
+        if (steerable != owner && accept(steerable) && (!has || !Mappers.dodgeIgnoreMapper.get(entityWithRigidBody).active()) && behaviorCallback.reportNeighbor(steerable)) {
+            neighborCount++;
         }
         return true;
     }

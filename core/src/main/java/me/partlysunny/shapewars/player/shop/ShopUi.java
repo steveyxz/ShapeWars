@@ -102,8 +102,10 @@ public class ShopUi extends InventoryMenu {
                 items = ItemManager.getAllUtilities();
                 break;
             }
-            default:
+            default: {
                 items = new ArrayList<>();
+                break;
+            }
         }
 
         int rowMax = 5;

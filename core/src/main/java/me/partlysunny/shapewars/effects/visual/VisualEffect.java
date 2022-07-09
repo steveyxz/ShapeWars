@@ -26,6 +26,7 @@ public abstract class VisualEffect {
             InGameScreen.world.gameWorld().addEntityListener(new EntityListener() {
                 @Override
                 public void entityAdded(Entity entity) {
+                    //No need to listener for adding
                 }
 
                 @Override

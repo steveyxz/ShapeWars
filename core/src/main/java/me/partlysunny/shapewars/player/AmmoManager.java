@@ -15,11 +15,9 @@ public class AmmoManager {
     public AmmoManager() {
         for (String item : ItemManager.items()) {
             Item weapon = ItemManager.getItem(item);
-            if (weapon instanceof WeaponItem) {
-                if (((WeaponItem) weapon).maxUses() != -1) {
-                    ammoMap.put(item, ((WeaponItem) weapon).maxUses());
-                    counter.put(item, ((WeaponItem) weapon).attackDelay());
-                }
+            if (weapon instanceof WeaponItem && ((WeaponItem) weapon).maxUses() != -1) {
+                ammoMap.put(item, ((WeaponItem) weapon).maxUses());
+                counter.put(item, ((WeaponItem) weapon).attackDelay());
             }
         }
     }

@@ -38,19 +38,19 @@ public class PlayerMovementSystem extends IteratingSystem {
         float x = body.getPosition().x;
         float y = body.getPosition().y;
         Vector2 linearVelocity = body.getLinearVelocity();
-        if (input.isKeyPressed(map.getKey(PlayerAction.DOWN)) && !(linearVelocity.y < -GameInfo.MAX_VELOCITY)) {
+        if (input.isKeyPressed(map.getKey(PlayerAction.DOWN)) && linearVelocity.y >= -GameInfo.MAX_VELOCITY) {
             body.applyLinearImpulse(0, -playerSpeed, x, y, true);
             state.setState(State.MOVING);
         }
-        if (input.isKeyPressed(map.getKey(PlayerAction.LEFT)) && !(linearVelocity.x < -GameInfo.MAX_VELOCITY)) {
+        if (input.isKeyPressed(map.getKey(PlayerAction.LEFT)) && linearVelocity.x >= -GameInfo.MAX_VELOCITY) {
             body.applyLinearImpulse(-playerSpeed, 0, x, y, true);
             state.setState(State.MOVING);
         }
-        if (input.isKeyPressed(map.getKey(PlayerAction.UP)) && !(linearVelocity.y > GameInfo.MAX_VELOCITY)) {
+        if (input.isKeyPressed(map.getKey(PlayerAction.UP)) && linearVelocity.y <= GameInfo.MAX_VELOCITY) {
             body.applyLinearImpulse(0, playerSpeed, x, y, true);
             state.setState(State.MOVING);
         }
-        if (input.isKeyPressed(map.getKey(PlayerAction.RIGHT)) && !(linearVelocity.x > GameInfo.MAX_VELOCITY)) {
+        if (input.isKeyPressed(map.getKey(PlayerAction.RIGHT)) && linearVelocity.x <= GameInfo.MAX_VELOCITY) {
             body.applyLinearImpulse(playerSpeed, 0, x, y, true);
             state.setState(State.MOVING);
         }
