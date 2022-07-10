@@ -37,7 +37,7 @@ public class GameWorld {
     private final PooledEngine gameWorld;
     private final World physicsWorld;
 
-    private Map<Body, Entity> bodyCache = new HashMap<>();
+    private final Map<Body, Entity> bodyCache = new HashMap<>();
 
     public GameWorld(Stage stage) {
         this.physicsWorld = new World(new Vector2(0, 0), true);
@@ -107,17 +107,19 @@ public class GameWorld {
         return physicsWorld;
     }
 
-    public List<Entity> getEntitiesAroundPosition(float x, float y, int distance, boolean meters) {
+    public List<Entity> getEntitiesAroundPosition(float x, float y, float distance, boolean meters) {
         ImmutableArray<Entity> entities = gameWorld.getEntitiesFor(Family.all(TransformComponent.class).get());
         List<Entity> returned = new ArrayList<>();
+        float actualX = x;
+        float actualY = y;
         if (!meters) {
-            x = TextureRenderingSystem.pixelsToMeters(x);
-            y = TextureRenderingSystem.pixelsToMeters(y);
+            actualX = TextureRenderingSystem.pixelsToMeters(x);
+            actualY = TextureRenderingSystem.pixelsToMeters(y);
         }
         for (Entity e : entities) {
             TransformComponent transform = Mappers.transformMapper.get(e);
-            float xDiff = x - transform.position.x;
-            float yDiff = y - transform.position.y;
+            float xDiff = actualX - transform.position.x;
+            float yDiff = actualY - transform.position.y;
             float dist = (float) Math.sqrt(xDiff * xDiff + yDiff * yDiff);
 
             if (dist <= distance) {

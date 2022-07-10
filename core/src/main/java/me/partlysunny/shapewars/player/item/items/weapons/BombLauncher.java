@@ -16,6 +16,7 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
+import me.partlysunny.shapewars.util.factories.BombFactory;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -86,45 +87,6 @@ public class BombLauncher implements WeaponItem {
 
     @Override
     public void attack(Entity attacker) {
-        PooledEngine world = InGameScreen.world.gameWorld();
-        Entity basicBomb = world.createEntity();
-        TransformComponent transformComponent = world.createComponent(TransformComponent.class);
-        TextureComponent textureComponent = world.createComponent(TextureComponent.class);
-        RigidBodyComponent rigidBodyComponent = world.createComponent(RigidBodyComponent.class);
-        TintComponent tintComponent = world.createComponent(TintComponent.class);
-        AiDodgeIgnoreComponent aiIgnore = world.createComponent(AiDodgeIgnoreComponent.class);
-        BombComponent bombComponent = world.createComponent(BombComponent.class);
-
-        bombComponent.init(damage());
-        textureComponent.init(new TextureRegion(TextureManager.getTexture("basicBomb")));
-        transformComponent.init(4, 4);
-        TransformComponent shooterPos = Mappers.transformMapper.get(attacker);
-        float rotation = shooterPos.rotation;
-        float x = MathUtils.cos(rotation) * 5;
-        float y = MathUtils.sin(rotation) * 5;
-
-        FixtureDef def = new FixtureDef();
-        PolygonShape shape = new PolygonShape();
-        shape.setAsBox(2, 2);
-        def.shape = shape;
-
-        rigidBodyComponent.initBody(shooterPos.position.x + x, shooterPos.position.y + y, shooterPos.rotation, def, BodyDef.BodyType.DynamicBody, 2);
-        transformComponent.position.set(shooterPos.position.x + x, shooterPos.position.y + y, 0);
-
-        basicBomb.add(transformComponent);
-        basicBomb.add(textureComponent);
-        basicBomb.add(rigidBodyComponent);
-        basicBomb.add(aiIgnore);
-        basicBomb.add(tintComponent);
-        basicBomb.add(bombComponent);
-
-        float bulletSpeed = 400;
-        x *= (bulletSpeed / 5);
-        y *= (bulletSpeed / 5);
-
-        Mappers.bodyMapper.get(basicBomb).rigidBody().applyForceToCenter(x, y, true);
-        SoundEffectManager.play("playerShoot", 1);
-        InGameScreen.world.gameWorld().addEntity(basicBomb);
-        VisualEffectManager.getEffect("explode").playEffect(basicBomb);
+        BombFactory.getInstance().generateBomb(attacker, 2, 5, BulletRestrictions.ONLY_ENTITIES, 15, 400, "playerShoot", "basicBomb", "basicExplode");
     }
 }

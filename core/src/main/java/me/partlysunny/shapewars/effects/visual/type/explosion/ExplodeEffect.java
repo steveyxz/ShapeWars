@@ -1,6 +1,7 @@
-package me.partlysunny.shapewars.effects.visual.type;
+package me.partlysunny.shapewars.effects.visual.type.explosion;
 
 import com.badlogic.ashley.core.Entity;
+import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.effects.visual.VisualEffect;
@@ -16,14 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ExplodeEffect extends VisualEffect {
+public abstract class ExplodeEffect extends VisualEffect {
 
     private final Map<Entity, Float> lastBeeped = new HashMap<>();
 
-    @Override
-    protected float getDuration() {
-        return 3;
-    }
+    protected abstract float explosionRadius();
 
     @Override
     protected void startEffect(Entity e) {
@@ -74,11 +72,29 @@ public class ExplodeEffect extends VisualEffect {
         TransformComponent entity = Mappers.transformMapper.get(e);
         ParticleEffectManager.startEffect("explosion", (int) TextureRenderingSystem.metersToPixels(entity.position.x), (int) TextureRenderingSystem.metersToPixels(entity.position.y), 100);
 
-        List<Entity> toDamage = InGameScreen.world.getEntitiesAroundPosition(entity.position.x, entity.position.y, 20, true);
+        List<Entity> toDamage = InGameScreen.world.getEntitiesAroundPosition(entity.position.x, entity.position.y, explosionRadius(), true);
 
         for (Entity entityToDamage : toDamage) {
             if (Mappers.healthMapper.has(entityToDamage)) {
-                Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
+                BulletRestrictions restrictions = Mappers.bombMapper.get(e).restrictions();
+                switch (restrictions) {
+                    case ONLY_PLAYERS: {
+                        if (!Mappers.enemyStateMapper.has(entityToDamage)) {
+                            Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
+                        }
+                        break;
+                    }
+                    case ONLY_ENTITIES: {
+                        if (!Mappers.playerStateMapper.has(entityToDamage)) {
+                            Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
+                        }
+                        break;
+                    }
+                    case BOTH: {
+                        Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
+                        break;
+                    }
+                }
             }
         }
 
