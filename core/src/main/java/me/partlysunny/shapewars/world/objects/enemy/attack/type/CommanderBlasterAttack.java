@@ -9,6 +9,6 @@ public class CommanderBlasterAttack extends BasicBlasterAttack {
 
     @Override
     protected int getDamage() {
-        return 3;
+        return 6;
     }
 }

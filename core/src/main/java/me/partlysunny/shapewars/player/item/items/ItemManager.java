@@ -5,10 +5,7 @@ import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
 import me.partlysunny.shapewars.player.item.items.armor.PaddedGreaves;
 import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
 import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
-import me.partlysunny.shapewars.player.item.items.weapons.BombLauncher;
-import me.partlysunny.shapewars.player.item.items.weapons.CircleBlaster;
-import me.partlysunny.shapewars.player.item.items.weapons.CirclePummeler;
-import me.partlysunny.shapewars.player.item.items.weapons.WoodenStick;
+import me.partlysunny.shapewars.player.item.items.weapons.*;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
@@ -45,9 +42,10 @@ public final class ItemManager {
     public static void init() {
         //Weapons
         registerItem("circleBlaster", new CircleBlaster());
+        registerItem("woodenStick", new WoodenStick());
         registerItem("circlePummeler", new CirclePummeler());
         registerItem("bombLauncher", new BombLauncher());
-        registerItem("woodenStick", new WoodenStick());
+        registerItem("bombLobber", new BombLobber());
         //Armor
         registerItem("oldTunic", new OldTunic());
         registerItem("paddedGreaves", new PaddedGreaves());

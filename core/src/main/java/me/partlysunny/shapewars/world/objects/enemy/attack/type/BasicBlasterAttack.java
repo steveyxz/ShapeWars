@@ -20,7 +20,7 @@ public class BasicBlasterAttack implements EnemyAttack {
     }
 
     protected int getDamage() {
-        return 2;
+        return 4;
     }
 
     @Override

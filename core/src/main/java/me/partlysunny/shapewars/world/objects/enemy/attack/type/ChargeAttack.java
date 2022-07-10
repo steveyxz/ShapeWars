@@ -14,7 +14,7 @@ public class ChargeAttack extends BasicAttack {
 
     @Override
     protected int getDamage() {
-        return 10;
+        return 25;
     }
 
     @Override

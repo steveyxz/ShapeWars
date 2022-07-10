@@ -7,15 +7,16 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.factories.BombFactory;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class BombLauncher implements WeaponItem {
+public class BombLobber implements WeaponItem {
+
     @Override
     public int maxUses() {
-        return 10;
+        return 20;
     }
 
     @Override
     public float usesRegenRate() {
-        return 4;
+        return 3.5f;
     }
 
     @Override
@@ -27,17 +28,17 @@ public class BombLauncher implements WeaponItem {
 
     @Override
     public String name() {
-        return "Bomb Launcher";
+        return "Bomb Lobber";
     }
 
     @Override
     public String description() {
-        return "Launches bombs I guess?";
+        return "Better than the launcher!";
     }
 
     @Override
     public String texture() {
-        return "bombLauncher";
+        return "bombLobber";
     }
 
     @Override
@@ -47,7 +48,7 @@ public class BombLauncher implements WeaponItem {
 
     @Override
     public int price() {
-        return 80;
+        return 150;
     }
 
     @Override
@@ -57,16 +58,17 @@ public class BombLauncher implements WeaponItem {
 
     @Override
     public int damage() {
-        return 30;
+        return 40;
     }
 
     @Override
     public float attackDelay() {
-        return 3;
+        return 2.5f;
     }
 
     @Override
     public void attack(Entity attacker) {
-        BombFactory.getInstance().generateBomb(attacker, 2, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, "playerShoot", "basicBomb", "basicExplode");
+        BombFactory.getInstance().generateBomb(attacker, 4, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, "playerShoot", "basicBomb", "basicExplode");
     }
+
 }

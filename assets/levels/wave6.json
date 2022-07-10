@@ -4,13 +4,13 @@
   "time": 260,
   "stages": [
     {
-      "megaTank": 4,
-      "bomber": 4
+      "megaTank": 8,
+      "bomber": 8
     },
     {
       "commander": 2,
-      "blaster": 8,
-      "bomber": 8
+      "blaster": 12,
+      "bomber": 12
     }
   ],
   "obstacles": {

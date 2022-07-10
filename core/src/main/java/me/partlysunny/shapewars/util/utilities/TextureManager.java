@@ -59,6 +59,7 @@ public class TextureManager {
         doPngTexture("circlePummeler");
         doPngTexture("woodenStick");
         doPngTexture("bombLauncher");
+        doPngTexture("bombLobber");
         //Armor
         doPngTexture("oldTunic");
         doPngTexture("paddedGreaves");

@@ -8,13 +8,12 @@
       "blaster": 5
     },
     {
-      "tank": 10,
-      "blaster": 7,
-      "basic": 3
+      "tank": 12,
+      "blaster": 8
     },
     {
-      "tank": 10,
-      "blaster": 10,
+      "tank": 16,
+      "blaster": 12,
       "commander": 1
     }
   ],
