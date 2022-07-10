@@ -31,7 +31,7 @@ public class MeleeHandle implements ContactListener {
                 if (enemyState.state() == EnemyState.ATTACKING) {
                     EnemyMeleeDamageComponent enemyDamage = Mappers.enemyMeleeDamageMapper.get(enemy);
                     InGameScreen.playerInfo.damage(enemyDamage.damage());
-                    enemyState.setState(EnemyState.PURSUING);
+                    enemyState.setState(EnemyState.MOVING);
                     f.set(Mappers.transformMapper.get(player).position);
                     f.sub(Mappers.transformMapper.get(enemy).position);
                     f.scl(-10);

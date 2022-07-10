@@ -12,16 +12,17 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 
 public class SteeringComponent implements Component, Pool.Poolable, Steerable<Vector2> {
 
-    private RigidBodyComponent entityBody = null;
-    private boolean tagged = false;
-    private float maxLinearSpeed, maxLinearAcceleration;
-    private float maxAngularSpeed, maxAngularAcceleration;
-    private float zeroLinearSpeedThreshold;
+    protected RigidBodyComponent entityBody = null;
+    protected boolean tagged = false;
+    protected float maxLinearSpeed, maxLinearAcceleration;
+    protected float maxAngularSpeed, maxAngularAcceleration;
+    protected float zeroLinearSpeedThreshold;
 
-    private SteeringBehavior<Vector2> behavior;
-    private SteeringAcceleration<Vector2> steeringOutput;
+    protected SteeringBehavior<Vector2> behavior;
+    protected SteeringAcceleration<Vector2> steeringOutput;
+    protected float viewRange;
 
-    public void init(RigidBodyComponent rigidBody) {
+    public void init(RigidBodyComponent rigidBody, float v) {
         this.entityBody = rigidBody;
 
         this.maxLinearSpeed = 10;
@@ -34,6 +35,12 @@ public class SteeringComponent implements Component, Pool.Poolable, Steerable<Ve
 
         this.steeringOutput = new SteeringAcceleration<>(new Vector2());
         this.entityBody.rigidBody().setUserData(this);
+
+        this.viewRange = v;
+    }
+
+    public float viewRange() {
+        return viewRange;
     }
 
     @Override

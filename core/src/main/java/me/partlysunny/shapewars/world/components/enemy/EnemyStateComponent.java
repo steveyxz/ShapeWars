@@ -5,8 +5,8 @@ import com.badlogic.gdx.utils.Pool;
 
 public class EnemyStateComponent implements Component, Pool.Poolable {
 
-    private EnemyState state = EnemyState.PURSUING;
-    private EnemyState goingTo = EnemyState.PURSUING;
+    private EnemyState state = EnemyState.MOVING;
+    private EnemyState goingTo = EnemyState.MOVING;
     private float countdown = -1;
 
     public EnemyState state() {
@@ -34,6 +34,6 @@ public class EnemyStateComponent implements Component, Pool.Poolable {
 
     @Override
     public void reset() {
-        state = EnemyState.PURSUING;
+        state = EnemyState.MOVING;
     }
 }

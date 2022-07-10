@@ -1,9 +1,11 @@
 package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
+import com.badlogic.gdx.ai.steer.behaviors.Wander;
 import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
+import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.collision.*;
 import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
@@ -57,4 +59,5 @@ public final class Mappers {
     public static final ComponentMapper<UtilityComponent> utilityMapper = ComponentMapper.getFor(UtilityComponent.class);
     public static final ComponentMapper<BombComponent> bombMapper = ComponentMapper.getFor(BombComponent.class);
     public static final ComponentMapper<DeletionListenerComponent> deleteListenerMapper = ComponentMapper.getFor(DeletionListenerComponent.class);
+    public static final ComponentMapper<WanderComponent> wanderMapper = ComponentMapper.getFor(WanderComponent.class);
 }

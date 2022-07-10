@@ -53,4 +53,14 @@ public class BlasterEnemy extends Enemy {
     protected CustomLootTable loot() {
         return CustomLootTable.LootTableBuilder.builder().addEntry(new TableEntryWrapper(new CoinEntry(3, 5, 3), 1)).build();
     }
+
+    @Override
+    protected EnemyBehaviour behaviour() {
+        return EnemyBehaviour.ESCAPE;
+    }
+
+    @Override
+    protected float viewRange() {
+        return 50;
+    }
 }

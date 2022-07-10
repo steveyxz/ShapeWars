@@ -1,6 +1,7 @@
 package me.partlysunny.shapewars.world.objects.obstacle;
 
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -25,6 +26,16 @@ import java.util.List;
 public class WallEntity implements GameObject {
 
     private static final List<Entity> walls = new ArrayList<>();
+
+    public static void checkWalls(int boundaryWidth, int boundaryHeight) {
+        int count = 0;
+        for (Entity ignored : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(WallComponent.class).get())) {
+            count++;
+        }
+        if (count != 4) {
+            reloadWalls(boundaryWidth, boundaryHeight);
+        }
+    }
 
     public static void reloadWalls(int boundaryWidth, int boundaryHeight) {
         PooledEngine w = InGameScreen.world.gameWorld();

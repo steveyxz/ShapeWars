@@ -53,4 +53,14 @@ public class BasicEnemy extends Enemy {
     protected CustomLootTable loot() {
         return CustomLootTable.LootTableBuilder.builder().addEntry(new TableEntryWrapper(new CoinEntry(1, 3, 1), 1)).build();
     }
+
+    @Override
+    protected EnemyBehaviour behaviour() {
+        return EnemyBehaviour.PURSUE;
+    }
+
+    @Override
+    protected float viewRange() {
+        return 150;
+    }
 }

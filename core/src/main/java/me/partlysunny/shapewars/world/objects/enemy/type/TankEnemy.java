@@ -54,4 +54,14 @@ public class TankEnemy extends Enemy {
     protected CustomLootTable loot() {
         return CustomLootTable.LootTableBuilder.builder().setRolls(2).addEntry(new TableEntryWrapper(new CoinEntry(2, 4, 2), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "basicHpPot"), 1)).build();
     }
+
+    @Override
+    protected EnemyBehaviour behaviour() {
+        return EnemyBehaviour.PURSUE;
+    }
+
+    @Override
+    protected float viewRange() {
+        return 250;
+    }
 }

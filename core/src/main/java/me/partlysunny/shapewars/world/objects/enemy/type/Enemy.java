@@ -3,6 +3,7 @@ package me.partlysunny.shapewars.world.objects.enemy.type;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.ai.steer.behaviors.CollisionAvoidance;
+import com.badlogic.gdx.ai.steer.behaviors.Evade;
 import com.badlogic.gdx.ai.steer.behaviors.PrioritySteering;
 import com.badlogic.gdx.ai.steer.behaviors.Pursue;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -13,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.Box2DFactory;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
+import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
@@ -52,6 +54,9 @@ public abstract class Enemy implements GameObject {
     protected abstract EnemyAttackSelector selector();
     @Nullable
     protected abstract CustomLootTable loot();
+
+    protected abstract EnemyBehaviour behaviour();
+    protected abstract float viewRange();
 
     @Override
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {
@@ -100,18 +105,32 @@ public abstract class Enemy implements GameObject {
         enemy.add(w.createComponent(EnemyStateComponent.class));
         enemy.add(w.createComponent(EnemyMeleeDamageComponent.class));
 
-        SteeringComponent steering = w.createComponent(SteeringComponent.class);
-        steering.init(rigidBody);
-        steering.setMaxLinearSpeed(getMaxSpeed());
-        EnemyRadiusProximity proximity = new EnemyRadiusProximity(steering, InGameScreen.world.physicsWorld(),
-                10);
-        Pursue<Vector2> pursue = new Pursue<>(steering, InGameScreen.playerInfo.playerEntity().getComponent(PlayerTargetComponent.class));
-        CollisionAvoidance<Vector2> collisionAvoidance = new CollisionAvoidance<>(steering, proximity);
-        PrioritySteering<Vector2> prioritySteeringSB = new PrioritySteering<>(steering, 0.001f)
-                .add(collisionAvoidance)
-                .add(pursue);
-        steering.setBehavior(prioritySteeringSB);
-        enemy.add(steering);
+        if (behaviour() != EnemyBehaviour.UNMOVING) {
+            SteeringComponent steering = w.createComponent(SteeringComponent.class);
+            steering.init(rigidBody, viewRange());
+            steering.setMaxLinearSpeed(getMaxSpeed());
+            EnemyRadiusProximity proximity = new EnemyRadiusProximity(steering, InGameScreen.world.physicsWorld(),
+                    10);
+            CollisionAvoidance<Vector2> collisionAvoidance = new CollisionAvoidance<>(steering, proximity);
+            PrioritySteering<Vector2> prioritySteeringSB = new PrioritySteering<>(steering, 0.001f)
+                    .add(collisionAvoidance);
+            if (behaviour() == EnemyBehaviour.PURSUE) {
+                Pursue<Vector2> pursue = new Pursue<>(steering, InGameScreen.playerInfo.playerEntity().getComponent(PlayerTargetComponent.class));
+                prioritySteeringSB.add(pursue);
+            } else if (behaviour() == EnemyBehaviour.ESCAPE) {
+                Evade<Vector2> evade = new Evade<>(steering, InGameScreen.playerInfo.playerEntity().getComponent(PlayerTargetComponent.class));
+                prioritySteeringSB.add(evade);
+            }
+            steering.setBehavior(prioritySteeringSB);
+            enemy.add(steering);
+        }
+
+        if (behaviour() != EnemyBehaviour.UNMOVING) {
+            WanderComponent wander = new WanderComponent();
+            wander.init(rigidBody, viewRange());
+            wander.setMaxLinearSpeed(getMaxSpeed());
+            enemy.add(wander);
+        }
 
         CustomLootTable enemyLoot = loot();
         if (enemyLoot != null) {

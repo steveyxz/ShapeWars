@@ -4,7 +4,7 @@
   "time": 60,
   "stages": [
     {
-      "bomber": 3
+      "basic": 3
     },
     {
       "basic": 5

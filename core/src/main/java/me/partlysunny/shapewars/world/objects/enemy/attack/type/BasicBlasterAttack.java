@@ -12,7 +12,7 @@ import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
 public class BasicBlasterAttack implements EnemyAttack {
 
-    private Vector2 vec = new Vector2();
+    private final Vector2 vec = new Vector2();
 
     @Override
     public float maxDistance() {
@@ -39,7 +39,7 @@ public class BasicBlasterAttack implements EnemyAttack {
         Controllers.ENEMY_BLASTER.fire(enemyEntity, getDamage());
 
         Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
-        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.PURSUING, 0.5f);
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.MOVING, 0.5f);
     }
 
     @Override

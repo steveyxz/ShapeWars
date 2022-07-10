@@ -4,8 +4,11 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.math.Vector2;
+import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.constants.Mappers;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
+import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyState;
@@ -20,11 +23,30 @@ public class EnemyAiSystem extends IteratingSystem {
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         SteeringComponent steering = Mappers.steeringMapper.get(entity);
+        WanderComponent wander = Mappers.wanderMapper.get(entity);
         EnemyStateComponent state = Mappers.enemyStateMapper.get(entity);
 
-        if (steering.behavior() != null && state.state() == EnemyState.PURSUING) {
-            steering.behavior().calculateSteering(steering.steeringOutput());
-            applySteering(steering, entity, deltaTime);
+        Entity player = InGameScreen.playerInfo.playerEntity();
+        TransformComponent playerTransform = Mappers.transformMapper.get(player);
+        TransformComponent entityTransform = Mappers.transformMapper.get(entity);
+
+        float dist = Util.getDistanceBetween(playerTransform, entityTransform);
+        if (dist > steering.viewRange()) {
+            if (state.state() != EnemyState.WANDERING) {
+                state.setState(EnemyState.WANDERING, 0);
+            }
+        } else if (state.state() == EnemyState.WANDERING) {
+            state.setState(EnemyState.MOVING, 0);
+        }
+
+        if (steering.behavior() != null) {
+            if (state.state() == EnemyState.MOVING) {
+                steering.behavior().calculateSteering(steering.steeringOutput());
+                applySteering(steering, entity, deltaTime);
+            } else if (state.state() == EnemyState.WANDERING) {
+                wander.behavior().calculateSteering(wander.steeringOutput());
+                applySteering(wander, entity, deltaTime);
+            }
         }
     }
 

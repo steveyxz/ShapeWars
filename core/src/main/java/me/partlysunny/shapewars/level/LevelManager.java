@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
+import me.partlysunny.shapewars.player.PlayerInfo;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
@@ -251,6 +252,7 @@ public class LevelManager {
                 }
             } else {
                 timeRemaining -= delta;
+                WallEntity.checkWalls(getCurrentLevel().levelWidth(), getCurrentLevel().levelHeight());
                 if (timeRemaining < 0) {
                     lossReset();
                     InGameScreen.playerInfo.playerEntity().getComponent(RigidBodyComponent.class).rigidBody().setTransform(0, 0, 0);
@@ -267,6 +269,7 @@ public class LevelManager {
         for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(CoinComponent.class).get())) {
             LateRemover.tagToRemove(e);
         }
+        InGameScreen.playerInfo.giveMoney(-InGameScreen.playerInfo.money());
         currentStage = 0;
         isLosing = false;
         loadCurrentLevel();

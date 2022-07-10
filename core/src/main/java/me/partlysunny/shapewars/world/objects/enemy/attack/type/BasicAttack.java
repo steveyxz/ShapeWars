@@ -41,7 +41,7 @@ public class BasicAttack implements EnemyAttack {
         enemyBody.rigidBody().setLinearVelocity(vel.x, vel.y);
         Mappers.enemyMeleeDamageMapper.get(enemyEntity).setDamage(getDamage());
         Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
-        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.PURSUING, dashDuration());
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.MOVING, dashDuration());
     }
 
     @Override

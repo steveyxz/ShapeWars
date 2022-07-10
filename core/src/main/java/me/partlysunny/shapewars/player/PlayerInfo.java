@@ -224,4 +224,8 @@ public class PlayerInfo {
     public void pay(int price) {
         money -= price;
     }
+
+    public int money() {
+        return money;
+    }
 }

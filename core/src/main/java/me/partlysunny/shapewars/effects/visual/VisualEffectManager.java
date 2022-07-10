@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.effects.visual;
 
 import me.partlysunny.shapewars.effects.visual.type.*;
 import me.partlysunny.shapewars.effects.visual.type.explosion.BasicExplodeEffect;
+import me.partlysunny.shapewars.effects.visual.type.explosion.FastExplodeEffect;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +29,7 @@ public class VisualEffectManager {
         registerEffect("playerSwing", new PlayerSwingEffect());
         registerEffect("enemySummon", new EnemySummonEffect());
         registerEffect("basicExplode", new BasicExplodeEffect());
+        registerEffect("fastExplode", new FastExplodeEffect());
     }
 
     public static void update(float delta) {

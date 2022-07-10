@@ -349,6 +349,9 @@ public class PlayerEquipment {
         if (activeWeaponSlot > 1 || activeWeaponSlot < 0) {
             throw new IllegalArgumentException("Must be 0 or 1");
         }
+        if (activeWeaponSlot == this.activeWeaponSlot) {
+            return;
+        }
         this.activeWeaponSlot = activeWeaponSlot;
         killWeaponEntities();
         respawnWeaponEntities();

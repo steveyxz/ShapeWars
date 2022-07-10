@@ -54,4 +54,14 @@ public class CommanderEnemy extends Enemy {
     protected CustomLootTable loot() {
         return CustomLootTable.LootTableBuilder.builder().setRolls(4).addEntry(new TableEntryWrapper(new CoinEntry(3, 6, 3), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "basicHpPot"), 1)).build();
     }
+
+    @Override
+    protected EnemyBehaviour behaviour() {
+        return EnemyBehaviour.ESCAPE;
+    }
+
+    @Override
+    protected float viewRange() {
+        return 40;
+    }
 }

@@ -3,7 +3,9 @@ package me.partlysunny.shapewars.world.objects.enemy.type;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
 import me.partlysunny.shapewars.util.utilities.Util;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinEntry;
 import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
+import me.partlysunny.shapewars.world.components.enemy.loot.table.TableEntryWrapper;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
 import javax.annotation.Nullable;
@@ -47,6 +49,16 @@ public class BomberEnemy extends Enemy {
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return null;
+        return CustomLootTable.LootTableBuilder.builder().addEntry(new TableEntryWrapper(new CoinEntry(7, 9, 4), 2)).build();
+    }
+
+    @Override
+    protected EnemyBehaviour behaviour() {
+        return EnemyBehaviour.ESCAPE;
+    }
+
+    @Override
+    protected float viewRange() {
+        return 20;
     }
 }

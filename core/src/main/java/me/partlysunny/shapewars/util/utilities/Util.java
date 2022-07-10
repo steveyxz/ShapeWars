@@ -184,7 +184,7 @@ public class Util {
                 EnemyStateComponent s = Mappers.enemyStateMapper.get(target);
 
                 s.setState(EnemyState.STATIONARY);
-                s.setState(EnemyState.PURSUING, 0.2f);
+                s.setState(EnemyState.MOVING, 0.2f);
             }
         }
     }
@@ -311,5 +311,12 @@ public class Util {
             ((PolygonShape) shape).set(points);
         }
         return shape;
+    }
+
+    public static float getDistanceBetween(TransformComponent a, TransformComponent b) {
+        float xDiff = a.position.x - b.position.x;
+        float yDiff = a.position.y - b.position.y;
+
+        return (float) Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
 }
