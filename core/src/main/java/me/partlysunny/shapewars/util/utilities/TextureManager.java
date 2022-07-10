@@ -61,6 +61,8 @@ public class TextureManager {
         doPngTexture("bombLauncher");
         //Armor
         doPngTexture("oldTunic");
+        doPngTexture("paddedGreaves");
+        doPngTexture("spikedHelm");
         //Utilities
         doPngTexture("basicHpPot");
         //Bullets

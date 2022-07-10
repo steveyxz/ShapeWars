@@ -73,27 +73,16 @@ public abstract class ExplodeEffect extends VisualEffect {
         ParticleEffectManager.startEffect("explosion", (int) TextureRenderingSystem.metersToPixels(entity.position.x), (int) TextureRenderingSystem.metersToPixels(entity.position.y), 100);
 
         List<Entity> toDamage = InGameScreen.world.getEntitiesAroundPosition(entity.position.x, entity.position.y, explosionRadius(), true);
-
+        BulletRestrictions restrictions = Mappers.bombMapper.get(e).restrictions();
+        int damage = Mappers.bombMapper.get(e).damage();
         for (Entity entityToDamage : toDamage) {
-            if (Mappers.healthMapper.has(entityToDamage)) {
-                BulletRestrictions restrictions = Mappers.bombMapper.get(e).restrictions();
-                switch (restrictions) {
-                    case ONLY_PLAYERS: {
-                        if (!Mappers.enemyStateMapper.has(entityToDamage)) {
-                            Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
-                        }
-                        break;
-                    }
-                    case ONLY_ENTITIES: {
-                        if (!Mappers.playerStateMapper.has(entityToDamage)) {
-                            Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
-                        }
-                        break;
-                    }
-                    case BOTH: {
-                        Util.playDamage(entityToDamage, Mappers.bombMapper.get(e).damage());
-                        break;
-                    }
+            if (Mappers.enemyStateMapper.has(entityToDamage)) {
+                if (restrictions != BulletRestrictions.ONLY_PLAYERS) {
+                    Util.playDamage(entityToDamage, damage);
+                }
+            } else if (Mappers.playerStateMapper.has(entityToDamage)) {
+                if (restrictions != BulletRestrictions.ONLY_ENTITIES) {
+                    InGameScreen.playerInfo.damage(damage);
                 }
             }
         }

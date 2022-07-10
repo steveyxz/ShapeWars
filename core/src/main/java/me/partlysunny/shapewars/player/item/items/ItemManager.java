@@ -2,6 +2,8 @@ package me.partlysunny.shapewars.player.item.items;
 
 import me.partlysunny.shapewars.player.item.Item;
 import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
+import me.partlysunny.shapewars.player.item.items.armor.PaddedGreaves;
+import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
 import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
 import me.partlysunny.shapewars.player.item.items.weapons.BombLauncher;
 import me.partlysunny.shapewars.player.item.items.weapons.CircleBlaster;
@@ -48,6 +50,8 @@ public final class ItemManager {
         registerItem("woodenStick", new WoodenStick());
         //Armor
         registerItem("oldTunic", new OldTunic());
+        registerItem("paddedGreaves", new PaddedGreaves());
+        registerItem("spikedHelm", new SpikedHelm());
         //Utility
         registerItem("basicHpPot", new BasicHpPot());
 
