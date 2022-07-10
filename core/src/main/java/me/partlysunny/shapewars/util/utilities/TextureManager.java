@@ -68,6 +68,7 @@ public class TextureManager {
         //Bullets
         doPngTexture("basicBullet");
         doPngTexture("basicBomb");
+        doPngTexture("enemyBomb");
         doPngTexture("enemyBlasterBullet");
         //Enemies
         doPngTexture("basicEnemy");
@@ -76,6 +77,7 @@ public class TextureManager {
         doPngTexture("spawnIndicator");
         doPngTexture("commanderEnemy");
         doPngTexture("megaTankEnemy");
+        doPngTexture("bomberEnemy");
     }
 
     private static void doPngTexture(String value) {

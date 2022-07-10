@@ -20,6 +20,7 @@ public class SoundEffectManager {
         loadWavRegular("enemySpawn");
         loadWavRegular("enemyDie");
         loadWavRegular("enemyBlasterShoot");
+        loadWavRegular("enemyThrow");
         loadWavRegular("pickupCoin");
         loadWavRegular("pickupItem");
         //Player

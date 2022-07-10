@@ -5,6 +5,7 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
+import me.partlysunny.shapewars.util.utilities.Util;
 
 public class BulletType {
 
@@ -47,23 +48,7 @@ public class BulletType {
 
         public FixtureDef genDef() {
             FixtureDef def = new FixtureDef();
-            Shape shape;
-            if (sideCount == 0) {
-                shape = new CircleShape();
-                shape.setRadius(radius / 2f);
-            } else {
-                shape = new PolygonShape();
-                float[] points = new float[sideCount * 2];
-                for (int i = 0; i < sideCount * 2; i += 2) {
-                    float angle = (i / 2f) * (360f / sideCount) - ((360f / sideCount) / 2f);
-                    float x = radius * MathUtils.cos(angle);
-                    float y = radius * MathUtils.sin(angle);
-                    points[i] = x;
-                    points[i + 1] = y;
-                }
-                ((PolygonShape) shape).set(points);
-            }
-            def.shape = shape;
+            def.shape = Util.generateShape(sideCount, radius);
             return def;
         }
 

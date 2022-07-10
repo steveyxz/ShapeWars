@@ -6,8 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -292,5 +291,25 @@ public class Util {
         float xDist = getRandomBetween(minDistance, maxDistance) * (RAND.nextBoolean() ? 1 : -1);
         float yDist = getRandomBetween(minDistance, maxDistance) * (RAND.nextBoolean() ? 1 : -1);
         out.set(x + xDist, y + yDist);
+    }
+
+    public static Shape generateShape(int sideCount, float radius) {
+        Shape shape;
+        if (sideCount == 0) {
+            shape = new CircleShape();
+            shape.setRadius(radius / 2f);
+        } else {
+            shape = new PolygonShape();
+            float[] points = new float[sideCount * 2];
+            for (int i = 0; i < sideCount * 2; i += 2) {
+                float angle = (i / 2f) * (360f / sideCount) - ((360f / sideCount) / 2f);
+                float x = radius * MathUtils.cos(angle);
+                float y = radius * MathUtils.sin(angle);
+                points[i] = x;
+                points[i + 1] = y;
+            }
+            ((PolygonShape) shape).set(points);
+        }
+        return shape;
     }
 }
