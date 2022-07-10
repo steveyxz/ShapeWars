@@ -1,0 +1,26 @@
+{
+  "levelWidth": 250,
+  "levelHeight": 250,
+  "time": 280,
+  "stages": [
+    {
+      "tank": 15,
+      "megaTank": 2
+    },
+    {
+      "megaTank": 5,
+      "commander": 2,
+      "blaster": 10
+    },
+    {
+      "megaTank": 10,
+      "blaster": 10,
+      "tank": 20
+    }
+  ],
+  "obstacles": {
+    "crate": 10,
+    "rock": 10,
+    "tnt": 10
+  }
+}

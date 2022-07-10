@@ -26,6 +26,7 @@ public class EnemyManager {
         EnemyManager.registerEnemy("tank", new TankEnemy());
         EnemyManager.registerEnemy("blaster", new BlasterEnemy());
         EnemyManager.registerEnemy("commander", new CommanderEnemy());
+        EnemyManager.registerEnemy("megaTank", new MegaTankEnemy());
     }
 
 }

@@ -55,7 +55,7 @@ public class CoinEntry implements Entry {
         }
     }
 
-    private void summonCoin(int value, Vector2 around, float variation) {
+    public static void summonCoin(int value, Vector2 around, float variation) {
         PooledEngine engine = InGameScreen.world.gameWorld();
         Entity coin = engine.createEntity();
 

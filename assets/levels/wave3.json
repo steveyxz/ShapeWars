@@ -15,6 +15,7 @@
     }
   ],
   "obstacles": {
-    "rock": 17
+    "rock": 17,
+    "crate": 2
   }
 }

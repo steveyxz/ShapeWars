@@ -29,6 +29,9 @@ public class LateRemover {
                 if (Mappers.bodyMapper.has(e)) {
                     physics.destroyBody(Mappers.bodyMapper.get(e).rigidBody());
                 }
+                if (Mappers.deleteListenerMapper.has(e)) {
+                    Mappers.deleteListenerMapper.get(e).onDelete().accept(e);
+                }
                 world.removeEntity(e);
                 tempRemove.add(e);
             }

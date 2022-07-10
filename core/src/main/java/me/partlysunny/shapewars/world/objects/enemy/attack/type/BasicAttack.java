@@ -25,6 +25,10 @@ public class BasicAttack implements EnemyAttack {
         return 4;
     }
 
+    protected float dashDuration() {
+        return 0.5f;
+    }
+
     @Override
     public void attack(Entity enemyEntity, Entity player) {
         RigidBodyComponent enemyBody = Mappers.bodyMapper.get(enemyEntity);
@@ -37,7 +41,7 @@ public class BasicAttack implements EnemyAttack {
         enemyBody.rigidBody().setLinearVelocity(vel.x, vel.y);
         Mappers.enemyMeleeDamageMapper.get(enemyEntity).setDamage(getDamage());
         Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
-        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.PURSUING, 0.5f);
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.PURSUING, dashDuration());
     }
 
     @Override

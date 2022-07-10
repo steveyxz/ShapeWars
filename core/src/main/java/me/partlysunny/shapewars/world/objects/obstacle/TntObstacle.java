@@ -1,24 +1,25 @@
 package me.partlysunny.shapewars.world.objects.obstacle;
 
 import com.badlogic.ashley.core.Entity;
+import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
+import me.partlysunny.shapewars.util.factories.BombFactory;
 
 import java.util.function.Consumer;
 
-public class RockEntity extends ObstacleEntity {
-
+public class TntObstacle extends ObstacleEntity {
     @Override
     protected String getTexture() {
-        return "rock";
+        return "tnt";
     }
 
     @Override
     protected int getWidth() {
-        return 10;
+        return 7;
     }
 
     @Override
     protected int getHeight() {
-        return 10;
+        return 7;
     }
 
     @Override
@@ -28,11 +29,13 @@ public class RockEntity extends ObstacleEntity {
 
     @Override
     protected int getHealth() {
-        return 40;
+        return 10;
     }
 
     @Override
     protected Consumer<Entity> onDestroy() {
-        return e -> {};
+        return e -> {
+            BombFactory.getInstance().generateBomb(e, 3.5f, 0, BulletRestrictions.BOTH, 10, 0, "beep", "tnt", "basicExplode");
+        };
     }
 }

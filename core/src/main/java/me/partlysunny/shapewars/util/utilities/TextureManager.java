@@ -30,6 +30,8 @@ public class TextureManager {
         doPngTexture("player");
         doPngTexture("wall");
         doPngTexture("rock");
+        doPngTexture("tnt");
+        doPngTexture("crate");
         doPngTexture("coin");
         //UI
         doPngTexture("slotBackground");
@@ -71,6 +73,7 @@ public class TextureManager {
         doPngTexture("blasterEnemy");
         doPngTexture("spawnIndicator");
         doPngTexture("commanderEnemy");
+        doPngTexture("megaTankEnemy");
     }
 
     private static void doPngTexture(String value) {

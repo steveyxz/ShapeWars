@@ -9,4 +9,5 @@ public final class AttackSets {
     public static final EnemyAttackSelector FAST_TANKY_ATTACK = new EnemyAttackSelector().add(new SpeedyBasicAttack());
     public static final EnemyAttackSelector BASIC_RANGED = new EnemyAttackSelector().add(new BasicBlasterAttack());
     public static final EnemyAttackSelector BASIC_COMMANDER = new EnemyAttackSelector().add(new CommanderBlasterAttack()).add(new SummonMinionsAttack(2, 4, 5, 10, "basic"));
+    public static final EnemyAttackSelector MEGA_TANKY_ATTACK = new EnemyAttackSelector().add(new ChargeAttack()).add(new SpeedyBasicAttack());
 }

@@ -11,15 +11,14 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
-import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
-import me.partlysunny.shapewars.world.components.collision.ObstacleComponent;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
-import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.collision.*;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
+
+import java.util.function.Consumer;
 
 public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implements GameObject {
 
@@ -49,6 +48,9 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         HealthComponent health = w.createComponent(HealthComponent.class);
         health.init(oe.getHealth());
         e.add(health);
+        DeletionListenerComponent deleteListener = w.createComponent(DeletionListenerComponent.class);
+        deleteListener.init(oe.onDestroy());
+        e.add(deleteListener);
         w.addEntity(e);
         return e;
     }
@@ -62,6 +64,8 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
     protected abstract int getAngle();
 
     protected abstract int getHealth();
+
+    protected abstract Consumer<Entity> onDestroy();
 
     @Override
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {

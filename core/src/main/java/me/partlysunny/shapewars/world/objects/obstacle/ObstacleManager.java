@@ -21,6 +21,8 @@ public class ObstacleManager {
 
     public static void init() {
         registerObstacle("rock", new RockEntity());
+        registerObstacle("crate", new CrateObstacle());
+        registerObstacle("tnt", new TntObstacle());
     }
 
 }
