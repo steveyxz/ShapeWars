@@ -3,8 +3,6 @@ package me.partlysunny.shapewars.world.components.ai;
 import com.badlogic.gdx.ai.steer.behaviors.CollisionAvoidance;
 import com.badlogic.gdx.ai.steer.behaviors.PrioritySteering;
 import com.badlogic.gdx.ai.steer.behaviors.Pursue;
-import com.badlogic.gdx.ai.steer.behaviors.Wander;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;

@@ -2,7 +2,6 @@ package me.partlysunny.shapewars.world.components.enemy.loot.entry.coin;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -30,29 +29,6 @@ public class CoinEntry implements Entry {
         this.min = min;
         this.max = max;
         this.maxVisibleCoins = maxVisibleCoins;
-    }
-
-    public int min() {
-        return min;
-    }
-
-    public int max() {
-        return max;
-    }
-
-    @Override
-    public void execute(Vector2 pos) {
-        int moneyToGive = Util.getRandomBetween(min, max);
-        int base = moneyToGive / maxVisibleCoins;
-        int extras = moneyToGive % maxVisibleCoins;
-
-        float variation = 1;
-        for (int i = 0; i < extras; i++) {
-            summonCoin(base + 1, pos, variation);
-        }
-        for (int i = 0; i < maxVisibleCoins - extras; i++) {
-            summonCoin(base, pos, variation);
-        }
     }
 
     public static void summonCoin(int value, Vector2 around, float variation) {
@@ -92,5 +68,28 @@ public class CoinEntry implements Entry {
         coin.add(lootItem);
 
         engine.addEntity(coin);
+    }
+
+    public int min() {
+        return min;
+    }
+
+    public int max() {
+        return max;
+    }
+
+    @Override
+    public void execute(Vector2 pos) {
+        int moneyToGive = Util.getRandomBetween(min, max);
+        int base = moneyToGive / maxVisibleCoins;
+        int extras = moneyToGive % maxVisibleCoins;
+
+        float variation = 1;
+        for (int i = 0; i < extras; i++) {
+            summonCoin(base + 1, pos, variation);
+        }
+        for (int i = 0; i < maxVisibleCoins - extras; i++) {
+            summonCoin(base, pos, variation);
+        }
     }
 }

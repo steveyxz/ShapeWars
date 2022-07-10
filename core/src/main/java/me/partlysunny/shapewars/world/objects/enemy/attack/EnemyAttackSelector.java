@@ -2,7 +2,6 @@ package me.partlysunny.shapewars.world.objects.enemy.attack;
 
 import com.badlogic.ashley.core.Entity;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 

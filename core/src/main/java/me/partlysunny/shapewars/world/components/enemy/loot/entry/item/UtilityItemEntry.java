@@ -5,7 +5,6 @@ import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
@@ -18,7 +17,6 @@ import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootItemComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.Entry;
-import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
 
 public class UtilityItemEntry implements Entry {

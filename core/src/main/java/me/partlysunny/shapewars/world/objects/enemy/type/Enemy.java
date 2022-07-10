@@ -14,17 +14,17 @@ import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.Box2DFactory;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
-import me.partlysunny.shapewars.world.components.ai.WanderComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
+import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerTargetComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
@@ -52,10 +52,12 @@ public abstract class Enemy implements GameObject {
     protected abstract float getMaxSpeed();
 
     protected abstract EnemyAttackSelector selector();
+
     @Nullable
     protected abstract CustomLootTable loot();
 
     protected abstract EnemyBehaviour behaviour();
+
     protected abstract float viewRange();
 
     @Override

@@ -12,6 +12,7 @@ import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
 public class BombAttack implements EnemyAttack {
     private final Vector2 vec = new Vector2();
+
     @Override
     public float maxDistance() {
         return 60;

@@ -27,9 +27,9 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
+import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackComponent;
 import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
 
@@ -43,7 +43,7 @@ public class Util {
     private static final Vector2 vec = new Vector2();
 
     public static int getRandomBetween(int a, int b) {
-        return RAND.nextInt(a, b+1);
+        return RAND.nextInt(a, b + 1);
     }
 
     public static double getRandomBetween(double min, double max) {
@@ -241,8 +241,9 @@ public class Util {
 
     /**
      * Converts a contact into two entities, with one focused one
-     * @param contact The contact
-     * @param focusedMapper The mapper that this is focused (the check for if this is suitable), usually the most prominent component
+     *
+     * @param contact           The contact
+     * @param focusedMapper     The mapper that this is focused (the check for if this is suitable), usually the most prominent component
      * @param deleteIfIdentical If you should delete the entities if they both have the focused component
      * @return The converted contact
      */

@@ -7,7 +7,7 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 import me.partlysunny.shapewars.util.utilities.Util;
 
-public class SpikedHelm implements ArmorItem  {
+public class SpikedHelm implements ArmorItem {
     @Override
     public Entity buildEntity(PooledEngine engine) {
         Entity entity = engine.createEntity();

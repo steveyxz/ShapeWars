@@ -1,22 +1,20 @@
 package me.partlysunny.shapewars.util.constants;
 
 import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.gdx.ai.steer.behaviors.Wander;
 import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
 import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
+import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.collision.*;
 import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
-import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.LootItemComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.item.UtilityComponent;
 import me.partlysunny.shapewars.world.components.mechanics.BombComponent;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyMeleeDamageComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerCameraFollowComponent;
 import me.partlysunny.shapewars.world.components.player.PlayerControlComponent;

@@ -3,7 +3,6 @@ package me.partlysunny.shapewars.world.components.enemy;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.utils.Pool;
-import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
@@ -12,9 +11,9 @@ import java.util.Map;
 
 public class EnemyAttackComponent implements Component, Pool.Poolable {
 
+    private final Map<EnemyAttack, Float> attackCooldowns = new HashMap<>();
     private EnemyAttackSelector selector = null;
     private Entity parent = null;
-    private final Map<EnemyAttack, Float> attackCooldowns = new HashMap<>();
 
     public void init(EnemyAttackSelector selector, Entity parent) {
         this.selector = selector;

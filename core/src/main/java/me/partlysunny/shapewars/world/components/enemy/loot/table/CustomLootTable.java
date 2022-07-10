@@ -5,7 +5,6 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import me.partlysunny.shapewars.util.classes.RandomList;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.world.components.enemy.loot.entry.LootEntryManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,15 +65,15 @@ public class CustomLootTable {
 
     public static final class LootTableBuilder {
 
-        private int rolls = 1;
         private final List<TableEntryWrapper> entries;
-
-        public static LootTableBuilder builder() {
-            return new LootTableBuilder();
-        }
+        private int rolls = 1;
 
         public LootTableBuilder() {
             this.entries = new ArrayList<>();
+        }
+
+        public static LootTableBuilder builder() {
+            return new LootTableBuilder();
         }
 
         public LootTableBuilder addEntry(TableEntryWrapper entry) {

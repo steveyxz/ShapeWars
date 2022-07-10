@@ -1,10 +1,6 @@
 package me.partlysunny.shapewars.bullets;
 
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.utilities.Util;
 
 public class BulletType {

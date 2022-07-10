@@ -2,30 +2,10 @@ package me.partlysunny.shapewars.player.item.items.weapons;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import me.partlysunny.shapewars.bullets.BulletComponent;
-import me.partlysunny.shapewars.bullets.BulletType;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
-import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
-import me.partlysunny.shapewars.effects.visual.VisualEffectManager;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
-import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.constants.Controllers;
-import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BombFactory;
-import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
-import me.partlysunny.shapewars.util.utilities.TextureManager;
-import me.partlysunny.shapewars.world.components.ai.AiDodgeIgnoreComponent;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
-import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.mechanics.BombComponent;
-import me.partlysunny.shapewars.world.components.render.TextureComponent;
-import me.partlysunny.shapewars.world.components.render.TintComponent;
 
 public class BombLauncher implements WeaponItem {
     @Override

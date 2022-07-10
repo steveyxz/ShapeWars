@@ -18,9 +18,9 @@ import java.util.function.Consumer;
  */
 public class LootItemComponent implements Component, Pool.Poolable {
 
+    private final Vector2 vec = new Vector2();
     private Entity entity;
     private Consumer<Entity> onPickup;
-    private final Vector2 vec = new Vector2();
 
     public void init(Entity entity, Consumer<Entity> onPickup) {
         this.entity = entity;

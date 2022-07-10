@@ -33,6 +33,7 @@ public class RockEntity extends ObstacleEntity {
 
     @Override
     protected Consumer<Entity> onDestroy() {
-        return e -> {};
+        return e -> {
+        };
     }
 }

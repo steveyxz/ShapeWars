@@ -45,16 +45,16 @@ public class InGameScreen extends ManagedScreen {
     public static final OrthographicCamera guiCamera = new OrthographicCamera(FRUSTUM_WIDTH, FRUSTUM_HEIGHT);
     public static final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
     public static final Viewport guiViewport = new ExtendViewport(guiCamera.viewportWidth, guiCamera.viewportHeight, guiCamera);
+    public static final ScreenGuiManager guiManager = new ScreenGuiManager();
     public static GameWorld world;
     public static PlayerInfo playerInfo;
-    public static final ScreenGuiManager guiManager = new ScreenGuiManager();
     public static LevelManager levelManager;
     private final ShapeWars game;
     private final GameMusicSwitcher switcher = new GameMusicSwitcher();
-    private float accumulator = 0;
     private final Box2DDebugRenderer debugRenderer;
     private final Stage stage;
     private final Stage guiStage;
+    private float accumulator = 0;
 
     public InGameScreen(ShapeWars game) {
         this.game = game;
