@@ -20,9 +20,9 @@ public class EnemySummonEffect extends VisualEffect {
     protected void effectUpdate(Entity e, float delta) {
         if (Mappers.tintMapper.has(e)) {
             TintComponent tint = Mappers.tintMapper.get(e);
-            float rChange = Util.getRandomBetween(-0.01f, 0.01f);
-            float bChange = Util.getRandomBetween(-0.01f, 0.01f);
-            float gChange = Util.getRandomBetween(-0.01f, 0.01f);
+            float rChange = Util.getRandomBetween(-0.1f, 0.1f);
+            float bChange = Util.getRandomBetween(-0.1f, 0.1f);
+            float gChange = Util.getRandomBetween(-0.1f, 0.1f);
             tint.setTint(tint.tint().x + rChange, tint.tint().y + bChange, tint.tint().z + gChange, tint.alpha());
         }
     }

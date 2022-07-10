@@ -1,9 +1,6 @@
 package me.partlysunny.shapewars.effects.visual;
 
-import me.partlysunny.shapewars.effects.visual.type.BulletFadeEffect;
-import me.partlysunny.shapewars.effects.visual.type.DamageEffect;
-import me.partlysunny.shapewars.effects.visual.type.EnemySummonEffect;
-import me.partlysunny.shapewars.effects.visual.type.PlayerSwingEffect;
+import me.partlysunny.shapewars.effects.visual.type.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +26,7 @@ public class VisualEffectManager {
         registerEffect("bulletFade", new BulletFadeEffect());
         registerEffect("playerSwing", new PlayerSwingEffect());
         registerEffect("enemySummon", new EnemySummonEffect());
+        registerEffect("explode", new ExplodeEffect());
     }
 
     public static void update(float delta) {

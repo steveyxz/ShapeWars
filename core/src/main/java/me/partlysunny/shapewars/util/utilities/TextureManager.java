@@ -56,12 +56,14 @@ public class TextureManager {
         doPngTexture("circleBlaster");
         doPngTexture("circlePummeler");
         doPngTexture("woodenStick");
+        doPngTexture("bombLauncher");
         //Armor
         doPngTexture("oldTunic");
         //Utilities
         doPngTexture("basicHpPot");
         //Bullets
         doPngTexture("basicBullet");
+        doPngTexture("basicBomb");
         doPngTexture("enemyBlasterBullet");
         //Enemies
         doPngTexture("basicEnemy");

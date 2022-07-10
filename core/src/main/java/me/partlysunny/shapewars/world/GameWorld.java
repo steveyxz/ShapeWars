@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.EntityListener;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -12,6 +13,7 @@ import me.partlysunny.shapewars.util.classes.ContactDispatcher;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
+import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.objects.enemy.attack.MeleeHandle;
 import me.partlysunny.shapewars.world.systems.mechanics.BulletUpdaterSystem;
 import me.partlysunny.shapewars.world.systems.mechanics.HealthSystem;
@@ -25,7 +27,9 @@ import me.partlysunny.shapewars.world.systems.player.*;
 import me.partlysunny.shapewars.world.systems.render.AnimationSystem;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameWorld {
@@ -101,5 +105,25 @@ public class GameWorld {
 
     public World physicsWorld() {
         return physicsWorld;
+    }
+
+    public List<Entity> getEntitiesAroundPosition(float x, float y, int distance, boolean meters) {
+        ImmutableArray<Entity> entities = gameWorld.getEntitiesFor(Family.all(TransformComponent.class).get());
+        List<Entity> returned = new ArrayList<>();
+        if (!meters) {
+            x = TextureRenderingSystem.pixelsToMeters(x);
+            y = TextureRenderingSystem.pixelsToMeters(y);
+        }
+        for (Entity e : entities) {
+            TransformComponent transform = Mappers.transformMapper.get(e);
+            float xDiff = x - transform.position.x;
+            float yDiff = y - transform.position.y;
+            float dist = (float) Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+
+            if (dist <= distance) {
+                returned.add(e);
+            }
+        }
+        return returned;
     }
 }

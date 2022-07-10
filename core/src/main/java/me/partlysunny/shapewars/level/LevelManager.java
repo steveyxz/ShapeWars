@@ -17,6 +17,7 @@ import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemySpawnIndicatorComponent;
+import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
 import java.util.ArrayList;
@@ -262,8 +263,9 @@ public class LevelManager {
     public void lossReset() {
         isLosing = true;
         killAllObjects();
-        if (currentLevel != 1) {
-            currentLevel--;
+        //delete all coins
+        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(CoinComponent.class).get())) {
+            LateRemover.tagToRemove(e);
         }
         currentStage = 0;
         isLosing = false;

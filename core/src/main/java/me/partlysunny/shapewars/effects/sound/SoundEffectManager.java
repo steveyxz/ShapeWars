@@ -32,6 +32,8 @@ public class SoundEffectManager {
         //General
         loadWavRegular("countdown");
         loadWavRegular("levelStart");
+        loadWavRegular("beep");
+        loadWavRegular("explosion");
     }
 
     public static void registerSound(String id, Sound sound) {

@@ -74,6 +74,14 @@ public class MusicManager {
             Timer.schedule(new Timer.Task() {
                 @Override
                 public void run() {
+                    if (getTrack(currentlyPlaying) == null) {
+                        stopping = false;
+                        nextTrack = "";
+                        nextLooping = true;
+                        nextVolume = 0;
+                        cancel();
+                        return;
+                    }
                     float newVolume = getTrack(currentlyPlaying).getVolume() - (1 / 20f);
                     if (newVolume < 0) {
                         stop();

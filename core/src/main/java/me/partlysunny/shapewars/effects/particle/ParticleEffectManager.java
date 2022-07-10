@@ -37,6 +37,7 @@ public class ParticleEffectManager {
         registerEffect("death", load("death.p"));
         registerEffect("enemySpawnIn", load("enemySpawnIn.p"));
         registerEffect("heart", load("heart.p"));
+        registerEffect("explosion", load("explosion.p"));
     }
 
     public static void startEffect(String effect, int x, int y, int duration) {

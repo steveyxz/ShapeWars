@@ -114,13 +114,13 @@ public class PlayerInfo {
         InGameScreen.guiManager.registerGui("utilButton", utilButton, e -> {
         });
 
-        Container<Image> moneySymbol = new Container<>(new Image(TextureManager.getTexture("moneySign")));
+        Container<Image> moneySymbol = new Container<>(new Image(TextureManager.getTexture("coin")));
 
-        moneySymbol.getActor().getDrawable().setMinHeight(7);
-        moneySymbol.getActor().getDrawable().setMinWidth(7);
+        moneySymbol.getActor().getDrawable().setMinHeight(6);
+        moneySymbol.getActor().getDrawable().setMinWidth(6);
 
-        moneySymbol.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * 10 / 12f, 2);
-        moneySymbol.setSize(7, 7);
+        moneySymbol.setPosition(TextureRenderingSystem.FRUSTUM_WIDTH * (10 / 12f + 1 / 96f), 2.5f);
+        moneySymbol.setSize(6, 6);
 
         InGameScreen.guiManager.registerGui("moneySymbol", moneySymbol, e -> {
         });

@@ -34,6 +34,7 @@ import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
+import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
 
@@ -95,8 +96,6 @@ public class InGameScreen extends ManagedScreen {
                     if (keycode == playerInfo.keyMap().getKey(PlayerAction.WEAPON_SLOT_2)) {
                         playerInfo.equipment().setActiveWeaponSlot(1);
                     }
-                    if (keycode == Input.Keys.X) {
-                    }
                 }
                 return false;
             }
@@ -113,33 +112,40 @@ public class InGameScreen extends ManagedScreen {
         viewport.apply();
         //Clear screen with background color
         ScreenUtils.clear(GameInfo.BACKGROUND_COLOR);
-        //Move camera
-        camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
-        //Ticking and logic
-        doPhysicsStep(Gdx.graphics.getDeltaTime());
-        //Update AI
-        GdxAI.getTimepiece().update(delta);
-        //Update level (check level up, countdowns)
-        levelManager.update(delta);
-        //Update UI components
-        guiManager.update();
-        //Visual effects (damage, swing)
-        VisualEffectManager.update(delta);
-        //Update equipment (ammo recharge)
-        playerInfo.equipment().update(delta);
-        //Act out the current stage
-        stage.act(Gdx.graphics.getDeltaTime());
-        //Process late killers / removers (so that they don't collide with the physics step)
-        LateRemover.process();
-        PlayerKiller.update(game);
+
+        if (!InventoryMenuManager.isOpen()) {
+            //Move camera
+            camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
+            //Ticking and logic
+            doPhysicsStep(Gdx.graphics.getDeltaTime());
+            //Update AI
+            GdxAI.getTimepiece().update(delta);
+            //Update level (check level up, countdowns)
+            levelManager.update(delta);
+            //Visual effects (damage, swing)
+            VisualEffectManager.update(delta);
+            //Update equipment (ammo recharge)
+            playerInfo.equipment().update(delta);
+            //Act out the current stage
+            stage.act(Gdx.graphics.getDeltaTime());
+            world.gameWorld().update(delta);
+            //Process late killers / removers (so that they don't collide with the physics step)
+            LateRemover.process();
+            PlayerKiller.update(game);
+        }
+
         //Rendering
         game.batch().enableBlending();
         game.batch().setProjectionMatrix(camera.combined);
         stage.draw();
-        world.gameWorld().update(delta);
+        if (InventoryMenuManager.isOpen()) {
+            world.gameWorld().getSystem(TextureRenderingSystem.class).update(delta);
+        }
         //Draw UI
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiViewport.apply();
+        //Update UI components
+        guiManager.update();
         guiStage.act(delta);
         ParticleEffectManager.render(game.batch(), delta);
         guiStage.draw();

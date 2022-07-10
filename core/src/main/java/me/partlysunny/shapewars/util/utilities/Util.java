@@ -44,27 +44,21 @@ public class Util {
     private static final Vector2 vec = new Vector2();
 
     public static int getRandomBetween(int a, int b) {
-        if (a > b) {
-            throw new IllegalArgumentException("a must be higher than b");
-        }
-        if (a == b) {
-            return a;
-        }
-        if (a < 0 && b < 0) {
-            return -getRandomBetween(-b, -a);
-        }
-        if (a < 0) {
-            return getRandomBetween(0, -a + b) + a;
-        }
-        return RAND.nextInt(b - a) + a;
+        return RAND.nextInt(a, b+1);
     }
 
     public static double getRandomBetween(double min, double max) {
-        return min + (max - min) * RAND.nextDouble();
+        if (min == max) {
+            return min;
+        }
+        return RAND.nextDouble(min, max);
     }
 
     public static float getRandomBetween(float min, float max) {
-        return min + (max - min) * RAND.nextFloat();
+        if (min == max) {
+            return min;
+        }
+        return (float) RAND.nextDouble(min, max);
     }
 
     public static void loadVisUI() {
