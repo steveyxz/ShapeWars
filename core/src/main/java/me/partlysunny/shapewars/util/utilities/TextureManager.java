@@ -60,15 +60,18 @@ public class TextureManager {
         doPngTexture("woodenStick");
         doPngTexture("bombLauncher");
         doPngTexture("bombLobber");
+        doPngTexture("triangleShotgun");
         //Armor
         doPngTexture("oldTunic");
         doPngTexture("paddedGreaves");
         doPngTexture("spikedHelm");
+        doPngTexture("infusedBoots");
         //Utilities
         doPngTexture("basicHpPot");
         //Bullets
         doPngTexture("basicBullet");
         doPngTexture("basicBomb");
+        doPngTexture("shotgunBullet");
         doPngTexture("enemyBomb");
         doPngTexture("enemyBlasterBullet");
         //Enemies
@@ -79,6 +82,8 @@ public class TextureManager {
         doPngTexture("commanderEnemy");
         doPngTexture("megaTankEnemy");
         doPngTexture("bomberEnemy");
+        doPngTexture("sniperEnemy");
+        doPngTexture("generalEnemy");
     }
 
     private static void doPngTexture(String value) {

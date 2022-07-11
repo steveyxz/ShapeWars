@@ -1,26 +1,25 @@
 {
-  "levelWidth": 250,
-  "levelHeight": 250,
-  "time": 280,
+  "levelWidth": 380,
+  "levelHeight": 380,
+  "time": 380,
   "stages": [
     {
-      "tank": 15,
-      "megaTank": 2
+      "sniper": 10,
+      "megaTank": 10
     },
     {
+      "sniper": 10,
       "megaTank": 5,
-      "commander": 2,
-      "blaster": 10
+      "general": 1
     },
     {
-      "megaTank": 10,
-      "blaster": 10,
-      "tank": 20
+      "general": 1,
+      "commander": 5,
+      "sniper": 10
     }
   ],
   "obstacles": {
-    "crate": 10,
-    "rock": 10,
-    "tnt": 10
+    "rock": 30,
+    "tnt": 20
   }
 }

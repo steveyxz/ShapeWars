@@ -359,7 +359,9 @@ public class PlayerEquipment {
 
     private void killWeaponEntities() {
         GameWorld world = InGameScreen.world;
-        world.gameWorld().getEntitiesFor(Family.all(WeaponComponent.class).get()).forEach(LateRemover::tagToRemove);
+        for (Entity e : world.gameWorld().getEntitiesFor(Family.all(WeaponComponent.class).get()).toArray(Entity.class)) {
+            LateRemover.tagToRemove(e);
+        }
     }
 
     private void respawnWeaponEntities() {

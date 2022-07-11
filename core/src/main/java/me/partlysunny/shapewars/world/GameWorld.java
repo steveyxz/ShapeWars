@@ -43,7 +43,7 @@ public class GameWorld {
         this.physicsWorld = new World(new Vector2(0, 0), true);
         ContactDispatcher.init(physicsWorld);
         Controllers.init();
-        this.gameWorld = new PooledEngine(100, 1000, 1000, 10000000);
+        this.gameWorld = new PooledEngine(100, 10000, 10000, 10000000);
         //Mechanics
         gameWorld.addSystem(new HealthSystem());
         gameWorld.addSystem(new BulletUpdaterSystem());
@@ -77,7 +77,7 @@ public class GameWorld {
                 bodyCache.remove(b);
             }
         }
-        for (Entity entity : gameWorld.getEntitiesFor(Family.all(RigidBodyComponent.class).get())) {
+        for (Entity entity : gameWorld.getEntitiesFor(Family.all(RigidBodyComponent.class).get()).toArray(Entity.class)) {
             RigidBodyComponent rigidBodyComponent = Mappers.bodyMapper.get(entity);
             if (rigidBodyComponent.rigidBody().equals(b)) {
                 gameWorld.addEntityListener(new EntityListener() {

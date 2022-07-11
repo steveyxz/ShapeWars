@@ -64,6 +64,6 @@ public class SummonMinionsAttack implements EnemyAttack {
 
     @Override
     public float cooldown() {
-        return 10;
+        return 18;
     }
 }

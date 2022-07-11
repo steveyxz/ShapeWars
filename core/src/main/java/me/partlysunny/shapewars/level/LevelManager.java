@@ -18,6 +18,7 @@ import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemySpawnIndicatorComponent;
 import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
+import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
 import java.util.ArrayList;
@@ -134,12 +135,8 @@ public class LevelManager {
     }
 
     public void entityDestroyed(Entity e) {
-        if (aliveEntities.remove(e) && !isLosing) {
-            checkLevelUp();
-        }
-        if (aliveObstacles.remove(e) && !isLosing) {
-            checkLevelUp();
-        }
+        aliveEntities.remove(e);
+        aliveObstacles.remove(e);
     }
 
     public void addEnemy(Entity e) {
@@ -216,7 +213,7 @@ public class LevelManager {
     }
 
     public void killAllIndicators() {
-        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(EnemySpawnIndicatorComponent.class).get())) {
+        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(EnemySpawnIndicatorComponent.class).get()).toArray(Entity.class)) {
             LateRemover.tagToRemove(e);
         }
     }
@@ -264,10 +261,11 @@ public class LevelManager {
     public void lossReset() {
         isLosing = true;
         killAllObjects();
-        //delete all coins
-        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(CoinComponent.class).get())) {
+        //delete everything except the player
+        for (Entity e : InGameScreen.world.gameWorld().getEntitiesFor(Family.exclude(StateComponent.class).get()).toArray(Entity.class)) {
             LateRemover.tagToRemove(e);
         }
+        LateRemover.process();
         InGameScreen.playerInfo.giveMoney(-InGameScreen.playerInfo.money());
         currentStage = 0;
         isLosing = false;

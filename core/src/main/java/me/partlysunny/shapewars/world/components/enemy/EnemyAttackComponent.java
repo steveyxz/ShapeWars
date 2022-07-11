@@ -3,6 +3,7 @@ package me.partlysunny.shapewars.world.components.enemy;
 import com.badlogic.ashley.core.Component;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.utils.Pool;
+import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
@@ -27,7 +28,7 @@ public class EnemyAttackComponent implements Component, Pool.Poolable {
         for (EnemyAttack a : attackCooldowns.keySet()) {
             if (attackCooldowns.get(a) == 0) {
                 if (selector.tryAttack(parent, a) != null) {
-                    attackCooldowns.put(a, a.cooldown());
+                    attackCooldowns.put(a, a.cooldown() + Util.getRandomBetween(-a.cooldown() / 3f, a.cooldown() / 3f));
                 }
             }
             attackCooldowns.put(a, attackCooldowns.get(a) - delta);

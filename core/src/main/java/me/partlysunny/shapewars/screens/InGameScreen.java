@@ -129,10 +129,11 @@ public class InGameScreen extends ManagedScreen {
             //Act out the current stage
             stage.act(Gdx.graphics.getDeltaTime());
             world.gameWorld().update(delta);
-            //Process late killers / removers (so that they don't collide with the physics step)
-            LateRemover.process();
-            PlayerKiller.update(game);
         }
+
+        //Process late killers / removers (so that they don't collide with the physics step)
+        LateRemover.process();
+        PlayerKiller.update(game);
 
         //Rendering
         game.batch().enableBlending();

@@ -28,6 +28,8 @@ public class EnemyManager {
         EnemyManager.registerEnemy("commander", new CommanderEnemy());
         EnemyManager.registerEnemy("megaTank", new MegaTankEnemy());
         EnemyManager.registerEnemy("bomber", new BomberEnemy());
+        EnemyManager.registerEnemy("sniper", new SniperEnemy());
+        EnemyManager.registerEnemy("general", new GeneralEnemy());
     }
 
 }

@@ -168,11 +168,14 @@ public class Util {
     }
 
     public static void doKnockback(Entity target, float force) {
-        Entity player = InGameScreen.playerInfo.playerEntity();
+        doKnockback(InGameScreen.playerInfo.playerEntity(), target, force);
+    }
+
+    public static void doKnockback(Entity from, Entity target, float force) {
         if (Mappers.bodyMapper.has(target)) {
             RigidBodyComponent r = Mappers.bodyMapper.get(target);
 
-            TransformComponent playerPos = Mappers.transformMapper.get(player);
+            TransformComponent playerPos = Mappers.transformMapper.get(from);
 
             vec.set(r.rigidBody().getPosition().x - playerPos.position.x, r.rigidBody().getPosition().y - playerPos.position.y);
             vec.nor();

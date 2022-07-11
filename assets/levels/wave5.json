@@ -1,6 +1,6 @@
 {
-  "levelWidth": 250,
-  "levelHeight": 250,
+  "levelWidth": 280,
+  "levelHeight": 280,
   "time": 350,
   "stages": [
     {
@@ -13,9 +13,9 @@
       "blaster": 10
     },
     {
-      "megaTank": 20,
-      "blaster": 20,
-      "commander": 3
+      "megaTank": 7,
+      "blaster": 10,
+      "commander": 2
     }
   ],
   "obstacles": {

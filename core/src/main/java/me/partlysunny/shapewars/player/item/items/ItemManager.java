@@ -1,6 +1,7 @@
 package me.partlysunny.shapewars.player.item.items;
 
 import me.partlysunny.shapewars.player.item.Item;
+import me.partlysunny.shapewars.player.item.items.armor.InfusedBoots;
 import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
 import me.partlysunny.shapewars.player.item.items.armor.PaddedGreaves;
 import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
@@ -46,10 +47,12 @@ public final class ItemManager {
         registerItem("circlePummeler", new CirclePummeler());
         registerItem("bombLauncher", new BombLauncher());
         registerItem("bombLobber", new BombLobber());
+        registerItem("triangleShotgun", new TriangleShotgun());
         //Armor
         registerItem("oldTunic", new OldTunic());
         registerItem("paddedGreaves", new PaddedGreaves());
         registerItem("spikedHelm", new SpikedHelm());
+        registerItem("infusedBoots", new InfusedBoots());
         //Utility
         registerItem("basicHpPot", new BasicHpPot());
 

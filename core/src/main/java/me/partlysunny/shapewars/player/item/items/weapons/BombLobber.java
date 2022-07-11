@@ -16,7 +16,7 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 3.5f;
+        return 5f;
     }
 
     @Override
@@ -48,7 +48,7 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public int price() {
-        return 150;
+        return 350;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public float attackDelay() {
-        return 2.5f;
+        return 2f;
     }
 
     @Override

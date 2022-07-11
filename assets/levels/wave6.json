@@ -1,6 +1,6 @@
 {
-  "levelWidth": 280,
-  "levelHeight": 280,
+  "levelWidth": 320,
+  "levelHeight": 320,
   "time": 260,
   "stages": [
     {
@@ -9,7 +9,7 @@
     },
     {
       "commander": 2,
-      "blaster": 12,
+      "sniper": 6,
       "bomber": 12
     }
   ],

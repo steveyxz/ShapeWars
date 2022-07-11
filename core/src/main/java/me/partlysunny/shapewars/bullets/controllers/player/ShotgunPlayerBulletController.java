@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.bullets.controllers.enemy;
+package me.partlysunny.shapewars.bullets.controllers.player;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.MathUtils;
@@ -18,36 +18,46 @@ import me.partlysunny.shapewars.util.factories.BulletFactory;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
+import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
 
-import static me.partlysunny.shapewars.util.utilities.Util.handleBasicEnemyBulletCollision;
+import static me.partlysunny.shapewars.util.utilities.Util.handleBasicPlayerBulletCollision;
 
-public class EnemyBlasterBulletController implements BulletController {
+public class ShotgunPlayerBulletController implements BulletController {
+    private static final float angleDiff = 10 * MathUtils.degreesToRadians;
 
     @Override
     public void fire(Entity shooter, float damage) {
-        Entity enemyBlasterBullet = BulletFactory.getInstance().generateBullet(InGameScreen.world.gameWorld(), new BulletType("enemyBlasterBullet", BulletType.ProjectileHitBox.BASIC_BULLET), damage, shooter, Controllers.BASIC, BulletRestrictions.ONLY_PLAYERS);
         float rotation = shooter.getComponent(TransformComponent.class).rotation;
-        float bulletSpeed = 1800;
-        float x = MathUtils.cos(rotation) * bulletSpeed;
-        float y = MathUtils.sin(rotation) * bulletSpeed;
-        Mappers.bodyMapper.get(enemyBlasterBullet).rigidBody().applyForceToCenter(x, y, true);
-        SoundEffectManager.play("enemyBlasterShoot", 1);
-        InGameScreen.world.gameWorld().addEntity(enemyBlasterBullet);
+        fire(rotation, damage, shooter);
+        fire(rotation - angleDiff, damage, shooter);
+        fire(rotation - 2 * angleDiff, damage, shooter);
+        fire(rotation + angleDiff, damage, shooter);
+        fire(rotation + 2 * angleDiff, damage, shooter);
+        SoundEffectManager.play("shotgunShoot", 1);
+    }
+
+    private void fire(float angle, float damage, Entity shooter) {
+        float bulletSpeed = 1200;
+        float x = MathUtils.cos(angle) * bulletSpeed;
+        float y = MathUtils.sin(angle) * bulletSpeed;
+
+        TransformComponent t = Mappers.transformMapper.get(shooter);
+        t.rotation = angle;
+
+        Entity basicBullet = BulletFactory.getInstance().generateBullet(InGameScreen.world.gameWorld(), new BulletType("shotgunBullet", BulletType.ProjectileHitBox.SHOTGUN_BULLET), damage, shooter, Controllers.SHOTGUN, BulletRestrictions.ONLY_ENTITIES);
+        Mappers.bodyMapper.get(basicBullet).rigidBody().applyForceToCenter(x, y, true);
+        InGameScreen.world.gameWorld().addEntity(basicBullet);
     }
 
     @Override
     public void updateBullet(BulletComponent component, float delta) {
-        //Basic bullet doesn't need updating
+        //No updating needed
     }
 
     @Override
     public void beginContact(Contact contact) {
-        Pair<Entity, Entity> result = handleBasicEnemyBulletCollision(contact);
-        if (result != null) {
-            InGameScreen.playerInfo.damage((int) Mappers.bulletMapper.get(result.b()).damage(), Mappers.bulletMapper.get(result.b()).shooter());
-            LateRemover.tagToRemove(result.b());
-            Util.scaleDownVelocity(result.a(), 0.02f);
-        }
+        //This is actually managed by the basic controller already so no need :D
     }
 
     @Override
@@ -64,5 +74,4 @@ public class EnemyBlasterBulletController implements BulletController {
     public void postSolve(Contact contact, ContactImpulse impulse) {
         //Unnecessary
     }
-
 }

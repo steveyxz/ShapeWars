@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.player.item.items.utility;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
@@ -47,5 +48,6 @@ public class BasicHpPot implements UtilityItem {
     @Override
     public void use(Entity player) {
         InGameScreen.playerInfo.damage(-10);
+        SoundEffectManager.play("potConsume", 1);
     }
 }

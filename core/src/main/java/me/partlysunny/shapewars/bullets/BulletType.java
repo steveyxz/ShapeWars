@@ -32,6 +32,7 @@ public class BulletType {
     public enum ProjectileHitBox {
 
         BASIC_BULLET(1, 0),
+        SHOTGUN_BULLET(1, 3),
         BLASTER_BULLET(2, 4);
 
         private final int radius;

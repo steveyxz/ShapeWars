@@ -220,6 +220,16 @@ public class PlayerInfo {
         }
     }
 
+    public void damage(int health, Entity damager) {
+        damage(health);
+        if (equipment.armorOne() != null) {
+            equipment.armorOne().onHit(damager);
+        }
+        if (equipment.armorTwo() != null) {
+            equipment.armorTwo().onHit(damager);
+        }
+    }
+
     public void pay(int price) {
         money -= price;
     }

@@ -39,6 +39,6 @@ public class BombAttack implements EnemyAttack {
 
     @Override
     public float cooldown() {
-        return 3;
+        return 5;
     }
 }

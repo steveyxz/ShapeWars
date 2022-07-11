@@ -35,7 +35,7 @@ public class PaddedGreaves implements ArmorItem {
 
     @Override
     public int price() {
-        return 80;
+        return 250;
     }
 
     @Override

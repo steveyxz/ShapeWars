@@ -29,7 +29,7 @@ public class WallEntity implements GameObject {
 
     public static void checkWalls(int boundaryWidth, int boundaryHeight) {
         int count = 0;
-        for (Entity ignored : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(WallComponent.class).get())) {
+        for (Entity ignored : InGameScreen.world.gameWorld().getEntitiesFor(Family.all(WallComponent.class).get()).toArray(Entity.class)) {
             count++;
         }
         if (count != 4) {

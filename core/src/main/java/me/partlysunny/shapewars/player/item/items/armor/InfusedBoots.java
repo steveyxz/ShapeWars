@@ -3,11 +3,9 @@ package me.partlysunny.shapewars.player.item.items.armor;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
-import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
-import me.partlysunny.shapewars.util.utilities.Util;
 
-public class SpikedHelm implements ArmorItem {
+public class InfusedBoots implements ArmorItem {
     @Override
     public Entity buildEntity(PooledEngine engine) {
         Entity entity = engine.createEntity();
@@ -17,17 +15,17 @@ public class SpikedHelm implements ArmorItem {
 
     @Override
     public String name() {
-        return "Spiked Helm";
+        return "Infused Boots";
     }
 
     @Override
     public String description() {
-        return "Damages enemies which hit you!";
+        return "Magical boots, gives you loads of HP!";
     }
 
     @Override
     public String texture() {
-        return "spikedHelm";
+        return "infusedBoots";
     }
 
     @Override
@@ -37,7 +35,7 @@ public class SpikedHelm implements ArmorItem {
 
     @Override
     public int price() {
-        return 200;
+        return 500;
     }
 
     @Override
@@ -47,18 +45,16 @@ public class SpikedHelm implements ArmorItem {
 
     @Override
     public float getProtection() {
-        return 0.15f;
+        return 0.1f;
     }
 
     @Override
     public int getBonusHealth() {
-        return 20;
+        return 180;
     }
 
     @Override
     public void onHit(Entity attacker) {
-        if (Mappers.healthMapper.has(attacker)) {
-            Util.playDamage(attacker, 3);
-        }
+        //Nothing here
     }
 }
