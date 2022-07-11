@@ -1,12 +1,14 @@
-package me.partlysunny.shapewars.player.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
-import me.partlysunny.shapewars.util.constants.Controllers;
+import me.partlysunny.shapewars.util.factories.BombFactory;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class TriangleShotgun implements WeaponItem {
+public class BombLobber implements WeaponItem {
+
     @Override
     public int maxUses() {
         return 20;
@@ -14,7 +16,7 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 2;
+        return 5f;
     }
 
     @Override
@@ -26,17 +28,17 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public String name() {
-        return "Triangle Shotgun";
+        return "Bomb Lobber";
     }
 
     @Override
     public String description() {
-        return "Blasts your enemies, best at close range!";
+        return "Better than the launcher!";
     }
 
     @Override
     public String texture() {
-        return "triangleShotgun";
+        return "bombLobber";
     }
 
     @Override
@@ -46,7 +48,7 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public int price() {
-        return 550;
+        return 350;
     }
 
     @Override
@@ -56,16 +58,17 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public int damage() {
-        return 20;
+        return 40;
     }
 
     @Override
     public float attackDelay() {
-        return 1;
+        return 2f;
     }
 
     @Override
     public void attack(Entity attacker) {
-        Controllers.SHOTGUN.fire(attacker, damage());
+        BombFactory.getInstance().generateBomb(attacker, 4, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, "playerShoot", "basicBomb", "basicExplode");
     }
+
 }

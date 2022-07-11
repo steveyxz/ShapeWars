@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.player.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
@@ -6,15 +6,15 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class CircleBlaster implements WeaponItem {
+public class TriangleShotgun implements WeaponItem {
     @Override
     public int maxUses() {
-        return 20;
+        return 15;
     }
 
     @Override
     public float usesRegenRate() {
-        return 1.4f;
+        return 3;
     }
 
     @Override
@@ -26,17 +26,17 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public String name() {
-        return "Circle Blaster";
+        return "Triangle Shotgun";
     }
 
     @Override
     public String description() {
-        return "Blasts circles";
+        return "Blasts your enemies, best at close range!";
     }
 
     @Override
     public String texture() {
-        return "circleBlaster";
+        return "triangleShotgun";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public int price() {
-        return 0;
+        return 600;
     }
 
     @Override
@@ -56,16 +56,16 @@ public class CircleBlaster implements WeaponItem {
 
     @Override
     public int damage() {
-        return 5;
+        return 20;
     }
 
     @Override
     public float attackDelay() {
-        return 0.6f;
+        return 1;
     }
 
     @Override
     public void attack(Entity attacker) {
-        Controllers.BASIC.fire(attacker, damage());
+        Controllers.SHOTGUN.fire(attacker, damage());
     }
 }

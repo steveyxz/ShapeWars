@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.player.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons.melee;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
@@ -10,7 +10,7 @@ import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 import me.partlysunny.shapewars.util.factories.PlayerMeleeAttackFactory;
 
-public class WoodenStick implements WeaponItem {
+public abstract class GenericMeleeWeapon implements WeaponItem {
     @Override
     public int maxUses() {
         return -1;
@@ -28,50 +28,13 @@ public class WoodenStick implements WeaponItem {
         return entity;
     }
 
-    @Override
-    public String name() {
-        return "Wooden Stick";
-    }
-
-    @Override
-    public String description() {
-        return "Just an ordinary stick.";
-    }
-
-    @Override
-    public String texture() {
-        return "woodenStick";
-    }
-
-    @Override
-    public float renderSizeX() {
-        return 8;
-    }
-
-    @Override
-    public int price() {
-        return 15;
-    }
-
-    @Override
-    public float renderSizeY() {
-        return 16;
-    }
-
-    @Override
-    public int damage() {
-        return 6;
-    }
-
-    @Override
-    public float attackDelay() {
-        return 0.5f;
-    }
+    protected abstract int coverAngle();
+    protected abstract float life();
 
     @Override
     public void attack(Entity attacker) {
         VisualEffectManager.getEffect("playerSwing").playEffect(InGameScreen.playerInfo.equipment().shownWeapon());
         float rotation = Mappers.transformMapper.get(attacker).rotation * MathUtils.radiansToDegrees;
-        InGameScreen.world.gameWorld().addEntity(PlayerMeleeAttackFactory.getInstance().generateMeleeAttack(rotation, 120, 4, damage(), 0.3f));
+        InGameScreen.world.gameWorld().addEntity(PlayerMeleeAttackFactory.getInstance().generateMeleeAttack(rotation, coverAngle(), 4, damage(), life()));
     }
 }

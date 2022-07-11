@@ -11,20 +11,13 @@ import me.partlysunny.shapewars.bullets.BulletType;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
-import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BulletFactory;
-import me.partlysunny.shapewars.util.utilities.LateRemover;
-import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
-import me.partlysunny.shapewars.world.components.enemy.EnemyState;
-import me.partlysunny.shapewars.world.components.enemy.EnemyStateComponent;
-
-import static me.partlysunny.shapewars.util.utilities.Util.handleBasicPlayerBulletCollision;
 
 public class ShotgunPlayerBulletController implements BulletController {
-    private static final float angleDiff = 10 * MathUtils.degreesToRadians;
+    private static final float angleDiff = 15 * MathUtils.degreesToRadians;
 
     @Override
     public void fire(Entity shooter, float damage) {

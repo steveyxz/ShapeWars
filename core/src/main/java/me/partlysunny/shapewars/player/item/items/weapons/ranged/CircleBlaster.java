@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.player.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
@@ -6,7 +6,7 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class CirclePummeler implements WeaponItem {
+public class CircleBlaster implements WeaponItem {
     @Override
     public int maxUses() {
         return 20;
@@ -14,7 +14,7 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 0.7f;
+        return 1.4f;
     }
 
     @Override
@@ -26,17 +26,17 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public String name() {
-        return "Circle Pummeler";
+        return "Circle Blaster";
     }
 
     @Override
     public String description() {
-        return "Pummels your enemies with circles";
+        return "Blasts circles";
     }
 
     @Override
     public String texture() {
-        return "circlePummeler";
+        return "circleBlaster";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public int price() {
-        return 20;
+        return 0;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class CirclePummeler implements WeaponItem {
 
     @Override
     public int damage() {
-        return 8;
+        return 5;
     }
 
     @Override
     public float attackDelay() {
-        return 0.2f;
+        return 0.6f;
     }
 
     @Override

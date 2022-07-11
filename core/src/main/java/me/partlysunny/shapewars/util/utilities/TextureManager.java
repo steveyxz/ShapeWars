@@ -57,10 +57,13 @@ public class TextureManager {
         doPngTexture("noWeapon");
         doPngTexture("circleBlaster");
         doPngTexture("circlePummeler");
-        doPngTexture("woodenStick");
         doPngTexture("bombLauncher");
         doPngTexture("bombLobber");
+        doPngTexture("bombSprayer");
         doPngTexture("triangleShotgun");
+        doPngTexture("woodenStick");
+        doPngTexture("katana");
+        doPngTexture("steelBroadsword");
         //Armor
         doPngTexture("oldTunic");
         doPngTexture("paddedGreaves");

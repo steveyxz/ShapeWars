@@ -1,14 +1,12 @@
-package me.partlysunny.shapewars.player.item.items.weapons;
+package me.partlysunny.shapewars.player.item.items.weapons.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
-import me.partlysunny.shapewars.util.factories.BombFactory;
+import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class BombLobber implements WeaponItem {
-
+public class CirclePummeler implements WeaponItem {
     @Override
     public int maxUses() {
         return 20;
@@ -16,7 +14,7 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 5f;
+        return 0.7f;
     }
 
     @Override
@@ -28,17 +26,17 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public String name() {
-        return "Bomb Lobber";
+        return "Circle Pummeler";
     }
 
     @Override
     public String description() {
-        return "Better than the launcher!";
+        return "Pummels your enemies with circles";
     }
 
     @Override
     public String texture() {
-        return "bombLobber";
+        return "circlePummeler";
     }
 
     @Override
@@ -48,7 +46,7 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public int price() {
-        return 350;
+        return 20;
     }
 
     @Override
@@ -58,17 +56,16 @@ public class BombLobber implements WeaponItem {
 
     @Override
     public int damage() {
-        return 40;
+        return 8;
     }
 
     @Override
     public float attackDelay() {
-        return 2f;
+        return 0.2f;
     }
 
     @Override
     public void attack(Entity attacker) {
-        BombFactory.getInstance().generateBomb(attacker, 4, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, "playerShoot", "basicBomb", "basicExplode");
+        Controllers.BASIC.fire(attacker, damage());
     }
-
 }
