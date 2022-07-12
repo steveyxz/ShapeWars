@@ -9,6 +9,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import me.partlysunny.shapewars.effects.particle.ParticleEffectManager;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
@@ -19,6 +21,7 @@ import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 import me.partlysunny.shapewars.world.objects.general.HealthBarFactory;
+import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 import java.util.function.Consumer;
 
@@ -54,6 +57,8 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         DeletionListenerComponent deleteListener = w.createComponent(DeletionListenerComponent.class);
         deleteListener.init(entity -> {
             oe.onDestroy().accept(entity);
+            ParticleEffectManager.startEffect("obstacleBreak", (int) TextureRenderingSystem.metersToPixels(scale.position.x), (int) TextureRenderingSystem.metersToPixels(scale.position.y), 200);
+            SoundEffectManager.play("obstacleBreak", 1);
             LateRemover.tagToRemove(healthBar);
         });
         e.add(deleteListener);

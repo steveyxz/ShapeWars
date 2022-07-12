@@ -38,8 +38,16 @@ public class ParticleEffectManager {
         registerEffect("enemySpawnIn", load("enemySpawnIn.p"));
         registerEffect("heart", load("heart.p"));
         registerEffect("explosion", load("explosion.p"));
+        registerEffect("obstacleBreak", load("obstacleBreak.p"));
     }
 
+    /**
+     * Start a particle effect
+     * @param effect The effect id, as stated by init()
+     * @param x x pos in pixels
+     * @param y y pos in pixels
+     * @param duration duration in ms
+     */
     public static void startEffect(String effect, int x, int y, int duration) {
         ParticleEffectPool pool = effects.get(effect);
         if (pool == null) {
