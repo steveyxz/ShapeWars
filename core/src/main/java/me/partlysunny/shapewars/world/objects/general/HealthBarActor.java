@@ -43,6 +43,9 @@ public class HealthBarActor extends Actor implements Pool.Poolable {
             return;
         }
         float progress = health.health() / health.maxHealth();
+        if (progress < 0) {
+            return;
+        }
 
         loadingBarBackground.draw(batch, getX(), getY(), getWidth() * getScaleX(), getHeight() * getScaleY());
         loadingBar.draw(batch, getX(), getY(), progress * getWidth() * getScaleX(), getHeight() * getScaleY());

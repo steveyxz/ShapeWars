@@ -61,6 +61,7 @@ public class TextureManager {
         doPngTexture("bombLobber");
         doPngTexture("bombSprayer");
         doPngTexture("triangleShotgun");
+        doPngTexture("squareSniper");
         doPngTexture("woodenStick");
         doPngTexture("katana");
         doPngTexture("steelBroadsword");
@@ -77,6 +78,7 @@ public class TextureManager {
         doPngTexture("basicBullet");
         doPngTexture("basicBomb");
         doPngTexture("shotgunBullet");
+        doPngTexture("sniperBullet");
         doPngTexture("enemyBomb");
         doPngTexture("enemyBlasterBullet");
         //Enemies

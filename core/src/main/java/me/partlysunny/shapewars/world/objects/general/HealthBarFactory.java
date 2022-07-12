@@ -18,6 +18,7 @@ public final class HealthBarFactory {
 
         DeletionListenerComponent deletion = w.createComponent(DeletionListenerComponent.class);
         deletion.init(e -> {
+            actor.setVisible(false);
             actor.remove();
         });
         healthBar.add(deletion);

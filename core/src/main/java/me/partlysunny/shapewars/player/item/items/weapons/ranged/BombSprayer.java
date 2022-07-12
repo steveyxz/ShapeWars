@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.math.MathUtils;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.factories.BombFactory;
@@ -81,11 +82,12 @@ public class BombSprayer implements WeaponItem {
         bomb(attacker, r + angleDiff * 1 / 2);
         bomb(attacker, r + angleDiff * 3 / 2);
 
+        SoundEffectManager.play("playerShoot", 1);
     }
 
     private void bomb(Entity attacker, float angle) {
         TransformComponent t = Mappers.transformMapper.get(attacker);
         t.rotation = angle;
-        BombFactory.getInstance().generateBomb(attacker, 1, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, "playerShoot", "basicBomb", "basicExplode");
+        BombFactory.getInstance().generateBomb(attacker, 1, 5, BulletRestrictions.ONLY_ENTITIES, damage(), 400, null, "basicBomb", "basicExplode");
     }
 }

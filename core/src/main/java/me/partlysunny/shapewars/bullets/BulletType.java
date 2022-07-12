@@ -33,6 +33,7 @@ public class BulletType {
 
         BASIC_BULLET(1, 0),
         SHOTGUN_BULLET(1, 3),
+        SNIPER_BULLET(1, 4),
         BLASTER_BULLET(2, 4);
 
         private final int radius;

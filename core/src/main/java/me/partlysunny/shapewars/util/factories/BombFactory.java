@@ -65,7 +65,7 @@ public final class BombFactory {
         y *= (speed / 5);
 
         Mappers.bodyMapper.get(basicBomb).rigidBody().applyForceToCenter(x, y, true);
-        SoundEffectManager.play(soundEffect, 1);
+        if (soundEffect != null) SoundEffectManager.play(soundEffect, 1);
         InGameScreen.world.gameWorld().addEntity(basicBomb);
         VisualEffectManager.getEffect(explodeEffect).playEffect(basicBomb);
 
