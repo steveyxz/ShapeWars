@@ -30,16 +30,11 @@ public class ActorUpdatingSystem extends IteratingSystem {
     public void update(float deltaTime) {
         super.update(deltaTime);
 
-        batch.setProjectionMatrix(camera.combined);
-        batch.enableBlending();
-        batch.begin();
-
         for (Entity e : renderQueue) {
             ActorComponent actor = Mappers.actorMapper.get(e);
             actor.update(deltaTime, batch);
         }
 
-        batch.end();
         renderQueue.clear();
     }
 }

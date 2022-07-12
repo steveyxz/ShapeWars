@@ -73,12 +73,6 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
         // sort the renderQueue based on z index
         renderQueue.sort(comparator);
 
-        // update camera and sprite batch
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
-        batch.enableBlending();
-        batch.begin();
-
         // loop through each entity in our render queue
         for (Entity entity : renderQueue) {
             TextureComponent tex = Mappers.textureMapper.get(entity);
@@ -130,7 +124,6 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
             batch.setColor(Color.WHITE);
         }
 
-        batch.end();
         renderQueue.clear();
     }
 

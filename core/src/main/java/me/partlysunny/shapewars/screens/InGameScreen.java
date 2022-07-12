@@ -115,6 +115,11 @@ public class InGameScreen extends ManagedScreen {
         //Clear screen with background color
         ScreenUtils.clear(GameInfo.BACKGROUND_COLOR);
 
+        camera.update();
+        game.batch().setProjectionMatrix(camera.combined);
+        game.batch().enableBlending();
+        game.batch().begin();
+
         if (!InventoryMenuManager.isOpen()) {
             //Move camera
             camera.position.add(cameraVelocity.x / PPM, cameraVelocity.y / PPM, 0);
@@ -133,18 +138,18 @@ public class InGameScreen extends ManagedScreen {
             world.gameWorld().update(delta);
         }
 
+
         //Process late killers / removers (so that they don't collide with the physics step)
         LateRemover.process();
         PlayerKiller.update(game);
 
         //Rendering
-        game.batch().enableBlending();
-        game.batch().setProjectionMatrix(camera.combined);
-        stage.draw();
         if (InventoryMenuManager.isOpen()) {
             world.gameWorld().getSystem(TextureRenderingSystem.class).update(delta);
             world.gameWorld().getSystem(ActorUpdatingSystem.class).update(delta);
         }
+        game.batch().end();
+        stage.draw();
         //Draw UI
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         guiViewport.apply();
