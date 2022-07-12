@@ -64,7 +64,7 @@ public class UtilityItemEntry implements Entry {
         collision.shape = shape;
 
         RigidBodyComponent body = engine.createComponent(RigidBodyComponent.class);
-        body.initBody(around.x + (variation * (Util.RAND.nextBoolean() ? 1 : -1)), around.y + (variation * (Util.RAND.nextBoolean() ? 1 : -1)), 0, collision, BodyDef.BodyType.DynamicBody, radius);
+        body.initBody(around.x + (Util.getRandomBetween(0, variation) * (Util.RAND.nextBoolean() ? 1 : -1)), around.y + (Util.getRandomBetween(0, variation) * (Util.RAND.nextBoolean() ? 1 : -1)), 0, collision, BodyDef.BodyType.DynamicBody, radius);
         item.add(body);
 
         TextureComponent texture = engine.createComponent(TextureComponent.class);

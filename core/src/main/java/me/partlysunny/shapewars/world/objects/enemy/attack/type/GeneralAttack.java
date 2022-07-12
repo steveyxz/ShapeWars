@@ -14,16 +14,16 @@ public class GeneralAttack extends BasicAttack {
 
     @Override
     protected int getDamage() {
-        return 30;
+        return 60;
     }
 
     @Override
     protected float dashDuration() {
-        return 0.5f;
+        return 1f;
     }
 
     @Override
     public float cooldown() {
-        return 2;
+        return 4;
     }
 }

@@ -4,7 +4,7 @@ public class CommanderBlasterAttack extends BasicBlasterAttack {
 
     @Override
     public float cooldown() {
-        return 0.5f;
+        return 1f;
     }
 
     @Override

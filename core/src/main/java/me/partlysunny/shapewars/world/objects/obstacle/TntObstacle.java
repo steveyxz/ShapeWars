@@ -35,7 +35,7 @@ public class TntObstacle extends ObstacleEntity {
     @Override
     protected Consumer<Entity> onDestroy() {
         return e -> {
-            BombFactory.getInstance().generateBomb(e, 3.5f, 0, BulletRestrictions.BOTH, 10, 0, "beep", "tnt", "basicExplode");
+            BombFactory.getInstance().generateBomb(e, 3.5f, 0, BulletRestrictions.BOTH, 25, 0, "beep", "tnt", "basicExplode");
         };
     }
 }

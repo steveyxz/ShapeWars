@@ -8,9 +8,8 @@
       "megaTank": 10
     },
     {
-      "sniper": 10,
-      "megaTank": 5,
-      "general": 1
+      "sniper": 15,
+      "bomber": 10
     },
     {
       "general": 1,

@@ -22,10 +22,7 @@ import me.partlysunny.shapewars.world.components.player.PlayerMeleeAttackCompone
 import me.partlysunny.shapewars.world.components.player.item.ItemComponent;
 import me.partlysunny.shapewars.world.components.player.item.WeaponComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
-import me.partlysunny.shapewars.world.components.render.AnimationComponent;
-import me.partlysunny.shapewars.world.components.render.DeathEffectComponent;
-import me.partlysunny.shapewars.world.components.render.TextureComponent;
-import me.partlysunny.shapewars.world.components.render.TintComponent;
+import me.partlysunny.shapewars.world.components.render.*;
 
 public final class Mappers {
 
@@ -58,4 +55,5 @@ public final class Mappers {
     public static final ComponentMapper<BombComponent> bombMapper = ComponentMapper.getFor(BombComponent.class);
     public static final ComponentMapper<DeletionListenerComponent> deleteListenerMapper = ComponentMapper.getFor(DeletionListenerComponent.class);
     public static final ComponentMapper<WanderComponent> wanderMapper = ComponentMapper.getFor(WanderComponent.class);
+    public static final ComponentMapper<ActorComponent> actorMapper = ComponentMapper.getFor(ActorComponent.class);
 }

@@ -27,6 +27,6 @@ public class SniperEnemy extends BlasterEnemy {
 
     @Override
     protected float viewRange() {
-        return 75;
+        return 50;
     }
 }

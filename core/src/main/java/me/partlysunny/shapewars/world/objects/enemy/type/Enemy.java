@@ -13,10 +13,12 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.Box2DFactory;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.ai.SteeringComponent;
 import me.partlysunny.shapewars.world.components.ai.WanderComponent;
 import me.partlysunny.shapewars.world.components.collision.BulletDeleterComponent;
+import me.partlysunny.shapewars.world.components.collision.DeletionListenerComponent;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyAttackComponent;
@@ -33,6 +35,7 @@ import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyRadiusProximity;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
+import me.partlysunny.shapewars.world.objects.general.HealthBarFactory;
 
 import javax.annotation.Nullable;
 
@@ -140,6 +143,13 @@ public abstract class Enemy implements GameObject {
             loot.init(enemyLoot);
             enemy.add(loot);
         }
+
+        Entity healthBar = HealthBarFactory.createEntity(w, enemy);
+        DeletionListenerComponent deleteListener = w.createComponent(DeletionListenerComponent.class);
+        deleteListener.init(entity -> LateRemover.tagToRemove(healthBar));
+        enemy.add(deleteListener);
+
+        w.addEntity(healthBar);
 
         return enemy;
     }

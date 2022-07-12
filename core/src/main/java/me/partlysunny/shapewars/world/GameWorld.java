@@ -24,6 +24,7 @@ import me.partlysunny.shapewars.world.systems.mechanics.enemy.LootItemUpdaterSys
 import me.partlysunny.shapewars.world.systems.physics.GroundFrictionSystem;
 import me.partlysunny.shapewars.world.systems.physics.PhysicsSystem;
 import me.partlysunny.shapewars.world.systems.player.*;
+import me.partlysunny.shapewars.world.systems.render.ActorUpdatingSystem;
 import me.partlysunny.shapewars.world.systems.render.AnimationSystem;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
@@ -64,6 +65,7 @@ public class GameWorld {
         //Rendering systems
         gameWorld.addSystem(new AnimationSystem());
         gameWorld.addSystem(new TextureRenderingSystem(stage.getBatch()));
+        gameWorld.addSystem(new ActorUpdatingSystem(stage.getBatch()));
 
         //Enemy Melee Attacks
         ContactDispatcher.registerListener(new MeleeHandle());

@@ -38,7 +38,7 @@ public class BombSprayer implements WeaponItem {
 
     @Override
     public String description() {
-        return "Shoots 3 mini bombs!";
+        return "Shoots 4 mini bombs!";
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BombSprayer implements WeaponItem {
 
     @Override
     public int damage() {
-        return 10;
+        return 7;
     }
 
     @Override

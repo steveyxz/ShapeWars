@@ -30,10 +30,12 @@ import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
+import me.partlysunny.shapewars.world.components.render.ActorComponent;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
 import me.partlysunny.shapewars.world.objects.player.PlayerEntity;
+import me.partlysunny.shapewars.world.systems.render.ActorUpdatingSystem;
 import me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem;
 
 import static me.partlysunny.shapewars.world.systems.render.TextureRenderingSystem.*;
@@ -141,6 +143,7 @@ public class InGameScreen extends ManagedScreen {
         stage.draw();
         if (InventoryMenuManager.isOpen()) {
             world.gameWorld().getSystem(TextureRenderingSystem.class).update(delta);
+            world.gameWorld().getSystem(ActorUpdatingSystem.class).update(delta);
         }
         //Draw UI
         guiViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -173,6 +176,10 @@ public class InGameScreen extends ManagedScreen {
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height);
+    }
+
+    public Stage stage() {
+        return stage;
     }
 
     @Override

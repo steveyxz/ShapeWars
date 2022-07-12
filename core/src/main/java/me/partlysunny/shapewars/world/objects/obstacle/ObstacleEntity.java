@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import me.partlysunny.shapewars.screens.InGameScreen;
+import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.world.components.collision.*;
 import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
@@ -17,6 +18,7 @@ import me.partlysunny.shapewars.world.components.movement.GroundFrictionComponen
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
 import me.partlysunny.shapewars.world.components.render.TintComponent;
 import me.partlysunny.shapewars.world.objects.GameObject;
+import me.partlysunny.shapewars.world.objects.general.HealthBarFactory;
 
 import java.util.function.Consumer;
 
@@ -48,10 +50,16 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         HealthComponent health = w.createComponent(HealthComponent.class);
         health.init(oe.getHealth());
         e.add(health);
+        Entity healthBar = HealthBarFactory.createEntity(w, e);
         DeletionListenerComponent deleteListener = w.createComponent(DeletionListenerComponent.class);
-        deleteListener.init(oe.onDestroy());
+        deleteListener.init(entity -> {
+            oe.onDestroy().accept(entity);
+            LateRemover.tagToRemove(healthBar);
+        });
         e.add(deleteListener);
+
         w.addEntity(e);
+        w.addEntity(healthBar);
         return e;
     }
 

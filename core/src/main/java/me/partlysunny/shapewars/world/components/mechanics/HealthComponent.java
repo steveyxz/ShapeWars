@@ -21,6 +21,14 @@ public class HealthComponent implements Component, Pool.Poolable {
         this.health = health;
     }
 
+    public float maxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(float maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public void addHealth(float health) {
         setHealth(health() + health);
     }

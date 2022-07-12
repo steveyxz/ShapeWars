@@ -9,11 +9,13 @@ import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Mappers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class LateRemover {
 
     private static final List<Entity> toRemove = new ArrayList<>();
+    private static final List<Entity> tempRemove = new ArrayList<>();
 
     public static void tagToRemove(Entity e) {
         toRemove.add(e);
@@ -22,7 +24,9 @@ public class LateRemover {
     public static void process() {
         PooledEngine world = InGameScreen.world.gameWorld();
         World physics = InGameScreen.world.physicsWorld();
-        for (Entity e : toRemove) {
+        tempRemove.clear();
+        tempRemove.addAll(toRemove);
+        for (Entity e : tempRemove) {
             if (Mappers.bodyMapper.has(e)) {
                 physics.destroyBody(Mappers.bodyMapper.get(e).rigidBody());
             }
