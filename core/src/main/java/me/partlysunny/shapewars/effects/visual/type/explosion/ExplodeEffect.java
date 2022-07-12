@@ -28,6 +28,10 @@ public abstract class ExplodeEffect extends VisualEffect {
         lastBeeped.put(e, getDuration());
     }
 
+    protected float soundVolume() {
+        return 1;
+    }
+
     @Override
     protected void effectUpdate(Entity e, float delta) {
         if (Mappers.tintMapper.has(e)) {
@@ -37,7 +41,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             if (currentlyOn > getDuration() / 2f) {
                 //Before half, beep every 0.7 secs
                 if (lastBeeped.get(e) - currentlyOn > 0.7f) {
-                    SoundEffectManager.play("beep", 1);
+                    SoundEffectManager.play("beep",  soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.1f) {
@@ -46,7 +50,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             } else if (currentlyOn > getDuration() * (1 / 6f)) {
                 //Before 3/4, beep every 0.4 secs
                 if (lastBeeped.get(e) - currentlyOn > 0.4f) {
-                    SoundEffectManager.play("beep", 1);
+                    SoundEffectManager.play("beep",  soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.1f) {
@@ -55,7 +59,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             } else {
                 //Final bit
                 if (lastBeeped.get(e) - currentlyOn > 0.1f) {
-                    SoundEffectManager.play("beep", 1);
+                    SoundEffectManager.play("beep",  soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.05f) {
@@ -68,7 +72,7 @@ public abstract class ExplodeEffect extends VisualEffect {
     @Override
     protected void endEffect(Entity e) {
         lastBeeped.remove(e);
-        SoundEffectManager.play("explosion", 1);
+        SoundEffectManager.play("explosion", soundVolume());
         TransformComponent entity = Mappers.transformMapper.get(e);
         ParticleEffectManager.startEffect("explosion", (int) TextureRenderingSystem.metersToPixels(entity.position.x), (int) TextureRenderingSystem.metersToPixels(entity.position.y), 100);
 

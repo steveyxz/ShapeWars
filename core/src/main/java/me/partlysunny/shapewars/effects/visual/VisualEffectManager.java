@@ -6,6 +6,7 @@ import me.partlysunny.shapewars.effects.visual.type.EnemySummonEffect;
 import me.partlysunny.shapewars.effects.visual.type.PlayerSwingEffect;
 import me.partlysunny.shapewars.effects.visual.type.explosion.BasicExplodeEffect;
 import me.partlysunny.shapewars.effects.visual.type.explosion.FastExplodeEffect;
+import me.partlysunny.shapewars.effects.visual.type.explosion.SoftFastExplodeEffect;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,7 @@ public class VisualEffectManager {
         registerEffect("enemySummon", new EnemySummonEffect());
         registerEffect("basicExplode", new BasicExplodeEffect());
         registerEffect("fastExplode", new FastExplodeEffect());
+        registerEffect("softFastExplode", new SoftFastExplodeEffect());
     }
 
     public static void update(float delta) {

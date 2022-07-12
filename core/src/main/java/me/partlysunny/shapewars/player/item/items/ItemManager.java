@@ -52,6 +52,7 @@ public final class ItemManager {
         registerItem("bombLauncher", new BombLauncher());
         registerItem("bombLobber", new BombLobber());
         registerItem("bombSprayer", new BombSprayer());
+        registerItem("machineBomber", new MachineBomber());
         registerItem("triangleShotgun", new TriangleShotgun());
         registerItem("squareSniper", new SquareSniper());
         registerItem("woodenStick", new WoodenStick());
