@@ -418,4 +418,8 @@ public class PlayerEquipment {
     public void setHasChangedWeaponTwo(boolean hasChangedWeaponTwo) {
         this.hasChangedWeaponTwo = hasChangedWeaponTwo;
     }
+
+    public WeaponItem currentWeapon() {
+        return activeWeaponSlot == 0 ? weaponOne : weaponTwo;
+    }
 }

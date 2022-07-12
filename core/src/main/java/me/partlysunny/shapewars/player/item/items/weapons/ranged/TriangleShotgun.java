@@ -14,7 +14,7 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public float usesRegenRate() {
-        return 3;
+        return 4;
     }
 
     @Override

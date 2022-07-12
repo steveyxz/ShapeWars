@@ -28,6 +28,7 @@ public class SoundEffectManager {
         loadWavRegular("shotgunShoot");
         loadWavRegular("bulletCollide");
         loadWavRegular("potConsume");
+        loadWavRegular("ammoReload");
         //UI
         loadWavRegular("click");
         loadWavRegular("shopBuy");

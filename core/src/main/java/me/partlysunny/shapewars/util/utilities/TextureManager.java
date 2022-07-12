@@ -71,6 +71,8 @@ public class TextureManager {
         doPngTexture("infusedBoots");
         //Utilities
         doPngTexture("basicHpPot");
+        doPngTexture("mediumHpPot");
+        doPngTexture("basicAmmoPack");
         //Bullets
         doPngTexture("basicBullet");
         doPngTexture("basicBomb");

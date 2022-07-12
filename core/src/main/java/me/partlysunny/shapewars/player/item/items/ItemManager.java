@@ -5,7 +5,9 @@ import me.partlysunny.shapewars.player.item.items.armor.InfusedBoots;
 import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
 import me.partlysunny.shapewars.player.item.items.armor.PaddedGreaves;
 import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
+import me.partlysunny.shapewars.player.item.items.utility.BasicAmmoPack;
 import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
+import me.partlysunny.shapewars.player.item.items.utility.MediumHpPot;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.Katana;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.SteelBroadsword;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.WoodenStick;
@@ -61,6 +63,8 @@ public final class ItemManager {
         registerItem("infusedBoots", new InfusedBoots());
         //Utility
         registerItem("basicHpPot", new BasicHpPot());
+        registerItem("mediumHpPot", new MediumHpPot());
+        registerItem("basicAmmoPack", new BasicAmmoPack());
 
         for (Item i : items.values()) {
             if (i instanceof WeaponItem) {

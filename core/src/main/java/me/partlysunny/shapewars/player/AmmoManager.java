@@ -50,6 +50,12 @@ public class AmmoManager {
         }
     }
 
+    public void setAmmo(String weapon, int amount) {
+        if (ammoMap.containsKey(weapon)) {
+            ammoMap.put(weapon, Math.min(amount, ((WeaponItem) ItemManager.getItem(weapon)).maxUses()));
+        }
+    }
+
     public int ammoRemaining(String texture) {
         return ammoMap.get(texture);
     }

@@ -1,11 +1,13 @@
-package me.partlysunny.shapewars.player.item.items.armor;
+package me.partlysunny.shapewars.player.item.items.utility;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
-import me.partlysunny.shapewars.player.item.types.ArmorItem;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
+import me.partlysunny.shapewars.player.item.types.UtilityItem;
+import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class InfusedBoots implements ArmorItem {
+public class MediumHpPot implements UtilityItem {
     @Override
     public Entity buildEntity(PooledEngine engine) {
         Entity entity = engine.createEntity();
@@ -15,46 +17,37 @@ public class InfusedBoots implements ArmorItem {
 
     @Override
     public String name() {
-        return "Infused Boots";
+        return "Medium HP Pot";
     }
 
     @Override
     public String description() {
-        return "Magical boots, gives you loads of HP!";
+        return "Heals 45 HP";
     }
 
     @Override
     public String texture() {
-        return "infusedBoots";
+        return "mediumHpPot";
     }
 
     @Override
     public float renderSizeX() {
-        return 6;
+        return 4;
     }
 
     @Override
     public int price() {
-        return 500;
+        return 30;
     }
 
     @Override
     public float renderSizeY() {
-        return 6;
+        return 4;
     }
 
     @Override
-    public float getProtection() {
-        return 0.15f;
-    }
-
-    @Override
-    public int getBonusHealth() {
-        return 180;
-    }
-
-    @Override
-    public void onHit(Entity attacker) {
-        //Nothing here
+    public void use(Entity player) {
+        InGameScreen.playerInfo.damage(-45);
+        SoundEffectManager.play("potConsume", 1);
     }
 }
