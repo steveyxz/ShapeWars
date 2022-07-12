@@ -34,7 +34,7 @@ public class BombAttack implements EnemyAttack {
 
         vec.set(xDif, yDif);
         enemyPos.rotation = Util.vectorToAngle(vec);
-        BombFactory.getInstance().generateBomb(enemyEntity, 3, 5, BulletRestrictions.ONLY_PLAYERS, damage(), 800, "enemyThrow", "enemyBomb", "fastExplode");
+        BombFactory.getInstance().generateBomb(enemyEntity, 3, 5, BulletRestrictions.ONLY_PLAYERS, damage(), 800, "enemyThrow", "enemyBomb", "softFastExplode");
     }
 
     @Override

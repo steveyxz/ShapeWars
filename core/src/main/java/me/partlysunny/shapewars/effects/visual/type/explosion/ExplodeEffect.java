@@ -83,17 +83,17 @@ public abstract class ExplodeEffect extends VisualEffect {
             if (Mappers.enemyStateMapper.has(entityToDamage)) {
                 if (restrictions != BulletRestrictions.ONLY_PLAYERS) {
                     Util.playDamage(entityToDamage, damage);
-                    Util.doKnockback(e, entityToDamage, 120);
+                    Util.doKnockback(e, entityToDamage, 20);
                 }
             } else if (Mappers.playerStateMapper.has(entityToDamage)) {
                 if (restrictions != BulletRestrictions.ONLY_ENTITIES) {
                     InGameScreen.playerInfo.damage(damage);
-                    Util.doKnockback(e, entityToDamage, 120);
+                    Util.doKnockback(e, entityToDamage, 20);
                 }
             }
             if (Mappers.obstacleMapper.has(entityToDamage)) {
                 Util.playDamage(entityToDamage, damage);
-                Util.doKnockback(e, entityToDamage, 120);
+                Util.doKnockback(e, entityToDamage, 20);
             }
         }
 

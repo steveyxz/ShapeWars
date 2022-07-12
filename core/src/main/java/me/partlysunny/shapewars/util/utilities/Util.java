@@ -146,7 +146,7 @@ public class Util {
                     Mappers.healthMapper.get(enemy).addHealth(-attack.damage());
                     VisualEffectManager.getEffect("damage").playEffect(enemy);
                     attack.hit(enemy);
-                    doKnockback(enemy, 120);
+                    doKnockback(enemy, 20);
                 }
             }
             //Also delete bullets
@@ -181,7 +181,7 @@ public class Util {
             vec.nor();
             vec.scl(force);
 
-            r.rigidBody().applyForceToCenter(vec, true);
+            r.rigidBody().setLinearVelocity(vec);
 
             if (Mappers.enemyStateMapper.has(target)) {
                 EnemyStateComponent s = Mappers.enemyStateMapper.get(target);

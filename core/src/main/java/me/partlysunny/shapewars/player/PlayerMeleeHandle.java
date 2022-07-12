@@ -21,7 +21,7 @@ public class PlayerMeleeHandle implements ContactListener {
             PlayerMeleeAttackComponent meleeAttack = Mappers.playerMeleeAttackMapper.get(attack);
             if (meleeAttack.canHit(enemy)) {
                 Util.playDamage(enemy, meleeAttack.damage());
-                Util.doKnockback(enemy, 90);
+                Util.doKnockback(enemy, 15);
                 meleeAttack.hit(enemy);
             }
         }
