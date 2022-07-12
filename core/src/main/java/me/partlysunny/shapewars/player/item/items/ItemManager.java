@@ -1,10 +1,7 @@
 package me.partlysunny.shapewars.player.item.items;
 
 import me.partlysunny.shapewars.player.item.Item;
-import me.partlysunny.shapewars.player.item.items.armor.InfusedBoots;
-import me.partlysunny.shapewars.player.item.items.armor.OldTunic;
-import me.partlysunny.shapewars.player.item.items.armor.PaddedGreaves;
-import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
+import me.partlysunny.shapewars.player.item.items.armor.*;
 import me.partlysunny.shapewars.player.item.items.utility.BasicAmmoPack;
 import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
 import me.partlysunny.shapewars.player.item.items.utility.MediumHpPot;
@@ -65,6 +62,7 @@ public final class ItemManager {
         registerItem("paddedGreaves", new PaddedGreaves());
         registerItem("spikedHelm", new SpikedHelm());
         registerItem("infusedBoots", new InfusedBoots());
+        registerItem("empoweredScarf", new EmpoweredScarf());
         //Utility
         registerItem("basicHpPot", new BasicHpPot());
         registerItem("mediumHpPot", new MediumHpPot());

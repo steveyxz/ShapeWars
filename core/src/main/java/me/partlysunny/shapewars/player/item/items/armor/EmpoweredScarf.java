@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.PooledEngine;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class InfusedBoots implements ArmorItem {
+public class EmpoweredScarf implements ArmorItem {
     @Override
     public Entity buildEntity(PooledEngine engine) {
         Entity entity = engine.createEntity();
@@ -15,17 +15,17 @@ public class InfusedBoots implements ArmorItem {
 
     @Override
     public String name() {
-        return "Infused Boots";
+        return "Empowered Scarf";
     }
 
     @Override
     public String description() {
-        return "Magical boots, gives you loads of HP!";
+        return "A wise old wizard once wore this scarf.";
     }
 
     @Override
     public String texture() {
-        return "infusedBoots";
+        return "empoweredScarf";
     }
 
     @Override
@@ -35,7 +35,7 @@ public class InfusedBoots implements ArmorItem {
 
     @Override
     public int price() {
-        return 400;
+        return 500;
     }
 
     @Override
@@ -45,16 +45,16 @@ public class InfusedBoots implements ArmorItem {
 
     @Override
     public float getProtection() {
-        return 0.15f;
+        return 0.5f;
     }
 
     @Override
     public int getBonusHealth() {
-        return 180;
+        return 100;
     }
 
     @Override
     public void onHit(Entity attacker) {
-        //Nothing here
+        //Nothing happens
     }
 }

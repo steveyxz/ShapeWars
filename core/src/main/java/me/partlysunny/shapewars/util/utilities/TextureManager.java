@@ -72,6 +72,7 @@ public class TextureManager {
         doPngTexture("paddedGreaves");
         doPngTexture("spikedHelm");
         doPngTexture("infusedBoots");
+        doPngTexture("empoweredScarf");
         //Utilities
         doPngTexture("basicHpPot");
         doPngTexture("mediumHpPot");

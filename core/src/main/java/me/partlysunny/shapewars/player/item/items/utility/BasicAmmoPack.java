@@ -24,7 +24,7 @@ public class BasicAmmoPack implements UtilityItem {
 
     @Override
     public String description() {
-        return "Gives your current weapon +50% ammo!";
+        return "Gives your current weapon +40% ammo!";
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BasicAmmoPack implements UtilityItem {
     public void use(Entity player) {
         WeaponItem weapon = InGameScreen.playerInfo.equipment().currentWeapon();
         if (weapon != null && weapon.maxUses() != -1) {
-            InGameScreen.playerInfo.ammoManager().setAmmo(weapon.texture(), (int) (InGameScreen.playerInfo.ammoManager().ammoRemaining(weapon.texture()) + (weapon.maxUses() / 2f)));
+            InGameScreen.playerInfo.ammoManager().setAmmo(weapon.texture(), (int) (InGameScreen.playerInfo.ammoManager().ammoRemaining(weapon.texture()) + (weapon.maxUses() * 4 / 10)));
             SoundEffectManager.play("ammoReload", 1);
         } else {
             InGameScreen.playerInfo.equipment().addUtilItems("basicAmmoPack", 1);
