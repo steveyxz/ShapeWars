@@ -94,6 +94,8 @@ public class TextureManager {
         doPngTexture("bomberEnemy");
         doPngTexture("sniperEnemy");
         doPngTexture("generalEnemy");
+        doPngTexture("swarmEnemy");
+        doPngTexture("swarmEnemyCore");
     }
 
     private static void doPngTexture(String value) {

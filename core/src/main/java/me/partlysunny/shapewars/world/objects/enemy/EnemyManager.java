@@ -30,6 +30,8 @@ public class EnemyManager {
         EnemyManager.registerEnemy("bomber", new BomberEnemy());
         EnemyManager.registerEnemy("sniper", new SniperEnemy());
         EnemyManager.registerEnemy("general", new GeneralEnemy());
+        EnemyManager.registerEnemy("swarm", new SwarmEnemy());
+        EnemyManager.registerEnemy("swarmCore", new SwarmEnemyCore());
     }
 
 }

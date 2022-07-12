@@ -1,29 +1,29 @@
-package me.partlysunny.shapewars.world.objects.enemy.attack.type;
+package me.partlysunny.shapewars.world.objects.enemy.attack.type.melee;
 
-public class GeneralAttack extends BasicAttack {
+public class ChargeAttack extends BasicAttack {
 
     @Override
     public float maxDistance() {
-        return 30;
+        return 50;
     }
 
     @Override
     protected float dashFactor() {
-        return 1.5f;
+        return 0.4f;
     }
 
     @Override
     protected int getDamage() {
-        return 60;
+        return 25;
     }
 
     @Override
     protected float dashDuration() {
-        return 1f;
+        return 4;
     }
 
     @Override
     public float cooldown() {
-        return 4;
+        return 5;
     }
 }

@@ -1,25 +1,26 @@
-package me.partlysunny.shapewars.world.objects.enemy.attack.type;
+package me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.math.Vector2;
-import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
+import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
-import me.partlysunny.shapewars.util.factories.BombFactory;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
+import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
-public class BombAttack implements EnemyAttack {
+public class BasicBlasterAttack implements EnemyAttack {
+
     private final Vector2 vec = new Vector2();
 
     @Override
     public float maxDistance() {
-        return 60;
+        return 90;
     }
 
-    protected int damage() {
-        return 30;
+    protected int getDamage() {
+        return 4;
     }
 
     @Override
@@ -34,11 +35,16 @@ public class BombAttack implements EnemyAttack {
 
         vec.set(xDif, yDif);
         enemyPos.rotation = Util.vectorToAngle(vec);
-        BombFactory.getInstance().generateBomb(enemyEntity, 3, 5, BulletRestrictions.ONLY_PLAYERS, damage(), 800, "enemyThrow", "enemyBomb", "fastExplode");
+
+        Controllers.ENEMY_BLASTER.fire(enemyEntity, getDamage());
+
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
+        Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.MOVING, 0.5f);
     }
 
     @Override
     public float cooldown() {
-        return 5;
+        return 2f;
     }
+
 }

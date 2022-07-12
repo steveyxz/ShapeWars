@@ -1,4 +1,4 @@
-package me.partlysunny.shapewars.world.objects.enemy.attack.type;
+package me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged;
 
 public class SniperBlasterAttack extends BasicBlasterAttack {
 
