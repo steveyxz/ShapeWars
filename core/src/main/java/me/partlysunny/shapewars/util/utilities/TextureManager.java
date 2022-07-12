@@ -66,6 +66,7 @@ public class TextureManager {
         doPngTexture("woodenStick");
         doPngTexture("katana");
         doPngTexture("steelBroadsword");
+        doPngTexture("dualSquaresaber");
         //Armor
         doPngTexture("oldTunic");
         doPngTexture("paddedGreaves");

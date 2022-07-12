@@ -1,53 +1,53 @@
 package me.partlysunny.shapewars.player.item.items.weapons.melee;
 
-public class SteelBroadsword extends GenericMeleeWeapon {
+public class DualSquaresaber extends GenericMeleeWeapon {
     @Override
     public String name() {
-        return "Steel Broadsword";
+        return "Dual Squaresaber";
     }
 
     @Override
     public String description() {
-        return "Powerful blade forged centuries ago...";
+        return "Luke, I am your father...";
     }
 
     @Override
     public String texture() {
-        return "steelBroadsword";
+        return "dualSquaresaber";
     }
 
     @Override
     public float renderSizeX() {
-        return 10;
+        return 12;
     }
 
     @Override
     public int price() {
-        return 400;
+        return 550;
     }
 
     @Override
     public float renderSizeY() {
-        return 20;
+        return 24;
     }
 
     @Override
     protected int coverAngle() {
-        return 160;
+        return 120;
     }
 
     @Override
     protected float life() {
-        return 0.6f;
+        return 0.8f;
     }
 
     @Override
     public int damage() {
-        return 60;
+        return 40;
     }
 
     @Override
     public float attackDelay() {
-        return 1;
+        return 0.3f;
     }
 }

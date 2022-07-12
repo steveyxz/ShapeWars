@@ -8,6 +8,7 @@ import me.partlysunny.shapewars.player.item.items.armor.SpikedHelm;
 import me.partlysunny.shapewars.player.item.items.utility.BasicAmmoPack;
 import me.partlysunny.shapewars.player.item.items.utility.BasicHpPot;
 import me.partlysunny.shapewars.player.item.items.utility.MediumHpPot;
+import me.partlysunny.shapewars.player.item.items.weapons.melee.DualSquaresaber;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.Katana;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.SteelBroadsword;
 import me.partlysunny.shapewars.player.item.items.weapons.melee.WoodenStick;
@@ -58,6 +59,7 @@ public final class ItemManager {
         registerItem("woodenStick", new WoodenStick());
         registerItem("katana", new Katana());
         registerItem("steelBroadsword", new SteelBroadsword());
+        registerItem("dualSquaresaber", new DualSquaresaber());
         //Armor
         registerItem("oldTunic", new OldTunic());
         registerItem("paddedGreaves", new PaddedGreaves());
