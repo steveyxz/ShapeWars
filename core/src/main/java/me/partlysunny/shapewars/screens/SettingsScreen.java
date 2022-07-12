@@ -2,11 +2,13 @@ package me.partlysunny.shapewars.screens;
 
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.VisUI;
 import com.kotcrab.vis.ui.widget.VisTable;
@@ -42,12 +44,36 @@ public class SettingsScreen extends BasicGuiScreen {
 
         CheckBox music = new CheckBox("Music", VisUI.getSkin());
         music.setChecked(ShapeWars.settings.music());
+        music.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                ShapeWars.settings.setMusic(music.isChecked());
+            }
+        });
         Slider musicVolume = new Slider(0, 2, 0.1f, false, VisUI.getSkin());
         musicVolume.setValue(ShapeWars.settings.musicVolume());
+        musicVolume.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                ShapeWars.settings.setMusicVolume(musicVolume.getValue());
+            }
+        });
         CheckBox sound = new CheckBox("Sound", VisUI.getSkin());
         sound.setChecked(ShapeWars.settings.sound());
+        sound.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                ShapeWars.settings.setSound(sound.isChecked());
+            }
+        });
         Slider soundVolume = new Slider(0, 2, 0.1f, false, VisUI.getSkin());
         soundVolume.setValue(ShapeWars.settings.soundVolume());
+        soundVolume.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                ShapeWars.settings.setSoundVolume(soundVolume.getValue());
+            }
+        });
         Label prompt = new Label("Press ESC to go back!", labelStyle);
 
         table.add(music);
@@ -62,16 +88,6 @@ public class SettingsScreen extends BasicGuiScreen {
 
         stage.addActor(table);
 
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                ShapeWars.settings.setSound(sound.isChecked());
-                ShapeWars.settings.setMusic(music.isChecked());
-                ShapeWars.settings.setSoundVolume(soundVolume.getValue());
-                ShapeWars.settings.setMusicVolume(musicVolume.getValue());
-                ShapeWars.settings.save();
-            }
-        }, 0, 0.2f);
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
