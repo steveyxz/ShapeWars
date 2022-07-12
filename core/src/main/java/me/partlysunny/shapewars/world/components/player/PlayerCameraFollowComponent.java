@@ -7,9 +7,6 @@ public class PlayerCameraFollowComponent implements Component, Pool.Poolable {
 
     private float speed = 10;
 
-    public PlayerCameraFollowComponent() {
-    }
-
     public float speed() {
         return speed;
     }

@@ -10,9 +10,6 @@ public class TextureComponent implements Component, Pool.Poolable {
     private boolean isHidden = false;
     private int zIndex;
 
-    public TextureComponent() {
-    }
-
     public void init(TextureRegion texture) {
         this.texture = texture;
         zIndex = 0;

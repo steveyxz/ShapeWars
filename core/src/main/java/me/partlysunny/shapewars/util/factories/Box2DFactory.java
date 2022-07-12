@@ -7,15 +7,10 @@ import com.badlogic.gdx.physics.box2d.World;
 public final class Box2DFactory {
 
     public static Box2DFactory INSTANCE;
-    private final World w;
 
-    public Box2DFactory(World w) {
-        this.w = w;
-    }
-
-    public static Box2DFactory getInstance(World w) {
+    public static Box2DFactory getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new Box2DFactory(w);
+            INSTANCE = new Box2DFactory();
         }
         return INSTANCE;
     }

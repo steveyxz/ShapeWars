@@ -64,8 +64,8 @@ public class SoundEffectManager {
     public static void play(String effect, float volume, float soundX, float soundY) {
         if (ShapeWars.settings.sound()) {
             TransformComponent playerTransform = Mappers.transformMapper.get(InGameScreen.playerInfo.playerEntity());
-            volume = Util.getVolumeOfSoundFromPos(playerTransform.position.x, playerTransform.position.y, soundX, soundY, volume);
-            getSound(effect).play(volume * ShapeWars.settings.soundVolume());
+            float newVolume = Util.getVolumeOfSoundFromPos(playerTransform.position.x, playerTransform.position.y, soundX, soundY, volume);
+            getSound(effect).play(newVolume * ShapeWars.settings.soundVolume());
         }
     }
 

@@ -26,19 +26,19 @@ public class PlayerEntity implements GameObject {
     @Override
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {
         Entity player = w.createEntity();
-        int width = 6;
+        int diameter = 6;
         CircleShape shape = new CircleShape();
-        shape.setRadius(width / 2f);
+        shape.setRadius(diameter / 2f);
         shape.setPosition(new Vector2(0, 0));
-        FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
+        FixtureDef def = Box2DFactory.getInstance().generateFixture(Box2DFactory.Material.LIGHT, shape);
         //Set components
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
-        rigidBody.initBody(originalX, originalY, 0, def, BodyDef.BodyType.DynamicBody, width / 2f, true);
+        rigidBody.initBody(originalX, originalY, 0, def, BodyDef.BodyType.DynamicBody, diameter / 2f, true);
         player.add(rigidBody);
         TextureComponent texture = w.createComponent(TextureComponent.class);
         texture.init(new TextureRegion(TextureManager.getTexture("player")));
         TransformComponent scale = w.createComponent(TransformComponent.class);
-        scale.init(width, width);
+        scale.init(diameter, diameter);
         player.add(scale);
         player.add(texture);
         player.add(w.createComponent(PlayerControlComponent.class));

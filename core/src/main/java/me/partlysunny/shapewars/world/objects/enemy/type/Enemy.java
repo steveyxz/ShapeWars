@@ -73,7 +73,7 @@ public abstract class Enemy implements GameObject {
     protected Entity createEnemy(PooledEngine w, float originalX, float originalY) {
         Entity enemy = w.createEntity();
         Shape shape = getShape(getWidth());
-        FixtureDef def = Box2DFactory.getInstance(InGameScreen.world.physicsWorld()).generateFixture(Box2DFactory.Material.LIGHT, shape);
+        FixtureDef def = Box2DFactory.getInstance().generateFixture(Box2DFactory.Material.LIGHT, shape);
         //Set components
         RigidBodyComponent rigidBody = w.createComponent(RigidBodyComponent.class);
         rigidBody.initBody(originalX, originalY, 0, def, BodyDef.BodyType.DynamicBody, getWidth() / 2f, true);

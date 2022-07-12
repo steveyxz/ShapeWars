@@ -69,7 +69,7 @@ public class RigidBodyComponent implements Component, Pool.Poolable {
             }
         });
 
-        Fixture f = rigidBody.createFixture(fixture);
+        rigidBody.createFixture(fixture);
         fixture.shape.dispose();
     }
 

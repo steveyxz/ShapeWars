@@ -15,9 +15,7 @@ public class EnemySpawnObject implements GameObject {
     public Entity createEntity(PooledEngine w, float originalX, float originalY) {
         Entity indicator = w.createEntity();
 
-        EnemySpawnIndicatorComponent enemySpawnIndicatorComponent = w.createComponent(EnemySpawnIndicatorComponent.class);
-        enemySpawnIndicatorComponent.init(indicator);
-        indicator.add(enemySpawnIndicatorComponent);
+        indicator.add(w.createComponent(EnemySpawnIndicatorComponent.class));
 
         TransformComponent transform = w.createComponent(TransformComponent.class);
         float sideLength = 5;

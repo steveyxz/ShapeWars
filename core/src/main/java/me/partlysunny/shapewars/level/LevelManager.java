@@ -60,7 +60,10 @@ public class LevelManager {
         Label timeLabel = new Label("Time Remaining: " + timeRemaining, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_MEDIUM, 0.09f), Color.BLACK));
         Label countdown = new Label("Next Wave In: " + waveSpawnCountdown, new Label.LabelStyle(FontPresets.getFontWithSize(FontPresets.RALEWAY_BOLD, 0.2f), Color.BLACK));
 
-        Container<Label> level = new Container<>(currentLevel), enemies = new Container<>(enemiesRemaining), time = new Container<>(timeLabel), counter = new Container<>(countdown);
+        Container<Label> level = new Container<>(currentLevel);
+        Container<Label> enemies = new Container<>(enemiesRemaining);
+        Container<Label> time = new Container<>(timeLabel);
+        Container<Label> counter = new Container<>(countdown);
 
         level.setTransform(true);
         enemies.setTransform(true);
