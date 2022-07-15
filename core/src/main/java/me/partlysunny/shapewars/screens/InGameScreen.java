@@ -103,6 +103,7 @@ public class InGameScreen extends ManagedScreen {
                 return false;
             }
         });
+        MusicManager.stop();
     }
 
     @Override
