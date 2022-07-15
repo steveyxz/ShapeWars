@@ -9,12 +9,12 @@ public class GeneralAttack extends BasicAttack {
 
     @Override
     protected float dashFactor() {
-        return 1.5f;
+        return 1f;
     }
 
     @Override
     protected int getDamage() {
-        return 60;
+        return 50;
     }
 
     @Override

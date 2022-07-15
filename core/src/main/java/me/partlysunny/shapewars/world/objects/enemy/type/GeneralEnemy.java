@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public class GeneralEnemy extends Enemy {
     @Override
     protected float getHealth() {
-        return 800;
+        return 700;
     }
 
     @Override
