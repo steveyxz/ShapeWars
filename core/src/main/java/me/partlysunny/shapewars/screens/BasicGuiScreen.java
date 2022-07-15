@@ -14,7 +14,7 @@ import me.partlysunny.shapewars.util.constants.GameInfo;
 
 public abstract class BasicGuiScreen extends ManagedScreen {
 
-    protected final Camera camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    protected final Camera camera = new OrthographicCamera(GameInfo.SCREEN_WIDTH, GameInfo.SCREEN_HEIGHT);
     protected final Viewport viewport = new ExtendViewport(camera.viewportWidth, camera.viewportHeight, camera);
     protected final ShapeWars game;
     protected final Stage stage;

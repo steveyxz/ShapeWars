@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Container;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.PositionSet;
@@ -17,7 +18,6 @@ import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemySpawnIndicatorComponent;
-import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinComponent;
 import me.partlysunny.shapewars.world.components.player.state.StateComponent;
 import me.partlysunny.shapewars.world.objects.obstacle.WallEntity;
 
@@ -36,20 +36,22 @@ public class LevelManager {
     private final List<Entity> aliveObstacles = new ArrayList<>();
     private final List<Level> levels = new ArrayList<>();
     private final PositionSet positions = new PositionSet();
+    private final ShapeWars game;
     public boolean isLosing = false;
     public boolean isLeveling = false;
-    private int currentLevel = 0;
+    private int currentLevel = 1;
     private float timeRemaining = 0;
     private boolean isSpawning = false;
     private float waveSpawnCountdown = 0;
     private float stageSpawnCountdown = 0;
     private int currentStage = 0;
-    private boolean isCounting = false;
+    private boolean isCounting = true;
 
-    public LevelManager() {
+    public LevelManager(ShapeWars game) {
+        this.game = game;
         loadLevels();
         initGui();
-        checkLevelUp();
+        loadCurrentLevel();
     }
 
     private void initGui() {
@@ -174,6 +176,10 @@ public class LevelManager {
                 } else {
                     //Increment level
                     currentLevel++;
+                    if (currentLevel > levels.size()) {
+                        game.getScreenManager().pushScreen("end", null);
+                        return;
+                    }
                     isLeveling = true;
                     loadCurrentLevel();
                     isLeveling = false;

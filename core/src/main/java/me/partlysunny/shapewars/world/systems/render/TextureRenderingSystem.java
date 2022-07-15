@@ -3,13 +3,13 @@ package me.partlysunny.shapewars.world.systems.render;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
+import me.partlysunny.shapewars.util.constants.GameInfo;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.render.TextureComponent;
@@ -23,8 +23,8 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
 
     public static final float PPM = 8f;
 
-    public static final float FRUSTUM_WIDTH = Gdx.graphics.getWidth() / PPM;
-    public static final float FRUSTUM_HEIGHT = Gdx.graphics.getHeight() / PPM;
+    public static final float FRUSTUM_WIDTH = GameInfo.SCREEN_WIDTH / PPM;
+    public static final float FRUSTUM_HEIGHT = GameInfo.SCREEN_HEIGHT / PPM;
 
     public static final float PIXELS_TO_METRES = 1.0f / PPM;
 
@@ -48,13 +48,13 @@ public class TextureRenderingSystem extends SortedIteratingSystem {
     }
 
     public static Vector2 getScreenSizeInMeters() {
-        meterDimensions.set(Gdx.graphics.getWidth() * PIXELS_TO_METRES,
-                Gdx.graphics.getHeight() * PIXELS_TO_METRES);
+        meterDimensions.set(GameInfo.SCREEN_WIDTH * PIXELS_TO_METRES,
+                GameInfo.SCREEN_HEIGHT * PIXELS_TO_METRES);
         return meterDimensions;
     }
 
     public static Vector2 getScreenSizeInPixels() {
-        pixelDimensions.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        pixelDimensions.set(GameInfo.SCREEN_WIDTH, GameInfo.SCREEN_HEIGHT);
         return pixelDimensions;
     }
 

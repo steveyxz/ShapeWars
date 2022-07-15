@@ -1,8 +1,5 @@
 package me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged;
 
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.utils.Timer;
-
 public class BossBombSpamAttack extends BombAttack {
 
     @Override

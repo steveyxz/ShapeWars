@@ -1,7 +1,5 @@
 package me.partlysunny.shapewars.world.objects.enemy.attack.type.melee;
 
-import me.partlysunny.shapewars.world.objects.enemy.attack.type.melee.BasicAttack;
-
 public class SpeedyBasicAttack extends BasicAttack {
     @Override
     public float cooldown() {

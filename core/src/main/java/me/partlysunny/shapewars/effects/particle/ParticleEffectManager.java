@@ -43,9 +43,10 @@ public class ParticleEffectManager {
 
     /**
      * Start a particle effect
-     * @param effect The effect id, as stated by init()
-     * @param x x pos in pixels
-     * @param y y pos in pixels
+     *
+     * @param effect   The effect id, as stated by init()
+     * @param x        x pos in pixels
+     * @param y        y pos in pixels
      * @param duration duration in ms
      */
     public static void startEffect(String effect, int x, int y, int duration) {

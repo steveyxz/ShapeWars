@@ -2,7 +2,6 @@ package me.partlysunny.shapewars.util.factories;
 
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.Shape;
-import com.badlogic.gdx.physics.box2d.World;
 
 public final class Box2DFactory {
 

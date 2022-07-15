@@ -8,8 +8,6 @@ import com.badlogic.gdx.utils.Array;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.world.components.render.ActorComponent;
 
-import static me.partlysunny.shapewars.screens.InGameScreen.camera;
-
 public class ActorUpdatingSystem extends IteratingSystem {
 
     private final Batch batch;

@@ -1,5 +1,7 @@
 package me.partlysunny.shapewars.screens;
 
+import com.badlogic.ashley.core.Entity;
+import com.badlogic.ashley.core.Family;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
@@ -30,7 +32,6 @@ import me.partlysunny.shapewars.util.utilities.LateRemover;
 import me.partlysunny.shapewars.util.utilities.Util;
 import me.partlysunny.shapewars.world.GameWorld;
 import me.partlysunny.shapewars.world.components.player.PlayerAction;
-import me.partlysunny.shapewars.world.components.render.ActorComponent;
 import me.partlysunny.shapewars.world.objects.EntityManager;
 import me.partlysunny.shapewars.world.objects.enemy.EnemyManager;
 import me.partlysunny.shapewars.world.objects.obstacle.ObstacleManager;
@@ -71,7 +72,7 @@ public class InGameScreen extends ManagedScreen {
         //Init basic player and wall
         InGameScreen.playerInfo = new PlayerInfo(entityManager.registerEntity(new PlayerEntity(), 0, 0));
         //Create level manager (also will start level counter and spawn enemies)
-        levelManager = new LevelManager();
+        levelManager = new LevelManager(game);
         playerInfo.equipment().setWeaponOne((WeaponItem) ItemManager.getItem("circleBlaster"));
         playerInfo.equipment().unlockWeapon("circleBlaster");
         InventoryMenuManager.init(stage);
@@ -131,8 +132,8 @@ public class InGameScreen extends ManagedScreen {
             levelManager.update(delta);
             //Visual effects (damage, swing)
             VisualEffectManager.update(delta);
-            //Update equipment (ammo recharge)
-            playerInfo.equipment().update(delta);
+            //Update player info, equipment (ammo recharge), and ingame time
+            playerInfo.update(delta);
             //Act out the current stage
             stage.act(Gdx.graphics.getDeltaTime());
             world.gameWorld().update(delta);
@@ -190,6 +191,15 @@ public class InGameScreen extends ManagedScreen {
     @Override
     public void dispose() {
         stage.dispose();
+    }
+
+    public void delete() {
+        levelManager.isLeveling = true;
+        for (Entity e : world.gameWorld().getEntitiesFor(Family.all().get())) {
+            LateRemover.tagToRemove(e);
+        }
+        LateRemover.process();
+        levelManager.isLeveling = false;
     }
 
     private static final class GameMusicSwitcher {

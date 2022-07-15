@@ -12,9 +12,9 @@ import me.partlysunny.shapewars.world.components.mechanics.HealthComponent;
 
 public class HealthBarActor extends Actor implements Pool.Poolable {
 
-    private Entity parent;
     private final Drawable loadingBarBackground;
     private final Drawable loadingBar;
+    private Entity parent;
     private boolean removed = false;
 
     public HealthBarActor() {
@@ -64,7 +64,7 @@ public class HealthBarActor extends Actor implements Pool.Poolable {
             return;
         }
         this.setPosition(parentPos.position.x - this.getWidth() / 2f, parentPos.position.y - parentPos.scale.y / 2f - this.getHeight() * 2f);
-        this.setSize(parentPos.scale.x * 4/3, 1);
+        this.setSize(parentPos.scale.x * 4 / 3, 1);
     }
 
     public boolean remove() {

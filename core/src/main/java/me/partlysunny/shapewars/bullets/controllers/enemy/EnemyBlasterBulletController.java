@@ -9,7 +9,6 @@ import me.partlysunny.shapewars.bullets.BulletComponent;
 import me.partlysunny.shapewars.bullets.BulletController;
 import me.partlysunny.shapewars.bullets.BulletType;
 import me.partlysunny.shapewars.bullets.controllers.BulletRestrictions;
-import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.Pair;
 import me.partlysunny.shapewars.util.constants.Controllers;

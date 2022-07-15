@@ -29,6 +29,7 @@ public abstract class GenericMeleeWeapon implements WeaponItem {
     }
 
     protected abstract int coverAngle();
+
     protected abstract float life();
 
     @Override

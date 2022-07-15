@@ -29,12 +29,13 @@ public class PlayerInfo {
     private final Entity playerEntity;
     private final AmmoManager ammoManager;
     private final GlyphLayout layout = new GlyphLayout();
+    public float inGameTime = 0;
     private float health = GameInfo.PLAYER_MAX_HEALTH;
     private float maxHealth = GameInfo.PLAYER_MAX_HEALTH;
     private PlayerEquipment equipment;
     private PlayerKeyMap keyMap = new PlayerKeyMap();
     private boolean hasInitGui = false;
-    private int money = 100000;
+    private int money = 0;
 
     public PlayerInfo(Entity playerEntity) {
         this.playerEntity = playerEntity;
@@ -139,6 +140,11 @@ public class PlayerInfo {
         });
 
         hasInitGui = true;
+    }
+
+    public void update(float delta) {
+        equipment.update(delta);
+        inGameTime += delta;
     }
 
     public float health() {

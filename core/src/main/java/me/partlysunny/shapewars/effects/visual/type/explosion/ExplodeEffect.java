@@ -41,7 +41,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             if (currentlyOn > getDuration() / 2f) {
                 //Before half, beep every 0.7 secs
                 if (lastBeeped.get(e) - currentlyOn > 0.7f) {
-                    SoundEffectManager.play("beep",  soundVolume());
+                    SoundEffectManager.play("beep", soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.1f) {
@@ -50,7 +50,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             } else if (currentlyOn > getDuration() * (1 / 6f)) {
                 //Before 3/4, beep every 0.4 secs
                 if (lastBeeped.get(e) - currentlyOn > 0.4f) {
-                    SoundEffectManager.play("beep",  soundVolume());
+                    SoundEffectManager.play("beep", soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.1f) {
@@ -59,7 +59,7 @@ public abstract class ExplodeEffect extends VisualEffect {
             } else {
                 //Final bit
                 if (lastBeeped.get(e) - currentlyOn > 0.1f) {
-                    SoundEffectManager.play("beep",  soundVolume());
+                    SoundEffectManager.play("beep", soundVolume());
                     tint.setTint(1f, 0.4f, 0.4f, 1);
                     lastBeeped.put(e, currentlyOn);
                 } else if (lastBeeped.get(e) - currentlyOn >= 0.05f) {
