@@ -63,6 +63,7 @@ public class TextureManager {
         doPngTexture("machineBomber");
         doPngTexture("triangleShotgun");
         doPngTexture("squareSniper");
+        doPngTexture("squareRifle");
         doPngTexture("tinyGun");
         doPngTexture("miniGun");
         doPngTexture("woodenStick");

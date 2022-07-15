@@ -6,15 +6,15 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class MiniGun implements WeaponItem {
+public class SquareRifle implements WeaponItem {
     @Override
     public int maxUses() {
-        return 300;
+        return 5;
     }
 
     @Override
     public float usesRegenRate() {
-        return 0.1f;
+        return 5;
     }
 
     @Override
@@ -26,17 +26,17 @@ public class MiniGun implements WeaponItem {
 
     @Override
     public String name() {
-        return "Mini Gun";
+        return "Square Rifle";
     }
 
     @Override
     public String description() {
-        return "BRrrHRRHHRHhrrh";
+        return "Rifle or sniper? You choose.";
     }
 
     @Override
     public String texture() {
-        return "miniGun";
+        return "squareRifle";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MiniGun implements WeaponItem {
 
     @Override
     public int price() {
-        return 500;
+        return 120;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class MiniGun implements WeaponItem {
 
     @Override
     public int damage() {
-        return 2;
+        return 80;
     }
 
     @Override
     public float attackDelay() {
-        return 0.05f;
+        return 2;
     }
 
     @Override

@@ -55,6 +55,7 @@ public final class ItemManager {
         registerItem("tinyGun", new TinyGun());
         registerItem("miniGun", new MiniGun());
         registerItem("squareSniper", new SquareSniper());
+        registerItem("squareRifle", new SquareRifle());
         registerItem("woodenStick", new WoodenStick());
         registerItem("katana", new Katana());
         registerItem("steelBroadsword", new SteelBroadsword());
