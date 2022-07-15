@@ -85,6 +85,7 @@ public class Util {
         }
         t.setSize(30, 30);
         t.getContentCell().width(26);
+        t.setAppearDelayTime(0);
     }
 
     /**
