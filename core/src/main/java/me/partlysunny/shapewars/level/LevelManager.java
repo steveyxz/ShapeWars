@@ -83,7 +83,7 @@ public class LevelManager {
         level.validate();
         counter.validate();
 
-        InGameScreen.guiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel / 10 + 1) + "-" + (this.currentLevel % 10)));
+        InGameScreen.guiManager.registerGui("level", level, actor -> ((Container<Label>) actor).getActor().setText("Current Wave: " + (this.currentLevel == 10 ? "BOSS" : this.currentLevel)));
         InGameScreen.guiManager.registerGui("enemies", enemies, actor -> ((Container<Label>) actor).getActor().setText("Enemies Remaining: " + enemiesRemaining()));
         InGameScreen.guiManager.registerGui("time", time, actor -> ((Container<Label>) actor).getActor().setText("Time Remaining: " + ((int) (timeRemaining))));
         InGameScreen.guiManager.registerGui("levelCountdown", counter, actor -> {
