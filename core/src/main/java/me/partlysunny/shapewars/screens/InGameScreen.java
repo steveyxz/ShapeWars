@@ -200,8 +200,9 @@ public class InGameScreen extends ManagedScreen {
         private float delay = -1;
 
         public GameMusicSwitcher() {
-            possibleTracks.add("squaresAndCircles", 2);
-            possibleTracks.add("triangleDash", 2);
+            possibleTracks.add("squaresAndCircles", 1);
+            possibleTracks.add("triangleDash", 1);
+            possibleTracks.add("evilShapes", 1);
         }
 
         public void update(float delta) {

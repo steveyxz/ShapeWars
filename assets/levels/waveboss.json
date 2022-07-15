@@ -1,0 +1,16 @@
+{
+  "levelWidth": 500,
+  "levelHeight": 500,
+  "time": 500,
+  "stages": [
+    {
+      "shapeKing": 1,
+      "general": 2,
+      "commander": 4
+    }
+  ],
+  "obstacles": {
+    "rock": 40,
+    "tnt": 40
+  }
+}

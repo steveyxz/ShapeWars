@@ -21,6 +21,7 @@ public class MusicManager {
         loadMp3Regular("shapeWarsTheme");
         loadMp3Regular("squaresAndCircles");
         loadMp3Regular("triangleDash");
+        loadMp3Regular("evilShapes");
     }
 
     public static void registerTrack(String id, Music track) {

@@ -21,4 +21,5 @@ public final class AttackSets {
     public static final EnemyAttackSelector BASIC_GENERAL = new EnemyAttackSelector().add(new GeneralAttack()).add(new SummonMinionsAttack(1, 1, 6, 10, "sniper"));
     public static final EnemyAttackSelector WEAK_BASIC_ATTACK = new EnemyAttackSelector().add(new WeakBasicAttack());
     public static final EnemyAttackSelector SWARMER = new EnemyAttackSelector().add(new CommanderBlasterAttack()).add(new FastSummonMinionsAttack(4, 8, 5, 10, "swarm"));
+    public static final EnemyAttackSelector HEX_ATTACK = new EnemyAttackSelector().add(new HexAttack());
 }

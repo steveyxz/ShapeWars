@@ -32,6 +32,7 @@ public class EnemyManager {
         EnemyManager.registerEnemy("general", new GeneralEnemy());
         EnemyManager.registerEnemy("swarm", new SwarmEnemy());
         EnemyManager.registerEnemy("swarmCore", new SwarmEnemyCore());
+        EnemyManager.registerEnemy("hexDefender", new HexDefenderEnemy());
     }
 
 }
