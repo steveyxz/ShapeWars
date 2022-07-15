@@ -39,6 +39,7 @@ public class SoundEffectManager {
         loadWavRegular("beep");
         loadWavRegular("explosion");
         loadWavRegular("obstacleBreak");
+        loadWavRegular("startup");
     }
 
     public static void registerSound(String id, Sound sound) {
