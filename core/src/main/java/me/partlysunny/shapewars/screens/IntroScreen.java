@@ -46,7 +46,7 @@ public class IntroScreen extends BasicGuiScreen {
         VisImage logo = new VisImage(TextureManager.getTexture("logo"));
         Container<VisImage> logoContainer = new Container<>(logo);
         logoContainer.setSize(512, 512);
-        float bottomLine = camera.viewportWidth / 2f - logoContainer.getHeight() / 2f;
+        float bottomLine = -128;
         logoContainer.setPosition(camera.viewportWidth / 2f - logoContainer.getWidth() / 2f, 800);
 
         int bounceTimes = 4;
