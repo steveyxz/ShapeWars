@@ -4,7 +4,7 @@
   "time": 300,
   "stages": [
     {
-      "sniper": 15,
+      "sniper": 10,
       "bomber": 10,
       "general": 1
     },

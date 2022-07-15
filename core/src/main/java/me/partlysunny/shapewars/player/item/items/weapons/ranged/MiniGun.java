@@ -6,15 +6,15 @@ import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
 
-public class TriangleShotgun implements WeaponItem {
+public class MiniGun implements WeaponItem {
     @Override
     public int maxUses() {
-        return 15;
+        return 300;
     }
 
     @Override
     public float usesRegenRate() {
-        return 4;
+        return 0.1f;
     }
 
     @Override
@@ -26,17 +26,17 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public String name() {
-        return "Triangle Shotgun";
+        return "Mini Gun";
     }
 
     @Override
     public String description() {
-        return "Blasts your enemies, best at close range!";
+        return "BRrrHRRHHRHhrrh";
     }
 
     @Override
     public String texture() {
-        return "triangleShotgun";
+        return "miniGun";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public int price() {
-        return 550;
+        return 500;
     }
 
     @Override
@@ -56,16 +56,16 @@ public class TriangleShotgun implements WeaponItem {
 
     @Override
     public int damage() {
-        return 20;
-    }
-
-    @Override
-    public float attackDelay() {
         return 1;
     }
 
     @Override
+    public float attackDelay() {
+        return 0.05f;
+    }
+
+    @Override
     public void attack(Entity attacker) {
-        Controllers.SHOTGUN.fire(attacker, damage());
+        Controllers.SNIPER.fire(attacker, damage());
     }
 }
