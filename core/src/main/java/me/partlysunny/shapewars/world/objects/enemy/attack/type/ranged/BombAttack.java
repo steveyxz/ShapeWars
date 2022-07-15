@@ -22,6 +22,10 @@ public class BombAttack implements EnemyAttack {
         return 30;
     }
 
+    protected int speed() {
+        return 800;
+    }
+
     @Override
     public void attack(Entity enemyEntity, Entity player) {
         TransformComponent enemyPos = Mappers.transformMapper.get(enemyEntity);
@@ -34,7 +38,7 @@ public class BombAttack implements EnemyAttack {
 
         vec.set(xDif, yDif);
         enemyPos.rotation = Util.vectorToAngle(vec);
-        BombFactory.getInstance().generateBomb(enemyEntity, 3, 5, BulletRestrictions.ONLY_PLAYERS, damage(), 800, "enemyThrow", "enemyBomb", "softFastExplode");
+        BombFactory.getInstance().generateBomb(enemyEntity, 3, 5, BulletRestrictions.ONLY_PLAYERS, damage(), speed(), "enemyThrow", "enemyBomb", "softFastExplode");
     }
 
     @Override

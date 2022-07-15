@@ -2,6 +2,7 @@ package me.partlysunny.shapewars.player.item.items.weapons.ranged;
 
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.factories.ItemFactory;
@@ -67,5 +68,6 @@ public class CircleBlaster implements WeaponItem {
     @Override
     public void attack(Entity attacker) {
         Controllers.BASIC.fire(attacker, damage());
+        SoundEffectManager.play("enemyBlasterShoot", 1);
     }
 }

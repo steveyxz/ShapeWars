@@ -31,7 +31,6 @@ public class EnemyBlasterBulletController implements BulletController {
         float x = MathUtils.cos(rotation) * bulletSpeed;
         float y = MathUtils.sin(rotation) * bulletSpeed;
         Mappers.bodyMapper.get(enemyBlasterBullet).rigidBody().applyForceToCenter(x, y, true);
-        SoundEffectManager.play("enemyBlasterShoot", 1);
         InGameScreen.world.gameWorld().addEntity(enemyBlasterBullet);
     }
 

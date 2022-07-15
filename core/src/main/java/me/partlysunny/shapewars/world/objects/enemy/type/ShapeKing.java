@@ -3,23 +3,20 @@ package me.partlysunny.shapewars.world.objects.enemy.type;
 import com.badlogic.gdx.physics.box2d.Shape;
 import me.partlysunny.shapewars.util.constants.AttackSets;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.enemy.loot.entry.coin.CoinEntry;
-import me.partlysunny.shapewars.world.components.enemy.loot.entry.item.UtilityItemEntry;
 import me.partlysunny.shapewars.world.components.enemy.loot.table.CustomLootTable;
-import me.partlysunny.shapewars.world.components.enemy.loot.table.TableEntryWrapper;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 
 import javax.annotation.Nullable;
 
-public class HexDefenderEnemy extends Enemy {
+public class ShapeKing extends Enemy {
     @Override
     protected float getHealth() {
-        return 500;
+        return 1200;
     }
 
     @Override
     protected String getTexture() {
-        return "hexDefenderEnemy";
+        return "shapeKing";
     }
 
     @Override
@@ -29,28 +26,28 @@ public class HexDefenderEnemy extends Enemy {
 
     @Override
     protected float getWidth() {
-        return 8;
+        return 20;
     }
 
     @Override
     protected Shape getShape(float width) {
-        return Util.generateShape(6, width / 2f);
+        return Util.generateShape(4, width / 2f);
     }
 
     @Override
     protected float getMaxSpeed() {
-        return 8;
+        return 5;
     }
 
     @Override
     protected EnemyAttackSelector selector() {
-        return AttackSets.HEX_ATTACK;
+        return AttackSets.BOSS;
     }
 
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return new CustomLootTable.LootTableBuilder().setRolls(3).addEntry(new TableEntryWrapper(new CoinEntry(2, 5, 2), 2)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "mediumHpPot"), 1)).build();
+        return new CustomLootTable.LootTableBuilder().build();
     }
 
     @Override
@@ -60,6 +57,6 @@ public class HexDefenderEnemy extends Enemy {
 
     @Override
     protected float viewRange() {
-        return 500;
+        return 600;
     }
 }

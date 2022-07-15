@@ -53,6 +53,9 @@ public class CustomLootTable {
     }
 
     public void dropTableAt(Entity e) {
+        if (entries.size() < 1) {
+            return;
+        }
         for (int i = 0; i < rolls; i++) {
             TableEntryWrapper raffle = entries.raffle();
             if (raffle.entry() == null) {

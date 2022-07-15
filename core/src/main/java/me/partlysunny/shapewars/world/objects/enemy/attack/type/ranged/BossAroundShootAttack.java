@@ -6,39 +6,38 @@ import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
 import me.partlysunny.shapewars.util.constants.Controllers;
 import me.partlysunny.shapewars.util.constants.Mappers;
 import me.partlysunny.shapewars.util.utilities.Util;
-import me.partlysunny.shapewars.world.components.collision.RigidBodyComponent;
 import me.partlysunny.shapewars.world.components.collision.TransformComponent;
 import me.partlysunny.shapewars.world.components.enemy.EnemyState;
 import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttack;
 
-public class BasicBlasterAttack implements EnemyAttack {
-
+public class BossAroundShootAttack implements EnemyAttack {
     private final Vector2 vec = new Vector2();
 
     @Override
     public float maxDistance() {
-        return 90;
+        return 200;
     }
 
     protected int getDamage() {
-        return 4;
+        return 20;
     }
 
     @Override
     public void attack(Entity enemyEntity, Entity player) {
+        for (int i = 0; i < 40; i++) {
+            shoot(9 * i, enemyEntity);
+        }
+    }
+
+    private void shoot(float angle, Entity enemyEntity) {
         TransformComponent enemyPos = Mappers.transformMapper.get(enemyEntity);
-        TransformComponent playerPos = Mappers.transformMapper.get(player);
-        RigidBodyComponent playerBody = Mappers.bodyMapper.get(player);
 
-        int predictionFrames = 1;
-        float xDif = (playerPos.position.x + (playerBody.rigidBody().getLinearVelocity().x * predictionFrames)) - enemyPos.position.x;
-        float yDif = (playerPos.position.y + playerBody.rigidBody().getLinearVelocity().y * predictionFrames) - enemyPos.position.y;
-
-        vec.set(xDif, yDif);
-        enemyPos.rotation = Util.vectorToAngle(vec);
+        Util.angleToVector(vec, angle);
+        vec.scl(10);
+        enemyPos.rotation = angle;
 
         Controllers.ENEMY_BLASTER.fire(enemyEntity, getDamage());
-        SoundEffectManager.play("enemyBlasterShoot", 1);
+        SoundEffectManager.play("enemyBlasterShoot", 0.2f);
 
         Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.ATTACKING);
         Mappers.enemyStateMapper.get(enemyEntity).setState(EnemyState.MOVING, 0.5f);
@@ -48,5 +47,4 @@ public class BasicBlasterAttack implements EnemyAttack {
     public float cooldown() {
         return 2f;
     }
-
 }

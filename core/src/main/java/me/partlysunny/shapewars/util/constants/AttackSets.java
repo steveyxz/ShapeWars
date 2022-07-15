@@ -4,10 +4,7 @@ import me.partlysunny.shapewars.world.objects.enemy.attack.EnemyAttackSelector;
 import me.partlysunny.shapewars.world.objects.enemy.attack.type.melee.*;
 import me.partlysunny.shapewars.world.objects.enemy.attack.type.misc.FastSummonMinionsAttack;
 import me.partlysunny.shapewars.world.objects.enemy.attack.type.misc.SummonMinionsAttack;
-import me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged.BasicBlasterAttack;
-import me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged.BombAttack;
-import me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged.CommanderBlasterAttack;
-import me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged.SniperBlasterAttack;
+import me.partlysunny.shapewars.world.objects.enemy.attack.type.ranged.*;
 
 public final class AttackSets {
 
@@ -22,4 +19,6 @@ public final class AttackSets {
     public static final EnemyAttackSelector WEAK_BASIC_ATTACK = new EnemyAttackSelector().add(new WeakBasicAttack());
     public static final EnemyAttackSelector SWARMER = new EnemyAttackSelector().add(new CommanderBlasterAttack()).add(new FastSummonMinionsAttack(4, 8, 5, 10, "swarm"));
     public static final EnemyAttackSelector HEX_ATTACK = new EnemyAttackSelector().add(new HexAttack());
+    public static final EnemyAttackSelector BOSS = new EnemyAttackSelector().add(new BossAroundShootAttack()).add(new BossBombSpamAttack()).add(new GeneralAttack()).add(new SummonMinionsAttack(1, 3, 15, 20, "royalGuard"));
+    public static final EnemyAttackSelector ROYAL_GUARD_ATTACK = new EnemyAttackSelector().add(new SpeedyBasicAttack()).add(new ChargeAttack());
 }

@@ -99,7 +99,9 @@ public class TextureManager {
         doPngTexture("generalEnemy");
         doPngTexture("swarmEnemy");
         doPngTexture("swarmEnemyCore");
-        doPngTexture("hexDefender");
+        doPngTexture("hexDefenderEnemy");
+        doPngTexture("royalGuardEnemy");
+        doPngTexture("shapeKing");
     }
 
     private static void doPngTexture(String value) {
