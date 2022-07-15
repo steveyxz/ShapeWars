@@ -57,12 +57,12 @@ public class MachineBomber implements WeaponItem {
 
     @Override
     public int damage() {
-        return 5;
+        return 8;
     }
 
     @Override
     public float attackDelay() {
-        return 0.5f;
+        return 0.4f;
     }
 
     @Override
