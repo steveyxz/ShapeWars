@@ -56,9 +56,11 @@ public abstract class ObstacleEntity extends SteerableAdapter<Vector2> implement
         Entity healthBar = HealthBarFactory.createEntity(w, e);
         DeletionListenerComponent deleteListener = w.createComponent(DeletionListenerComponent.class);
         deleteListener.init(entity -> {
-            oe.onDestroy().accept(entity);
-            ParticleEffectManager.startEffect("obstacleBreak", (int) TextureRenderingSystem.metersToPixels(scale.position.x), (int) TextureRenderingSystem.metersToPixels(scale.position.y), 200);
-            SoundEffectManager.play("obstacleBreak", 1);
+            if (!InGameScreen.levelManager.isLosing && !InGameScreen.levelManager.isLeveling) {
+                oe.onDestroy().accept(entity);
+                ParticleEffectManager.startEffect("obstacleBreak", (int) TextureRenderingSystem.metersToPixels(scale.position.x), (int) TextureRenderingSystem.metersToPixels(scale.position.y), 200);
+                SoundEffectManager.play("obstacleBreak", 1);
+            }
             LateRemover.tagToRemove(healthBar);
         });
         e.add(deleteListener);

@@ -37,6 +37,7 @@ public class LevelManager {
     private final List<Level> levels = new ArrayList<>();
     private final PositionSet positions = new PositionSet();
     public boolean isLosing = false;
+    public boolean isLeveling = false;
     private int currentLevel = 0;
     private float timeRemaining = 0;
     private boolean isSpawning = false;
@@ -173,7 +174,9 @@ public class LevelManager {
                 } else {
                     //Increment level
                     currentLevel++;
+                    isLeveling = true;
                     loadCurrentLevel();
+                    isLeveling = false;
                 }
             }
         }
@@ -181,6 +184,7 @@ public class LevelManager {
 
     private void loadCurrentLevel() {
         Level newLevel = getCurrentLevel();
+        killAllObjects();
         WallEntity.reloadWalls(newLevel.levelWidth(), newLevel.levelHeight());
         waveSpawnCountdown = 3;
         isCounting = true;
@@ -213,6 +217,7 @@ public class LevelManager {
         }
         aliveEntities.clear();
         aliveObstacles.clear();
+        LateRemover.process();
     }
 
     public void killAllIndicators() {
@@ -230,7 +235,6 @@ public class LevelManager {
             if (isCounting) {
                 waveSpawnCountdown -= delta;
                 if (waveSpawnCountdown < 0) {
-                    killAllObjects();
                     spawner.spawnObstacles(getCurrentLevel());
                     isCounting = false;
                     waveSpawnCountdown = 0;
@@ -271,8 +275,8 @@ public class LevelManager {
         LateRemover.process();
         InGameScreen.playerInfo.giveMoney(-InGameScreen.playerInfo.money());
         currentStage = 0;
-        isLosing = false;
         loadCurrentLevel();
+        isLosing = false;
     }
 
 }
