@@ -25,7 +25,7 @@ public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
     public void create() {
         super.create();
         reload();
-        screenManager.pushScreen("ingame", "blending");
+        screenManager.pushScreen("intro", "blending");
     }
 
     public void reload() {
