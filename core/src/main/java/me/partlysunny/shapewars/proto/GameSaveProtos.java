@@ -4,137 +4,140 @@
 package me.partlysunny.shapewars.proto;
 
 public final class GameSaveProtos {
-  private GameSaveProtos() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
-  }
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable;
+    static final com.google.protobuf.Descriptors.Descriptor
+            internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
+    static final
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.FileDescriptor
+            descriptor;
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
-  }
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable;
+    static {
+        java.lang.String[] descriptorData = {
+                "\n\025playerSerialize.proto\022\tshapewars\"\232\010\n\nP" +
+                        "layerInfo\022\027\n\ninGameTime\030\001 \001(\002H\000\210\001\001\022\026\n\tma" +
+                        "xHealth\030\002 \001(\002H\001\210\001\001\022\023\n\006health\030\003 \001(\002H\002\210\001\001\022" +
+                        "\022\n\005money\030\004 \001(\005H\003\210\001\001\022\022\n\005level\030\005 \001(\005H\004\210\001\001\022" +
+                        ";\n\013ammoManager\030\006 \001(\0132!.shapewars.PlayerI" +
+                        "nfo.AmmoManagerH\005\210\001\001\022=\n\tequipment\030\007 \001(\0132" +
+                        "%.shapewars.PlayerInfo.PlayerEquipmentH\006" +
+                        "\210\001\001\032\250\004\n\017PlayerEquipment\022\024\n\007weapon1\030\001 \001(\t" +
+                        "H\000\210\001\001\022\024\n\007weapon2\030\002 \001(\tH\001\210\001\001\022\023\n\006armor1\030\003 " +
+                        "\001(\tH\002\210\001\001\022\023\n\006armor2\030\004 \001(\tH\003\210\001\001\022K\n\tutiliti" +
+                        "es\030\005 \001(\01323.shapewars.PlayerInfo.PlayerEq" +
+                        "uipment.UtilInventoryH\004\210\001\001\022M\n\013unlockItem" +
+                        "s\030\006 \001(\01323.shapewars.PlayerInfo.PlayerEqu" +
+                        "ipment.UnlockedItemsH\005\210\001\001\032\244\001\n\rUtilInvent" +
+                        "ory\022K\n\005items\030\001 \003(\0132<.shapewars.PlayerInf" +
+                        "o.PlayerEquipment.UtilInventory.UtilItem" +
+                        "\032F\n\010UtilItem\022\021\n\004type\030\001 \001(\tH\000\210\001\001\022\023\n\006amoun" +
+                        "t\030\002 \001(\005H\001\210\001\001B\007\n\005_typeB\t\n\007_amount\0320\n\rUnlo" +
+                        "ckedItems\022\017\n\007weapons\030\001 \003(\t\022\016\n\006armors\030\002 \003" +
+                        "(\tB\n\n\010_weapon1B\n\n\010_weapon2B\t\n\007_armor1B\t\n" +
+                        "\007_armor2B\014\n\n_utilitiesB\016\n\014_unlockItems\032\234" +
+                        "\001\n\013AmmoManager\022@\n\rammoRemaining\030\001 \003(\0132)." +
+                        "shapewars.PlayerInfo.AmmoManager.GunInfo" +
+                        "\032K\n\007GunInfo\022\021\n\004type\030\001 \001(\tH\000\210\001\001\022\026\n\tremain" +
+                        "ing\030\002 \001(\005H\001\210\001\001B\007\n\005_typeB\014\n\n_remainingB\r\n" +
+                        "\013_inGameTimeB\014\n\n_maxHealthB\t\n\007_healthB\010\n" +
+                        "\006_moneyB\010\n\006_levelB\016\n\014_ammoManagerB\014\n\n_eq" +
+                        "uipmentB2\n\036me.partlysunny.shapewars.prot" +
+                        "oB\016GameSaveProtosP\001b\006proto3"
+        };
+        descriptor = com.google.protobuf.Descriptors.FileDescriptor
+                .internalBuildGeneratedFileFrom(descriptorData,
+                        new com.google.protobuf.Descriptors.FileDescriptor[]{
+                        });
+        internal_static_shapewars_PlayerInfo_descriptor =
+                getDescriptor().getMessageTypes().get(0);
+        internal_static_shapewars_PlayerInfo_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_descriptor,
+                new java.lang.String[]{"InGameTime", "MaxHealth", "Health", "Money", "Level", "AmmoManager", "Equipment", "InGameTime", "MaxHealth", "Health", "Money", "Level", "AmmoManager", "Equipment",});
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor =
+                internal_static_shapewars_PlayerInfo_descriptor.getNestedTypes().get(0);
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor,
+                new java.lang.String[]{"Weapon1", "Weapon2", "Armor1", "Armor2", "Utilities", "UnlockItems", "Weapon1", "Weapon2", "Armor1", "Armor2", "Utilities", "UnlockItems",});
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor =
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor.getNestedTypes().get(0);
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor,
+                new java.lang.String[]{"Items",});
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor =
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor.getNestedTypes().get(0);
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor,
+                new java.lang.String[]{"Type", "Amount", "Type", "Amount",});
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor =
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor.getNestedTypes().get(1);
+        internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor,
+                new java.lang.String[]{"Weapons", "Armors",});
+        internal_static_shapewars_PlayerInfo_AmmoManager_descriptor =
+                internal_static_shapewars_PlayerInfo_descriptor.getNestedTypes().get(1);
+        internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_AmmoManager_descriptor,
+                new java.lang.String[]{"AmmoRemaining",});
+        internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor =
+                internal_static_shapewars_PlayerInfo_AmmoManager_descriptor.getNestedTypes().get(0);
+        internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable = new
+                com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+                internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor,
+                new java.lang.String[]{"Type", "Remaining", "Type", "Remaining",});
+    }
+    private GameSaveProtos() {
+    }
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\025playerSerialize.proto\022\tshapewars\"\232\010\n\nP" +
-      "layerInfo\022\027\n\ninGameTime\030\001 \001(\002H\000\210\001\001\022\026\n\tma" +
-      "xHealth\030\002 \001(\002H\001\210\001\001\022\023\n\006health\030\003 \001(\002H\002\210\001\001\022" +
-      "\022\n\005money\030\004 \001(\005H\003\210\001\001\022\022\n\005level\030\005 \001(\005H\004\210\001\001\022" +
-      ";\n\013ammoManager\030\006 \001(\0132!.shapewars.PlayerI" +
-      "nfo.AmmoManagerH\005\210\001\001\022=\n\tequipment\030\007 \001(\0132" +
-      "%.shapewars.PlayerInfo.PlayerEquipmentH\006" +
-      "\210\001\001\032\250\004\n\017PlayerEquipment\022\024\n\007weapon1\030\001 \001(\t" +
-      "H\000\210\001\001\022\024\n\007weapon2\030\002 \001(\tH\001\210\001\001\022\023\n\006armor1\030\003 " +
-      "\001(\tH\002\210\001\001\022\023\n\006armor2\030\004 \001(\tH\003\210\001\001\022K\n\tutiliti" +
-      "es\030\005 \001(\01323.shapewars.PlayerInfo.PlayerEq" +
-      "uipment.UtilInventoryH\004\210\001\001\022M\n\013unlockItem" +
-      "s\030\006 \001(\01323.shapewars.PlayerInfo.PlayerEqu" +
-      "ipment.UnlockedItemsH\005\210\001\001\032\244\001\n\rUtilInvent" +
-      "ory\022K\n\005items\030\001 \003(\0132<.shapewars.PlayerInf" +
-      "o.PlayerEquipment.UtilInventory.UtilItem" +
-      "\032F\n\010UtilItem\022\021\n\004type\030\001 \001(\tH\000\210\001\001\022\023\n\006amoun" +
-      "t\030\002 \001(\005H\001\210\001\001B\007\n\005_typeB\t\n\007_amount\0320\n\rUnlo" +
-      "ckedItems\022\017\n\007weapons\030\001 \003(\t\022\016\n\006armors\030\002 \003" +
-      "(\tB\n\n\010_weapon1B\n\n\010_weapon2B\t\n\007_armor1B\t\n" +
-      "\007_armor2B\014\n\n_utilitiesB\016\n\014_unlockItems\032\234" +
-      "\001\n\013AmmoManager\022@\n\rammoRemaining\030\001 \003(\0132)." +
-      "shapewars.PlayerInfo.AmmoManager.GunInfo" +
-      "\032K\n\007GunInfo\022\021\n\004type\030\001 \001(\tH\000\210\001\001\022\026\n\tremain" +
-      "ing\030\002 \001(\005H\001\210\001\001B\007\n\005_typeB\014\n\n_remainingB\r\n" +
-      "\013_inGameTimeB\014\n\n_maxHealthB\t\n\007_healthB\010\n" +
-      "\006_moneyB\010\n\006_levelB\016\n\014_ammoManagerB\014\n\n_eq" +
-      "uipmentB2\n\036me.partlysunny.shapewars.prot" +
-      "oB\016GameSaveProtosP\001b\006proto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_shapewars_PlayerInfo_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_shapewars_PlayerInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_descriptor,
-        new java.lang.String[] { "InGameTime", "MaxHealth", "Health", "Money", "Level", "AmmoManager", "Equipment", "InGameTime", "MaxHealth", "Health", "Money", "Level", "AmmoManager", "Equipment", });
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor =
-      internal_static_shapewars_PlayerInfo_descriptor.getNestedTypes().get(0);
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor,
-        new java.lang.String[] { "Weapon1", "Weapon2", "Armor1", "Armor2", "Utilities", "UnlockItems", "Weapon1", "Weapon2", "Armor1", "Armor2", "Utilities", "UnlockItems", });
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor =
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor.getNestedTypes().get(0);
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor,
-        new java.lang.String[] { "Items", });
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor =
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor.getNestedTypes().get(0);
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor,
-        new java.lang.String[] { "Type", "Amount", "Type", "Amount", });
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor =
-      internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor.getNestedTypes().get(1);
-    internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor,
-        new java.lang.String[] { "Weapons", "Armors", });
-    internal_static_shapewars_PlayerInfo_AmmoManager_descriptor =
-      internal_static_shapewars_PlayerInfo_descriptor.getNestedTypes().get(1);
-    internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_AmmoManager_descriptor,
-        new java.lang.String[] { "AmmoRemaining", });
-    internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor =
-      internal_static_shapewars_PlayerInfo_AmmoManager_descriptor.getNestedTypes().get(0);
-    internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor,
-        new java.lang.String[] { "Type", "Remaining", "Type", "Remaining", });
-  }
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistryLite registry) {
+    }
 
-  // @@protoc_insertion_point(outer_class_scope)
+    public static void registerAllExtensions(
+            com.google.protobuf.ExtensionRegistry registry) {
+        registerAllExtensions(
+                (com.google.protobuf.ExtensionRegistryLite) registry);
+    }
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    // @@protoc_insertion_point(outer_class_scope)
 }

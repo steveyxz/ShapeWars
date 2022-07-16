@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import com.google.protobuf.InvalidProtocolBufferException;
 import me.partlysunny.shapewars.level.LevelManager;
-import me.partlysunny.shapewars.player.AmmoManager;
 import me.partlysunny.shapewars.player.equipment.PlayerEquipment;
 import me.partlysunny.shapewars.player.item.Item;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
@@ -12,7 +11,6 @@ import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.WeaponItem;
 import me.partlysunny.shapewars.screens.InGameScreen;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -165,11 +165,6 @@ public class LevelManager {
         return currentLevel;
     }
 
-    public void setCurrentLevel(int currentLevel) {
-        this.currentLevel = currentLevel;
-        loadCurrentLevel();
-    }
-
     private void checkLevelUp() {
         //If no enemies
         if (enemiesRemaining() == 0) {
@@ -219,6 +214,11 @@ public class LevelManager {
 
     public Level getCurrentLevel() {
         return levels.get(currentLevel - 1);
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
+        loadCurrentLevel();
     }
 
     public LevelStage getCurrentStage() {

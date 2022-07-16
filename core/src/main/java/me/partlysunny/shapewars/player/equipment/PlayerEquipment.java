@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.Timer;
 import com.kotcrab.vis.ui.widget.Tooltip;
 import me.partlysunny.shapewars.player.InventoryMenuManager;
-import me.partlysunny.shapewars.player.item.Item;
 import me.partlysunny.shapewars.player.item.items.ItemManager;
 import me.partlysunny.shapewars.player.item.types.ArmorItem;
 import me.partlysunny.shapewars.player.item.types.UtilityItem;

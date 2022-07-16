@@ -1,4 +1,5 @@
 # ShapeWars
+
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/7a2d945442c042d3a62e9dbdf2802ce1)](https://www.codacy.com/gh/steveyxz/ShapeWars/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=steveyxz/ShapeWars&amp;utm_campaign=Badge_Grade)
 
 This is a small game made with **libGDX** and a few libraries as follows:

@@ -7,6666 +7,7271 @@ package me.partlysunny.shapewars.proto;
  * Protobuf type {@code shapewars.PlayerInfo}
  */
 public final class PlayerInfo extends
-    com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo)
-    PlayerInfoOrBuilder {
-private static final long serialVersionUID = 0L;
-  // Use PlayerInfo.newBuilder() to construct.
-  private PlayerInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-    super(builder);
-  }
-  private PlayerInfo() {
-  }
-
-  @java.lang.Override
-  @SuppressWarnings({"unused"})
-  protected java.lang.Object newInstance(
-      UnusedPrivateParameter unused) {
-    return new PlayerInfo();
-  }
-
-  @java.lang.Override
-  public final com.google.protobuf.UnknownFieldSet
-  getUnknownFields() {
-    return this.unknownFields;
-  }
-  private PlayerInfo(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 13: {
-            bitField0_ |= 0x00000001;
-            inGameTime_ = input.readFloat();
-            break;
-          }
-          case 21: {
-            bitField0_ |= 0x00000002;
-            maxHealth_ = input.readFloat();
-            break;
-          }
-          case 29: {
-            bitField0_ |= 0x00000004;
-            health_ = input.readFloat();
-            break;
-          }
-          case 32: {
-            bitField0_ |= 0x00000008;
-            money_ = input.readInt32();
-            break;
-          }
-          case 40: {
-            bitField0_ |= 0x00000010;
-            level_ = input.readInt32();
-            break;
-          }
-          case 50: {
-            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000020) != 0)) {
-              subBuilder = ammoManager_.toBuilder();
-            }
-            ammoManager_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(ammoManager_);
-              ammoManager_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000020;
-            break;
-          }
-          case 58: {
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder subBuilder = null;
-            if (((bitField0_ & 0x00000040) != 0)) {
-              subBuilder = equipment_.toBuilder();
-            }
-            equipment_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(equipment_);
-              equipment_ = subBuilder.buildPartial();
-            }
-            bitField0_ |= 0x00000040;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo)
+        PlayerInfoOrBuilder {
+    public static final int INGAMETIME_FIELD_NUMBER = 1;
+    public static final int MAXHEALTH_FIELD_NUMBER = 2;
+    public static final int HEALTH_FIELD_NUMBER = 3;
+    public static final int MONEY_FIELD_NUMBER = 4;
+    public static final int LEVEL_FIELD_NUMBER = 5;
+    public static final int AMMOMANAGER_FIELD_NUMBER = 6;
+    public static final int EQUIPMENT_FIELD_NUMBER = 7;
+    private static final long serialVersionUID = 0L;
+    // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo)
+    private static final me.partlysunny.shapewars.proto.PlayerInfo DEFAULT_INSTANCE;
+    private static final com.google.protobuf.Parser<PlayerInfo>
+            PARSER = new com.google.protobuf.AbstractParser<PlayerInfo>() {
+        @java.lang.Override
+        public PlayerInfo parsePartialFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return new PlayerInfo(input, extensionRegistry);
         }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
+    };
+
+    static {
+        DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo();
     }
-  }
-  public static final com.google.protobuf.Descriptors.Descriptor
-      getDescriptor() {
-    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
-  }
 
-  @java.lang.Override
-  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internalGetFieldAccessorTable() {
-    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_fieldAccessorTable
-        .ensureFieldAccessorsInitialized(
-            me.partlysunny.shapewars.proto.PlayerInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.Builder.class);
-  }
+    private int bitField0_;
+    private float inGameTime_;
+    private float maxHealth_;
+    private float health_;
+    private int money_;
+    private int level_;
+    private me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager ammoManager_;
+    private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment equipment_;
+    private byte memoizedIsInitialized = -1;
 
-  public interface PlayerEquipmentOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return Whether the weapon1 field is set.
-     */
-    boolean hasWeapon1();
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return The weapon1.
-     */
-    java.lang.String getWeapon1();
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return The bytes for weapon1.
-     */
-    com.google.protobuf.ByteString
-        getWeapon1Bytes();
-
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return Whether the weapon2 field is set.
-     */
-    boolean hasWeapon2();
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return The weapon2.
-     */
-    java.lang.String getWeapon2();
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return The bytes for weapon2.
-     */
-    com.google.protobuf.ByteString
-        getWeapon2Bytes();
-
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return Whether the armor1 field is set.
-     */
-    boolean hasArmor1();
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return The armor1.
-     */
-    java.lang.String getArmor1();
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return The bytes for armor1.
-     */
-    com.google.protobuf.ByteString
-        getArmor1Bytes();
-
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return Whether the armor2 field is set.
-     */
-    boolean hasArmor2();
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return The armor2.
-     */
-    java.lang.String getArmor2();
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return The bytes for armor2.
-     */
-    com.google.protobuf.ByteString
-        getArmor2Bytes();
-
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     * @return Whether the utilities field is set.
-     */
-    boolean hasUtilities();
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     * @return The utilities.
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities();
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder();
-
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     * @return Whether the unlockItems field is set.
-     */
-    boolean hasUnlockItems();
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     * @return The unlockItems.
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems();
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder();
-  }
-  /**
-   * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment}
-   */
-  public static final class PlayerEquipment extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment)
-      PlayerEquipmentOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use PlayerEquipment.newBuilder() to construct.
-    private PlayerEquipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
+    // Use PlayerInfo.newBuilder() to construct.
+    private PlayerInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
     }
-    private PlayerEquipment() {
-      weapon1_ = "";
-      weapon2_ = "";
-      armor1_ = "";
-      armor2_ = "";
+
+    private PlayerInfo() {
+    }
+    private PlayerInfo(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+        }
+        int mutable_bitField0_ = 0;
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+            boolean done = false;
+            while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                    case 0:
+                        done = true;
+                        break;
+                    case 13: {
+                        bitField0_ |= 0x00000001;
+                        inGameTime_ = input.readFloat();
+                        break;
+                    }
+                    case 21: {
+                        bitField0_ |= 0x00000002;
+                        maxHealth_ = input.readFloat();
+                        break;
+                    }
+                    case 29: {
+                        bitField0_ |= 0x00000004;
+                        health_ = input.readFloat();
+                        break;
+                    }
+                    case 32: {
+                        bitField0_ |= 0x00000008;
+                        money_ = input.readInt32();
+                        break;
+                    }
+                    case 40: {
+                        bitField0_ |= 0x00000010;
+                        level_ = input.readInt32();
+                        break;
+                    }
+                    case 50: {
+                        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder subBuilder = null;
+                        if (((bitField0_ & 0x00000020) != 0)) {
+                            subBuilder = ammoManager_.toBuilder();
+                        }
+                        ammoManager_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.parser(), extensionRegistry);
+                        if (subBuilder != null) {
+                            subBuilder.mergeFrom(ammoManager_);
+                            ammoManager_ = subBuilder.buildPartial();
+                        }
+                        bitField0_ |= 0x00000020;
+                        break;
+                    }
+                    case 58: {
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder subBuilder = null;
+                        if (((bitField0_ & 0x00000040) != 0)) {
+                            subBuilder = equipment_.toBuilder();
+                        }
+                        equipment_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.parser(), extensionRegistry);
+                        if (subBuilder != null) {
+                            subBuilder.mergeFrom(equipment_);
+                            equipment_ = subBuilder.buildPartial();
+                        }
+                        bitField0_ |= 0x00000040;
+                        break;
+                    }
+                    default: {
+                        if (!parseUnknownField(
+                                input, unknownFields, extensionRegistry, tag)) {
+                            done = true;
+                        }
+                        break;
+                    }
+                }
+            }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(this);
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                    e).setUnfinishedMessage(this);
+        } finally {
+            this.unknownFields = unknownFields.build();
+            makeExtensionsImmutable();
+        }
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+    getDescriptor() {
+        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+                .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+    }
+
+    public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+
+    public static me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+    }
+
+    public static com.google.protobuf.Parser<PlayerInfo> parser() {
+        return PARSER;
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new PlayerEquipment();
+            UnusedPrivateParameter unused) {
+        return new PlayerInfo();
     }
 
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PlayerEquipment(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000001;
-              weapon1_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000002;
-              weapon2_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000004;
-              armor1_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000008;
-              armor2_ = s;
-              break;
-            }
-            case 42: {
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) != 0)) {
-                subBuilder = utilities_.toBuilder();
-              }
-              utilities_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(utilities_);
-                utilities_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-            case 50: {
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) != 0)) {
-                subBuilder = unlockItems_.toBuilder();
-              }
-              unlockItems_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(unlockItems_);
-                unlockItems_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000020;
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
+        return this.unknownFields;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder.class);
+    internalGetFieldAccessorTable() {
+        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                        me.partlysunny.shapewars.proto.PlayerInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.Builder.class);
     }
 
-    public interface UtilInventoryOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> 
-          getItemsList();
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index);
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      int getItemsCount();
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> 
-          getItemsOrBuilderList();
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
-          int index);
-    }
     /**
-     * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory}
+     * <code>optional float inGameTime = 1;</code>
+     *
+     * @return Whether the inGameTime field is set.
      */
-    public static final class UtilInventory extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
-        UtilInventoryOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use UtilInventory.newBuilder() to construct.
-      private UtilInventory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private UtilInventory() {
-        items_ = java.util.Collections.emptyList();
-      }
+    @java.lang.Override
+    public boolean hasInGameTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+    }
 
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new UtilInventory();
-      }
+    /**
+     * <code>optional float inGameTime = 1;</code>
+     *
+     * @return The inGameTime.
+     */
+    @java.lang.Override
+    public float getInGameTime() {
+        return inGameTime_;
+    }
 
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private UtilInventory(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
+    /**
+     * <code>optional float maxHealth = 2;</code>
+     *
+     * @return Whether the maxHealth field is set.
+     */
+    @java.lang.Override
+    public boolean hasMaxHealth() {
+        return ((bitField0_ & 0x00000002) != 0);
+    }
+
+    /**
+     * <code>optional float maxHealth = 2;</code>
+     *
+     * @return The maxHealth.
+     */
+    @java.lang.Override
+    public float getMaxHealth() {
+        return maxHealth_;
+    }
+
+    /**
+     * <code>optional float health = 3;</code>
+     *
+     * @return Whether the health field is set.
+     */
+    @java.lang.Override
+    public boolean hasHealth() {
+        return ((bitField0_ & 0x00000004) != 0);
+    }
+
+    /**
+     * <code>optional float health = 3;</code>
+     *
+     * @return The health.
+     */
+    @java.lang.Override
+    public float getHealth() {
+        return health_;
+    }
+
+    /**
+     * <code>optional int32 money = 4;</code>
+     *
+     * @return Whether the money field is set.
+     */
+    @java.lang.Override
+    public boolean hasMoney() {
+        return ((bitField0_ & 0x00000008) != 0);
+    }
+
+    /**
+     * <code>optional int32 money = 4;</code>
+     *
+     * @return The money.
+     */
+    @java.lang.Override
+    public int getMoney() {
+        return money_;
+    }
+
+    /**
+     * <code>optional int32 level = 5;</code>
+     *
+     * @return Whether the level field is set.
+     */
+    @java.lang.Override
+    public boolean hasLevel() {
+        return ((bitField0_ & 0x00000010) != 0);
+    }
+
+    /**
+     * <code>optional int32 level = 5;</code>
+     *
+     * @return The level.
+     */
+    @java.lang.Override
+    public int getLevel() {
+        return level_;
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+     *
+     * @return Whether the ammoManager field is set.
+     */
+    @java.lang.Override
+    public boolean hasAmmoManager() {
+        return ((bitField0_ & 0x00000020) != 0);
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+     *
+     * @return The ammoManager.
+     */
+    @java.lang.Override
+    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getAmmoManager() {
+        return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+     */
+    @java.lang.Override
+    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder getAmmoManagerOrBuilder() {
+        return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+     *
+     * @return Whether the equipment field is set.
+     */
+    @java.lang.Override
+    public boolean hasEquipment() {
+        return ((bitField0_ & 0x00000040) != 0);
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+     *
+     * @return The equipment.
+     */
+    @java.lang.Override
+    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getEquipment() {
+        return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
+    }
+
+    /**
+     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+     */
+    @java.lang.Override
+    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder getEquipmentOrBuilder() {
+        return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+            output.writeFloat(1, inGameTime_);
         }
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                  items_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem>();
-                  mutable_bitField0_ |= 0x00000001;
-                }
-                items_.add(
-                    input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.parser(), extensionRegistry));
-                break;
-              }
-              default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          if (((mutable_bitField0_ & 0x00000001) != 0)) {
-            items_ = java.util.Collections.unmodifiableList(items_);
-          }
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
+        if (((bitField0_ & 0x00000002) != 0)) {
+            output.writeFloat(2, maxHealth_);
         }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
-      }
+        if (((bitField0_ & 0x00000004) != 0)) {
+            output.writeFloat(3, health_);
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+            output.writeInt32(4, money_);
+        }
+        if (((bitField0_ & 0x00000010) != 0)) {
+            output.writeInt32(5, level_);
+        }
+        if (((bitField0_ & 0x00000020) != 0)) {
+            output.writeMessage(6, getAmmoManager());
+        }
+        if (((bitField0_ & 0x00000040) != 0)) {
+            output.writeMessage(7, getEquipment());
+        }
+        unknownFields.writeTo(output);
+    }
 
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder.class);
-      }
+    @java.lang.Override
+    public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
 
-      public interface UtilItemOrBuilder extends
-          // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
-          com.google.protobuf.MessageOrBuilder {
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(1, inGameTime_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(2, maxHealth_);
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeFloatSize(3, health_);
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeInt32Size(4, money_);
+        }
+        if (((bitField0_ & 0x00000010) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeInt32Size(5, level_);
+        }
+        if (((bitField0_ & 0x00000020) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeMessageSize(6, getAmmoManager());
+        }
+        if (((bitField0_ & 0x00000040) != 0)) {
+            size += com.google.protobuf.CodedOutputStream
+                    .computeMessageSize(7, getEquipment());
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo)) {
+            return super.equals(obj);
+        }
+        me.partlysunny.shapewars.proto.PlayerInfo other = (me.partlysunny.shapewars.proto.PlayerInfo) obj;
+
+        if (hasInGameTime() != other.hasInGameTime()) return false;
+        if (hasInGameTime()) {
+            if (java.lang.Float.floatToIntBits(getInGameTime())
+                    != java.lang.Float.floatToIntBits(
+                    other.getInGameTime())) return false;
+        }
+        if (hasMaxHealth() != other.hasMaxHealth()) return false;
+        if (hasMaxHealth()) {
+            if (java.lang.Float.floatToIntBits(getMaxHealth())
+                    != java.lang.Float.floatToIntBits(
+                    other.getMaxHealth())) return false;
+        }
+        if (hasHealth() != other.hasHealth()) return false;
+        if (hasHealth()) {
+            if (java.lang.Float.floatToIntBits(getHealth())
+                    != java.lang.Float.floatToIntBits(
+                    other.getHealth())) return false;
+        }
+        if (hasMoney() != other.hasMoney()) return false;
+        if (hasMoney()) {
+            if (getMoney()
+                    != other.getMoney()) return false;
+        }
+        if (hasLevel() != other.hasLevel()) return false;
+        if (hasLevel()) {
+            if (getLevel()
+                    != other.getLevel()) return false;
+        }
+        if (hasAmmoManager() != other.hasAmmoManager()) return false;
+        if (hasAmmoManager()) {
+            if (!getAmmoManager()
+                    .equals(other.getAmmoManager())) return false;
+        }
+        if (hasEquipment() != other.hasEquipment()) return false;
+        if (hasEquipment()) {
+            if (!getEquipment()
+                    .equals(other.getEquipment())) return false;
+        }
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+        if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasInGameTime()) {
+            hash = (37 * hash) + INGAMETIME_FIELD_NUMBER;
+            hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                    getInGameTime());
+        }
+        if (hasMaxHealth()) {
+            hash = (37 * hash) + MAXHEALTH_FIELD_NUMBER;
+            hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                    getMaxHealth());
+        }
+        if (hasHealth()) {
+            hash = (37 * hash) + HEALTH_FIELD_NUMBER;
+            hash = (53 * hash) + java.lang.Float.floatToIntBits(
+                    getHealth());
+        }
+        if (hasMoney()) {
+            hash = (37 * hash) + MONEY_FIELD_NUMBER;
+            hash = (53 * hash) + getMoney();
+        }
+        if (hasLevel()) {
+            hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+            hash = (53 * hash) + getLevel();
+        }
+        if (hasAmmoManager()) {
+            hash = (37 * hash) + AMMOMANAGER_FIELD_NUMBER;
+            hash = (53 * hash) + getAmmoManager().hashCode();
+        }
+        if (hasEquipment()) {
+            hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
+            hash = (53 * hash) + getEquipment().hashCode();
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() {
+        return newBuilder();
+    }
+
+    @java.lang.Override
+    public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+                ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlayerInfo> getParserForType() {
+        return PARSER;
+    }
+
+    @java.lang.Override
+    public me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+    }
+
+    public interface PlayerEquipmentOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment)
+            com.google.protobuf.MessageOrBuilder {
 
         /**
-         * <code>optional string type = 1;</code>
-         * @return Whether the type field is set.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return Whether the weapon1 field is set.
          */
-        boolean hasType();
+        boolean hasWeapon1();
+
         /**
-         * <code>optional string type = 1;</code>
-         * @return The type.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return The weapon1.
          */
-        java.lang.String getType();
+        java.lang.String getWeapon1();
+
         /**
-         * <code>optional string type = 1;</code>
-         * @return The bytes for type.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return The bytes for weapon1.
          */
         com.google.protobuf.ByteString
-            getTypeBytes();
+        getWeapon1Bytes();
 
         /**
-         * <code>optional int32 amount = 2;</code>
-         * @return Whether the amount field is set.
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return Whether the weapon2 field is set.
          */
-        boolean hasAmount();
+        boolean hasWeapon2();
+
         /**
-         * <code>optional int32 amount = 2;</code>
-         * @return The amount.
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return The weapon2.
          */
-        int getAmount();
-      }
-      /**
-       * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem}
-       */
-      public static final class UtilItem extends
-          com.google.protobuf.GeneratedMessageV3 implements
-          // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
-          UtilItemOrBuilder {
-      private static final long serialVersionUID = 0L;
-        // Use UtilItem.newBuilder() to construct.
-        private UtilItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-          super(builder);
+        java.lang.String getWeapon2();
+
+        /**
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return The bytes for weapon2.
+         */
+        com.google.protobuf.ByteString
+        getWeapon2Bytes();
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return Whether the armor1 field is set.
+         */
+        boolean hasArmor1();
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return The armor1.
+         */
+        java.lang.String getArmor1();
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return The bytes for armor1.
+         */
+        com.google.protobuf.ByteString
+        getArmor1Bytes();
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return Whether the armor2 field is set.
+         */
+        boolean hasArmor2();
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return The armor2.
+         */
+        java.lang.String getArmor2();
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return The bytes for armor2.
+         */
+        com.google.protobuf.ByteString
+        getArmor2Bytes();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         *
+         * @return Whether the utilities field is set.
+         */
+        boolean hasUtilities();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         *
+         * @return The utilities.
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         *
+         * @return Whether the unlockItems field is set.
+         */
+        boolean hasUnlockItems();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         *
+         * @return The unlockItems.
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder();
+    }
+
+    public interface AmmoManagerOrBuilder extends
+            // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.AmmoManager)
+            com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo>
+        getAmmoRemainingList();
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index);
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        int getAmmoRemainingCount();
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>
+        getAmmoRemainingOrBuilderList();
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
+                int index);
+    }
+
+    /**
+     * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment}
+     */
+    public static final class PlayerEquipment extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment)
+            PlayerEquipmentOrBuilder {
+        public static final int WEAPON1_FIELD_NUMBER = 1;
+        public static final int WEAPON2_FIELD_NUMBER = 2;
+        public static final int ARMOR1_FIELD_NUMBER = 3;
+        public static final int ARMOR2_FIELD_NUMBER = 4;
+        public static final int UTILITIES_FIELD_NUMBER = 5;
+        public static final int UNLOCKITEMS_FIELD_NUMBER = 6;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment)
+        private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<PlayerEquipment>
+                PARSER = new com.google.protobuf.AbstractParser<PlayerEquipment>() {
+            @java.lang.Override
+            public PlayerEquipment parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new PlayerEquipment(input, extensionRegistry);
+            }
+        };
+
+        static {
+            DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment();
         }
-        private UtilItem() {
-          type_ = "";
+
+        private int bitField0_;
+        private volatile java.lang.Object weapon1_;
+        private volatile java.lang.Object weapon2_;
+        private volatile java.lang.Object armor1_;
+        private volatile java.lang.Object armor2_;
+        private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory utilities_;
+        private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems_;
+        private byte memoizedIsInitialized = -1;
+
+        // Use PlayerEquipment.newBuilder() to construct.
+        private PlayerEquipment(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+        private PlayerEquipment() {
+            weapon1_ = "";
+            weapon2_ = "";
+            armor1_ = "";
+            armor2_ = "";
+        }
+
+        private PlayerEquipment(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            java.lang.String s = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000001;
+                            weapon1_ = s;
+                            break;
+                        }
+                        case 18: {
+                            java.lang.String s = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000002;
+                            weapon2_ = s;
+                            break;
+                        }
+                        case 26: {
+                            java.lang.String s = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000004;
+                            armor1_ = s;
+                            break;
+                        }
+                        case 34: {
+                            java.lang.String s = input.readStringRequireUtf8();
+                            bitField0_ |= 0x00000008;
+                            armor2_ = s;
+                            break;
+                        }
+                        case 42: {
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000010) != 0)) {
+                                subBuilder = utilities_.toBuilder();
+                            }
+                            utilities_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.parser(), extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(utilities_);
+                                utilities_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000010;
+                            break;
+                        }
+                        case 50: {
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder subBuilder = null;
+                            if (((bitField0_ & 0x00000020) != 0)) {
+                                subBuilder = unlockItems_.toBuilder();
+                            }
+                            unlockItems_ = input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.parser(), extensionRegistry);
+                            if (subBuilder != null) {
+                                subBuilder.mergeFrom(unlockItems_);
+                                unlockItems_ = subBuilder.buildPartial();
+                            }
+                            bitField0_ |= 0x00000020;
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownField(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+                throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<PlayerEquipment> parser() {
+            return PARSER;
         }
 
         @java.lang.Override
         @SuppressWarnings({"unused"})
         protected java.lang.Object newInstance(
-            UnusedPrivateParameter unused) {
-          return new UtilItem();
+                UnusedPrivateParameter unused) {
+            return new PlayerEquipment();
         }
 
         @java.lang.Override
         public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
-          return this.unknownFields;
-        }
-        private UtilItem(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          this();
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
-          int mutable_bitField0_ = 0;
-          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-              com.google.protobuf.UnknownFieldSet.newBuilder();
-          try {
-            boolean done = false;
-            while (!done) {
-              int tag = input.readTag();
-              switch (tag) {
-                case 0:
-                  done = true;
-                  break;
-                case 10: {
-                  java.lang.String s = input.readStringRequireUtf8();
-                  bitField0_ |= 0x00000001;
-                  type_ = s;
-                  break;
-                }
-                case 16: {
-                  bitField0_ |= 0x00000002;
-                  amount_ = input.readInt32();
-                  break;
-                }
-                default: {
-                  if (!parseUnknownField(
-                      input, unknownFields, extensionRegistry, tag)) {
-                    done = true;
-                  }
-                  break;
-                }
-              }
-            }
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            throw e.setUnfinishedMessage(this);
-          } catch (com.google.protobuf.UninitializedMessageException e) {
-            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-          } catch (java.io.IOException e) {
-            throw new com.google.protobuf.InvalidProtocolBufferException(
-                e).setUnfinishedMessage(this);
-          } finally {
-            this.unknownFields = unknownFields.build();
-            makeExtensionsImmutable();
-          }
-        }
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
+            return this.unknownFields;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder.class);
+        internalGetFieldAccessorTable() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder.class);
         }
 
-        private int bitField0_;
-        public static final int TYPE_FIELD_NUMBER = 1;
-        private volatile java.lang.Object type_;
         /**
-         * <code>optional string type = 1;</code>
-         * @return Whether the type field is set.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return Whether the weapon1 field is set.
          */
         @java.lang.Override
-        public boolean hasType() {
-          return ((bitField0_ & 0x00000001) != 0);
+        public boolean hasWeapon1() {
+            return ((bitField0_ & 0x00000001) != 0);
         }
+
         /**
-         * <code>optional string type = 1;</code>
-         * @return The type.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return The weapon1.
          */
         @java.lang.Override
-        public java.lang.String getType() {
-          java.lang.Object ref = type_;
-          if (ref instanceof java.lang.String) {
-            return (java.lang.String) ref;
-          } else {
-            com.google.protobuf.ByteString bs = 
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            type_ = s;
-            return s;
-          }
+        public java.lang.String getWeapon1() {
+            java.lang.Object ref = weapon1_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                weapon1_ = s;
+                return s;
+            }
         }
+
         /**
-         * <code>optional string type = 1;</code>
-         * @return The bytes for type.
+         * <code>optional string weapon1 = 1;</code>
+         *
+         * @return The bytes for weapon1.
          */
         @java.lang.Override
         public com.google.protobuf.ByteString
-            getTypeBytes() {
-          java.lang.Object ref = type_;
-          if (ref instanceof java.lang.String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            type_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
+        getWeapon1Bytes() {
+            java.lang.Object ref = weapon1_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                weapon1_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
         }
 
-        public static final int AMOUNT_FIELD_NUMBER = 2;
-        private int amount_;
         /**
-         * <code>optional int32 amount = 2;</code>
-         * @return Whether the amount field is set.
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return Whether the weapon2 field is set.
          */
         @java.lang.Override
-        public boolean hasAmount() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <code>optional int32 amount = 2;</code>
-         * @return The amount.
-         */
-        @java.lang.Override
-        public int getAmount() {
-          return amount_;
+        public boolean hasWeapon2() {
+            return ((bitField0_ & 0x00000002) != 0);
         }
 
-        private byte memoizedIsInitialized = -1;
+        /**
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return The weapon2.
+         */
+        @java.lang.Override
+        public java.lang.String getWeapon2() {
+            java.lang.Object ref = weapon2_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                weapon2_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string weapon2 = 2;</code>
+         *
+         * @return The bytes for weapon2.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getWeapon2Bytes() {
+            java.lang.Object ref = weapon2_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                weapon2_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return Whether the armor1 field is set.
+         */
+        @java.lang.Override
+        public boolean hasArmor1() {
+            return ((bitField0_ & 0x00000004) != 0);
+        }
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return The armor1.
+         */
+        @java.lang.Override
+        public java.lang.String getArmor1() {
+            java.lang.Object ref = armor1_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                armor1_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string armor1 = 3;</code>
+         *
+         * @return The bytes for armor1.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getArmor1Bytes() {
+            java.lang.Object ref = armor1_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                armor1_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return Whether the armor2 field is set.
+         */
+        @java.lang.Override
+        public boolean hasArmor2() {
+            return ((bitField0_ & 0x00000008) != 0);
+        }
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return The armor2.
+         */
+        @java.lang.Override
+        public java.lang.String getArmor2() {
+            java.lang.Object ref = armor2_;
+            if (ref instanceof java.lang.String) {
+                return (java.lang.String) ref;
+            } else {
+                com.google.protobuf.ByteString bs =
+                        (com.google.protobuf.ByteString) ref;
+                java.lang.String s = bs.toStringUtf8();
+                armor2_ = s;
+                return s;
+            }
+        }
+
+        /**
+         * <code>optional string armor2 = 4;</code>
+         *
+         * @return The bytes for armor2.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+        getArmor2Bytes() {
+            java.lang.Object ref = armor2_;
+            if (ref instanceof java.lang.String) {
+                com.google.protobuf.ByteString b =
+                        com.google.protobuf.ByteString.copyFromUtf8(
+                                (java.lang.String) ref);
+                armor2_ = b;
+                return b;
+            } else {
+                return (com.google.protobuf.ByteString) ref;
+            }
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         *
+         * @return Whether the utilities field is set.
+         */
+        @java.lang.Override
+        public boolean hasUtilities() {
+            return ((bitField0_ & 0x00000010) != 0);
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         *
+         * @return The utilities.
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities() {
+            return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder() {
+            return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         *
+         * @return Whether the unlockItems field is set.
+         */
+        @java.lang.Override
+        public boolean hasUnlockItems() {
+            return ((bitField0_ & 0x00000020) != 0);
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         *
+         * @return The unlockItems.
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems() {
+            return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder() {
+            return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
+        }
+
         @java.lang.Override
         public final boolean isInitialized() {
-          byte isInitialized = memoizedIsInitialized;
-          if (isInitialized == 1) return true;
-          if (isInitialized == 0) return false;
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
 
-          memoizedIsInitialized = 1;
-          return true;
+            memoizedIsInitialized = 1;
+            return true;
         }
 
         @java.lang.Override
         public void writeTo(com.google.protobuf.CodedOutputStream output)
-                            throws java.io.IOException {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
-          }
-          if (((bitField0_ & 0x00000002) != 0)) {
-            output.writeInt32(2, amount_);
-          }
-          unknownFields.writeTo(output);
+                throws java.io.IOException {
+            if (((bitField0_ & 0x00000001) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 1, weapon1_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 2, weapon2_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 3, armor1_);
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                com.google.protobuf.GeneratedMessageV3.writeString(output, 4, armor2_);
+            }
+            if (((bitField0_ & 0x00000010) != 0)) {
+                output.writeMessage(5, getUtilities());
+            }
+            if (((bitField0_ & 0x00000020) != 0)) {
+                output.writeMessage(6, getUnlockItems());
+            }
+            unknownFields.writeTo(output);
         }
 
         @java.lang.Override
         public int getSerializedSize() {
-          int size = memoizedSize;
-          if (size != -1) return size;
+            int size = memoizedSize;
+            if (size != -1) return size;
 
-          size = 0;
-          if (((bitField0_ & 0x00000001) != 0)) {
-            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
-          }
-          if (((bitField0_ & 0x00000002) != 0)) {
-            size += com.google.protobuf.CodedOutputStream
-              .computeInt32Size(2, amount_);
-          }
-          size += unknownFields.getSerializedSize();
-          memoizedSize = size;
-          return size;
+            size = 0;
+            if (((bitField0_ & 0x00000001) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, weapon1_);
+            }
+            if (((bitField0_ & 0x00000002) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, weapon2_);
+            }
+            if (((bitField0_ & 0x00000004) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, armor1_);
+            }
+            if (((bitField0_ & 0x00000008) != 0)) {
+                size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, armor2_);
+            }
+            if (((bitField0_ & 0x00000010) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(5, getUtilities());
+            }
+            if (((bitField0_ & 0x00000020) != 0)) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(6, getUnlockItems());
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
         }
 
         @java.lang.Override
         public boolean equals(final java.lang.Object obj) {
-          if (obj == this) {
-           return true;
-          }
-          if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)) {
-            return super.equals(obj);
-          }
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) obj;
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment)) {
+                return super.equals(obj);
+            }
+            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) obj;
 
-          if (hasType() != other.hasType()) return false;
-          if (hasType()) {
-            if (!getType()
-                .equals(other.getType())) return false;
-          }
-          if (hasAmount() != other.hasAmount()) return false;
-          if (hasAmount()) {
-            if (getAmount()
-                != other.getAmount()) return false;
-          }
-          if (!unknownFields.equals(other.unknownFields)) return false;
-          return true;
+            if (hasWeapon1() != other.hasWeapon1()) return false;
+            if (hasWeapon1()) {
+                if (!getWeapon1()
+                        .equals(other.getWeapon1())) return false;
+            }
+            if (hasWeapon2() != other.hasWeapon2()) return false;
+            if (hasWeapon2()) {
+                if (!getWeapon2()
+                        .equals(other.getWeapon2())) return false;
+            }
+            if (hasArmor1() != other.hasArmor1()) return false;
+            if (hasArmor1()) {
+                if (!getArmor1()
+                        .equals(other.getArmor1())) return false;
+            }
+            if (hasArmor2() != other.hasArmor2()) return false;
+            if (hasArmor2()) {
+                if (!getArmor2()
+                        .equals(other.getArmor2())) return false;
+            }
+            if (hasUtilities() != other.hasUtilities()) return false;
+            if (hasUtilities()) {
+                if (!getUtilities()
+                        .equals(other.getUtilities())) return false;
+            }
+            if (hasUnlockItems() != other.hasUnlockItems()) return false;
+            if (hasUnlockItems()) {
+                if (!getUnlockItems()
+                        .equals(other.getUnlockItems())) return false;
+            }
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
         }
 
         @java.lang.Override
         public int hashCode() {
-          if (memoizedHashCode != 0) {
-            return memoizedHashCode;
-          }
-          int hash = 41;
-          hash = (19 * hash) + getDescriptor().hashCode();
-          if (hasType()) {
-            hash = (37 * hash) + TYPE_FIELD_NUMBER;
-            hash = (53 * hash) + getType().hashCode();
-          }
-          if (hasAmount()) {
-            hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
-            hash = (53 * hash) + getAmount();
-          }
-          hash = (29 * hash) + unknownFields.hashCode();
-          memoizedHashCode = hash;
-          return hash;
-        }
-
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            java.nio.ByteBuffer data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            java.nio.ByteBuffer data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            com.google.protobuf.ByteString data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            com.google.protobuf.ByteString data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(byte[] data)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            byte[] data,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return PARSER.parseFrom(data, extensionRegistry);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseDelimitedFrom(java.io.InputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseDelimitedFrom(
-            java.io.InputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            com.google.protobuf.CodedInputStream input)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input);
-        }
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          return com.google.protobuf.GeneratedMessageV3
-              .parseWithIOException(PARSER, input, extensionRegistry);
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (hasWeapon1()) {
+                hash = (37 * hash) + WEAPON1_FIELD_NUMBER;
+                hash = (53 * hash) + getWeapon1().hashCode();
+            }
+            if (hasWeapon2()) {
+                hash = (37 * hash) + WEAPON2_FIELD_NUMBER;
+                hash = (53 * hash) + getWeapon2().hashCode();
+            }
+            if (hasArmor1()) {
+                hash = (37 * hash) + ARMOR1_FIELD_NUMBER;
+                hash = (53 * hash) + getArmor1().hashCode();
+            }
+            if (hasArmor2()) {
+                hash = (37 * hash) + ARMOR2_FIELD_NUMBER;
+                hash = (53 * hash) + getArmor2().hashCode();
+            }
+            if (hasUtilities()) {
+                hash = (37 * hash) + UTILITIES_FIELD_NUMBER;
+                hash = (53 * hash) + getUtilities().hashCode();
+            }
+            if (hasUnlockItems()) {
+                hash = (37 * hash) + UNLOCKITEMS_FIELD_NUMBER;
+                hash = (53 * hash) + getUnlockItems().hashCode();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
         }
 
         @java.lang.Override
-        public Builder newBuilderForType() { return newBuilder(); }
-        public static Builder newBuilder() {
-          return DEFAULT_INSTANCE.toBuilder();
+        public Builder newBuilderForType() {
+            return newBuilder();
         }
-        public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem prototype) {
-          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-        }
+
         @java.lang.Override
         public Builder toBuilder() {
-          return this == DEFAULT_INSTANCE
-              ? new Builder() : new Builder().mergeFrom(this);
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
         }
 
         @java.lang.Override
         protected Builder newBuilderForType(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          Builder builder = new Builder(parent);
-          return builder;
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
         }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<PlayerEquipment> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public interface UtilInventoryOrBuilder extends
+                // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
+                com.google.protobuf.MessageOrBuilder {
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem>
+            getItemsList();
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index);
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            int getItemsCount();
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>
+            getItemsOrBuilderList();
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
+                    int index);
+        }
+
+        public interface UnlockedItemsOrBuilder extends
+                // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
+                com.google.protobuf.MessageOrBuilder {
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @return A list containing the weapons.
+             */
+            java.util.List<java.lang.String>
+            getWeaponsList();
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @return The count of weapons.
+             */
+            int getWeaponsCount();
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The weapons at the given index.
+             */
+            java.lang.String getWeapons(int index);
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the weapons at the given index.
+             */
+            com.google.protobuf.ByteString
+            getWeaponsBytes(int index);
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @return A list containing the armors.
+             */
+            java.util.List<java.lang.String>
+            getArmorsList();
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @return The count of armors.
+             */
+            int getArmorsCount();
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The armors at the given index.
+             */
+            java.lang.String getArmors(int index);
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the armors at the given index.
+             */
+            com.google.protobuf.ByteString
+            getArmorsBytes(int index);
+        }
+
         /**
-         * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem}
+         * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory}
+         */
+        public static final class UtilInventory extends
+                com.google.protobuf.GeneratedMessageV3 implements
+                // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
+                UtilInventoryOrBuilder {
+            public static final int ITEMS_FIELD_NUMBER = 1;
+            private static final long serialVersionUID = 0L;
+            // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
+            private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory DEFAULT_INSTANCE;
+            private static final com.google.protobuf.Parser<UtilInventory>
+                    PARSER = new com.google.protobuf.AbstractParser<UtilInventory>() {
+                @java.lang.Override
+                public UtilInventory parsePartialFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return new UtilInventory(input, extensionRegistry);
+                }
+            };
+
+            static {
+                DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory();
+            }
+
+            private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> items_;
+            private byte memoizedIsInitialized = -1;
+
+            // Use UtilInventory.newBuilder() to construct.
+            private UtilInventory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+                super(builder);
+            }
+
+            private UtilInventory() {
+                items_ = java.util.Collections.emptyList();
+            }
+
+            private UtilInventory(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                this();
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                int mutable_bitField0_ = 0;
+                com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                        com.google.protobuf.UnknownFieldSet.newBuilder();
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                                    items_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem>();
+                                    mutable_bitField0_ |= 0x00000001;
+                                }
+                                items_.add(
+                                        input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.parser(), extensionRegistry));
+                                break;
+                            }
+                            default: {
+                                if (!parseUnknownField(
+                                        input, unknownFields, extensionRegistry, tag)) {
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(this);
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(
+                            e).setUnfinishedMessage(this);
+                } finally {
+                    if (((mutable_bitField0_ & 0x00000001) != 0)) {
+                        items_ = java.util.Collections.unmodifiableList(items_);
+                    }
+                    this.unknownFields = unknownFields.build();
+                    makeExtensionsImmutable();
+                }
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    java.nio.ByteBuffer data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    java.nio.ByteBuffer data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    com.google.protobuf.ByteString data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    com.google.protobuf.ByteString data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(byte[] data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    byte[] data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseDelimitedFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseDelimitedFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    com.google.protobuf.CodedInputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static Builder newBuilder() {
+                return DEFAULT_INSTANCE.toBuilder();
+            }
+
+            public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory prototype) {
+                return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstance() {
+                return DEFAULT_INSTANCE;
+            }
+
+            public static com.google.protobuf.Parser<UtilInventory> parser() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            @SuppressWarnings({"unused"})
+            protected java.lang.Object newInstance(
+                    UnusedPrivateParameter unused) {
+                return new UtilInventory();
+            }
+
+            @java.lang.Override
+            public final com.google.protobuf.UnknownFieldSet
+            getUnknownFields() {
+                return this.unknownFields;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder.class);
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            @java.lang.Override
+            public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> getItemsList() {
+                return items_;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            @java.lang.Override
+            public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>
+            getItemsOrBuilderList() {
+                return items_;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            @java.lang.Override
+            public int getItemsCount() {
+                return items_.size();
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index) {
+                return items_.get(index);
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+             */
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
+                    int index) {
+                return items_.get(index);
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                byte isInitialized = memoizedIsInitialized;
+                if (isInitialized == 1) return true;
+                if (isInitialized == 0) return false;
+
+                memoizedIsInitialized = 1;
+                return true;
+            }
+
+            @java.lang.Override
+            public void writeTo(com.google.protobuf.CodedOutputStream output)
+                    throws java.io.IOException {
+                for (int i = 0; i < items_.size(); i++) {
+                    output.writeMessage(1, items_.get(i));
+                }
+                unknownFields.writeTo(output);
+            }
+
+            @java.lang.Override
+            public int getSerializedSize() {
+                int size = memoizedSize;
+                if (size != -1) return size;
+
+                size = 0;
+                for (int i = 0; i < items_.size(); i++) {
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeMessageSize(1, items_.get(i));
+                }
+                size += unknownFields.getSerializedSize();
+                memoizedSize = size;
+                return size;
+            }
+
+            @java.lang.Override
+            public boolean equals(final java.lang.Object obj) {
+                if (obj == this) {
+                    return true;
+                }
+                if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory)) {
+                    return super.equals(obj);
+                }
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) obj;
+
+                if (!getItemsList()
+                        .equals(other.getItemsList())) return false;
+                if (!unknownFields.equals(other.unknownFields)) return false;
+                return true;
+            }
+
+            @java.lang.Override
+            public int hashCode() {
+                if (memoizedHashCode != 0) {
+                    return memoizedHashCode;
+                }
+                int hash = 41;
+                hash = (19 * hash) + getDescriptor().hashCode();
+                if (getItemsCount() > 0) {
+                    hash = (37 * hash) + ITEMS_FIELD_NUMBER;
+                    hash = (53 * hash) + getItemsList().hashCode();
+                }
+                hash = (29 * hash) + unknownFields.hashCode();
+                memoizedHashCode = hash;
+                return hash;
+            }
+
+            @java.lang.Override
+            public Builder newBuilderForType() {
+                return newBuilder();
+            }
+
+            @java.lang.Override
+            public Builder toBuilder() {
+                return this == DEFAULT_INSTANCE
+                        ? new Builder() : new Builder().mergeFrom(this);
+            }
+
+            @java.lang.Override
+            protected Builder newBuilderForType(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                Builder builder = new Builder(parent);
+                return builder;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Parser<UtilInventory> getParserForType() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstanceForType() {
+                return DEFAULT_INSTANCE;
+            }
+
+            public interface UtilItemOrBuilder extends
+                    // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
+                    com.google.protobuf.MessageOrBuilder {
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return Whether the type field is set.
+                 */
+                boolean hasType();
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The type.
+                 */
+                java.lang.String getType();
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The bytes for type.
+                 */
+                com.google.protobuf.ByteString
+                getTypeBytes();
+
+                /**
+                 * <code>optional int32 amount = 2;</code>
+                 *
+                 * @return Whether the amount field is set.
+                 */
+                boolean hasAmount();
+
+                /**
+                 * <code>optional int32 amount = 2;</code>
+                 *
+                 * @return The amount.
+                 */
+                int getAmount();
+            }
+
+            /**
+             * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem}
+             */
+            public static final class UtilItem extends
+                    com.google.protobuf.GeneratedMessageV3 implements
+                    // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
+                    UtilItemOrBuilder {
+                public static final int TYPE_FIELD_NUMBER = 1;
+                public static final int AMOUNT_FIELD_NUMBER = 2;
+                private static final long serialVersionUID = 0L;
+                // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
+                private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem DEFAULT_INSTANCE;
+                private static final com.google.protobuf.Parser<UtilItem>
+                        PARSER = new com.google.protobuf.AbstractParser<UtilItem>() {
+                    @java.lang.Override
+                    public UtilItem parsePartialFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws com.google.protobuf.InvalidProtocolBufferException {
+                        return new UtilItem(input, extensionRegistry);
+                    }
+                };
+
+                static {
+                    DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem();
+                }
+
+                private int bitField0_;
+                private volatile java.lang.Object type_;
+                private int amount_;
+                private byte memoizedIsInitialized = -1;
+                // Use UtilItem.newBuilder() to construct.
+                private UtilItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+                    super(builder);
+                }
+
+                private UtilItem() {
+                    type_ = "";
+                }
+
+                private UtilItem(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    this();
+                    if (extensionRegistry == null) {
+                        throw new java.lang.NullPointerException();
+                    }
+                    int mutable_bitField0_ = 0;
+                    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                            com.google.protobuf.UnknownFieldSet.newBuilder();
+                    try {
+                        boolean done = false;
+                        while (!done) {
+                            int tag = input.readTag();
+                            switch (tag) {
+                                case 0:
+                                    done = true;
+                                    break;
+                                case 10: {
+                                    java.lang.String s = input.readStringRequireUtf8();
+                                    bitField0_ |= 0x00000001;
+                                    type_ = s;
+                                    break;
+                                }
+                                case 16: {
+                                    bitField0_ |= 0x00000002;
+                                    amount_ = input.readInt32();
+                                    break;
+                                }
+                                default: {
+                                    if (!parseUnknownField(
+                                            input, unknownFields, extensionRegistry, tag)) {
+                                        done = true;
+                                    }
+                                    break;
+                                }
+                            }
+                        }
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        throw e.setUnfinishedMessage(this);
+                    } catch (com.google.protobuf.UninitializedMessageException e) {
+                        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+                    } catch (java.io.IOException e) {
+                        throw new com.google.protobuf.InvalidProtocolBufferException(
+                                e).setUnfinishedMessage(this);
+                    } finally {
+                        this.unknownFields = unknownFields.build();
+                        makeExtensionsImmutable();
+                    }
+                }
+
+                public static final com.google.protobuf.Descriptors.Descriptor
+                getDescriptor() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        java.nio.ByteBuffer data)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        java.nio.ByteBuffer data,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data, extensionRegistry);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        com.google.protobuf.ByteString data)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        com.google.protobuf.ByteString data,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data, extensionRegistry);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(byte[] data)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        byte[] data,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return PARSER.parseFrom(data, extensionRegistry);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(java.io.InputStream input)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseWithIOException(PARSER, input);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        java.io.InputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseWithIOException(PARSER, input, extensionRegistry);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseDelimitedFrom(java.io.InputStream input)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseDelimitedWithIOException(PARSER, input);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseDelimitedFrom(
+                        java.io.InputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        com.google.protobuf.CodedInputStream input)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseWithIOException(PARSER, input);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parseFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    return com.google.protobuf.GeneratedMessageV3
+                            .parseWithIOException(PARSER, input, extensionRegistry);
+                }
+
+                public static Builder newBuilder() {
+                    return DEFAULT_INSTANCE.toBuilder();
+                }
+
+                public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem prototype) {
+                    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+                }
+
+                public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstance() {
+                    return DEFAULT_INSTANCE;
+                }
+
+                public static com.google.protobuf.Parser<UtilItem> parser() {
+                    return PARSER;
+                }
+
+                @java.lang.Override
+                @SuppressWarnings({"unused"})
+                protected java.lang.Object newInstance(
+                        UnusedPrivateParameter unused) {
+                    return new UtilItem();
+                }
+
+                @java.lang.Override
+                public final com.google.protobuf.UnknownFieldSet
+                getUnknownFields() {
+                    return this.unknownFields;
+                }
+
+                @java.lang.Override
+                protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+                internalGetFieldAccessorTable() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable
+                            .ensureFieldAccessorsInitialized(
+                                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder.class);
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return Whether the type field is set.
+                 */
+                @java.lang.Override
+                public boolean hasType() {
+                    return ((bitField0_ & 0x00000001) != 0);
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The type.
+                 */
+                @java.lang.Override
+                public java.lang.String getType() {
+                    java.lang.Object ref = type_;
+                    if (ref instanceof java.lang.String) {
+                        return (java.lang.String) ref;
+                    } else {
+                        com.google.protobuf.ByteString bs =
+                                (com.google.protobuf.ByteString) ref;
+                        java.lang.String s = bs.toStringUtf8();
+                        type_ = s;
+                        return s;
+                    }
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The bytes for type.
+                 */
+                @java.lang.Override
+                public com.google.protobuf.ByteString
+                getTypeBytes() {
+                    java.lang.Object ref = type_;
+                    if (ref instanceof java.lang.String) {
+                        com.google.protobuf.ByteString b =
+                                com.google.protobuf.ByteString.copyFromUtf8(
+                                        (java.lang.String) ref);
+                        type_ = b;
+                        return b;
+                    } else {
+                        return (com.google.protobuf.ByteString) ref;
+                    }
+                }
+
+                /**
+                 * <code>optional int32 amount = 2;</code>
+                 *
+                 * @return Whether the amount field is set.
+                 */
+                @java.lang.Override
+                public boolean hasAmount() {
+                    return ((bitField0_ & 0x00000002) != 0);
+                }
+
+                /**
+                 * <code>optional int32 amount = 2;</code>
+                 *
+                 * @return The amount.
+                 */
+                @java.lang.Override
+                public int getAmount() {
+                    return amount_;
+                }
+
+                @java.lang.Override
+                public final boolean isInitialized() {
+                    byte isInitialized = memoizedIsInitialized;
+                    if (isInitialized == 1) return true;
+                    if (isInitialized == 0) return false;
+
+                    memoizedIsInitialized = 1;
+                    return true;
+                }
+
+                @java.lang.Override
+                public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+                    if (((bitField0_ & 0x00000001) != 0)) {
+                        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
+                    }
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        output.writeInt32(2, amount_);
+                    }
+                    unknownFields.writeTo(output);
+                }
+
+                @java.lang.Override
+                public int getSerializedSize() {
+                    int size = memoizedSize;
+                    if (size != -1) return size;
+
+                    size = 0;
+                    if (((bitField0_ & 0x00000001) != 0)) {
+                        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
+                    }
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        size += com.google.protobuf.CodedOutputStream
+                                .computeInt32Size(2, amount_);
+                    }
+                    size += unknownFields.getSerializedSize();
+                    memoizedSize = size;
+                    return size;
+                }
+
+                @java.lang.Override
+                public boolean equals(final java.lang.Object obj) {
+                    if (obj == this) {
+                        return true;
+                    }
+                    if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)) {
+                        return super.equals(obj);
+                    }
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) obj;
+
+                    if (hasType() != other.hasType()) return false;
+                    if (hasType()) {
+                        if (!getType()
+                                .equals(other.getType())) return false;
+                    }
+                    if (hasAmount() != other.hasAmount()) return false;
+                    if (hasAmount()) {
+                        if (getAmount()
+                                != other.getAmount()) return false;
+                    }
+                    if (!unknownFields.equals(other.unknownFields)) return false;
+                    return true;
+                }
+
+                @java.lang.Override
+                public int hashCode() {
+                    if (memoizedHashCode != 0) {
+                        return memoizedHashCode;
+                    }
+                    int hash = 41;
+                    hash = (19 * hash) + getDescriptor().hashCode();
+                    if (hasType()) {
+                        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+                        hash = (53 * hash) + getType().hashCode();
+                    }
+                    if (hasAmount()) {
+                        hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
+                        hash = (53 * hash) + getAmount();
+                    }
+                    hash = (29 * hash) + unknownFields.hashCode();
+                    memoizedHashCode = hash;
+                    return hash;
+                }
+
+                @java.lang.Override
+                public Builder newBuilderForType() {
+                    return newBuilder();
+                }
+
+                @java.lang.Override
+                public Builder toBuilder() {
+                    return this == DEFAULT_INSTANCE
+                            ? new Builder() : new Builder().mergeFrom(this);
+                }
+
+                @java.lang.Override
+                protected Builder newBuilderForType(
+                        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                    Builder builder = new Builder(parent);
+                    return builder;
+                }
+
+                @java.lang.Override
+                public com.google.protobuf.Parser<UtilItem> getParserForType() {
+                    return PARSER;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstanceForType() {
+                    return DEFAULT_INSTANCE;
+                }
+
+                /**
+                 * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem}
+                 */
+                public static final class Builder extends
+                        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                        // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder {
+                    private int bitField0_;
+                    private java.lang.Object type_ = "";
+                    private int amount_;
+
+                    // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.newBuilder()
+                    private Builder() {
+                        maybeForceBuilderInitialization();
+                    }
+
+                    private Builder(
+                            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                        super(parent);
+                        maybeForceBuilderInitialization();
+                    }
+
+                    public static final com.google.protobuf.Descriptors.Descriptor
+                    getDescriptor() {
+                        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
+                    }
+
+                    @java.lang.Override
+                    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+                    internalGetFieldAccessorTable() {
+                        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable
+                                .ensureFieldAccessorsInitialized(
+                                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder.class);
+                    }
+
+                    private void maybeForceBuilderInitialization() {
+                        if (com.google.protobuf.GeneratedMessageV3
+                                .alwaysUseFieldBuilders) {
+                        }
+                    }
+
+                    @java.lang.Override
+                    public Builder clear() {
+                        super.clear();
+                        type_ = "";
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                        amount_ = 0;
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                        return this;
+                    }
+
+                    @java.lang.Override
+                    public com.google.protobuf.Descriptors.Descriptor
+                    getDescriptorForType() {
+                        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
+                    }
+
+                    @java.lang.Override
+                    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstanceForType() {
+                        return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance();
+                    }
+
+                    @java.lang.Override
+                    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem build() {
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem result = buildPartial();
+                        if (!result.isInitialized()) {
+                            throw newUninitializedMessageException(result);
+                        }
+                        return result;
+                    }
+
+                    @java.lang.Override
+                    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem buildPartial() {
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem(this);
+                        int from_bitField0_ = bitField0_;
+                        int to_bitField0_ = 0;
+                        if (((from_bitField0_ & 0x00000001) != 0)) {
+                            to_bitField0_ |= 0x00000001;
+                        }
+                        result.type_ = type_;
+                        if (((from_bitField0_ & 0x00000002) != 0)) {
+                            result.amount_ = amount_;
+                            to_bitField0_ |= 0x00000002;
+                        }
+                        result.bitField0_ = to_bitField0_;
+                        onBuilt();
+                        return result;
+                    }
+
+                    @java.lang.Override
+                    public Builder clone() {
+                        return super.clone();
+                    }
+
+                    @java.lang.Override
+                    public Builder setField(
+                            com.google.protobuf.Descriptors.FieldDescriptor field,
+                            java.lang.Object value) {
+                        return super.setField(field, value);
+                    }
+
+                    @java.lang.Override
+                    public Builder clearField(
+                            com.google.protobuf.Descriptors.FieldDescriptor field) {
+                        return super.clearField(field);
+                    }
+
+                    @java.lang.Override
+                    public Builder clearOneof(
+                            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                        return super.clearOneof(oneof);
+                    }
+
+                    @java.lang.Override
+                    public Builder setRepeatedField(
+                            com.google.protobuf.Descriptors.FieldDescriptor field,
+                            int index, java.lang.Object value) {
+                        return super.setRepeatedField(field, index, value);
+                    }
+
+                    @java.lang.Override
+                    public Builder addRepeatedField(
+                            com.google.protobuf.Descriptors.FieldDescriptor field,
+                            java.lang.Object value) {
+                        return super.addRepeatedField(field, value);
+                    }
+
+                    @java.lang.Override
+                    public Builder mergeFrom(com.google.protobuf.Message other) {
+                        if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) {
+                            return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) other);
+                        } else {
+                            super.mergeFrom(other);
+                            return this;
+                        }
+                    }
+
+                    public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem other) {
+                        if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance())
+                            return this;
+                        if (other.hasType()) {
+                            bitField0_ |= 0x00000001;
+                            type_ = other.type_;
+                            onChanged();
+                        }
+                        if (other.hasAmount()) {
+                            setAmount(other.getAmount());
+                        }
+                        this.mergeUnknownFields(other.unknownFields);
+                        onChanged();
+                        return this;
+                    }
+
+                    @java.lang.Override
+                    public final boolean isInitialized() {
+                        return true;
+                    }
+
+                    @java.lang.Override
+                    public Builder mergeFrom(
+                            com.google.protobuf.CodedInputStream input,
+                            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                            throws java.io.IOException {
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parsedMessage = null;
+                        try {
+                            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                            parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) e.getUnfinishedMessage();
+                            throw e.unwrapIOException();
+                        } finally {
+                            if (parsedMessage != null) {
+                                mergeFrom(parsedMessage);
+                            }
+                        }
+                        return this;
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @return Whether the type field is set.
+                     */
+                    public boolean hasType() {
+                        return ((bitField0_ & 0x00000001) != 0);
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @return The type.
+                     */
+                    public java.lang.String getType() {
+                        java.lang.Object ref = type_;
+                        if (!(ref instanceof java.lang.String)) {
+                            com.google.protobuf.ByteString bs =
+                                    (com.google.protobuf.ByteString) ref;
+                            java.lang.String s = bs.toStringUtf8();
+                            type_ = s;
+                            return s;
+                        } else {
+                            return (java.lang.String) ref;
+                        }
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @param value The type to set.
+                     * @return This builder for chaining.
+                     */
+                    public Builder setType(
+                            java.lang.String value) {
+                        if (value == null) {
+                            throw new NullPointerException();
+                        }
+                        bitField0_ |= 0x00000001;
+                        type_ = value;
+                        onChanged();
+                        return this;
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @return The bytes for type.
+                     */
+                    public com.google.protobuf.ByteString
+                    getTypeBytes() {
+                        java.lang.Object ref = type_;
+                        if (ref instanceof String) {
+                            com.google.protobuf.ByteString b =
+                                    com.google.protobuf.ByteString.copyFromUtf8(
+                                            (java.lang.String) ref);
+                            type_ = b;
+                            return b;
+                        } else {
+                            return (com.google.protobuf.ByteString) ref;
+                        }
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @param value The bytes for type to set.
+                     * @return This builder for chaining.
+                     */
+                    public Builder setTypeBytes(
+                            com.google.protobuf.ByteString value) {
+                        if (value == null) {
+                            throw new NullPointerException();
+                        }
+                        checkByteStringIsUtf8(value);
+                        bitField0_ |= 0x00000001;
+                        type_ = value;
+                        onChanged();
+                        return this;
+                    }
+
+                    /**
+                     * <code>optional string type = 1;</code>
+                     *
+                     * @return This builder for chaining.
+                     */
+                    public Builder clearType() {
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                        type_ = getDefaultInstance().getType();
+                        onChanged();
+                        return this;
+                    }
+
+                    /**
+                     * <code>optional int32 amount = 2;</code>
+                     *
+                     * @return Whether the amount field is set.
+                     */
+                    @java.lang.Override
+                    public boolean hasAmount() {
+                        return ((bitField0_ & 0x00000002) != 0);
+                    }
+
+                    /**
+                     * <code>optional int32 amount = 2;</code>
+                     *
+                     * @return The amount.
+                     */
+                    @java.lang.Override
+                    public int getAmount() {
+                        return amount_;
+                    }
+
+                    /**
+                     * <code>optional int32 amount = 2;</code>
+                     *
+                     * @param value The amount to set.
+                     * @return This builder for chaining.
+                     */
+                    public Builder setAmount(int value) {
+                        bitField0_ |= 0x00000002;
+                        amount_ = value;
+                        onChanged();
+                        return this;
+                    }
+
+                    /**
+                     * <code>optional int32 amount = 2;</code>
+                     *
+                     * @return This builder for chaining.
+                     */
+                    public Builder clearAmount() {
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                        amount_ = 0;
+                        onChanged();
+                        return this;
+                    }
+
+                    @java.lang.Override
+                    public final Builder setUnknownFields(
+                            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                        return super.setUnknownFields(unknownFields);
+                    }
+
+                    @java.lang.Override
+                    public final Builder mergeUnknownFields(
+                            final com.google.protobuf.UnknownFieldSet unknownFields) {
+                        return super.mergeUnknownFields(unknownFields);
+                    }
+
+
+                    // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
+                }
+
+            }
+
+            /**
+             * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory}
+             */
+            public static final class Builder extends
+                    com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                    // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder {
+                private int bitField0_;
+                private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> items_ =
+                        java.util.Collections.emptyList();
+                private com.google.protobuf.RepeatedFieldBuilderV3<
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> itemsBuilder_;
+
+                // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.newBuilder()
+                private Builder() {
+                    maybeForceBuilderInitialization();
+                }
+
+                private Builder(
+                        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                    super(parent);
+                    maybeForceBuilderInitialization();
+                }
+
+                public static final com.google.protobuf.Descriptors.Descriptor
+                getDescriptor() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
+                }
+
+                @java.lang.Override
+                protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+                internalGetFieldAccessorTable() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable
+                            .ensureFieldAccessorsInitialized(
+                                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder.class);
+                }
+
+                private void maybeForceBuilderInitialization() {
+                    if (com.google.protobuf.GeneratedMessageV3
+                            .alwaysUseFieldBuilders) {
+                        getItemsFieldBuilder();
+                    }
+                }
+
+                @java.lang.Override
+                public Builder clear() {
+                    super.clear();
+                    if (itemsBuilder_ == null) {
+                        items_ = java.util.Collections.emptyList();
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    } else {
+                        itemsBuilder_.clear();
+                    }
+                    return this;
+                }
+
+                @java.lang.Override
+                public com.google.protobuf.Descriptors.Descriptor
+                getDescriptorForType() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstanceForType() {
+                    return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance();
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory build() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory result = buildPartial();
+                    if (!result.isInitialized()) {
+                        throw newUninitializedMessageException(result);
+                    }
+                    return result;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory buildPartial() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory(this);
+                    int from_bitField0_ = bitField0_;
+                    if (itemsBuilder_ == null) {
+                        if (((bitField0_ & 0x00000001) != 0)) {
+                            items_ = java.util.Collections.unmodifiableList(items_);
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                        }
+                        result.items_ = items_;
+                    } else {
+                        result.items_ = itemsBuilder_.build();
+                    }
+                    onBuilt();
+                    return result;
+                }
+
+                @java.lang.Override
+                public Builder clone() {
+                    return super.clone();
+                }
+
+                @java.lang.Override
+                public Builder setField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.setField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder clearField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field) {
+                    return super.clearField(field);
+                }
+
+                @java.lang.Override
+                public Builder clearOneof(
+                        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                    return super.clearOneof(oneof);
+                }
+
+                @java.lang.Override
+                public Builder setRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        int index, java.lang.Object value) {
+                    return super.setRepeatedField(field, index, value);
+                }
+
+                @java.lang.Override
+                public Builder addRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.addRepeatedField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(com.google.protobuf.Message other) {
+                    if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) {
+                        return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) other);
+                    } else {
+                        super.mergeFrom(other);
+                        return this;
+                    }
+                }
+
+                public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory other) {
+                    if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance())
+                        return this;
+                    if (itemsBuilder_ == null) {
+                        if (!other.items_.isEmpty()) {
+                            if (items_.isEmpty()) {
+                                items_ = other.items_;
+                                bitField0_ = (bitField0_ & ~0x00000001);
+                            } else {
+                                ensureItemsIsMutable();
+                                items_.addAll(other.items_);
+                            }
+                            onChanged();
+                        }
+                    } else {
+                        if (!other.items_.isEmpty()) {
+                            if (itemsBuilder_.isEmpty()) {
+                                itemsBuilder_.dispose();
+                                itemsBuilder_ = null;
+                                items_ = other.items_;
+                                bitField0_ = (bitField0_ & ~0x00000001);
+                                itemsBuilder_ =
+                                        com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                                getItemsFieldBuilder() : null;
+                            } else {
+                                itemsBuilder_.addAllMessages(other.items_);
+                            }
+                        }
+                    }
+                    this.mergeUnknownFields(other.unknownFields);
+                    onChanged();
+                    return this;
+                }
+
+                @java.lang.Override
+                public final boolean isInitialized() {
+                    return true;
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parsedMessage = null;
+                    try {
+                        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) e.getUnfinishedMessage();
+                        throw e.unwrapIOException();
+                    } finally {
+                        if (parsedMessage != null) {
+                            mergeFrom(parsedMessage);
+                        }
+                    }
+                    return this;
+                }
+
+                private void ensureItemsIsMutable() {
+                    if (!((bitField0_ & 0x00000001) != 0)) {
+                        items_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem>(items_);
+                        bitField0_ |= 0x00000001;
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> getItemsList() {
+                    if (itemsBuilder_ == null) {
+                        return java.util.Collections.unmodifiableList(items_);
+                    } else {
+                        return itemsBuilder_.getMessageList();
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public int getItemsCount() {
+                    if (itemsBuilder_ == null) {
+                        return items_.size();
+                    } else {
+                        return itemsBuilder_.getCount();
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index) {
+                    if (itemsBuilder_ == null) {
+                        return items_.get(index);
+                    } else {
+                        return itemsBuilder_.getMessage(index);
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder setItems(
+                        int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
+                    if (itemsBuilder_ == null) {
+                        if (value == null) {
+                            throw new NullPointerException();
+                        }
+                        ensureItemsIsMutable();
+                        items_.set(index, value);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.setMessage(index, value);
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder setItems(
+                        int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
+                    if (itemsBuilder_ == null) {
+                        ensureItemsIsMutable();
+                        items_.set(index, builderForValue.build());
+                        onChanged();
+                    } else {
+                        itemsBuilder_.setMessage(index, builderForValue.build());
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder addItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
+                    if (itemsBuilder_ == null) {
+                        if (value == null) {
+                            throw new NullPointerException();
+                        }
+                        ensureItemsIsMutable();
+                        items_.add(value);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.addMessage(value);
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder addItems(
+                        int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
+                    if (itemsBuilder_ == null) {
+                        if (value == null) {
+                            throw new NullPointerException();
+                        }
+                        ensureItemsIsMutable();
+                        items_.add(index, value);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.addMessage(index, value);
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder addItems(
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
+                    if (itemsBuilder_ == null) {
+                        ensureItemsIsMutable();
+                        items_.add(builderForValue.build());
+                        onChanged();
+                    } else {
+                        itemsBuilder_.addMessage(builderForValue.build());
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder addItems(
+                        int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
+                    if (itemsBuilder_ == null) {
+                        ensureItemsIsMutable();
+                        items_.add(index, builderForValue.build());
+                        onChanged();
+                    } else {
+                        itemsBuilder_.addMessage(index, builderForValue.build());
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder addAllItems(
+                        java.lang.Iterable<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> values) {
+                    if (itemsBuilder_ == null) {
+                        ensureItemsIsMutable();
+                        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                                values, items_);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.addAllMessages(values);
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder clearItems() {
+                    if (itemsBuilder_ == null) {
+                        items_ = java.util.Collections.emptyList();
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.clear();
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public Builder removeItems(int index) {
+                    if (itemsBuilder_ == null) {
+                        ensureItemsIsMutable();
+                        items_.remove(index);
+                        onChanged();
+                    } else {
+                        itemsBuilder_.remove(index);
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder getItemsBuilder(
+                        int index) {
+                    return getItemsFieldBuilder().getBuilder(index);
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
+                        int index) {
+                    if (itemsBuilder_ == null) {
+                        return items_.get(index);
+                    } else {
+                        return itemsBuilder_.getMessageOrBuilder(index);
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>
+                getItemsOrBuilderList() {
+                    if (itemsBuilder_ != null) {
+                        return itemsBuilder_.getMessageOrBuilderList();
+                    } else {
+                        return java.util.Collections.unmodifiableList(items_);
+                    }
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder addItemsBuilder() {
+                    return getItemsFieldBuilder().addBuilder(
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance());
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder addItemsBuilder(
+                        int index) {
+                    return getItemsFieldBuilder().addBuilder(
+                            index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance());
+                }
+
+                /**
+                 * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+                 */
+                public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder>
+                getItemsBuilderList() {
+                    return getItemsFieldBuilder().getBuilderList();
+                }
+
+                private com.google.protobuf.RepeatedFieldBuilderV3<
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>
+                getItemsFieldBuilder() {
+                    if (itemsBuilder_ == null) {
+                        itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>(
+                                items_,
+                                ((bitField0_ & 0x00000001) != 0),
+                                getParentForChildren(),
+                                isClean());
+                        items_ = null;
+                    }
+                    return itemsBuilder_;
+                }
+
+                @java.lang.Override
+                public final Builder setUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.setUnknownFields(unknownFields);
+                }
+
+                @java.lang.Override
+                public final Builder mergeUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.mergeUnknownFields(unknownFields);
+                }
+
+
+                // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
+            }
+
+        }
+
+        /**
+         * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UnlockedItems}
+         */
+        public static final class UnlockedItems extends
+                com.google.protobuf.GeneratedMessageV3 implements
+                // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
+                UnlockedItemsOrBuilder {
+            public static final int WEAPONS_FIELD_NUMBER = 1;
+            public static final int ARMORS_FIELD_NUMBER = 2;
+            private static final long serialVersionUID = 0L;
+            // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
+            private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems DEFAULT_INSTANCE;
+            private static final com.google.protobuf.Parser<UnlockedItems>
+                    PARSER = new com.google.protobuf.AbstractParser<UnlockedItems>() {
+                @java.lang.Override
+                public UnlockedItems parsePartialFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return new UnlockedItems(input, extensionRegistry);
+                }
+            };
+
+            static {
+                DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems();
+            }
+
+            private com.google.protobuf.LazyStringList weapons_;
+            private com.google.protobuf.LazyStringList armors_;
+            private byte memoizedIsInitialized = -1;
+            // Use UnlockedItems.newBuilder() to construct.
+            private UnlockedItems(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+                super(builder);
+            }
+
+            private UnlockedItems() {
+                weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+            }
+
+            private UnlockedItems(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                this();
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                int mutable_bitField0_ = 0;
+                com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                        com.google.protobuf.UnknownFieldSet.newBuilder();
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                                    weapons_ = new com.google.protobuf.LazyStringArrayList();
+                                    mutable_bitField0_ |= 0x00000001;
+                                }
+                                weapons_.add(s);
+                                break;
+                            }
+                            case 18: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                                    armors_ = new com.google.protobuf.LazyStringArrayList();
+                                    mutable_bitField0_ |= 0x00000002;
+                                }
+                                armors_.add(s);
+                                break;
+                            }
+                            default: {
+                                if (!parseUnknownField(
+                                        input, unknownFields, extensionRegistry, tag)) {
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(this);
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(
+                            e).setUnfinishedMessage(this);
+                } finally {
+                    if (((mutable_bitField0_ & 0x00000001) != 0)) {
+                        weapons_ = weapons_.getUnmodifiableView();
+                    }
+                    if (((mutable_bitField0_ & 0x00000002) != 0)) {
+                        armors_ = armors_.getUnmodifiableView();
+                    }
+                    this.unknownFields = unknownFields.build();
+                    makeExtensionsImmutable();
+                }
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    java.nio.ByteBuffer data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    java.nio.ByteBuffer data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    com.google.protobuf.ByteString data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    com.google.protobuf.ByteString data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(byte[] data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    byte[] data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseDelimitedFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseDelimitedFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    com.google.protobuf.CodedInputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static Builder newBuilder() {
+                return DEFAULT_INSTANCE.toBuilder();
+            }
+
+            public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems prototype) {
+                return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstance() {
+                return DEFAULT_INSTANCE;
+            }
+
+            public static com.google.protobuf.Parser<UnlockedItems> parser() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            @SuppressWarnings({"unused"})
+            protected java.lang.Object newInstance(
+                    UnusedPrivateParameter unused) {
+                return new UnlockedItems();
+            }
+
+            @java.lang.Override
+            public final com.google.protobuf.UnknownFieldSet
+            getUnknownFields() {
+                return this.unknownFields;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder.class);
+            }
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @return A list containing the weapons.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getWeaponsList() {
+                return weapons_;
+            }
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @return The count of weapons.
+             */
+            public int getWeaponsCount() {
+                return weapons_.size();
+            }
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The weapons at the given index.
+             */
+            public java.lang.String getWeapons(int index) {
+                return weapons_.get(index);
+            }
+
+            /**
+             * <code>repeated string weapons = 1;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the weapons at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getWeaponsBytes(int index) {
+                return weapons_.getByteString(index);
+            }
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @return A list containing the armors.
+             */
+            public com.google.protobuf.ProtocolStringList
+            getArmorsList() {
+                return armors_;
+            }
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @return The count of armors.
+             */
+            public int getArmorsCount() {
+                return armors_.size();
+            }
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @param index The index of the element to return.
+             * @return The armors at the given index.
+             */
+            public java.lang.String getArmors(int index) {
+                return armors_.get(index);
+            }
+
+            /**
+             * <code>repeated string armors = 2;</code>
+             *
+             * @param index The index of the value to return.
+             * @return The bytes of the armors at the given index.
+             */
+            public com.google.protobuf.ByteString
+            getArmorsBytes(int index) {
+                return armors_.getByteString(index);
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                byte isInitialized = memoizedIsInitialized;
+                if (isInitialized == 1) return true;
+                if (isInitialized == 0) return false;
+
+                memoizedIsInitialized = 1;
+                return true;
+            }
+
+            @java.lang.Override
+            public void writeTo(com.google.protobuf.CodedOutputStream output)
+                    throws java.io.IOException {
+                for (int i = 0; i < weapons_.size(); i++) {
+                    com.google.protobuf.GeneratedMessageV3.writeString(output, 1, weapons_.getRaw(i));
+                }
+                for (int i = 0; i < armors_.size(); i++) {
+                    com.google.protobuf.GeneratedMessageV3.writeString(output, 2, armors_.getRaw(i));
+                }
+                unknownFields.writeTo(output);
+            }
+
+            @java.lang.Override
+            public int getSerializedSize() {
+                int size = memoizedSize;
+                if (size != -1) return size;
+
+                size = 0;
+                {
+                    int dataSize = 0;
+                    for (int i = 0; i < weapons_.size(); i++) {
+                        dataSize += computeStringSizeNoTag(weapons_.getRaw(i));
+                    }
+                    size += dataSize;
+                    size += 1 * getWeaponsList().size();
+                }
+                {
+                    int dataSize = 0;
+                    for (int i = 0; i < armors_.size(); i++) {
+                        dataSize += computeStringSizeNoTag(armors_.getRaw(i));
+                    }
+                    size += dataSize;
+                    size += 1 * getArmorsList().size();
+                }
+                size += unknownFields.getSerializedSize();
+                memoizedSize = size;
+                return size;
+            }
+
+            @java.lang.Override
+            public boolean equals(final java.lang.Object obj) {
+                if (obj == this) {
+                    return true;
+                }
+                if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems)) {
+                    return super.equals(obj);
+                }
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) obj;
+
+                if (!getWeaponsList()
+                        .equals(other.getWeaponsList())) return false;
+                if (!getArmorsList()
+                        .equals(other.getArmorsList())) return false;
+                if (!unknownFields.equals(other.unknownFields)) return false;
+                return true;
+            }
+
+            @java.lang.Override
+            public int hashCode() {
+                if (memoizedHashCode != 0) {
+                    return memoizedHashCode;
+                }
+                int hash = 41;
+                hash = (19 * hash) + getDescriptor().hashCode();
+                if (getWeaponsCount() > 0) {
+                    hash = (37 * hash) + WEAPONS_FIELD_NUMBER;
+                    hash = (53 * hash) + getWeaponsList().hashCode();
+                }
+                if (getArmorsCount() > 0) {
+                    hash = (37 * hash) + ARMORS_FIELD_NUMBER;
+                    hash = (53 * hash) + getArmorsList().hashCode();
+                }
+                hash = (29 * hash) + unknownFields.hashCode();
+                memoizedHashCode = hash;
+                return hash;
+            }
+
+            @java.lang.Override
+            public Builder newBuilderForType() {
+                return newBuilder();
+            }
+
+            @java.lang.Override
+            public Builder toBuilder() {
+                return this == DEFAULT_INSTANCE
+                        ? new Builder() : new Builder().mergeFrom(this);
+            }
+
+            @java.lang.Override
+            protected Builder newBuilderForType(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                Builder builder = new Builder(parent);
+                return builder;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Parser<UnlockedItems> getParserForType() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstanceForType() {
+                return DEFAULT_INSTANCE;
+            }
+
+            /**
+             * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UnlockedItems}
+             */
+            public static final class Builder extends
+                    com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                    // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder {
+                private int bitField0_;
+                private com.google.protobuf.LazyStringList weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                private com.google.protobuf.LazyStringList armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+
+                // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.newBuilder()
+                private Builder() {
+                    maybeForceBuilderInitialization();
+                }
+
+                private Builder(
+                        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                    super(parent);
+                    maybeForceBuilderInitialization();
+                }
+
+                public static final com.google.protobuf.Descriptors.Descriptor
+                getDescriptor() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
+                }
+
+                @java.lang.Override
+                protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+                internalGetFieldAccessorTable() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable
+                            .ensureFieldAccessorsInitialized(
+                                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder.class);
+                }
+
+                private void maybeForceBuilderInitialization() {
+                    if (com.google.protobuf.GeneratedMessageV3
+                            .alwaysUseFieldBuilders) {
+                    }
+                }
+
+                @java.lang.Override
+                public Builder clear() {
+                    super.clear();
+                    weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    return this;
+                }
+
+                @java.lang.Override
+                public com.google.protobuf.Descriptors.Descriptor
+                getDescriptorForType() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstanceForType() {
+                    return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance();
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems build() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems result = buildPartial();
+                    if (!result.isInitialized()) {
+                        throw newUninitializedMessageException(result);
+                    }
+                    return result;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems buildPartial() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems(this);
+                    int from_bitField0_ = bitField0_;
+                    if (((bitField0_ & 0x00000001) != 0)) {
+                        weapons_ = weapons_.getUnmodifiableView();
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    }
+                    result.weapons_ = weapons_;
+                    if (((bitField0_ & 0x00000002) != 0)) {
+                        armors_ = armors_.getUnmodifiableView();
+                        bitField0_ = (bitField0_ & ~0x00000002);
+                    }
+                    result.armors_ = armors_;
+                    onBuilt();
+                    return result;
+                }
+
+                @java.lang.Override
+                public Builder clone() {
+                    return super.clone();
+                }
+
+                @java.lang.Override
+                public Builder setField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.setField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder clearField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field) {
+                    return super.clearField(field);
+                }
+
+                @java.lang.Override
+                public Builder clearOneof(
+                        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                    return super.clearOneof(oneof);
+                }
+
+                @java.lang.Override
+                public Builder setRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        int index, java.lang.Object value) {
+                    return super.setRepeatedField(field, index, value);
+                }
+
+                @java.lang.Override
+                public Builder addRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.addRepeatedField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(com.google.protobuf.Message other) {
+                    if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) {
+                        return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) other);
+                    } else {
+                        super.mergeFrom(other);
+                        return this;
+                    }
+                }
+
+                public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems other) {
+                    if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance())
+                        return this;
+                    if (!other.weapons_.isEmpty()) {
+                        if (weapons_.isEmpty()) {
+                            weapons_ = other.weapons_;
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                        } else {
+                            ensureWeaponsIsMutable();
+                            weapons_.addAll(other.weapons_);
+                        }
+                        onChanged();
+                    }
+                    if (!other.armors_.isEmpty()) {
+                        if (armors_.isEmpty()) {
+                            armors_ = other.armors_;
+                            bitField0_ = (bitField0_ & ~0x00000002);
+                        } else {
+                            ensureArmorsIsMutable();
+                            armors_.addAll(other.armors_);
+                        }
+                        onChanged();
+                    }
+                    this.mergeUnknownFields(other.unknownFields);
+                    onChanged();
+                    return this;
+                }
+
+                @java.lang.Override
+                public final boolean isInitialized() {
+                    return true;
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parsedMessage = null;
+                    try {
+                        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) e.getUnfinishedMessage();
+                        throw e.unwrapIOException();
+                    } finally {
+                        if (parsedMessage != null) {
+                            mergeFrom(parsedMessage);
+                        }
+                    }
+                    return this;
+                }
+
+                private void ensureWeaponsIsMutable() {
+                    if (!((bitField0_ & 0x00000001) != 0)) {
+                        weapons_ = new com.google.protobuf.LazyStringArrayList(weapons_);
+                        bitField0_ |= 0x00000001;
+                    }
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @return A list containing the weapons.
+                 */
+                public com.google.protobuf.ProtocolStringList
+                getWeaponsList() {
+                    return weapons_.getUnmodifiableView();
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @return The count of weapons.
+                 */
+                public int getWeaponsCount() {
+                    return weapons_.size();
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param index The index of the element to return.
+                 * @return The weapons at the given index.
+                 */
+                public java.lang.String getWeapons(int index) {
+                    return weapons_.get(index);
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param index The index of the value to return.
+                 * @return The bytes of the weapons at the given index.
+                 */
+                public com.google.protobuf.ByteString
+                getWeaponsBytes(int index) {
+                    return weapons_.getByteString(index);
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param index The index to set the value at.
+                 * @param value The weapons to set.
+                 * @return This builder for chaining.
+                 */
+                public Builder setWeapons(
+                        int index, java.lang.String value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureWeaponsIsMutable();
+                    weapons_.set(index, value);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param value The weapons to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addWeapons(
+                        java.lang.String value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureWeaponsIsMutable();
+                    weapons_.add(value);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param values The weapons to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addAllWeapons(
+                        java.lang.Iterable<java.lang.String> values) {
+                    ensureWeaponsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, weapons_);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @return This builder for chaining.
+                 */
+                public Builder clearWeapons() {
+                    weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string weapons = 1;</code>
+                 *
+                 * @param value The bytes of the weapons to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addWeaponsBytes(
+                        com.google.protobuf.ByteString value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    checkByteStringIsUtf8(value);
+                    ensureWeaponsIsMutable();
+                    weapons_.add(value);
+                    onChanged();
+                    return this;
+                }
+
+                private void ensureArmorsIsMutable() {
+                    if (!((bitField0_ & 0x00000002) != 0)) {
+                        armors_ = new com.google.protobuf.LazyStringArrayList(armors_);
+                        bitField0_ |= 0x00000002;
+                    }
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @return A list containing the armors.
+                 */
+                public com.google.protobuf.ProtocolStringList
+                getArmorsList() {
+                    return armors_.getUnmodifiableView();
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @return The count of armors.
+                 */
+                public int getArmorsCount() {
+                    return armors_.size();
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param index The index of the element to return.
+                 * @return The armors at the given index.
+                 */
+                public java.lang.String getArmors(int index) {
+                    return armors_.get(index);
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param index The index of the value to return.
+                 * @return The bytes of the armors at the given index.
+                 */
+                public com.google.protobuf.ByteString
+                getArmorsBytes(int index) {
+                    return armors_.getByteString(index);
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param index The index to set the value at.
+                 * @param value The armors to set.
+                 * @return This builder for chaining.
+                 */
+                public Builder setArmors(
+                        int index, java.lang.String value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureArmorsIsMutable();
+                    armors_.set(index, value);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param value The armors to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addArmors(
+                        java.lang.String value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureArmorsIsMutable();
+                    armors_.add(value);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param values The armors to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addAllArmors(
+                        java.lang.Iterable<java.lang.String> values) {
+                    ensureArmorsIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, armors_);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @return This builder for chaining.
+                 */
+                public Builder clearArmors() {
+                    armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>repeated string armors = 2;</code>
+                 *
+                 * @param value The bytes of the armors to add.
+                 * @return This builder for chaining.
+                 */
+                public Builder addArmorsBytes(
+                        com.google.protobuf.ByteString value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    checkByteStringIsUtf8(value);
+                    ensureArmorsIsMutable();
+                    armors_.add(value);
+                    onChanged();
+                    return this;
+                }
+
+                @java.lang.Override
+                public final Builder setUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.setUnknownFields(unknownFields);
+                }
+
+                @java.lang.Override
+                public final Builder mergeUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.mergeUnknownFields(unknownFields);
+                }
+
+
+                // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
+            }
+
+        }
+
+        /**
+         * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment}
          */
         public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment)
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder {
+            private int bitField0_;
+            private java.lang.Object weapon1_ = "";
+            private java.lang.Object weapon2_ = "";
+            private java.lang.Object armor1_ = "";
+            private java.lang.Object armor2_ = "";
+            private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory utilities_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder> utilitiesBuilder_;
+            private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems_;
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder> unlockItemsBuilder_;
+
+            // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder.class);
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                    getUtilitiesFieldBuilder();
+                    getUnlockItemsFieldBuilder();
+                }
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                weapon1_ = "";
+                bitField0_ = (bitField0_ & ~0x00000001);
+                weapon2_ = "";
+                bitField0_ = (bitField0_ & ~0x00000002);
+                armor1_ = "";
+                bitField0_ = (bitField0_ & ~0x00000004);
+                armor2_ = "";
+                bitField0_ = (bitField0_ & ~0x00000008);
+                if (utilitiesBuilder_ == null) {
+                    utilities_ = null;
+                } else {
+                    utilitiesBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000010);
+                if (unlockItemsBuilder_ == null) {
+                    unlockItems_ = null;
+                } else {
+                    unlockItemsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000020);
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstanceForType() {
+                return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment build() {
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment buildPartial() {
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) != 0)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.weapon1_ = weapon1_;
+                if (((from_bitField0_ & 0x00000002) != 0)) {
+                    to_bitField0_ |= 0x00000002;
+                }
+                result.weapon2_ = weapon2_;
+                if (((from_bitField0_ & 0x00000004) != 0)) {
+                    to_bitField0_ |= 0x00000004;
+                }
+                result.armor1_ = armor1_;
+                if (((from_bitField0_ & 0x00000008) != 0)) {
+                    to_bitField0_ |= 0x00000008;
+                }
+                result.armor2_ = armor2_;
+                if (((from_bitField0_ & 0x00000010) != 0)) {
+                    if (utilitiesBuilder_ == null) {
+                        result.utilities_ = utilities_;
+                    } else {
+                        result.utilities_ = utilitiesBuilder_.build();
+                    }
+                    to_bitField0_ |= 0x00000010;
+                }
+                if (((from_bitField0_ & 0x00000020) != 0)) {
+                    if (unlockItemsBuilder_ == null) {
+                        result.unlockItems_ = unlockItems_;
+                    } else {
+                        result.unlockItems_ = unlockItemsBuilder_.build();
+                    }
+                    to_bitField0_ |= 0x00000020;
+                }
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) {
+                    return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment other) {
+                if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance())
+                    return this;
+                if (other.hasWeapon1()) {
+                    bitField0_ |= 0x00000001;
+                    weapon1_ = other.weapon1_;
+                    onChanged();
+                }
+                if (other.hasWeapon2()) {
+                    bitField0_ |= 0x00000002;
+                    weapon2_ = other.weapon2_;
+                    onChanged();
+                }
+                if (other.hasArmor1()) {
+                    bitField0_ |= 0x00000004;
+                    armor1_ = other.armor1_;
+                    onChanged();
+                }
+                if (other.hasArmor2()) {
+                    bitField0_ |= 0x00000008;
+                    armor2_ = other.armor2_;
+                    onChanged();
+                }
+                if (other.hasUtilities()) {
+                    mergeUtilities(other.getUtilities());
+                }
+                if (other.hasUnlockItems()) {
+                    mergeUnlockItems(other.getUnlockItems());
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @return Whether the weapon1 field is set.
+             */
+            public boolean hasWeapon1() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @return The weapon1.
+             */
+            public java.lang.String getWeapon1() {
+                java.lang.Object ref = weapon1_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    weapon1_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @param value The weapon1 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWeapon1(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000001;
+                weapon1_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @return The bytes for weapon1.
+             */
+            public com.google.protobuf.ByteString
+            getWeapon1Bytes() {
+                java.lang.Object ref = weapon1_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    weapon1_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @param value The bytes for weapon1 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWeapon1Bytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                bitField0_ |= 0x00000001;
+                weapon1_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon1 = 1;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearWeapon1() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                weapon1_ = getDefaultInstance().getWeapon1();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @return Whether the weapon2 field is set.
+             */
+            public boolean hasWeapon2() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @return The weapon2.
+             */
+            public java.lang.String getWeapon2() {
+                java.lang.Object ref = weapon2_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    weapon2_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @param value The weapon2 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWeapon2(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000002;
+                weapon2_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @return The bytes for weapon2.
+             */
+            public com.google.protobuf.ByteString
+            getWeapon2Bytes() {
+                java.lang.Object ref = weapon2_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    weapon2_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @param value The bytes for weapon2 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setWeapon2Bytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                bitField0_ |= 0x00000002;
+                weapon2_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string weapon2 = 2;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearWeapon2() {
+                bitField0_ = (bitField0_ & ~0x00000002);
+                weapon2_ = getDefaultInstance().getWeapon2();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @return Whether the armor1 field is set.
+             */
+            public boolean hasArmor1() {
+                return ((bitField0_ & 0x00000004) != 0);
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @return The armor1.
+             */
+            public java.lang.String getArmor1() {
+                java.lang.Object ref = armor1_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    armor1_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @param value The armor1 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setArmor1(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000004;
+                armor1_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @return The bytes for armor1.
+             */
+            public com.google.protobuf.ByteString
+            getArmor1Bytes() {
+                java.lang.Object ref = armor1_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    armor1_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @param value The bytes for armor1 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setArmor1Bytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                bitField0_ |= 0x00000004;
+                armor1_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor1 = 3;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearArmor1() {
+                bitField0_ = (bitField0_ & ~0x00000004);
+                armor1_ = getDefaultInstance().getArmor1();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @return Whether the armor2 field is set.
+             */
+            public boolean hasArmor2() {
+                return ((bitField0_ & 0x00000008) != 0);
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @return The armor2.
+             */
+            public java.lang.String getArmor2() {
+                java.lang.Object ref = armor2_;
+                if (!(ref instanceof java.lang.String)) {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    armor2_ = s;
+                    return s;
+                } else {
+                    return (java.lang.String) ref;
+                }
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @param value The armor2 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setArmor2(
+                    java.lang.String value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                bitField0_ |= 0x00000008;
+                armor2_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @return The bytes for armor2.
+             */
+            public com.google.protobuf.ByteString
+            getArmor2Bytes() {
+                java.lang.Object ref = armor2_;
+                if (ref instanceof String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    armor2_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @param value The bytes for armor2 to set.
+             * @return This builder for chaining.
+             */
+            public Builder setArmor2Bytes(
+                    com.google.protobuf.ByteString value) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                checkByteStringIsUtf8(value);
+                bitField0_ |= 0x00000008;
+                armor2_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional string armor2 = 4;</code>
+             *
+             * @return This builder for chaining.
+             */
+            public Builder clearArmor2() {
+                bitField0_ = (bitField0_ & ~0x00000008);
+                armor2_ = getDefaultInstance().getArmor2();
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             *
+             * @return Whether the utilities field is set.
+             */
+            public boolean hasUtilities() {
+                return ((bitField0_ & 0x00000010) != 0);
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             *
+             * @return The utilities.
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities() {
+                if (utilitiesBuilder_ == null) {
+                    return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
+                } else {
+                    return utilitiesBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public Builder setUtilities(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory value) {
+                if (utilitiesBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    utilities_ = value;
+                    onChanged();
+                } else {
+                    utilitiesBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public Builder setUtilities(
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder builderForValue) {
+                if (utilitiesBuilder_ == null) {
+                    utilities_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    utilitiesBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public Builder mergeUtilities(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory value) {
+                if (utilitiesBuilder_ == null) {
+                    if (((bitField0_ & 0x00000010) != 0) &&
+                            utilities_ != null &&
+                            utilities_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance()) {
+                        utilities_ =
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.newBuilder(utilities_).mergeFrom(value).buildPartial();
+                    } else {
+                        utilities_ = value;
+                    }
+                    onChanged();
+                } else {
+                    utilitiesBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000010;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public Builder clearUtilities() {
+                if (utilitiesBuilder_ == null) {
+                    utilities_ = null;
+                    onChanged();
+                } else {
+                    utilitiesBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000010);
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder getUtilitiesBuilder() {
+                bitField0_ |= 0x00000010;
+                onChanged();
+                return getUtilitiesFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder() {
+                if (utilitiesBuilder_ != null) {
+                    return utilitiesBuilder_.getMessageOrBuilder();
+                } else {
+                    return utilities_ == null ?
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
+                }
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder>
+            getUtilitiesFieldBuilder() {
+                if (utilitiesBuilder_ == null) {
+                    utilitiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder>(
+                            getUtilities(),
+                            getParentForChildren(),
+                            isClean());
+                    utilities_ = null;
+                }
+                return utilitiesBuilder_;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             *
+             * @return Whether the unlockItems field is set.
+             */
+            public boolean hasUnlockItems() {
+                return ((bitField0_ & 0x00000020) != 0);
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             *
+             * @return The unlockItems.
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems() {
+                if (unlockItemsBuilder_ == null) {
+                    return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
+                } else {
+                    return unlockItemsBuilder_.getMessage();
+                }
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public Builder setUnlockItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems value) {
+                if (unlockItemsBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    unlockItems_ = value;
+                    onChanged();
+                } else {
+                    unlockItemsBuilder_.setMessage(value);
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public Builder setUnlockItems(
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder builderForValue) {
+                if (unlockItemsBuilder_ == null) {
+                    unlockItems_ = builderForValue.build();
+                    onChanged();
+                } else {
+                    unlockItemsBuilder_.setMessage(builderForValue.build());
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public Builder mergeUnlockItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems value) {
+                if (unlockItemsBuilder_ == null) {
+                    if (((bitField0_ & 0x00000020) != 0) &&
+                            unlockItems_ != null &&
+                            unlockItems_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance()) {
+                        unlockItems_ =
+                                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.newBuilder(unlockItems_).mergeFrom(value).buildPartial();
+                    } else {
+                        unlockItems_ = value;
+                    }
+                    onChanged();
+                } else {
+                    unlockItemsBuilder_.mergeFrom(value);
+                }
+                bitField0_ |= 0x00000020;
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public Builder clearUnlockItems() {
+                if (unlockItemsBuilder_ == null) {
+                    unlockItems_ = null;
+                    onChanged();
+                } else {
+                    unlockItemsBuilder_.clear();
+                }
+                bitField0_ = (bitField0_ & ~0x00000020);
+                return this;
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder getUnlockItemsBuilder() {
+                bitField0_ |= 0x00000020;
+                onChanged();
+                return getUnlockItemsFieldBuilder().getBuilder();
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder() {
+                if (unlockItemsBuilder_ != null) {
+                    return unlockItemsBuilder_.getMessageOrBuilder();
+                } else {
+                    return unlockItems_ == null ?
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
+                }
+            }
+
+            /**
+             * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
+             */
+            private com.google.protobuf.SingleFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder>
+            getUnlockItemsFieldBuilder() {
+                if (unlockItemsBuilder_ == null) {
+                    unlockItemsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder>(
+                            getUnlockItems(),
+                            getParentForChildren(),
+                            isClean());
+                    unlockItems_ = null;
+                }
+                return unlockItemsBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment)
+        }
+
+    }
+
+    /**
+     * Protobuf type {@code shapewars.PlayerInfo.AmmoManager}
+     */
+    public static final class AmmoManager extends
+            com.google.protobuf.GeneratedMessageV3 implements
+            // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.AmmoManager)
+            AmmoManagerOrBuilder {
+        public static final int AMMOREMAINING_FIELD_NUMBER = 1;
+        private static final long serialVersionUID = 0L;
+        // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.AmmoManager)
+        private static final me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager DEFAULT_INSTANCE;
+        private static final com.google.protobuf.Parser<AmmoManager>
+                PARSER = new com.google.protobuf.AbstractParser<AmmoManager>() {
+            @java.lang.Override
+            public AmmoManager parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return new AmmoManager(input, extensionRegistry);
+            }
+        };
+
+        static {
+            DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager();
+        }
+
+        private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> ammoRemaining_;
+        private byte memoizedIsInitialized = -1;
+
+        // Use AmmoManager.newBuilder() to construct.
+        private AmmoManager(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+            super(builder);
+        }
+
+        private AmmoManager() {
+            ammoRemaining_ = java.util.Collections.emptyList();
+        }
+
+        private AmmoManager(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            this();
+            if (extensionRegistry == null) {
+                throw new java.lang.NullPointerException();
+            }
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                    com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        case 10: {
+                            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                                ammoRemaining_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo>();
+                                mutable_bitField0_ |= 0x00000001;
+                            }
+                            ammoRemaining_.add(
+                                    input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.parser(), extensionRegistry));
+                            break;
+                        }
+                        default: {
+                            if (!parseUnknownField(
+                                    input, unknownFields, extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+                throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                        e).setUnfinishedMessage(this);
+            } finally {
+                if (((mutable_bitField0_ & 0x00000001) != 0)) {
+                    ammoRemaining_ = java.util.Collections.unmodifiableList(ammoRemaining_);
+                }
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                java.nio.ByteBuffer data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                java.nio.ByteBuffer data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                com.google.protobuf.ByteString data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                com.google.protobuf.ByteString data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(byte[] data)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                byte[] data,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseDelimitedFrom(java.io.InputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseDelimitedFrom(
+                java.io.InputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                com.google.protobuf.CodedInputStream input)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            return com.google.protobuf.GeneratedMessageV3
+                    .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return DEFAULT_INSTANCE.toBuilder();
+        }
+
+        public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager prototype) {
+            return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+
+        public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstance() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public static com.google.protobuf.Parser<AmmoManager> parser() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+                UnusedPrivateParameter unused) {
+            return new AmmoManager();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder.class);
+        }
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        @java.lang.Override
+        public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> getAmmoRemainingList() {
+            return ammoRemaining_;
+        }
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        @java.lang.Override
+        public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>
+        getAmmoRemainingOrBuilderList() {
+            return ammoRemaining_;
+        }
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        @java.lang.Override
+        public int getAmmoRemainingCount() {
+            return ammoRemaining_.size();
+        }
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index) {
+            return ammoRemaining_.get(index);
+        }
+
+        /**
+         * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+         */
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
+                int index) {
+            return ammoRemaining_.get(index);
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized == 1) return true;
+            if (isInitialized == 0) return false;
+
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                throws java.io.IOException {
+            for (int i = 0; i < ammoRemaining_.size(); i++) {
+                output.writeMessage(1, ammoRemaining_.get(i));
+            }
+            unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+            int size = memoizedSize;
+            if (size != -1) return size;
+
+            size = 0;
+            for (int i = 0; i < ammoRemaining_.size(); i++) {
+                size += com.google.protobuf.CodedOutputStream
+                        .computeMessageSize(1, ammoRemaining_.get(i));
+            }
+            size += unknownFields.getSerializedSize();
+            memoizedSize = size;
+            return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+            if (obj == this) {
+                return true;
+            }
+            if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager)) {
+                return super.equals(obj);
+            }
+            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager other = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) obj;
+
+            if (!getAmmoRemainingList()
+                    .equals(other.getAmmoRemainingList())) return false;
+            if (!unknownFields.equals(other.unknownFields)) return false;
+            return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+            if (memoizedHashCode != 0) {
+                return memoizedHashCode;
+            }
+            int hash = 41;
+            hash = (19 * hash) + getDescriptor().hashCode();
+            if (getAmmoRemainingCount() > 0) {
+                hash = (37 * hash) + AMMOREMAINING_FIELD_NUMBER;
+                hash = (53 * hash) + getAmmoRemainingList().hashCode();
+            }
+            hash = (29 * hash) + unknownFields.hashCode();
+            memoizedHashCode = hash;
+            return hash;
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        @java.lang.Override
+        public Builder toBuilder() {
+            return this == DEFAULT_INSTANCE
+                    ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<AmmoManager> getParserForType() {
+            return PARSER;
+        }
+
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstanceForType() {
+            return DEFAULT_INSTANCE;
+        }
+
+        public interface GunInfoOrBuilder extends
+                // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.AmmoManager.GunInfo)
+                com.google.protobuf.MessageOrBuilder {
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return Whether the type field is set.
+             */
+            boolean hasType();
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return The type.
+             */
+            java.lang.String getType();
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return The bytes for type.
+             */
+            com.google.protobuf.ByteString
+            getTypeBytes();
+
+            /**
+             * <code>optional int32 remaining = 2;</code>
+             *
+             * @return Whether the remaining field is set.
+             */
+            boolean hasRemaining();
+
+            /**
+             * <code>optional int32 remaining = 2;</code>
+             *
+             * @return The remaining.
+             */
+            int getRemaining();
+        }
+
+        /**
+         * Protobuf type {@code shapewars.PlayerInfo.AmmoManager.GunInfo}
+         */
+        public static final class GunInfo extends
+                com.google.protobuf.GeneratedMessageV3 implements
+                // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.AmmoManager.GunInfo)
+                GunInfoOrBuilder {
+            public static final int TYPE_FIELD_NUMBER = 1;
+            public static final int REMAINING_FIELD_NUMBER = 2;
+            private static final long serialVersionUID = 0L;
+            // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.AmmoManager.GunInfo)
+            private static final me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo DEFAULT_INSTANCE;
+            private static final com.google.protobuf.Parser<GunInfo>
+                    PARSER = new com.google.protobuf.AbstractParser<GunInfo>() {
+                @java.lang.Override
+                public GunInfo parsePartialFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws com.google.protobuf.InvalidProtocolBufferException {
+                    return new GunInfo(input, extensionRegistry);
+                }
+            };
+
+            static {
+                DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo();
+            }
+
+            private int bitField0_;
+            private volatile java.lang.Object type_;
+            private int remaining_;
+            private byte memoizedIsInitialized = -1;
+            // Use GunInfo.newBuilder() to construct.
+            private GunInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+                super(builder);
+            }
+
+            private GunInfo() {
+                type_ = "";
+            }
+
+            private GunInfo(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                this();
+                if (extensionRegistry == null) {
+                    throw new java.lang.NullPointerException();
+                }
+                int mutable_bitField0_ = 0;
+                com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                        com.google.protobuf.UnknownFieldSet.newBuilder();
+                try {
+                    boolean done = false;
+                    while (!done) {
+                        int tag = input.readTag();
+                        switch (tag) {
+                            case 0:
+                                done = true;
+                                break;
+                            case 10: {
+                                java.lang.String s = input.readStringRequireUtf8();
+                                bitField0_ |= 0x00000001;
+                                type_ = s;
+                                break;
+                            }
+                            case 16: {
+                                bitField0_ |= 0x00000002;
+                                remaining_ = input.readInt32();
+                                break;
+                            }
+                            default: {
+                                if (!parseUnknownField(
+                                        input, unknownFields, extensionRegistry, tag)) {
+                                    done = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    throw e.setUnfinishedMessage(this);
+                } catch (com.google.protobuf.UninitializedMessageException e) {
+                    throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+                } catch (java.io.IOException e) {
+                    throw new com.google.protobuf.InvalidProtocolBufferException(
+                            e).setUnfinishedMessage(this);
+                } finally {
+                    this.unknownFields = unknownFields.build();
+                    makeExtensionsImmutable();
+                }
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    java.nio.ByteBuffer data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    java.nio.ByteBuffer data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    com.google.protobuf.ByteString data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    com.google.protobuf.ByteString data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(byte[] data)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    byte[] data,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                return PARSER.parseFrom(data, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseDelimitedFrom(java.io.InputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseDelimitedFrom(
+                    java.io.InputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    com.google.protobuf.CodedInputStream input)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                return com.google.protobuf.GeneratedMessageV3
+                        .parseWithIOException(PARSER, input, extensionRegistry);
+            }
+
+            public static Builder newBuilder() {
+                return DEFAULT_INSTANCE.toBuilder();
+            }
+
+            public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo prototype) {
+                return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+            }
+
+            public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstance() {
+                return DEFAULT_INSTANCE;
+            }
+
+            public static com.google.protobuf.Parser<GunInfo> parser() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            @SuppressWarnings({"unused"})
+            protected java.lang.Object newInstance(
+                    UnusedPrivateParameter unused) {
+                return new GunInfo();
+            }
+
+            @java.lang.Override
+            public final com.google.protobuf.UnknownFieldSet
+            getUnknownFields() {
+                return this.unknownFields;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder.class);
+            }
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return Whether the type field is set.
+             */
+            @java.lang.Override
+            public boolean hasType() {
+                return ((bitField0_ & 0x00000001) != 0);
+            }
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return The type.
+             */
+            @java.lang.Override
+            public java.lang.String getType() {
+                java.lang.Object ref = type_;
+                if (ref instanceof java.lang.String) {
+                    return (java.lang.String) ref;
+                } else {
+                    com.google.protobuf.ByteString bs =
+                            (com.google.protobuf.ByteString) ref;
+                    java.lang.String s = bs.toStringUtf8();
+                    type_ = s;
+                    return s;
+                }
+            }
+
+            /**
+             * <code>optional string type = 1;</code>
+             *
+             * @return The bytes for type.
+             */
+            @java.lang.Override
+            public com.google.protobuf.ByteString
+            getTypeBytes() {
+                java.lang.Object ref = type_;
+                if (ref instanceof java.lang.String) {
+                    com.google.protobuf.ByteString b =
+                            com.google.protobuf.ByteString.copyFromUtf8(
+                                    (java.lang.String) ref);
+                    type_ = b;
+                    return b;
+                } else {
+                    return (com.google.protobuf.ByteString) ref;
+                }
+            }
+
+            /**
+             * <code>optional int32 remaining = 2;</code>
+             *
+             * @return Whether the remaining field is set.
+             */
+            @java.lang.Override
+            public boolean hasRemaining() {
+                return ((bitField0_ & 0x00000002) != 0);
+            }
+
+            /**
+             * <code>optional int32 remaining = 2;</code>
+             *
+             * @return The remaining.
+             */
+            @java.lang.Override
+            public int getRemaining() {
+                return remaining_;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                byte isInitialized = memoizedIsInitialized;
+                if (isInitialized == 1) return true;
+                if (isInitialized == 0) return false;
+
+                memoizedIsInitialized = 1;
+                return true;
+            }
+
+            @java.lang.Override
+            public void writeTo(com.google.protobuf.CodedOutputStream output)
+                    throws java.io.IOException {
+                if (((bitField0_ & 0x00000001) != 0)) {
+                    com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
+                }
+                if (((bitField0_ & 0x00000002) != 0)) {
+                    output.writeInt32(2, remaining_);
+                }
+                unknownFields.writeTo(output);
+            }
+
+            @java.lang.Override
+            public int getSerializedSize() {
+                int size = memoizedSize;
+                if (size != -1) return size;
+
+                size = 0;
+                if (((bitField0_ & 0x00000001) != 0)) {
+                    size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
+                }
+                if (((bitField0_ & 0x00000002) != 0)) {
+                    size += com.google.protobuf.CodedOutputStream
+                            .computeInt32Size(2, remaining_);
+                }
+                size += unknownFields.getSerializedSize();
+                memoizedSize = size;
+                return size;
+            }
+
+            @java.lang.Override
+            public boolean equals(final java.lang.Object obj) {
+                if (obj == this) {
+                    return true;
+                }
+                if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo)) {
+                    return super.equals(obj);
+                }
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo other = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) obj;
+
+                if (hasType() != other.hasType()) return false;
+                if (hasType()) {
+                    if (!getType()
+                            .equals(other.getType())) return false;
+                }
+                if (hasRemaining() != other.hasRemaining()) return false;
+                if (hasRemaining()) {
+                    if (getRemaining()
+                            != other.getRemaining()) return false;
+                }
+                if (!unknownFields.equals(other.unknownFields)) return false;
+                return true;
+            }
+
+            @java.lang.Override
+            public int hashCode() {
+                if (memoizedHashCode != 0) {
+                    return memoizedHashCode;
+                }
+                int hash = 41;
+                hash = (19 * hash) + getDescriptor().hashCode();
+                if (hasType()) {
+                    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+                    hash = (53 * hash) + getType().hashCode();
+                }
+                if (hasRemaining()) {
+                    hash = (37 * hash) + REMAINING_FIELD_NUMBER;
+                    hash = (53 * hash) + getRemaining();
+                }
+                hash = (29 * hash) + unknownFields.hashCode();
+                memoizedHashCode = hash;
+                return hash;
+            }
+
+            @java.lang.Override
+            public Builder newBuilderForType() {
+                return newBuilder();
+            }
+
+            @java.lang.Override
+            public Builder toBuilder() {
+                return this == DEFAULT_INSTANCE
+                        ? new Builder() : new Builder().mergeFrom(this);
+            }
+
+            @java.lang.Override
+            protected Builder newBuilderForType(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                Builder builder = new Builder(parent);
+                return builder;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Parser<GunInfo> getParserForType() {
+                return PARSER;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstanceForType() {
+                return DEFAULT_INSTANCE;
+            }
+
+            /**
+             * Protobuf type {@code shapewars.PlayerInfo.AmmoManager.GunInfo}
+             */
+            public static final class Builder extends
+                    com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                    // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.AmmoManager.GunInfo)
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder {
+                private int bitField0_;
+                private java.lang.Object type_ = "";
+                private int remaining_;
+
+                // Construct using me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.newBuilder()
+                private Builder() {
+                    maybeForceBuilderInitialization();
+                }
+
+                private Builder(
+                        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                    super(parent);
+                    maybeForceBuilderInitialization();
+                }
+
+                public static final com.google.protobuf.Descriptors.Descriptor
+                getDescriptor() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
+                }
+
+                @java.lang.Override
+                protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+                internalGetFieldAccessorTable() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable
+                            .ensureFieldAccessorsInitialized(
+                                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder.class);
+                }
+
+                private void maybeForceBuilderInitialization() {
+                    if (com.google.protobuf.GeneratedMessageV3
+                            .alwaysUseFieldBuilders) {
+                    }
+                }
+
+                @java.lang.Override
+                public Builder clear() {
+                    super.clear();
+                    type_ = "";
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    remaining_ = 0;
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    return this;
+                }
+
+                @java.lang.Override
+                public com.google.protobuf.Descriptors.Descriptor
+                getDescriptorForType() {
+                    return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstanceForType() {
+                    return me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance();
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo build() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo result = buildPartial();
+                    if (!result.isInitialized()) {
+                        throw newUninitializedMessageException(result);
+                    }
+                    return result;
+                }
+
+                @java.lang.Override
+                public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo buildPartial() {
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo result = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo(this);
+                    int from_bitField0_ = bitField0_;
+                    int to_bitField0_ = 0;
+                    if (((from_bitField0_ & 0x00000001) != 0)) {
+                        to_bitField0_ |= 0x00000001;
+                    }
+                    result.type_ = type_;
+                    if (((from_bitField0_ & 0x00000002) != 0)) {
+                        result.remaining_ = remaining_;
+                        to_bitField0_ |= 0x00000002;
+                    }
+                    result.bitField0_ = to_bitField0_;
+                    onBuilt();
+                    return result;
+                }
+
+                @java.lang.Override
+                public Builder clone() {
+                    return super.clone();
+                }
+
+                @java.lang.Override
+                public Builder setField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.setField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder clearField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field) {
+                    return super.clearField(field);
+                }
+
+                @java.lang.Override
+                public Builder clearOneof(
+                        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                    return super.clearOneof(oneof);
+                }
+
+                @java.lang.Override
+                public Builder setRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        int index, java.lang.Object value) {
+                    return super.setRepeatedField(field, index, value);
+                }
+
+                @java.lang.Override
+                public Builder addRepeatedField(
+                        com.google.protobuf.Descriptors.FieldDescriptor field,
+                        java.lang.Object value) {
+                    return super.addRepeatedField(field, value);
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(com.google.protobuf.Message other) {
+                    if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) {
+                        return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) other);
+                    } else {
+                        super.mergeFrom(other);
+                        return this;
+                    }
+                }
+
+                public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo other) {
+                    if (other == me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance())
+                        return this;
+                    if (other.hasType()) {
+                        bitField0_ |= 0x00000001;
+                        type_ = other.type_;
+                        onChanged();
+                    }
+                    if (other.hasRemaining()) {
+                        setRemaining(other.getRemaining());
+                    }
+                    this.mergeUnknownFields(other.unknownFields);
+                    onChanged();
+                    return this;
+                }
+
+                @java.lang.Override
+                public final boolean isInitialized() {
+                    return true;
+                }
+
+                @java.lang.Override
+                public Builder mergeFrom(
+                        com.google.protobuf.CodedInputStream input,
+                        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                        throws java.io.IOException {
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parsedMessage = null;
+                    try {
+                        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                        parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) e.getUnfinishedMessage();
+                        throw e.unwrapIOException();
+                    } finally {
+                        if (parsedMessage != null) {
+                            mergeFrom(parsedMessage);
+                        }
+                    }
+                    return this;
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return Whether the type field is set.
+                 */
+                public boolean hasType() {
+                    return ((bitField0_ & 0x00000001) != 0);
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The type.
+                 */
+                public java.lang.String getType() {
+                    java.lang.Object ref = type_;
+                    if (!(ref instanceof java.lang.String)) {
+                        com.google.protobuf.ByteString bs =
+                                (com.google.protobuf.ByteString) ref;
+                        java.lang.String s = bs.toStringUtf8();
+                        type_ = s;
+                        return s;
+                    } else {
+                        return (java.lang.String) ref;
+                    }
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @param value The type to set.
+                 * @return This builder for chaining.
+                 */
+                public Builder setType(
+                        java.lang.String value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    bitField0_ |= 0x00000001;
+                    type_ = value;
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return The bytes for type.
+                 */
+                public com.google.protobuf.ByteString
+                getTypeBytes() {
+                    java.lang.Object ref = type_;
+                    if (ref instanceof String) {
+                        com.google.protobuf.ByteString b =
+                                com.google.protobuf.ByteString.copyFromUtf8(
+                                        (java.lang.String) ref);
+                        type_ = b;
+                        return b;
+                    } else {
+                        return (com.google.protobuf.ByteString) ref;
+                    }
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @param value The bytes for type to set.
+                 * @return This builder for chaining.
+                 */
+                public Builder setTypeBytes(
+                        com.google.protobuf.ByteString value) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    checkByteStringIsUtf8(value);
+                    bitField0_ |= 0x00000001;
+                    type_ = value;
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>optional string type = 1;</code>
+                 *
+                 * @return This builder for chaining.
+                 */
+                public Builder clearType() {
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    type_ = getDefaultInstance().getType();
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>optional int32 remaining = 2;</code>
+                 *
+                 * @return Whether the remaining field is set.
+                 */
+                @java.lang.Override
+                public boolean hasRemaining() {
+                    return ((bitField0_ & 0x00000002) != 0);
+                }
+
+                /**
+                 * <code>optional int32 remaining = 2;</code>
+                 *
+                 * @return The remaining.
+                 */
+                @java.lang.Override
+                public int getRemaining() {
+                    return remaining_;
+                }
+
+                /**
+                 * <code>optional int32 remaining = 2;</code>
+                 *
+                 * @param value The remaining to set.
+                 * @return This builder for chaining.
+                 */
+                public Builder setRemaining(int value) {
+                    bitField0_ |= 0x00000002;
+                    remaining_ = value;
+                    onChanged();
+                    return this;
+                }
+
+                /**
+                 * <code>optional int32 remaining = 2;</code>
+                 *
+                 * @return This builder for chaining.
+                 */
+                public Builder clearRemaining() {
+                    bitField0_ = (bitField0_ & ~0x00000002);
+                    remaining_ = 0;
+                    onChanged();
+                    return this;
+                }
+
+                @java.lang.Override
+                public final Builder setUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.setUnknownFields(unknownFields);
+                }
+
+                @java.lang.Override
+                public final Builder mergeUnknownFields(
+                        final com.google.protobuf.UnknownFieldSet unknownFields) {
+                    return super.mergeUnknownFields(unknownFields);
+                }
+
+
+                // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.AmmoManager.GunInfo)
+            }
+
+        }
+
+        /**
+         * Protobuf type {@code shapewars.PlayerInfo.AmmoManager}
+         */
+        public static final class Builder extends
+                com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+                // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.AmmoManager)
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder {
+            private int bitField0_;
+            private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> ammoRemaining_ =
+                    java.util.Collections.emptyList();
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> ammoRemainingBuilder_;
+
+            // Construct using me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                    com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
+            }
+
+            @java.lang.Override
+            protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable
+                        .ensureFieldAccessorsInitialized(
+                                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder.class);
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessageV3
+                        .alwaysUseFieldBuilders) {
+                    getAmmoRemainingFieldBuilder();
+                }
+            }
+
+            @java.lang.Override
+            public Builder clear() {
+                super.clear();
+                if (ammoRemainingBuilder_ == null) {
+                    ammoRemaining_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                } else {
+                    ammoRemainingBuilder_.clear();
+                }
+                return this;
+            }
+
+            @java.lang.Override
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstanceForType() {
+                return me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance();
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager build() {
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            @java.lang.Override
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager buildPartial() {
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager result = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager(this);
+                int from_bitField0_ = bitField0_;
+                if (ammoRemainingBuilder_ == null) {
+                    if (((bitField0_ & 0x00000001) != 0)) {
+                        ammoRemaining_ = java.util.Collections.unmodifiableList(ammoRemaining_);
+                        bitField0_ = (bitField0_ & ~0x00000001);
+                    }
+                    result.ammoRemaining_ = ammoRemaining_;
+                } else {
+                    result.ammoRemaining_ = ammoRemainingBuilder_.build();
+                }
+                onBuilt();
+                return result;
+            }
+
+            @java.lang.Override
+            public Builder clone() {
+                return super.clone();
+            }
+
+            @java.lang.Override
+            public Builder setField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.setField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder clearField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field) {
+                return super.clearField(field);
+            }
+
+            @java.lang.Override
+            public Builder clearOneof(
+                    com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+                return super.clearOneof(oneof);
+            }
+
+            @java.lang.Override
+            public Builder setRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    int index, java.lang.Object value) {
+                return super.setRepeatedField(field, index, value);
+            }
+
+            @java.lang.Override
+            public Builder addRepeatedField(
+                    com.google.protobuf.Descriptors.FieldDescriptor field,
+                    java.lang.Object value) {
+                return super.addRepeatedField(field, value);
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) {
+                    return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager other) {
+                if (other == me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance()) return this;
+                if (ammoRemainingBuilder_ == null) {
+                    if (!other.ammoRemaining_.isEmpty()) {
+                        if (ammoRemaining_.isEmpty()) {
+                            ammoRemaining_ = other.ammoRemaining_;
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                        } else {
+                            ensureAmmoRemainingIsMutable();
+                            ammoRemaining_.addAll(other.ammoRemaining_);
+                        }
+                        onChanged();
+                    }
+                } else {
+                    if (!other.ammoRemaining_.isEmpty()) {
+                        if (ammoRemainingBuilder_.isEmpty()) {
+                            ammoRemainingBuilder_.dispose();
+                            ammoRemainingBuilder_ = null;
+                            ammoRemaining_ = other.ammoRemaining_;
+                            bitField0_ = (bitField0_ & ~0x00000001);
+                            ammoRemainingBuilder_ =
+                                    com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                                            getAmmoRemainingFieldBuilder() : null;
+                        } else {
+                            ammoRemainingBuilder_.addAllMessages(other.ammoRemaining_);
+                        }
+                    }
+                }
+                this.mergeUnknownFields(other.unknownFields);
+                onChanged();
+                return this;
+            }
+
+            @java.lang.Override
+            public final boolean isInitialized() {
+                return true;
+            }
+
+            @java.lang.Override
+            public Builder mergeFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws java.io.IOException {
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) e.getUnfinishedMessage();
+                    throw e.unwrapIOException();
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private void ensureAmmoRemainingIsMutable() {
+                if (!((bitField0_ & 0x00000001) != 0)) {
+                    ammoRemaining_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo>(ammoRemaining_);
+                    bitField0_ |= 0x00000001;
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> getAmmoRemainingList() {
+                if (ammoRemainingBuilder_ == null) {
+                    return java.util.Collections.unmodifiableList(ammoRemaining_);
+                } else {
+                    return ammoRemainingBuilder_.getMessageList();
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public int getAmmoRemainingCount() {
+                if (ammoRemainingBuilder_ == null) {
+                    return ammoRemaining_.size();
+                } else {
+                    return ammoRemainingBuilder_.getCount();
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index) {
+                if (ammoRemainingBuilder_ == null) {
+                    return ammoRemaining_.get(index);
+                } else {
+                    return ammoRemainingBuilder_.getMessage(index);
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder setAmmoRemaining(
+                    int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
+                if (ammoRemainingBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.set(index, value);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.setMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder setAmmoRemaining(
+                    int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
+                if (ammoRemainingBuilder_ == null) {
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.set(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.setMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder addAmmoRemaining(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
+                if (ammoRemainingBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.add(value);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.addMessage(value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder addAmmoRemaining(
+                    int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
+                if (ammoRemainingBuilder_ == null) {
+                    if (value == null) {
+                        throw new NullPointerException();
+                    }
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.add(index, value);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.addMessage(index, value);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder addAmmoRemaining(
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
+                if (ammoRemainingBuilder_ == null) {
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.add(builderForValue.build());
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.addMessage(builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder addAmmoRemaining(
+                    int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
+                if (ammoRemainingBuilder_ == null) {
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.add(index, builderForValue.build());
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.addMessage(index, builderForValue.build());
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder addAllAmmoRemaining(
+                    java.lang.Iterable<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> values) {
+                if (ammoRemainingBuilder_ == null) {
+                    ensureAmmoRemainingIsMutable();
+                    com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                            values, ammoRemaining_);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.addAllMessages(values);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder clearAmmoRemaining() {
+                if (ammoRemainingBuilder_ == null) {
+                    ammoRemaining_ = java.util.Collections.emptyList();
+                    bitField0_ = (bitField0_ & ~0x00000001);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.clear();
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public Builder removeAmmoRemaining(int index) {
+                if (ammoRemainingBuilder_ == null) {
+                    ensureAmmoRemainingIsMutable();
+                    ammoRemaining_.remove(index);
+                    onChanged();
+                } else {
+                    ammoRemainingBuilder_.remove(index);
+                }
+                return this;
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder getAmmoRemainingBuilder(
+                    int index) {
+                return getAmmoRemainingFieldBuilder().getBuilder(index);
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
+                    int index) {
+                if (ammoRemainingBuilder_ == null) {
+                    return ammoRemaining_.get(index);
+                } else {
+                    return ammoRemainingBuilder_.getMessageOrBuilder(index);
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>
+            getAmmoRemainingOrBuilderList() {
+                if (ammoRemainingBuilder_ != null) {
+                    return ammoRemainingBuilder_.getMessageOrBuilderList();
+                } else {
+                    return java.util.Collections.unmodifiableList(ammoRemaining_);
+                }
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder addAmmoRemainingBuilder() {
+                return getAmmoRemainingFieldBuilder().addBuilder(
+                        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder addAmmoRemainingBuilder(
+                    int index) {
+                return getAmmoRemainingFieldBuilder().addBuilder(
+                        index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance());
+            }
+
+            /**
+             * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
+             */
+            public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder>
+            getAmmoRemainingBuilderList() {
+                return getAmmoRemainingFieldBuilder().getBuilderList();
+            }
+
+            private com.google.protobuf.RepeatedFieldBuilderV3<
+                    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>
+            getAmmoRemainingFieldBuilder() {
+                if (ammoRemainingBuilder_ == null) {
+                    ammoRemainingBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>(
+                            ammoRemaining_,
+                            ((bitField0_ & 0x00000001) != 0),
+                            getParentForChildren(),
+                            isClean());
+                    ammoRemaining_ = null;
+                }
+                return ammoRemainingBuilder_;
+            }
+
+            @java.lang.Override
+            public final Builder setUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.setUnknownFields(unknownFields);
+            }
+
+            @java.lang.Override
+            public final Builder mergeUnknownFields(
+                    final com.google.protobuf.UnknownFieldSet unknownFields) {
+                return super.mergeUnknownFields(unknownFields);
+            }
+
+
+            // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.AmmoManager)
+        }
+
+    }
+
+    /**
+     * Protobuf type {@code shapewars.PlayerInfo}
+     */
+    public static final class Builder extends
             com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-            // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder {
-          public static final com.google.protobuf.Descriptors.Descriptor
-              getDescriptor() {
-            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
-          }
+            // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo)
+            me.partlysunny.shapewars.proto.PlayerInfoOrBuilder {
+        private int bitField0_;
+        private float inGameTime_;
+        private float maxHealth_;
+        private float health_;
+        private int money_;
+        private int level_;
+        private me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager ammoManager_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder> ammoManagerBuilder_;
+        private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment equipment_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder> equipmentBuilder_;
 
-          @java.lang.Override
-          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-              internalGetFieldAccessorTable() {
-            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_fieldAccessorTable
-                .ensureFieldAccessorsInitialized(
-                    me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder.class);
-          }
-
-          // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.newBuilder()
-          private Builder() {
+        // Construct using me.partlysunny.shapewars.proto.PlayerInfo.newBuilder()
+        private Builder() {
             maybeForceBuilderInitialization();
-          }
+        }
 
-          private Builder(
-              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        private Builder(
+                com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
             super(parent);
             maybeForceBuilderInitialization();
-          }
-          private void maybeForceBuilderInitialization() {
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                            me.partlysunny.shapewars.proto.PlayerInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.Builder.class);
+        }
+
+        private void maybeForceBuilderInitialization() {
             if (com.google.protobuf.GeneratedMessageV3
                     .alwaysUseFieldBuilders) {
+                getAmmoManagerFieldBuilder();
+                getEquipmentFieldBuilder();
             }
-          }
-          @java.lang.Override
-          public Builder clear() {
+        }
+
+        @java.lang.Override
+        public Builder clear() {
             super.clear();
-            type_ = "";
+            inGameTime_ = 0F;
             bitField0_ = (bitField0_ & ~0x00000001);
-            amount_ = 0;
+            maxHealth_ = 0F;
             bitField0_ = (bitField0_ & ~0x00000002);
+            health_ = 0F;
+            bitField0_ = (bitField0_ & ~0x00000004);
+            money_ = 0;
+            bitField0_ = (bitField0_ & ~0x00000008);
+            level_ = 0;
+            bitField0_ = (bitField0_ & ~0x00000010);
+            if (ammoManagerBuilder_ == null) {
+                ammoManager_ = null;
+            } else {
+                ammoManagerBuilder_.clear();
+            }
+            bitField0_ = (bitField0_ & ~0x00000020);
+            if (equipmentBuilder_ == null) {
+                equipment_ = null;
+            } else {
+                equipmentBuilder_.clear();
+            }
+            bitField0_ = (bitField0_ & ~0x00000040);
             return this;
-          }
+        }
 
-          @java.lang.Override
-          public com.google.protobuf.Descriptors.Descriptor
-              getDescriptorForType() {
-            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_UtilItem_descriptor;
-          }
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+            return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
+        }
 
-          @java.lang.Override
-          public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstanceForType() {
-            return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance();
-          }
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstanceForType() {
+            return me.partlysunny.shapewars.proto.PlayerInfo.getDefaultInstance();
+        }
 
-          @java.lang.Override
-          public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem build() {
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem result = buildPartial();
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo build() {
+            me.partlysunny.shapewars.proto.PlayerInfo result = buildPartial();
             if (!result.isInitialized()) {
-              throw newUninitializedMessageException(result);
+                throw newUninitializedMessageException(result);
             }
             return result;
-          }
+        }
 
-          @java.lang.Override
-          public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem buildPartial() {
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem(this);
+        @java.lang.Override
+        public me.partlysunny.shapewars.proto.PlayerInfo buildPartial() {
+            me.partlysunny.shapewars.proto.PlayerInfo result = new me.partlysunny.shapewars.proto.PlayerInfo(this);
             int from_bitField0_ = bitField0_;
             int to_bitField0_ = 0;
             if (((from_bitField0_ & 0x00000001) != 0)) {
-              to_bitField0_ |= 0x00000001;
+                result.inGameTime_ = inGameTime_;
+                to_bitField0_ |= 0x00000001;
             }
-            result.type_ = type_;
             if (((from_bitField0_ & 0x00000002) != 0)) {
-              result.amount_ = amount_;
-              to_bitField0_ |= 0x00000002;
+                result.maxHealth_ = maxHealth_;
+                to_bitField0_ |= 0x00000002;
+            }
+            if (((from_bitField0_ & 0x00000004) != 0)) {
+                result.health_ = health_;
+                to_bitField0_ |= 0x00000004;
+            }
+            if (((from_bitField0_ & 0x00000008) != 0)) {
+                result.money_ = money_;
+                to_bitField0_ |= 0x00000008;
+            }
+            if (((from_bitField0_ & 0x00000010) != 0)) {
+                result.level_ = level_;
+                to_bitField0_ |= 0x00000010;
+            }
+            if (((from_bitField0_ & 0x00000020) != 0)) {
+                if (ammoManagerBuilder_ == null) {
+                    result.ammoManager_ = ammoManager_;
+                } else {
+                    result.ammoManager_ = ammoManagerBuilder_.build();
+                }
+                to_bitField0_ |= 0x00000020;
+            }
+            if (((from_bitField0_ & 0x00000040) != 0)) {
+                if (equipmentBuilder_ == null) {
+                    result.equipment_ = equipment_;
+                } else {
+                    result.equipment_ = equipmentBuilder_.build();
+                }
+                to_bitField0_ |= 0x00000040;
             }
             result.bitField0_ = to_bitField0_;
             onBuilt();
             return result;
-          }
+        }
 
-          @java.lang.Override
-          public Builder clone() {
+        @java.lang.Override
+        public Builder clone() {
             return super.clone();
-          }
-          @java.lang.Override
-          public Builder setField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              java.lang.Object value) {
-            return super.setField(field, value);
-          }
-          @java.lang.Override
-          public Builder clearField(
-              com.google.protobuf.Descriptors.FieldDescriptor field) {
-            return super.clearField(field);
-          }
-          @java.lang.Override
-          public Builder clearOneof(
-              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-            return super.clearOneof(oneof);
-          }
-          @java.lang.Override
-          public Builder setRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              int index, java.lang.Object value) {
-            return super.setRepeatedField(field, index, value);
-          }
-          @java.lang.Override
-          public Builder addRepeatedField(
-              com.google.protobuf.Descriptors.FieldDescriptor field,
-              java.lang.Object value) {
-            return super.addRepeatedField(field, value);
-          }
-          @java.lang.Override
-          public Builder mergeFrom(com.google.protobuf.Message other) {
-            if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) {
-              return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)other);
-            } else {
-              super.mergeFrom(other);
-              return this;
-            }
-          }
+        }
 
-          public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem other) {
-            if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance()) return this;
-            if (other.hasType()) {
-              bitField0_ |= 0x00000001;
-              type_ = other.type_;
-              onChanged();
+        @java.lang.Override
+        public Builder setField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
+            return super.setField(field, value);
+        }
+
+        @java.lang.Override
+        public Builder clearField(
+                com.google.protobuf.Descriptors.FieldDescriptor field) {
+            return super.clearField(field);
+        }
+
+        @java.lang.Override
+        public Builder clearOneof(
+                com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+            return super.clearOneof(oneof);
+        }
+
+        @java.lang.Override
+        public Builder setRepeatedField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                int index, java.lang.Object value) {
+            return super.setRepeatedField(field, index, value);
+        }
+
+        @java.lang.Override
+        public Builder addRepeatedField(
+                com.google.protobuf.Descriptors.FieldDescriptor field,
+                java.lang.Object value) {
+            return super.addRepeatedField(field, value);
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo) {
+                return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo) other);
+            } else {
+                super.mergeFrom(other);
+                return this;
             }
-            if (other.hasAmount()) {
-              setAmount(other.getAmount());
+        }
+
+        public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo other) {
+            if (other == me.partlysunny.shapewars.proto.PlayerInfo.getDefaultInstance()) return this;
+            if (other.hasInGameTime()) {
+                setInGameTime(other.getInGameTime());
+            }
+            if (other.hasMaxHealth()) {
+                setMaxHealth(other.getMaxHealth());
+            }
+            if (other.hasHealth()) {
+                setHealth(other.getHealth());
+            }
+            if (other.hasMoney()) {
+                setMoney(other.getMoney());
+            }
+            if (other.hasLevel()) {
+                setLevel(other.getLevel());
+            }
+            if (other.hasAmmoManager()) {
+                mergeAmmoManager(other.getAmmoManager());
+            }
+            if (other.hasEquipment()) {
+                mergeEquipment(other.getEquipment());
             }
             this.mergeUnknownFields(other.unknownFields);
             onChanged();
             return this;
-          }
+        }
 
-          @java.lang.Override
-          public final boolean isInitialized() {
+        @java.lang.Override
+        public final boolean isInitialized() {
             return true;
-          }
+        }
 
-          @java.lang.Override
-          public Builder mergeFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws java.io.IOException {
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem parsedMessage = null;
+        @java.lang.Override
+        public Builder mergeFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+            me.partlysunny.shapewars.proto.PlayerInfo parsedMessage = null;
             try {
-              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
             } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-              parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem) e.getUnfinishedMessage();
-              throw e.unwrapIOException();
+                parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo) e.getUnfinishedMessage();
+                throw e.unwrapIOException();
             } finally {
-              if (parsedMessage != null) {
-                mergeFrom(parsedMessage);
-              }
+                if (parsedMessage != null) {
+                    mergeFrom(parsedMessage);
+                }
             }
             return this;
-          }
-          private int bitField0_;
+        }
 
-          private java.lang.Object type_ = "";
-          /**
-           * <code>optional string type = 1;</code>
-           * @return Whether the type field is set.
-           */
-          public boolean hasType() {
+        /**
+         * <code>optional float inGameTime = 1;</code>
+         *
+         * @return Whether the inGameTime field is set.
+         */
+        @java.lang.Override
+        public boolean hasInGameTime() {
             return ((bitField0_ & 0x00000001) != 0);
-          }
-          /**
-           * <code>optional string type = 1;</code>
-           * @return The type.
-           */
-          public java.lang.String getType() {
-            java.lang.Object ref = type_;
-            if (!(ref instanceof java.lang.String)) {
-              com.google.protobuf.ByteString bs =
-                  (com.google.protobuf.ByteString) ref;
-              java.lang.String s = bs.toStringUtf8();
-              type_ = s;
-              return s;
-            } else {
-              return (java.lang.String) ref;
-            }
-          }
-          /**
-           * <code>optional string type = 1;</code>
-           * @return The bytes for type.
-           */
-          public com.google.protobuf.ByteString
-              getTypeBytes() {
-            java.lang.Object ref = type_;
-            if (ref instanceof String) {
-              com.google.protobuf.ByteString b = 
-                  com.google.protobuf.ByteString.copyFromUtf8(
-                      (java.lang.String) ref);
-              type_ = b;
-              return b;
-            } else {
-              return (com.google.protobuf.ByteString) ref;
-            }
-          }
-          /**
-           * <code>optional string type = 1;</code>
-           * @param value The type to set.
-           * @return This builder for chaining.
-           */
-          public Builder setType(
-              java.lang.String value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-            type_ = value;
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string type = 1;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearType() {
-            bitField0_ = (bitField0_ & ~0x00000001);
-            type_ = getDefaultInstance().getType();
-            onChanged();
-            return this;
-          }
-          /**
-           * <code>optional string type = 1;</code>
-           * @param value The bytes for type to set.
-           * @return This builder for chaining.
-           */
-          public Builder setTypeBytes(
-              com.google.protobuf.ByteString value) {
-            if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-            bitField0_ |= 0x00000001;
-            type_ = value;
-            onChanged();
-            return this;
-          }
+        }
 
-          private int amount_ ;
-          /**
-           * <code>optional int32 amount = 2;</code>
-           * @return Whether the amount field is set.
-           */
-          @java.lang.Override
-          public boolean hasAmount() {
+        /**
+         * <code>optional float inGameTime = 1;</code>
+         *
+         * @return The inGameTime.
+         */
+        @java.lang.Override
+        public float getInGameTime() {
+            return inGameTime_;
+        }
+
+        /**
+         * <code>optional float inGameTime = 1;</code>
+         *
+         * @param value The inGameTime to set.
+         * @return This builder for chaining.
+         */
+        public Builder setInGameTime(float value) {
+            bitField0_ |= 0x00000001;
+            inGameTime_ = value;
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>optional float inGameTime = 1;</code>
+         *
+         * @return This builder for chaining.
+         */
+        public Builder clearInGameTime() {
+            bitField0_ = (bitField0_ & ~0x00000001);
+            inGameTime_ = 0F;
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>optional float maxHealth = 2;</code>
+         *
+         * @return Whether the maxHealth field is set.
+         */
+        @java.lang.Override
+        public boolean hasMaxHealth() {
             return ((bitField0_ & 0x00000002) != 0);
-          }
-          /**
-           * <code>optional int32 amount = 2;</code>
-           * @return The amount.
-           */
-          @java.lang.Override
-          public int getAmount() {
-            return amount_;
-          }
-          /**
-           * <code>optional int32 amount = 2;</code>
-           * @param value The amount to set.
-           * @return This builder for chaining.
-           */
-          public Builder setAmount(int value) {
+        }
+
+        /**
+         * <code>optional float maxHealth = 2;</code>
+         *
+         * @return The maxHealth.
+         */
+        @java.lang.Override
+        public float getMaxHealth() {
+            return maxHealth_;
+        }
+
+        /**
+         * <code>optional float maxHealth = 2;</code>
+         *
+         * @param value The maxHealth to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMaxHealth(float value) {
             bitField0_ |= 0x00000002;
-            amount_ = value;
+            maxHealth_ = value;
             onChanged();
             return this;
-          }
-          /**
-           * <code>optional int32 amount = 2;</code>
-           * @return This builder for chaining.
-           */
-          public Builder clearAmount() {
+        }
+
+        /**
+         * <code>optional float maxHealth = 2;</code>
+         *
+         * @return This builder for chaining.
+         */
+        public Builder clearMaxHealth() {
             bitField0_ = (bitField0_ & ~0x00000002);
-            amount_ = 0;
+            maxHealth_ = 0F;
             onChanged();
             return this;
-          }
-          @java.lang.Override
-          public final Builder setUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.setUnknownFields(unknownFields);
-          }
-
-          @java.lang.Override
-          public final Builder mergeUnknownFields(
-              final com.google.protobuf.UnknownFieldSet unknownFields) {
-            return super.mergeUnknownFields(unknownFields);
-          }
-
-
-          // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
         }
 
-        // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem)
-        private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem DEFAULT_INSTANCE;
-        static {
-          DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem();
-        }
-
-        public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstance() {
-          return DEFAULT_INSTANCE;
-        }
-
-        private static final com.google.protobuf.Parser<UtilItem>
-            PARSER = new com.google.protobuf.AbstractParser<UtilItem>() {
-          @java.lang.Override
-          public UtilItem parsePartialFrom(
-              com.google.protobuf.CodedInputStream input,
-              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-              throws com.google.protobuf.InvalidProtocolBufferException {
-            return new UtilItem(input, extensionRegistry);
-          }
-        };
-
-        public static com.google.protobuf.Parser<UtilItem> parser() {
-          return PARSER;
-        }
-
+        /**
+         * <code>optional float health = 3;</code>
+         *
+         * @return Whether the health field is set.
+         */
         @java.lang.Override
-        public com.google.protobuf.Parser<UtilItem> getParserForType() {
-          return PARSER;
+        public boolean hasHealth() {
+            return ((bitField0_ & 0x00000004) != 0);
         }
 
+        /**
+         * <code>optional float health = 3;</code>
+         *
+         * @return The health.
+         */
         @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getDefaultInstanceForType() {
-          return DEFAULT_INSTANCE;
+        public float getHealth() {
+            return health_;
         }
 
-      }
-
-      public static final int ITEMS_FIELD_NUMBER = 1;
-      private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> items_;
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      @java.lang.Override
-      public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> getItemsList() {
-        return items_;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      @java.lang.Override
-      public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> 
-          getItemsOrBuilderList() {
-        return items_;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      @java.lang.Override
-      public int getItemsCount() {
-        return items_.size();
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index) {
-        return items_.get(index);
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-       */
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
-          int index) {
-        return items_.get(index);
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        for (int i = 0; i < items_.size(); i++) {
-          output.writeMessage(1, items_.get(i));
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        for (int i = 0; i < items_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, items_.get(i));
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory)) {
-          return super.equals(obj);
-        }
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) obj;
-
-        if (!getItemsList()
-            .equals(other.getItemsList())) return false;
-        if (!unknownFields.equals(other.unknownFields)) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (getItemsCount() > 0) {
-          hash = (37 * hash) + ITEMS_FIELD_NUMBER;
-          hash = (53 * hash) + getItemsList().hashCode();
-        }
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UtilInventory}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder.class);
-        }
-
-        // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-            getItemsFieldBuilder();
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          if (itemsBuilder_ == null) {
-            items_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            itemsBuilder_.clear();
-          }
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UtilInventory_descriptor;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstanceForType() {
-          return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory build() {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory buildPartial() {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory(this);
-          int from_bitField0_ = bitField0_;
-          if (itemsBuilder_ == null) {
-            if (((bitField0_ & 0x00000001) != 0)) {
-              items_ = java.util.Collections.unmodifiableList(items_);
-              bitField0_ = (bitField0_ & ~0x00000001);
-            }
-            result.items_ = items_;
-          } else {
-            result.items_ = itemsBuilder_.build();
-          }
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) {
-            return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory)other);
-          } else {
-            super.mergeFrom(other);
+        /**
+         * <code>optional float health = 3;</code>
+         *
+         * @param value The health to set.
+         * @return This builder for chaining.
+         */
+        public Builder setHealth(float value) {
+            bitField0_ |= 0x00000004;
+            health_ = value;
+            onChanged();
             return this;
-          }
         }
-
-        public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory other) {
-          if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance()) return this;
-          if (itemsBuilder_ == null) {
-            if (!other.items_.isEmpty()) {
-              if (items_.isEmpty()) {
-                items_ = other.items_;
-                bitField0_ = (bitField0_ & ~0x00000001);
-              } else {
-                ensureItemsIsMutable();
-                items_.addAll(other.items_);
-              }
-              onChanged();
-            }
-          } else {
-            if (!other.items_.isEmpty()) {
-              if (itemsBuilder_.isEmpty()) {
-                itemsBuilder_.dispose();
-                itemsBuilder_ = null;
-                items_ = other.items_;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                itemsBuilder_ = 
-                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                     getItemsFieldBuilder() : null;
-              } else {
-                itemsBuilder_.addAllMessages(other.items_);
-              }
-            }
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> items_ =
-          java.util.Collections.emptyList();
-        private void ensureItemsIsMutable() {
-          if (!((bitField0_ & 0x00000001) != 0)) {
-            items_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem>(items_);
-            bitField0_ |= 0x00000001;
-           }
-        }
-
-        private com.google.protobuf.RepeatedFieldBuilderV3<
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> itemsBuilder_;
 
         /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
+         * <code>optional float health = 3;</code>
+         *
+         * @return This builder for chaining.
          */
-        public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> getItemsList() {
-          if (itemsBuilder_ == null) {
-            return java.util.Collections.unmodifiableList(items_);
-          } else {
-            return itemsBuilder_.getMessageList();
-          }
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public int getItemsCount() {
-          if (itemsBuilder_ == null) {
-            return items_.size();
-          } else {
-            return itemsBuilder_.getCount();
-          }
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem getItems(int index) {
-          if (itemsBuilder_ == null) {
-            return items_.get(index);
-          } else {
-            return itemsBuilder_.getMessage(index);
-          }
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder setItems(
-            int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
-          if (itemsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureItemsIsMutable();
-            items_.set(index, value);
+        public Builder clearHealth() {
+            bitField0_ = (bitField0_ & ~0x00000004);
+            health_ = 0F;
             onChanged();
-          } else {
-            itemsBuilder_.setMessage(index, value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder setItems(
-            int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
-          if (itemsBuilder_ == null) {
-            ensureItemsIsMutable();
-            items_.set(index, builderForValue.build());
-            onChanged();
-          } else {
-            itemsBuilder_.setMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder addItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
-          if (itemsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureItemsIsMutable();
-            items_.add(value);
-            onChanged();
-          } else {
-            itemsBuilder_.addMessage(value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder addItems(
-            int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem value) {
-          if (itemsBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensureItemsIsMutable();
-            items_.add(index, value);
-            onChanged();
-          } else {
-            itemsBuilder_.addMessage(index, value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder addItems(
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
-          if (itemsBuilder_ == null) {
-            ensureItemsIsMutable();
-            items_.add(builderForValue.build());
-            onChanged();
-          } else {
-            itemsBuilder_.addMessage(builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder addItems(
-            int index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder builderForValue) {
-          if (itemsBuilder_ == null) {
-            ensureItemsIsMutable();
-            items_.add(index, builderForValue.build());
-            onChanged();
-          } else {
-            itemsBuilder_.addMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder addAllItems(
-            java.lang.Iterable<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem> values) {
-          if (itemsBuilder_ == null) {
-            ensureItemsIsMutable();
-            com.google.protobuf.AbstractMessageLite.Builder.addAll(
-                values, items_);
-            onChanged();
-          } else {
-            itemsBuilder_.addAllMessages(values);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder clearItems() {
-          if (itemsBuilder_ == null) {
-            items_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000001);
-            onChanged();
-          } else {
-            itemsBuilder_.clear();
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public Builder removeItems(int index) {
-          if (itemsBuilder_ == null) {
-            ensureItemsIsMutable();
-            items_.remove(index);
-            onChanged();
-          } else {
-            itemsBuilder_.remove(index);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder getItemsBuilder(
-            int index) {
-          return getItemsFieldBuilder().getBuilder(index);
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder getItemsOrBuilder(
-            int index) {
-          if (itemsBuilder_ == null) {
-            return items_.get(index);  } else {
-            return itemsBuilder_.getMessageOrBuilder(index);
-          }
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> 
-             getItemsOrBuilderList() {
-          if (itemsBuilder_ != null) {
-            return itemsBuilder_.getMessageOrBuilderList();
-          } else {
-            return java.util.Collections.unmodifiableList(items_);
-          }
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder addItemsBuilder() {
-          return getItemsFieldBuilder().addBuilder(
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance());
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder addItemsBuilder(
-            int index) {
-          return getItemsFieldBuilder().addBuilder(
-              index, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.getDefaultInstance());
-        }
-        /**
-         * <code>repeated .shapewars.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem items = 1;</code>
-         */
-        public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder> 
-             getItemsBuilderList() {
-          return getItemsFieldBuilder().getBuilderList();
-        }
-        private com.google.protobuf.RepeatedFieldBuilderV3<
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder> 
-            getItemsFieldBuilder() {
-          if (itemsBuilder_ == null) {
-            itemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItem.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.UtilItemOrBuilder>(
-                    items_,
-                    ((bitField0_ & 0x00000001) != 0),
-                    getParentForChildren(),
-                    isClean());
-            items_ = null;
-          }
-          return itemsBuilder_;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
-      }
-
-      // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UtilInventory)
-      private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory();
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<UtilInventory>
-          PARSER = new com.google.protobuf.AbstractParser<UtilInventory>() {
-        @java.lang.Override
-        public UtilInventory parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UtilInventory(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<UtilInventory> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<UtilInventory> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public interface UnlockedItemsOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @return A list containing the weapons.
-       */
-      java.util.List<java.lang.String>
-          getWeaponsList();
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @return The count of weapons.
-       */
-      int getWeaponsCount();
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @param index The index of the element to return.
-       * @return The weapons at the given index.
-       */
-      java.lang.String getWeapons(int index);
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the weapons at the given index.
-       */
-      com.google.protobuf.ByteString
-          getWeaponsBytes(int index);
-
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @return A list containing the armors.
-       */
-      java.util.List<java.lang.String>
-          getArmorsList();
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @return The count of armors.
-       */
-      int getArmorsCount();
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @param index The index of the element to return.
-       * @return The armors at the given index.
-       */
-      java.lang.String getArmors(int index);
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the armors at the given index.
-       */
-      com.google.protobuf.ByteString
-          getArmorsBytes(int index);
-    }
-    /**
-     * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UnlockedItems}
-     */
-    public static final class UnlockedItems extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
-        UnlockedItemsOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use UnlockedItems.newBuilder() to construct.
-      private UnlockedItems(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private UnlockedItems() {
-        weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new UnlockedItems();
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private UnlockedItems(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                  weapons_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000001;
-                }
-                weapons_.add(s);
-                break;
-              }
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
-                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                  armors_ = new com.google.protobuf.LazyStringArrayList();
-                  mutable_bitField0_ |= 0x00000002;
-                }
-                armors_.add(s);
-                break;
-              }
-              default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          if (((mutable_bitField0_ & 0x00000001) != 0)) {
-            weapons_ = weapons_.getUnmodifiableView();
-          }
-          if (((mutable_bitField0_ & 0x00000002) != 0)) {
-            armors_ = armors_.getUnmodifiableView();
-          }
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder.class);
-      }
-
-      public static final int WEAPONS_FIELD_NUMBER = 1;
-      private com.google.protobuf.LazyStringList weapons_;
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @return A list containing the weapons.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getWeaponsList() {
-        return weapons_;
-      }
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @return The count of weapons.
-       */
-      public int getWeaponsCount() {
-        return weapons_.size();
-      }
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @param index The index of the element to return.
-       * @return The weapons at the given index.
-       */
-      public java.lang.String getWeapons(int index) {
-        return weapons_.get(index);
-      }
-      /**
-       * <code>repeated string weapons = 1;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the weapons at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getWeaponsBytes(int index) {
-        return weapons_.getByteString(index);
-      }
-
-      public static final int ARMORS_FIELD_NUMBER = 2;
-      private com.google.protobuf.LazyStringList armors_;
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @return A list containing the armors.
-       */
-      public com.google.protobuf.ProtocolStringList
-          getArmorsList() {
-        return armors_;
-      }
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @return The count of armors.
-       */
-      public int getArmorsCount() {
-        return armors_.size();
-      }
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @param index The index of the element to return.
-       * @return The armors at the given index.
-       */
-      public java.lang.String getArmors(int index) {
-        return armors_.get(index);
-      }
-      /**
-       * <code>repeated string armors = 2;</code>
-       * @param index The index of the value to return.
-       * @return The bytes of the armors at the given index.
-       */
-      public com.google.protobuf.ByteString
-          getArmorsBytes(int index) {
-        return armors_.getByteString(index);
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        for (int i = 0; i < weapons_.size(); i++) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, weapons_.getRaw(i));
-        }
-        for (int i = 0; i < armors_.size(); i++) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, armors_.getRaw(i));
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        {
-          int dataSize = 0;
-          for (int i = 0; i < weapons_.size(); i++) {
-            dataSize += computeStringSizeNoTag(weapons_.getRaw(i));
-          }
-          size += dataSize;
-          size += 1 * getWeaponsList().size();
-        }
-        {
-          int dataSize = 0;
-          for (int i = 0; i < armors_.size(); i++) {
-            dataSize += computeStringSizeNoTag(armors_.getRaw(i));
-          }
-          size += dataSize;
-          size += 1 * getArmorsList().size();
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems)) {
-          return super.equals(obj);
-        }
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) obj;
-
-        if (!getWeaponsList()
-            .equals(other.getWeaponsList())) return false;
-        if (!getArmorsList()
-            .equals(other.getArmorsList())) return false;
-        if (!unknownFields.equals(other.unknownFields)) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (getWeaponsCount() > 0) {
-          hash = (37 * hash) + WEAPONS_FIELD_NUMBER;
-          hash = (53 * hash) + getWeaponsList().hashCode();
-        }
-        if (getArmorsCount() > 0) {
-          hash = (37 * hash) + ARMORS_FIELD_NUMBER;
-          hash = (53 * hash) + getArmorsList().hashCode();
-        }
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment.UnlockedItems}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder.class);
-        }
-
-        // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_UnlockedItems_descriptor;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstanceForType() {
-          return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems build() {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems buildPartial() {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems(this);
-          int from_bitField0_ = bitField0_;
-          if (((bitField0_ & 0x00000001) != 0)) {
-            weapons_ = weapons_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.weapons_ = weapons_;
-          if (((bitField0_ & 0x00000002) != 0)) {
-            armors_ = armors_.getUnmodifiableView();
-            bitField0_ = (bitField0_ & ~0x00000002);
-          }
-          result.armors_ = armors_;
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) {
-            return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems)other);
-          } else {
-            super.mergeFrom(other);
             return this;
-          }
         }
 
-        public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems other) {
-          if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance()) return this;
-          if (!other.weapons_.isEmpty()) {
-            if (weapons_.isEmpty()) {
-              weapons_ = other.weapons_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureWeaponsIsMutable();
-              weapons_.addAll(other.weapons_);
-            }
+        /**
+         * <code>optional int32 money = 4;</code>
+         *
+         * @return Whether the money field is set.
+         */
+        @java.lang.Override
+        public boolean hasMoney() {
+            return ((bitField0_ & 0x00000008) != 0);
+        }
+
+        /**
+         * <code>optional int32 money = 4;</code>
+         *
+         * @return The money.
+         */
+        @java.lang.Override
+        public int getMoney() {
+            return money_;
+        }
+
+        /**
+         * <code>optional int32 money = 4;</code>
+         *
+         * @param value The money to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMoney(int value) {
+            bitField0_ |= 0x00000008;
+            money_ = value;
             onChanged();
-          }
-          if (!other.armors_.isEmpty()) {
-            if (armors_.isEmpty()) {
-              armors_ = other.armors_;
-              bitField0_ = (bitField0_ & ~0x00000002);
-            } else {
-              ensureArmorsIsMutable();
-              armors_.addAll(other.armors_);
-            }
-            onChanged();
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
-        }
-
-        @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
-        }
-
-        @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        private com.google.protobuf.LazyStringList weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        private void ensureWeaponsIsMutable() {
-          if (!((bitField0_ & 0x00000001) != 0)) {
-            weapons_ = new com.google.protobuf.LazyStringArrayList(weapons_);
-            bitField0_ |= 0x00000001;
-           }
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @return A list containing the weapons.
-         */
-        public com.google.protobuf.ProtocolStringList
-            getWeaponsList() {
-          return weapons_.getUnmodifiableView();
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @return The count of weapons.
-         */
-        public int getWeaponsCount() {
-          return weapons_.size();
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param index The index of the element to return.
-         * @return The weapons at the given index.
-         */
-        public java.lang.String getWeapons(int index) {
-          return weapons_.get(index);
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param index The index of the value to return.
-         * @return The bytes of the weapons at the given index.
-         */
-        public com.google.protobuf.ByteString
-            getWeaponsBytes(int index) {
-          return weapons_.getByteString(index);
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param index The index to set the value at.
-         * @param value The weapons to set.
-         * @return This builder for chaining.
-         */
-        public Builder setWeapons(
-            int index, java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureWeaponsIsMutable();
-          weapons_.set(index, value);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param value The weapons to add.
-         * @return This builder for chaining.
-         */
-        public Builder addWeapons(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureWeaponsIsMutable();
-          weapons_.add(value);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param values The weapons to add.
-         * @return This builder for chaining.
-         */
-        public Builder addAllWeapons(
-            java.lang.Iterable<java.lang.String> values) {
-          ensureWeaponsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, weapons_);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearWeapons() {
-          weapons_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string weapons = 1;</code>
-         * @param value The bytes of the weapons to add.
-         * @return This builder for chaining.
-         */
-        public Builder addWeaponsBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          ensureWeaponsIsMutable();
-          weapons_.add(value);
-          onChanged();
-          return this;
-        }
-
-        private com.google.protobuf.LazyStringList armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        private void ensureArmorsIsMutable() {
-          if (!((bitField0_ & 0x00000002) != 0)) {
-            armors_ = new com.google.protobuf.LazyStringArrayList(armors_);
-            bitField0_ |= 0x00000002;
-           }
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @return A list containing the armors.
-         */
-        public com.google.protobuf.ProtocolStringList
-            getArmorsList() {
-          return armors_.getUnmodifiableView();
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @return The count of armors.
-         */
-        public int getArmorsCount() {
-          return armors_.size();
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param index The index of the element to return.
-         * @return The armors at the given index.
-         */
-        public java.lang.String getArmors(int index) {
-          return armors_.get(index);
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param index The index of the value to return.
-         * @return The bytes of the armors at the given index.
-         */
-        public com.google.protobuf.ByteString
-            getArmorsBytes(int index) {
-          return armors_.getByteString(index);
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param index The index to set the value at.
-         * @param value The armors to set.
-         * @return This builder for chaining.
-         */
-        public Builder setArmors(
-            int index, java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureArmorsIsMutable();
-          armors_.set(index, value);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param value The armors to add.
-         * @return This builder for chaining.
-         */
-        public Builder addArmors(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureArmorsIsMutable();
-          armors_.add(value);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param values The armors to add.
-         * @return This builder for chaining.
-         */
-        public Builder addAllArmors(
-            java.lang.Iterable<java.lang.String> values) {
-          ensureArmorsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, armors_);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearArmors() {
-          armors_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>repeated string armors = 2;</code>
-         * @param value The bytes of the armors to add.
-         * @return This builder for chaining.
-         */
-        public Builder addArmorsBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          ensureArmorsIsMutable();
-          armors_.add(value);
-          onChanged();
-          return this;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
-      }
-
-      // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment.UnlockedItems)
-      private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems();
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<UnlockedItems>
-          PARSER = new com.google.protobuf.AbstractParser<UnlockedItems>() {
-        @java.lang.Override
-        public UnlockedItems parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new UnlockedItems(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<UnlockedItems> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<UnlockedItems> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    private int bitField0_;
-    public static final int WEAPON1_FIELD_NUMBER = 1;
-    private volatile java.lang.Object weapon1_;
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return Whether the weapon1 field is set.
-     */
-    @java.lang.Override
-    public boolean hasWeapon1() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return The weapon1.
-     */
-    @java.lang.Override
-    public java.lang.String getWeapon1() {
-      java.lang.Object ref = weapon1_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        weapon1_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string weapon1 = 1;</code>
-     * @return The bytes for weapon1.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWeapon1Bytes() {
-      java.lang.Object ref = weapon1_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        weapon1_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int WEAPON2_FIELD_NUMBER = 2;
-    private volatile java.lang.Object weapon2_;
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return Whether the weapon2 field is set.
-     */
-    @java.lang.Override
-    public boolean hasWeapon2() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return The weapon2.
-     */
-    @java.lang.Override
-    public java.lang.String getWeapon2() {
-      java.lang.Object ref = weapon2_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        weapon2_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string weapon2 = 2;</code>
-     * @return The bytes for weapon2.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getWeapon2Bytes() {
-      java.lang.Object ref = weapon2_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        weapon2_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ARMOR1_FIELD_NUMBER = 3;
-    private volatile java.lang.Object armor1_;
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return Whether the armor1 field is set.
-     */
-    @java.lang.Override
-    public boolean hasArmor1() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return The armor1.
-     */
-    @java.lang.Override
-    public java.lang.String getArmor1() {
-      java.lang.Object ref = armor1_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        armor1_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string armor1 = 3;</code>
-     * @return The bytes for armor1.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getArmor1Bytes() {
-      java.lang.Object ref = armor1_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        armor1_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ARMOR2_FIELD_NUMBER = 4;
-    private volatile java.lang.Object armor2_;
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return Whether the armor2 field is set.
-     */
-    @java.lang.Override
-    public boolean hasArmor2() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return The armor2.
-     */
-    @java.lang.Override
-    public java.lang.String getArmor2() {
-      java.lang.Object ref = armor2_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        armor2_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>optional string armor2 = 4;</code>
-     * @return The bytes for armor2.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getArmor2Bytes() {
-      java.lang.Object ref = armor2_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        armor2_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int UTILITIES_FIELD_NUMBER = 5;
-    private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory utilities_;
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     * @return Whether the utilities field is set.
-     */
-    @java.lang.Override
-    public boolean hasUtilities() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     * @return The utilities.
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities() {
-      return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder() {
-      return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
-    }
-
-    public static final int UNLOCKITEMS_FIELD_NUMBER = 6;
-    private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems_;
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     * @return Whether the unlockItems field is set.
-     */
-    @java.lang.Override
-    public boolean hasUnlockItems() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     * @return The unlockItems.
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems() {
-      return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder() {
-      return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, weapon1_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, weapon2_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, armor1_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, armor2_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeMessage(5, getUtilities());
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        output.writeMessage(6, getUnlockItems());
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, weapon1_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, weapon2_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, armor1_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, armor2_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getUtilities());
-      }
-      if (((bitField0_ & 0x00000020) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getUnlockItems());
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment)) {
-        return super.equals(obj);
-      }
-      me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment other = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) obj;
-
-      if (hasWeapon1() != other.hasWeapon1()) return false;
-      if (hasWeapon1()) {
-        if (!getWeapon1()
-            .equals(other.getWeapon1())) return false;
-      }
-      if (hasWeapon2() != other.hasWeapon2()) return false;
-      if (hasWeapon2()) {
-        if (!getWeapon2()
-            .equals(other.getWeapon2())) return false;
-      }
-      if (hasArmor1() != other.hasArmor1()) return false;
-      if (hasArmor1()) {
-        if (!getArmor1()
-            .equals(other.getArmor1())) return false;
-      }
-      if (hasArmor2() != other.hasArmor2()) return false;
-      if (hasArmor2()) {
-        if (!getArmor2()
-            .equals(other.getArmor2())) return false;
-      }
-      if (hasUtilities() != other.hasUtilities()) return false;
-      if (hasUtilities()) {
-        if (!getUtilities()
-            .equals(other.getUtilities())) return false;
-      }
-      if (hasUnlockItems() != other.hasUnlockItems()) return false;
-      if (hasUnlockItems()) {
-        if (!getUnlockItems()
-            .equals(other.getUnlockItems())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasWeapon1()) {
-        hash = (37 * hash) + WEAPON1_FIELD_NUMBER;
-        hash = (53 * hash) + getWeapon1().hashCode();
-      }
-      if (hasWeapon2()) {
-        hash = (37 * hash) + WEAPON2_FIELD_NUMBER;
-        hash = (53 * hash) + getWeapon2().hashCode();
-      }
-      if (hasArmor1()) {
-        hash = (37 * hash) + ARMOR1_FIELD_NUMBER;
-        hash = (53 * hash) + getArmor1().hashCode();
-      }
-      if (hasArmor2()) {
-        hash = (37 * hash) + ARMOR2_FIELD_NUMBER;
-        hash = (53 * hash) + getArmor2().hashCode();
-      }
-      if (hasUtilities()) {
-        hash = (37 * hash) + UTILITIES_FIELD_NUMBER;
-        hash = (53 * hash) + getUtilities().hashCode();
-      }
-      if (hasUnlockItems()) {
-        hash = (37 * hash) + UNLOCKITEMS_FIELD_NUMBER;
-        hash = (53 * hash) + getUnlockItems().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code shapewars.PlayerInfo.PlayerEquipment}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.PlayerEquipment)
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.class, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder.class);
-      }
-
-      // Construct using me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getUtilitiesFieldBuilder();
-          getUnlockItemsFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        weapon1_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
-        weapon2_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        armor1_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
-        armor2_ = "";
-        bitField0_ = (bitField0_ & ~0x00000008);
-        if (utilitiesBuilder_ == null) {
-          utilities_ = null;
-        } else {
-          utilitiesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        if (unlockItemsBuilder_ == null) {
-          unlockItems_ = null;
-        } else {
-          unlockItemsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_PlayerEquipment_descriptor;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstanceForType() {
-        return me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment build() {
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment buildPartial() {
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment result = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.weapon1_ = weapon1_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.weapon2_ = weapon2_;
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.armor1_ = armor1_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.armor2_ = armor2_;
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          if (utilitiesBuilder_ == null) {
-            result.utilities_ = utilities_;
-          } else {
-            result.utilities_ = utilitiesBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000010;
-        }
-        if (((from_bitField0_ & 0x00000020) != 0)) {
-          if (unlockItemsBuilder_ == null) {
-            result.unlockItems_ = unlockItems_;
-          } else {
-            result.unlockItems_ = unlockItemsBuilder_.build();
-          }
-          to_bitField0_ |= 0x00000020;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) {
-          return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment other) {
-        if (other == me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance()) return this;
-        if (other.hasWeapon1()) {
-          bitField0_ |= 0x00000001;
-          weapon1_ = other.weapon1_;
-          onChanged();
-        }
-        if (other.hasWeapon2()) {
-          bitField0_ |= 0x00000002;
-          weapon2_ = other.weapon2_;
-          onChanged();
-        }
-        if (other.hasArmor1()) {
-          bitField0_ |= 0x00000004;
-          armor1_ = other.armor1_;
-          onChanged();
-        }
-        if (other.hasArmor2()) {
-          bitField0_ |= 0x00000008;
-          armor2_ = other.armor2_;
-          onChanged();
-        }
-        if (other.hasUtilities()) {
-          mergeUtilities(other.getUtilities());
-        }
-        if (other.hasUnlockItems()) {
-          mergeUnlockItems(other.getUnlockItems());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private java.lang.Object weapon1_ = "";
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @return Whether the weapon1 field is set.
-       */
-      public boolean hasWeapon1() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @return The weapon1.
-       */
-      public java.lang.String getWeapon1() {
-        java.lang.Object ref = weapon1_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          weapon1_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @return The bytes for weapon1.
-       */
-      public com.google.protobuf.ByteString
-          getWeapon1Bytes() {
-        java.lang.Object ref = weapon1_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          weapon1_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @param value The weapon1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWeapon1(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-        weapon1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWeapon1() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        weapon1_ = getDefaultInstance().getWeapon1();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string weapon1 = 1;</code>
-       * @param value The bytes for weapon1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWeapon1Bytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000001;
-        weapon1_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object weapon2_ = "";
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @return Whether the weapon2 field is set.
-       */
-      public boolean hasWeapon2() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @return The weapon2.
-       */
-      public java.lang.String getWeapon2() {
-        java.lang.Object ref = weapon2_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          weapon2_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @return The bytes for weapon2.
-       */
-      public com.google.protobuf.ByteString
-          getWeapon2Bytes() {
-        java.lang.Object ref = weapon2_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          weapon2_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @param value The weapon2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWeapon2(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        weapon2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearWeapon2() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        weapon2_ = getDefaultInstance().getWeapon2();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string weapon2 = 2;</code>
-       * @param value The bytes for weapon2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setWeapon2Bytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000002;
-        weapon2_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object armor1_ = "";
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @return Whether the armor1 field is set.
-       */
-      public boolean hasArmor1() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @return The armor1.
-       */
-      public java.lang.String getArmor1() {
-        java.lang.Object ref = armor1_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          armor1_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @return The bytes for armor1.
-       */
-      public com.google.protobuf.ByteString
-          getArmor1Bytes() {
-        java.lang.Object ref = armor1_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          armor1_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @param value The armor1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArmor1(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
-        armor1_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearArmor1() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        armor1_ = getDefaultInstance().getArmor1();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string armor1 = 3;</code>
-       * @param value The bytes for armor1 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArmor1Bytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000004;
-        armor1_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object armor2_ = "";
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @return Whether the armor2 field is set.
-       */
-      public boolean hasArmor2() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @return The armor2.
-       */
-      public java.lang.String getArmor2() {
-        java.lang.Object ref = armor2_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          armor2_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @return The bytes for armor2.
-       */
-      public com.google.protobuf.ByteString
-          getArmor2Bytes() {
-        java.lang.Object ref = armor2_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          armor2_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @param value The armor2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArmor2(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000008;
-        armor2_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearArmor2() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        armor2_ = getDefaultInstance().getArmor2();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string armor2 = 4;</code>
-       * @param value The bytes for armor2 to set.
-       * @return This builder for chaining.
-       */
-      public Builder setArmor2Bytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        bitField0_ |= 0x00000008;
-        armor2_ = value;
-        onChanged();
-        return this;
-      }
-
-      private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory utilities_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder> utilitiesBuilder_;
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       * @return Whether the utilities field is set.
-       */
-      public boolean hasUtilities() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       * @return The utilities.
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory getUtilities() {
-        if (utilitiesBuilder_ == null) {
-          return utilities_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
-        } else {
-          return utilitiesBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public Builder setUtilities(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory value) {
-        if (utilitiesBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          utilities_ = value;
-          onChanged();
-        } else {
-          utilitiesBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000010;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public Builder setUtilities(
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder builderForValue) {
-        if (utilitiesBuilder_ == null) {
-          utilities_ = builderForValue.build();
-          onChanged();
-        } else {
-          utilitiesBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000010;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public Builder mergeUtilities(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory value) {
-        if (utilitiesBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) != 0) &&
-              utilities_ != null &&
-              utilities_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance()) {
-            utilities_ =
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.newBuilder(utilities_).mergeFrom(value).buildPartial();
-          } else {
-            utilities_ = value;
-          }
-          onChanged();
-        } else {
-          utilitiesBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000010;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public Builder clearUtilities() {
-        if (utilitiesBuilder_ == null) {
-          utilities_ = null;
-          onChanged();
-        } else {
-          utilitiesBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder getUtilitiesBuilder() {
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return getUtilitiesFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder getUtilitiesOrBuilder() {
-        if (utilitiesBuilder_ != null) {
-          return utilitiesBuilder_.getMessageOrBuilder();
-        } else {
-          return utilities_ == null ?
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.getDefaultInstance() : utilities_;
-        }
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UtilInventory utilities = 5;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder> 
-          getUtilitiesFieldBuilder() {
-        if (utilitiesBuilder_ == null) {
-          utilitiesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventory.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UtilInventoryOrBuilder>(
-                  getUtilities(),
-                  getParentForChildren(),
-                  isClean());
-          utilities_ = null;
-        }
-        return utilitiesBuilder_;
-      }
-
-      private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder> unlockItemsBuilder_;
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       * @return Whether the unlockItems field is set.
-       */
-      public boolean hasUnlockItems() {
-        return ((bitField0_ & 0x00000020) != 0);
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       * @return The unlockItems.
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems getUnlockItems() {
-        if (unlockItemsBuilder_ == null) {
-          return unlockItems_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
-        } else {
-          return unlockItemsBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public Builder setUnlockItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems value) {
-        if (unlockItemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          unlockItems_ = value;
-          onChanged();
-        } else {
-          unlockItemsBuilder_.setMessage(value);
-        }
-        bitField0_ |= 0x00000020;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public Builder setUnlockItems(
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder builderForValue) {
-        if (unlockItemsBuilder_ == null) {
-          unlockItems_ = builderForValue.build();
-          onChanged();
-        } else {
-          unlockItemsBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000020;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public Builder mergeUnlockItems(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems value) {
-        if (unlockItemsBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) != 0) &&
-              unlockItems_ != null &&
-              unlockItems_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance()) {
-            unlockItems_ =
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.newBuilder(unlockItems_).mergeFrom(value).buildPartial();
-          } else {
-            unlockItems_ = value;
-          }
-          onChanged();
-        } else {
-          unlockItemsBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000020;
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public Builder clearUnlockItems() {
-        if (unlockItemsBuilder_ == null) {
-          unlockItems_ = null;
-          onChanged();
-        } else {
-          unlockItemsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000020);
-        return this;
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder getUnlockItemsBuilder() {
-        bitField0_ |= 0x00000020;
-        onChanged();
-        return getUnlockItemsFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder getUnlockItemsOrBuilder() {
-        if (unlockItemsBuilder_ != null) {
-          return unlockItemsBuilder_.getMessageOrBuilder();
-        } else {
-          return unlockItems_ == null ?
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.getDefaultInstance() : unlockItems_;
-        }
-      }
-      /**
-       * <code>optional .shapewars.PlayerInfo.PlayerEquipment.UnlockedItems unlockItems = 6;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder> 
-          getUnlockItemsFieldBuilder() {
-        if (unlockItemsBuilder_ == null) {
-          unlockItemsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItems.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.UnlockedItemsOrBuilder>(
-                  getUnlockItems(),
-                  getParentForChildren(),
-                  isClean());
-          unlockItems_ = null;
-        }
-        return unlockItemsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.PlayerEquipment)
-    }
-
-    // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.PlayerEquipment)
-    private static final me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment();
-    }
-
-    public static me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<PlayerEquipment>
-        PARSER = new com.google.protobuf.AbstractParser<PlayerEquipment>() {
-      @java.lang.Override
-      public PlayerEquipment parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PlayerEquipment(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<PlayerEquipment> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PlayerEquipment> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface AmmoManagerOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.AmmoManager)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> 
-        getAmmoRemainingList();
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index);
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    int getAmmoRemainingCount();
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> 
-        getAmmoRemainingOrBuilderList();
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
-        int index);
-  }
-  /**
-   * Protobuf type {@code shapewars.PlayerInfo.AmmoManager}
-   */
-  public static final class AmmoManager extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.AmmoManager)
-      AmmoManagerOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use AmmoManager.newBuilder() to construct.
-    private AmmoManager(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private AmmoManager() {
-      ammoRemaining_ = java.util.Collections.emptyList();
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new AmmoManager();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private AmmoManager(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                ammoRemaining_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              ammoRemaining_.add(
-                  input.readMessage(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.parser(), extensionRegistry));
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (com.google.protobuf.UninitializedMessageException e) {
-        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          ammoRemaining_ = java.util.Collections.unmodifiableList(ammoRemaining_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder.class);
-    }
-
-    public interface GunInfoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:shapewars.PlayerInfo.AmmoManager.GunInfo)
-        com.google.protobuf.MessageOrBuilder {
-
-      /**
-       * <code>optional string type = 1;</code>
-       * @return Whether the type field is set.
-       */
-      boolean hasType();
-      /**
-       * <code>optional string type = 1;</code>
-       * @return The type.
-       */
-      java.lang.String getType();
-      /**
-       * <code>optional string type = 1;</code>
-       * @return The bytes for type.
-       */
-      com.google.protobuf.ByteString
-          getTypeBytes();
-
-      /**
-       * <code>optional int32 remaining = 2;</code>
-       * @return Whether the remaining field is set.
-       */
-      boolean hasRemaining();
-      /**
-       * <code>optional int32 remaining = 2;</code>
-       * @return The remaining.
-       */
-      int getRemaining();
-    }
-    /**
-     * Protobuf type {@code shapewars.PlayerInfo.AmmoManager.GunInfo}
-     */
-    public static final class GunInfo extends
-        com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:shapewars.PlayerInfo.AmmoManager.GunInfo)
-        GunInfoOrBuilder {
-    private static final long serialVersionUID = 0L;
-      // Use GunInfo.newBuilder() to construct.
-      private GunInfo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-        super(builder);
-      }
-      private GunInfo() {
-        type_ = "";
-      }
-
-      @java.lang.Override
-      @SuppressWarnings({"unused"})
-      protected java.lang.Object newInstance(
-          UnusedPrivateParameter unused) {
-        return new GunInfo();
-      }
-
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-      getUnknownFields() {
-        return this.unknownFields;
-      }
-      private GunInfo(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        this();
-        if (extensionRegistry == null) {
-          throw new java.lang.NullPointerException();
-        }
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
-                bitField0_ |= 0x00000001;
-                type_ = s;
-                break;
-              }
-              case 16: {
-                bitField0_ |= 0x00000002;
-                remaining_ = input.readInt32();
-                break;
-              }
-              default: {
-                if (!parseUnknownField(
-                    input, unknownFields, extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (com.google.protobuf.UninitializedMessageException e) {
-          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e).setUnfinishedMessage(this);
-        } finally {
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
-        }
-      }
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder.class);
-      }
-
-      private int bitField0_;
-      public static final int TYPE_FIELD_NUMBER = 1;
-      private volatile java.lang.Object type_;
-      /**
-       * <code>optional string type = 1;</code>
-       * @return Whether the type field is set.
-       */
-      @java.lang.Override
-      public boolean hasType() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       * @return The type.
-       */
-      @java.lang.Override
-      public java.lang.String getType() {
-        java.lang.Object ref = type_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          type_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>optional string type = 1;</code>
-       * @return The bytes for type.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getTypeBytes() {
-        java.lang.Object ref = type_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          type_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-
-      public static final int REMAINING_FIELD_NUMBER = 2;
-      private int remaining_;
-      /**
-       * <code>optional int32 remaining = 2;</code>
-       * @return Whether the remaining field is set.
-       */
-      @java.lang.Override
-      public boolean hasRemaining() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional int32 remaining = 2;</code>
-       * @return The remaining.
-       */
-      @java.lang.Override
-      public int getRemaining() {
-        return remaining_;
-      }
-
-      private byte memoizedIsInitialized = -1;
-      @java.lang.Override
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized == 1) return true;
-        if (isInitialized == 0) return false;
-
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      @java.lang.Override
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          output.writeInt32(2, remaining_);
-        }
-        unknownFields.writeTo(output);
-      }
-
-      @java.lang.Override
-      public int getSerializedSize() {
-        int size = memoizedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        if (((bitField0_ & 0x00000001) != 0)) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeInt32Size(2, remaining_);
-        }
-        size += unknownFields.getSerializedSize();
-        memoizedSize = size;
-        return size;
-      }
-
-      @java.lang.Override
-      public boolean equals(final java.lang.Object obj) {
-        if (obj == this) {
-         return true;
-        }
-        if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo)) {
-          return super.equals(obj);
-        }
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo other = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) obj;
-
-        if (hasType() != other.hasType()) return false;
-        if (hasType()) {
-          if (!getType()
-              .equals(other.getType())) return false;
-        }
-        if (hasRemaining() != other.hasRemaining()) return false;
-        if (hasRemaining()) {
-          if (getRemaining()
-              != other.getRemaining()) return false;
-        }
-        if (!unknownFields.equals(other.unknownFields)) return false;
-        return true;
-      }
-
-      @java.lang.Override
-      public int hashCode() {
-        if (memoizedHashCode != 0) {
-          return memoizedHashCode;
-        }
-        int hash = 41;
-        hash = (19 * hash) + getDescriptor().hashCode();
-        if (hasType()) {
-          hash = (37 * hash) + TYPE_FIELD_NUMBER;
-          hash = (53 * hash) + getType().hashCode();
-        }
-        if (hasRemaining()) {
-          hash = (37 * hash) + REMAINING_FIELD_NUMBER;
-          hash = (53 * hash) + getRemaining();
-        }
-        hash = (29 * hash) + unknownFields.hashCode();
-        memoizedHashCode = hash;
-        return hash;
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          java.nio.ByteBuffer data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          java.nio.ByteBuffer data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input);
-      }
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return com.google.protobuf.GeneratedMessageV3
-            .parseWithIOException(PARSER, input, extensionRegistry);
-      }
-
-      @java.lang.Override
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder() {
-        return DEFAULT_INSTANCE.toBuilder();
-      }
-      public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo prototype) {
-        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-      }
-      @java.lang.Override
-      public Builder toBuilder() {
-        return this == DEFAULT_INSTANCE
-            ? new Builder() : new Builder().mergeFrom(this);
-      }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code shapewars.PlayerInfo.AmmoManager.GunInfo}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.AmmoManager.GunInfo)
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
-        }
-
-        @java.lang.Override
-        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder.class);
-        }
-
-        // Construct using me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessageV3
-                  .alwaysUseFieldBuilders) {
-          }
-        }
-        @java.lang.Override
-        public Builder clear() {
-          super.clear();
-          type_ = "";
-          bitField0_ = (bitField0_ & ~0x00000001);
-          remaining_ = 0;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-
-        @java.lang.Override
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_GunInfo_descriptor;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstanceForType() {
-          return me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance();
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo build() {
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        @java.lang.Override
-        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo buildPartial() {
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo result = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (((from_bitField0_ & 0x00000001) != 0)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.type_ = type_;
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.remaining_ = remaining_;
-            to_bitField0_ |= 0x00000002;
-          }
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-
-        @java.lang.Override
-        public Builder clone() {
-          return super.clone();
-        }
-        @java.lang.Override
-        public Builder setField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.setField(field, value);
-        }
-        @java.lang.Override
-        public Builder clearField(
-            com.google.protobuf.Descriptors.FieldDescriptor field) {
-          return super.clearField(field);
-        }
-        @java.lang.Override
-        public Builder clearOneof(
-            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-          return super.clearOneof(oneof);
-        }
-        @java.lang.Override
-        public Builder setRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            int index, java.lang.Object value) {
-          return super.setRepeatedField(field, index, value);
-        }
-        @java.lang.Override
-        public Builder addRepeatedField(
-            com.google.protobuf.Descriptors.FieldDescriptor field,
-            java.lang.Object value) {
-          return super.addRepeatedField(field, value);
-        }
-        @java.lang.Override
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) {
-            return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo)other);
-          } else {
-            super.mergeFrom(other);
             return this;
-          }
         }
 
-        public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo other) {
-          if (other == me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance()) return this;
-          if (other.hasType()) {
-            bitField0_ |= 0x00000001;
-            type_ = other.type_;
+        /**
+         * <code>optional int32 money = 4;</code>
+         *
+         * @return This builder for chaining.
+         */
+        public Builder clearMoney() {
+            bitField0_ = (bitField0_ & ~0x00000008);
+            money_ = 0;
             onChanged();
-          }
-          if (other.hasRemaining()) {
-            setRemaining(other.getRemaining());
-          }
-          this.mergeUnknownFields(other.unknownFields);
-          onChanged();
-          return this;
+            return this;
         }
 
+        /**
+         * <code>optional int32 level = 5;</code>
+         *
+         * @return Whether the level field is set.
+         */
         @java.lang.Override
-        public final boolean isInitialized() {
-          return true;
+        public boolean hasLevel() {
+            return ((bitField0_ & 0x00000010) != 0);
         }
 
+        /**
+         * <code>optional int32 level = 5;</code>
+         *
+         * @return The level.
+         */
         @java.lang.Override
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo) e.getUnfinishedMessage();
-            throw e.unwrapIOException();
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
+        public int getLevel() {
+            return level_;
         }
-        private int bitField0_;
 
-        private java.lang.Object type_ = "";
         /**
-         * <code>optional string type = 1;</code>
-         * @return Whether the type field is set.
-         */
-        public boolean hasType() {
-          return ((bitField0_ & 0x00000001) != 0);
-        }
-        /**
-         * <code>optional string type = 1;</code>
-         * @return The type.
-         */
-        public java.lang.String getType() {
-          java.lang.Object ref = type_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            type_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
-        }
-        /**
-         * <code>optional string type = 1;</code>
-         * @return The bytes for type.
-         */
-        public com.google.protobuf.ByteString
-            getTypeBytes() {
-          java.lang.Object ref = type_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            type_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>optional string type = 1;</code>
-         * @param value The type to set.
+         * <code>optional int32 level = 5;</code>
+         *
+         * @param value The level to set.
          * @return This builder for chaining.
          */
-        public Builder setType(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
-          type_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional string type = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearType() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          type_ = getDefaultInstance().getType();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional string type = 1;</code>
-         * @param value The bytes for type to set.
-         * @return This builder for chaining.
-         */
-        public Builder setTypeBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          bitField0_ |= 0x00000001;
-          type_ = value;
-          onChanged();
-          return this;
-        }
-
-        private int remaining_ ;
-        /**
-         * <code>optional int32 remaining = 2;</code>
-         * @return Whether the remaining field is set.
-         */
-        @java.lang.Override
-        public boolean hasRemaining() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <code>optional int32 remaining = 2;</code>
-         * @return The remaining.
-         */
-        @java.lang.Override
-        public int getRemaining() {
-          return remaining_;
-        }
-        /**
-         * <code>optional int32 remaining = 2;</code>
-         * @param value The remaining to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRemaining(int value) {
-          bitField0_ |= 0x00000002;
-          remaining_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional int32 remaining = 2;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearRemaining() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          remaining_ = 0;
-          onChanged();
-          return this;
-        }
-        @java.lang.Override
-        public final Builder setUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.setUnknownFields(unknownFields);
-        }
-
-        @java.lang.Override
-        public final Builder mergeUnknownFields(
-            final com.google.protobuf.UnknownFieldSet unknownFields) {
-          return super.mergeUnknownFields(unknownFields);
-        }
-
-
-        // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.AmmoManager.GunInfo)
-      }
-
-      // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.AmmoManager.GunInfo)
-      private static final me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo DEFAULT_INSTANCE;
-      static {
-        DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo();
-      }
-
-      public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstance() {
-        return DEFAULT_INSTANCE;
-      }
-
-      private static final com.google.protobuf.Parser<GunInfo>
-          PARSER = new com.google.protobuf.AbstractParser<GunInfo>() {
-        @java.lang.Override
-        public GunInfo parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new GunInfo(input, extensionRegistry);
-        }
-      };
-
-      public static com.google.protobuf.Parser<GunInfo> parser() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<GunInfo> getParserForType() {
-        return PARSER;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getDefaultInstanceForType() {
-        return DEFAULT_INSTANCE;
-      }
-
-    }
-
-    public static final int AMMOREMAINING_FIELD_NUMBER = 1;
-    private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> ammoRemaining_;
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> getAmmoRemainingList() {
-      return ammoRemaining_;
-    }
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    @java.lang.Override
-    public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> 
-        getAmmoRemainingOrBuilderList() {
-      return ammoRemaining_;
-    }
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    @java.lang.Override
-    public int getAmmoRemainingCount() {
-      return ammoRemaining_.size();
-    }
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index) {
-      return ammoRemaining_.get(index);
-    }
-    /**
-     * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-     */
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
-        int index) {
-      return ammoRemaining_.get(index);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      for (int i = 0; i < ammoRemaining_.size(); i++) {
-        output.writeMessage(1, ammoRemaining_.get(i));
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      for (int i = 0; i < ammoRemaining_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, ammoRemaining_.get(i));
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager)) {
-        return super.equals(obj);
-      }
-      me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager other = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) obj;
-
-      if (!getAmmoRemainingList()
-          .equals(other.getAmmoRemainingList())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (getAmmoRemainingCount() > 0) {
-        hash = (37 * hash) + AMMOREMAINING_FIELD_NUMBER;
-        hash = (53 * hash) + getAmmoRemainingList().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code shapewars.PlayerInfo.AmmoManager}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo.AmmoManager)
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.class, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder.class);
-      }
-
-      // Construct using me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-          getAmmoRemainingFieldBuilder();
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        if (ammoRemainingBuilder_ == null) {
-          ammoRemaining_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ammoRemainingBuilder_.clear();
-        }
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_AmmoManager_descriptor;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstanceForType() {
-        return me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager build() {
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager buildPartial() {
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager result = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager(this);
-        int from_bitField0_ = bitField0_;
-        if (ammoRemainingBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) != 0)) {
-            ammoRemaining_ = java.util.Collections.unmodifiableList(ammoRemaining_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.ammoRemaining_ = ammoRemaining_;
-        } else {
-          result.ammoRemaining_ = ammoRemainingBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) {
-          return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager other) {
-        if (other == me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance()) return this;
-        if (ammoRemainingBuilder_ == null) {
-          if (!other.ammoRemaining_.isEmpty()) {
-            if (ammoRemaining_.isEmpty()) {
-              ammoRemaining_ = other.ammoRemaining_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensureAmmoRemainingIsMutable();
-              ammoRemaining_.addAll(other.ammoRemaining_);
-            }
+        public Builder setLevel(int value) {
+            bitField0_ |= 0x00000010;
+            level_ = value;
             onChanged();
-          }
-        } else {
-          if (!other.ammoRemaining_.isEmpty()) {
-            if (ammoRemainingBuilder_.isEmpty()) {
-              ammoRemainingBuilder_.dispose();
-              ammoRemainingBuilder_ = null;
-              ammoRemaining_ = other.ammoRemaining_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              ammoRemainingBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getAmmoRemainingFieldBuilder() : null;
+            return this;
+        }
+
+        /**
+         * <code>optional int32 level = 5;</code>
+         *
+         * @return This builder for chaining.
+         */
+        public Builder clearLevel() {
+            bitField0_ = (bitField0_ & ~0x00000010);
+            level_ = 0;
+            onChanged();
+            return this;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         *
+         * @return Whether the ammoManager field is set.
+         */
+        public boolean hasAmmoManager() {
+            return ((bitField0_ & 0x00000020) != 0);
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         *
+         * @return The ammoManager.
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getAmmoManager() {
+            if (ammoManagerBuilder_ == null) {
+                return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
             } else {
-              ammoRemainingBuilder_.addAllMessages(other.ammoRemaining_);
+                return ammoManagerBuilder_.getMessage();
             }
-          }
         }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
 
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public Builder setAmmoManager(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager value) {
+            if (ammoManagerBuilder_ == null) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                ammoManager_ = value;
+                onChanged();
+            } else {
+                ammoManagerBuilder_.setMessage(value);
+            }
+            bitField0_ |= 0x00000020;
+            return this;
         }
-        return this;
-      }
-      private int bitField0_;
 
-      private java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> ammoRemaining_ =
-        java.util.Collections.emptyList();
-      private void ensureAmmoRemainingIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
-          ammoRemaining_ = new java.util.ArrayList<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo>(ammoRemaining_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> ammoRemainingBuilder_;
-
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> getAmmoRemainingList() {
-        if (ammoRemainingBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(ammoRemaining_);
-        } else {
-          return ammoRemainingBuilder_.getMessageList();
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public Builder setAmmoManager(
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder builderForValue) {
+            if (ammoManagerBuilder_ == null) {
+                ammoManager_ = builderForValue.build();
+                onChanged();
+            } else {
+                ammoManagerBuilder_.setMessage(builderForValue.build());
+            }
+            bitField0_ |= 0x00000020;
+            return this;
         }
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public int getAmmoRemainingCount() {
-        if (ammoRemainingBuilder_ == null) {
-          return ammoRemaining_.size();
-        } else {
-          return ammoRemainingBuilder_.getCount();
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public Builder mergeAmmoManager(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager value) {
+            if (ammoManagerBuilder_ == null) {
+                if (((bitField0_ & 0x00000020) != 0) &&
+                        ammoManager_ != null &&
+                        ammoManager_ != me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance()) {
+                    ammoManager_ =
+                            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.newBuilder(ammoManager_).mergeFrom(value).buildPartial();
+                } else {
+                    ammoManager_ = value;
+                }
+                onChanged();
+            } else {
+                ammoManagerBuilder_.mergeFrom(value);
+            }
+            bitField0_ |= 0x00000020;
+            return this;
         }
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo getAmmoRemaining(int index) {
-        if (ammoRemainingBuilder_ == null) {
-          return ammoRemaining_.get(index);
-        } else {
-          return ammoRemainingBuilder_.getMessage(index);
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public Builder clearAmmoManager() {
+            if (ammoManagerBuilder_ == null) {
+                ammoManager_ = null;
+                onChanged();
+            } else {
+                ammoManagerBuilder_.clear();
+            }
+            bitField0_ = (bitField0_ & ~0x00000020);
+            return this;
         }
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder setAmmoRemaining(
-          int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
-        if (ammoRemainingBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.set(index, value);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.setMessage(index, value);
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder getAmmoManagerBuilder() {
+            bitField0_ |= 0x00000020;
+            onChanged();
+            return getAmmoManagerFieldBuilder().getBuilder();
         }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder setAmmoRemaining(
-          int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
-        if (ammoRemainingBuilder_ == null) {
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.setMessage(index, builderForValue.build());
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder getAmmoManagerOrBuilder() {
+            if (ammoManagerBuilder_ != null) {
+                return ammoManagerBuilder_.getMessageOrBuilder();
+            } else {
+                return ammoManager_ == null ?
+                        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
+            }
         }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder addAmmoRemaining(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
-        if (ammoRemainingBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.add(value);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder addAmmoRemaining(
-          int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo value) {
-        if (ammoRemainingBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.add(index, value);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder addAmmoRemaining(
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
-        if (ammoRemainingBuilder_ == null) {
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.add(builderForValue.build());
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder addAmmoRemaining(
-          int index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder builderForValue) {
-        if (ammoRemainingBuilder_ == null) {
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder addAllAmmoRemaining(
-          java.lang.Iterable<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo> values) {
-        if (ammoRemainingBuilder_ == null) {
-          ensureAmmoRemainingIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, ammoRemaining_);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder clearAmmoRemaining() {
-        if (ammoRemainingBuilder_ == null) {
-          ammoRemaining_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public Builder removeAmmoRemaining(int index) {
-        if (ammoRemainingBuilder_ == null) {
-          ensureAmmoRemainingIsMutable();
-          ammoRemaining_.remove(index);
-          onChanged();
-        } else {
-          ammoRemainingBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder getAmmoRemainingBuilder(
-          int index) {
-        return getAmmoRemainingFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder getAmmoRemainingOrBuilder(
-          int index) {
-        if (ammoRemainingBuilder_ == null) {
-          return ammoRemaining_.get(index);  } else {
-          return ammoRemainingBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public java.util.List<? extends me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> 
-           getAmmoRemainingOrBuilderList() {
-        if (ammoRemainingBuilder_ != null) {
-          return ammoRemainingBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(ammoRemaining_);
-        }
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder addAmmoRemainingBuilder() {
-        return getAmmoRemainingFieldBuilder().addBuilder(
-            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder addAmmoRemainingBuilder(
-          int index) {
-        return getAmmoRemainingFieldBuilder().addBuilder(
-            index, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .shapewars.PlayerInfo.AmmoManager.GunInfo ammoRemaining = 1;</code>
-       */
-      public java.util.List<me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder> 
-           getAmmoRemainingBuilderList() {
-        return getAmmoRemainingFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder> 
-          getAmmoRemainingFieldBuilder() {
-        if (ammoRemainingBuilder_ == null) {
-          ammoRemainingBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfo.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.GunInfoOrBuilder>(
-                  ammoRemaining_,
-                  ((bitField0_ & 0x00000001) != 0),
-                  getParentForChildren(),
-                  isClean());
-          ammoRemaining_ = null;
-        }
-        return ammoRemainingBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
 
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo.AmmoManager)
-    }
-
-    // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo.AmmoManager)
-    private static final me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager();
-    }
-
-    public static me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<AmmoManager>
-        PARSER = new com.google.protobuf.AbstractParser<AmmoManager>() {
-      @java.lang.Override
-      public AmmoManager parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new AmmoManager(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<AmmoManager> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<AmmoManager> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  private int bitField0_;
-  public static final int INGAMETIME_FIELD_NUMBER = 1;
-  private float inGameTime_;
-  /**
-   * <code>optional float inGameTime = 1;</code>
-   * @return Whether the inGameTime field is set.
-   */
-  @java.lang.Override
-  public boolean hasInGameTime() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>optional float inGameTime = 1;</code>
-   * @return The inGameTime.
-   */
-  @java.lang.Override
-  public float getInGameTime() {
-    return inGameTime_;
-  }
-
-  public static final int MAXHEALTH_FIELD_NUMBER = 2;
-  private float maxHealth_;
-  /**
-   * <code>optional float maxHealth = 2;</code>
-   * @return Whether the maxHealth field is set.
-   */
-  @java.lang.Override
-  public boolean hasMaxHealth() {
-    return ((bitField0_ & 0x00000002) != 0);
-  }
-  /**
-   * <code>optional float maxHealth = 2;</code>
-   * @return The maxHealth.
-   */
-  @java.lang.Override
-  public float getMaxHealth() {
-    return maxHealth_;
-  }
-
-  public static final int HEALTH_FIELD_NUMBER = 3;
-  private float health_;
-  /**
-   * <code>optional float health = 3;</code>
-   * @return Whether the health field is set.
-   */
-  @java.lang.Override
-  public boolean hasHealth() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <code>optional float health = 3;</code>
-   * @return The health.
-   */
-  @java.lang.Override
-  public float getHealth() {
-    return health_;
-  }
-
-  public static final int MONEY_FIELD_NUMBER = 4;
-  private int money_;
-  /**
-   * <code>optional int32 money = 4;</code>
-   * @return Whether the money field is set.
-   */
-  @java.lang.Override
-  public boolean hasMoney() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <code>optional int32 money = 4;</code>
-   * @return The money.
-   */
-  @java.lang.Override
-  public int getMoney() {
-    return money_;
-  }
-
-  public static final int LEVEL_FIELD_NUMBER = 5;
-  private int level_;
-  /**
-   * <code>optional int32 level = 5;</code>
-   * @return Whether the level field is set.
-   */
-  @java.lang.Override
-  public boolean hasLevel() {
-    return ((bitField0_ & 0x00000010) != 0);
-  }
-  /**
-   * <code>optional int32 level = 5;</code>
-   * @return The level.
-   */
-  @java.lang.Override
-  public int getLevel() {
-    return level_;
-  }
-
-  public static final int AMMOMANAGER_FIELD_NUMBER = 6;
-  private me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager ammoManager_;
-  /**
-   * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-   * @return Whether the ammoManager field is set.
-   */
-  @java.lang.Override
-  public boolean hasAmmoManager() {
-    return ((bitField0_ & 0x00000020) != 0);
-  }
-  /**
-   * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-   * @return The ammoManager.
-   */
-  @java.lang.Override
-  public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getAmmoManager() {
-    return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
-  }
-  /**
-   * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-   */
-  @java.lang.Override
-  public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder getAmmoManagerOrBuilder() {
-    return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
-  }
-
-  public static final int EQUIPMENT_FIELD_NUMBER = 7;
-  private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment equipment_;
-  /**
-   * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-   * @return Whether the equipment field is set.
-   */
-  @java.lang.Override
-  public boolean hasEquipment() {
-    return ((bitField0_ & 0x00000040) != 0);
-  }
-  /**
-   * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-   * @return The equipment.
-   */
-  @java.lang.Override
-  public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getEquipment() {
-    return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
-  }
-  /**
-   * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-   */
-  @java.lang.Override
-  public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder getEquipmentOrBuilder() {
-    return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
-  }
-
-  private byte memoizedIsInitialized = -1;
-  @java.lang.Override
-  public final boolean isInitialized() {
-    byte isInitialized = memoizedIsInitialized;
-    if (isInitialized == 1) return true;
-    if (isInitialized == 0) return false;
-
-    memoizedIsInitialized = 1;
-    return true;
-  }
-
-  @java.lang.Override
-  public void writeTo(com.google.protobuf.CodedOutputStream output)
-                      throws java.io.IOException {
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeFloat(1, inGameTime_);
-    }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeFloat(2, maxHealth_);
-    }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeFloat(3, health_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeInt32(4, money_);
-    }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      output.writeInt32(5, level_);
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
-      output.writeMessage(6, getAmmoManager());
-    }
-    if (((bitField0_ & 0x00000040) != 0)) {
-      output.writeMessage(7, getEquipment());
-    }
-    unknownFields.writeTo(output);
-  }
-
-  @java.lang.Override
-  public int getSerializedSize() {
-    int size = memoizedSize;
-    if (size != -1) return size;
-
-    size = 0;
-    if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(1, inGameTime_);
-    }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(2, maxHealth_);
-    }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(3, health_);
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, money_);
-    }
-    if (((bitField0_ & 0x00000010) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, level_);
-    }
-    if (((bitField0_ & 0x00000020) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getAmmoManager());
-    }
-    if (((bitField0_ & 0x00000040) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, getEquipment());
-    }
-    size += unknownFields.getSerializedSize();
-    memoizedSize = size;
-    return size;
-  }
-
-  @java.lang.Override
-  public boolean equals(final java.lang.Object obj) {
-    if (obj == this) {
-     return true;
-    }
-    if (!(obj instanceof me.partlysunny.shapewars.proto.PlayerInfo)) {
-      return super.equals(obj);
-    }
-    me.partlysunny.shapewars.proto.PlayerInfo other = (me.partlysunny.shapewars.proto.PlayerInfo) obj;
-
-    if (hasInGameTime() != other.hasInGameTime()) return false;
-    if (hasInGameTime()) {
-      if (java.lang.Float.floatToIntBits(getInGameTime())
-          != java.lang.Float.floatToIntBits(
-              other.getInGameTime())) return false;
-    }
-    if (hasMaxHealth() != other.hasMaxHealth()) return false;
-    if (hasMaxHealth()) {
-      if (java.lang.Float.floatToIntBits(getMaxHealth())
-          != java.lang.Float.floatToIntBits(
-              other.getMaxHealth())) return false;
-    }
-    if (hasHealth() != other.hasHealth()) return false;
-    if (hasHealth()) {
-      if (java.lang.Float.floatToIntBits(getHealth())
-          != java.lang.Float.floatToIntBits(
-              other.getHealth())) return false;
-    }
-    if (hasMoney() != other.hasMoney()) return false;
-    if (hasMoney()) {
-      if (getMoney()
-          != other.getMoney()) return false;
-    }
-    if (hasLevel() != other.hasLevel()) return false;
-    if (hasLevel()) {
-      if (getLevel()
-          != other.getLevel()) return false;
-    }
-    if (hasAmmoManager() != other.hasAmmoManager()) return false;
-    if (hasAmmoManager()) {
-      if (!getAmmoManager()
-          .equals(other.getAmmoManager())) return false;
-    }
-    if (hasEquipment() != other.hasEquipment()) return false;
-    if (hasEquipment()) {
-      if (!getEquipment()
-          .equals(other.getEquipment())) return false;
-    }
-    if (!unknownFields.equals(other.unknownFields)) return false;
-    return true;
-  }
-
-  @java.lang.Override
-  public int hashCode() {
-    if (memoizedHashCode != 0) {
-      return memoizedHashCode;
-    }
-    int hash = 41;
-    hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasInGameTime()) {
-      hash = (37 * hash) + INGAMETIME_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getInGameTime());
-    }
-    if (hasMaxHealth()) {
-      hash = (37 * hash) + MAXHEALTH_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getMaxHealth());
-    }
-    if (hasHealth()) {
-      hash = (37 * hash) + HEALTH_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getHealth());
-    }
-    if (hasMoney()) {
-      hash = (37 * hash) + MONEY_FIELD_NUMBER;
-      hash = (53 * hash) + getMoney();
-    }
-    if (hasLevel()) {
-      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
-      hash = (53 * hash) + getLevel();
-    }
-    if (hasAmmoManager()) {
-      hash = (37 * hash) + AMMOMANAGER_FIELD_NUMBER;
-      hash = (53 * hash) + getAmmoManager().hashCode();
-    }
-    if (hasEquipment()) {
-      hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getEquipment().hashCode();
-    }
-    hash = (29 * hash) + unknownFields.hashCode();
-    memoizedHashCode = hash;
-    return hash;
-  }
-
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      java.nio.ByteBuffer data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      java.nio.ByteBuffer data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      com.google.protobuf.ByteString data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      com.google.protobuf.ByteString data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(byte[] data)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      byte[] data,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    return PARSER.parseFrom(data, extensionRegistry);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseDelimitedFrom(java.io.InputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseDelimitedFrom(
-      java.io.InputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      com.google.protobuf.CodedInputStream input)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input);
-  }
-  public static me.partlysunny.shapewars.proto.PlayerInfo parseFrom(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws java.io.IOException {
-    return com.google.protobuf.GeneratedMessageV3
-        .parseWithIOException(PARSER, input, extensionRegistry);
-  }
-
-  @java.lang.Override
-  public Builder newBuilderForType() { return newBuilder(); }
-  public static Builder newBuilder() {
-    return DEFAULT_INSTANCE.toBuilder();
-  }
-  public static Builder newBuilder(me.partlysunny.shapewars.proto.PlayerInfo prototype) {
-    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-  }
-  @java.lang.Override
-  public Builder toBuilder() {
-    return this == DEFAULT_INSTANCE
-        ? new Builder() : new Builder().mergeFrom(this);
-  }
-
-  @java.lang.Override
-  protected Builder newBuilderForType(
-      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-    Builder builder = new Builder(parent);
-    return builder;
-  }
-  /**
-   * Protobuf type {@code shapewars.PlayerInfo}
-   */
-  public static final class Builder extends
-      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:shapewars.PlayerInfo)
-      me.partlysunny.shapewars.proto.PlayerInfoOrBuilder {
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              me.partlysunny.shapewars.proto.PlayerInfo.class, me.partlysunny.shapewars.proto.PlayerInfo.Builder.class);
-    }
-
-    // Construct using me.partlysunny.shapewars.proto.PlayerInfo.newBuilder()
-    private Builder() {
-      maybeForceBuilderInitialization();
-    }
-
-    private Builder(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getAmmoManagerFieldBuilder();
-        getEquipmentFieldBuilder();
-      }
-    }
-    @java.lang.Override
-    public Builder clear() {
-      super.clear();
-      inGameTime_ = 0F;
-      bitField0_ = (bitField0_ & ~0x00000001);
-      maxHealth_ = 0F;
-      bitField0_ = (bitField0_ & ~0x00000002);
-      health_ = 0F;
-      bitField0_ = (bitField0_ & ~0x00000004);
-      money_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000008);
-      level_ = 0;
-      bitField0_ = (bitField0_ & ~0x00000010);
-      if (ammoManagerBuilder_ == null) {
-        ammoManager_ = null;
-      } else {
-        ammoManagerBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000020);
-      if (equipmentBuilder_ == null) {
-        equipment_ = null;
-      } else {
-        equipmentBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000040);
-      return this;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Descriptors.Descriptor
-        getDescriptorForType() {
-      return me.partlysunny.shapewars.proto.GameSaveProtos.internal_static_shapewars_PlayerInfo_descriptor;
-    }
-
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstanceForType() {
-      return me.partlysunny.shapewars.proto.PlayerInfo.getDefaultInstance();
-    }
-
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo build() {
-      me.partlysunny.shapewars.proto.PlayerInfo result = buildPartial();
-      if (!result.isInitialized()) {
-        throw newUninitializedMessageException(result);
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public me.partlysunny.shapewars.proto.PlayerInfo buildPartial() {
-      me.partlysunny.shapewars.proto.PlayerInfo result = new me.partlysunny.shapewars.proto.PlayerInfo(this);
-      int from_bitField0_ = bitField0_;
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.inGameTime_ = inGameTime_;
-        to_bitField0_ |= 0x00000001;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.maxHealth_ = maxHealth_;
-        to_bitField0_ |= 0x00000002;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.health_ = health_;
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.money_ = money_;
-        to_bitField0_ |= 0x00000008;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.level_ = level_;
-        to_bitField0_ |= 0x00000010;
-      }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
-        if (ammoManagerBuilder_ == null) {
-          result.ammoManager_ = ammoManager_;
-        } else {
-          result.ammoManager_ = ammoManagerBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000020;
-      }
-      if (((from_bitField0_ & 0x00000040) != 0)) {
-        if (equipmentBuilder_ == null) {
-          result.equipment_ = equipment_;
-        } else {
-          result.equipment_ = equipmentBuilder_.build();
-        }
-        to_bitField0_ |= 0x00000040;
-      }
-      result.bitField0_ = to_bitField0_;
-      onBuilt();
-      return result;
-    }
-
-    @java.lang.Override
-    public Builder clone() {
-      return super.clone();
-    }
-    @java.lang.Override
-    public Builder setField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return super.setField(field, value);
-    }
-    @java.lang.Override
-    public Builder clearField(
-        com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return super.clearField(field);
-    }
-    @java.lang.Override
-    public Builder clearOneof(
-        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return super.clearOneof(oneof);
-    }
-    @java.lang.Override
-    public Builder setRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        int index, java.lang.Object value) {
-      return super.setRepeatedField(field, index, value);
-    }
-    @java.lang.Override
-    public Builder addRepeatedField(
-        com.google.protobuf.Descriptors.FieldDescriptor field,
-        java.lang.Object value) {
-      return super.addRepeatedField(field, value);
-    }
-    @java.lang.Override
-    public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof me.partlysunny.shapewars.proto.PlayerInfo) {
-        return mergeFrom((me.partlysunny.shapewars.proto.PlayerInfo)other);
-      } else {
-        super.mergeFrom(other);
-        return this;
-      }
-    }
-
-    public Builder mergeFrom(me.partlysunny.shapewars.proto.PlayerInfo other) {
-      if (other == me.partlysunny.shapewars.proto.PlayerInfo.getDefaultInstance()) return this;
-      if (other.hasInGameTime()) {
-        setInGameTime(other.getInGameTime());
-      }
-      if (other.hasMaxHealth()) {
-        setMaxHealth(other.getMaxHealth());
-      }
-      if (other.hasHealth()) {
-        setHealth(other.getHealth());
-      }
-      if (other.hasMoney()) {
-        setMoney(other.getMoney());
-      }
-      if (other.hasLevel()) {
-        setLevel(other.getLevel());
-      }
-      if (other.hasAmmoManager()) {
-        mergeAmmoManager(other.getAmmoManager());
-      }
-      if (other.hasEquipment()) {
-        mergeEquipment(other.getEquipment());
-      }
-      this.mergeUnknownFields(other.unknownFields);
-      onChanged();
-      return this;
-    }
-
-    @java.lang.Override
-    public final boolean isInitialized() {
-      return true;
-    }
-
-    @java.lang.Override
-    public Builder mergeFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      me.partlysunny.shapewars.proto.PlayerInfo parsedMessage = null;
-      try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (me.partlysunny.shapewars.proto.PlayerInfo) e.getUnfinishedMessage();
-        throw e.unwrapIOException();
-      } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
-      return this;
-    }
-    private int bitField0_;
-
-    private float inGameTime_ ;
-    /**
-     * <code>optional float inGameTime = 1;</code>
-     * @return Whether the inGameTime field is set.
-     */
-    @java.lang.Override
-    public boolean hasInGameTime() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>optional float inGameTime = 1;</code>
-     * @return The inGameTime.
-     */
-    @java.lang.Override
-    public float getInGameTime() {
-      return inGameTime_;
-    }
-    /**
-     * <code>optional float inGameTime = 1;</code>
-     * @param value The inGameTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setInGameTime(float value) {
-      bitField0_ |= 0x00000001;
-      inGameTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional float inGameTime = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearInGameTime() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      inGameTime_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private float maxHealth_ ;
-    /**
-     * <code>optional float maxHealth = 2;</code>
-     * @return Whether the maxHealth field is set.
-     */
-    @java.lang.Override
-    public boolean hasMaxHealth() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional float maxHealth = 2;</code>
-     * @return The maxHealth.
-     */
-    @java.lang.Override
-    public float getMaxHealth() {
-      return maxHealth_;
-    }
-    /**
-     * <code>optional float maxHealth = 2;</code>
-     * @param value The maxHealth to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMaxHealth(float value) {
-      bitField0_ |= 0x00000002;
-      maxHealth_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional float maxHealth = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMaxHealth() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      maxHealth_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private float health_ ;
-    /**
-     * <code>optional float health = 3;</code>
-     * @return Whether the health field is set.
-     */
-    @java.lang.Override
-    public boolean hasHealth() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>optional float health = 3;</code>
-     * @return The health.
-     */
-    @java.lang.Override
-    public float getHealth() {
-      return health_;
-    }
-    /**
-     * <code>optional float health = 3;</code>
-     * @param value The health to set.
-     * @return This builder for chaining.
-     */
-    public Builder setHealth(float value) {
-      bitField0_ |= 0x00000004;
-      health_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional float health = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearHealth() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      health_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private int money_ ;
-    /**
-     * <code>optional int32 money = 4;</code>
-     * @return Whether the money field is set.
-     */
-    @java.lang.Override
-    public boolean hasMoney() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>optional int32 money = 4;</code>
-     * @return The money.
-     */
-    @java.lang.Override
-    public int getMoney() {
-      return money_;
-    }
-    /**
-     * <code>optional int32 money = 4;</code>
-     * @param value The money to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMoney(int value) {
-      bitField0_ |= 0x00000008;
-      money_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 money = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMoney() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      money_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int level_ ;
-    /**
-     * <code>optional int32 level = 5;</code>
-     * @return Whether the level field is set.
-     */
-    @java.lang.Override
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>optional int32 level = 5;</code>
-     * @return The level.
-     */
-    @java.lang.Override
-    public int getLevel() {
-      return level_;
-    }
-    /**
-     * <code>optional int32 level = 5;</code>
-     * @param value The level to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLevel(int value) {
-      bitField0_ |= 0x00000010;
-      level_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>optional int32 level = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearLevel() {
-      bitField0_ = (bitField0_ & ~0x00000010);
-      level_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager ammoManager_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder> ammoManagerBuilder_;
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     * @return Whether the ammoManager field is set.
-     */
-    public boolean hasAmmoManager() {
-      return ((bitField0_ & 0x00000020) != 0);
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     * @return The ammoManager.
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager getAmmoManager() {
-      if (ammoManagerBuilder_ == null) {
-        return ammoManager_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
-      } else {
-        return ammoManagerBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public Builder setAmmoManager(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager value) {
-      if (ammoManagerBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ammoManager_ = value;
-        onChanged();
-      } else {
-        ammoManagerBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000020;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public Builder setAmmoManager(
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder builderForValue) {
-      if (ammoManagerBuilder_ == null) {
-        ammoManager_ = builderForValue.build();
-        onChanged();
-      } else {
-        ammoManagerBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000020;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public Builder mergeAmmoManager(me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager value) {
-      if (ammoManagerBuilder_ == null) {
-        if (((bitField0_ & 0x00000020) != 0) &&
-            ammoManager_ != null &&
-            ammoManager_ != me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance()) {
-          ammoManager_ =
-            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.newBuilder(ammoManager_).mergeFrom(value).buildPartial();
-        } else {
-          ammoManager_ = value;
-        }
-        onChanged();
-      } else {
-        ammoManagerBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000020;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public Builder clearAmmoManager() {
-      if (ammoManagerBuilder_ == null) {
-        ammoManager_ = null;
-        onChanged();
-      } else {
-        ammoManagerBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000020);
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder getAmmoManagerBuilder() {
-      bitField0_ |= 0x00000020;
-      onChanged();
-      return getAmmoManagerFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder getAmmoManagerOrBuilder() {
-      if (ammoManagerBuilder_ != null) {
-        return ammoManagerBuilder_.getMessageOrBuilder();
-      } else {
-        return ammoManager_ == null ?
-            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.getDefaultInstance() : ammoManager_;
-      }
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder> 
+        /**
+         * <code>optional .shapewars.PlayerInfo.AmmoManager ammoManager = 6;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+                me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder>
         getAmmoManagerFieldBuilder() {
-      if (ammoManagerBuilder_ == null) {
-        ammoManagerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder>(
-                getAmmoManager(),
-                getParentForChildren(),
-                isClean());
-        ammoManager_ = null;
-      }
-      return ammoManagerBuilder_;
-    }
+            if (ammoManagerBuilder_ == null) {
+                ammoManagerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                        me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManager.Builder, me.partlysunny.shapewars.proto.PlayerInfo.AmmoManagerOrBuilder>(
+                        getAmmoManager(),
+                        getParentForChildren(),
+                        isClean());
+                ammoManager_ = null;
+            }
+            return ammoManagerBuilder_;
+        }
 
-    private me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment equipment_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder> equipmentBuilder_;
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     * @return Whether the equipment field is set.
-     */
-    public boolean hasEquipment() {
-      return ((bitField0_ & 0x00000040) != 0);
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     * @return The equipment.
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getEquipment() {
-      if (equipmentBuilder_ == null) {
-        return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
-      } else {
-        return equipmentBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public Builder setEquipment(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         *
+         * @return Whether the equipment field is set.
+         */
+        public boolean hasEquipment() {
+            return ((bitField0_ & 0x00000040) != 0);
         }
-        equipment_ = value;
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00000040;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public Builder setEquipment(
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        equipment_ = builderForValue.build();
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00000040;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public Builder mergeEquipment(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment value) {
-      if (equipmentBuilder_ == null) {
-        if (((bitField0_ & 0x00000040) != 0) &&
-            equipment_ != null &&
-            equipment_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance()) {
-          equipment_ =
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.newBuilder(equipment_).mergeFrom(value).buildPartial();
-        } else {
-          equipment_ = value;
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         *
+         * @return The equipment.
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment getEquipment() {
+            if (equipmentBuilder_ == null) {
+                return equipment_ == null ? me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
+            } else {
+                return equipmentBuilder_.getMessage();
+            }
         }
-        onChanged();
-      } else {
-        equipmentBuilder_.mergeFrom(value);
-      }
-      bitField0_ |= 0x00000040;
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public Builder clearEquipment() {
-      if (equipmentBuilder_ == null) {
-        equipment_ = null;
-        onChanged();
-      } else {
-        equipmentBuilder_.clear();
-      }
-      bitField0_ = (bitField0_ & ~0x00000040);
-      return this;
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder getEquipmentBuilder() {
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return getEquipmentFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder getEquipmentOrBuilder() {
-      if (equipmentBuilder_ != null) {
-        return equipmentBuilder_.getMessageOrBuilder();
-      } else {
-        return equipment_ == null ?
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
-      }
-    }
-    /**
-     * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder> 
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public Builder setEquipment(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment value) {
+            if (equipmentBuilder_ == null) {
+                if (value == null) {
+                    throw new NullPointerException();
+                }
+                equipment_ = value;
+                onChanged();
+            } else {
+                equipmentBuilder_.setMessage(value);
+            }
+            bitField0_ |= 0x00000040;
+            return this;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public Builder setEquipment(
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder builderForValue) {
+            if (equipmentBuilder_ == null) {
+                equipment_ = builderForValue.build();
+                onChanged();
+            } else {
+                equipmentBuilder_.setMessage(builderForValue.build());
+            }
+            bitField0_ |= 0x00000040;
+            return this;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public Builder mergeEquipment(me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment value) {
+            if (equipmentBuilder_ == null) {
+                if (((bitField0_ & 0x00000040) != 0) &&
+                        equipment_ != null &&
+                        equipment_ != me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance()) {
+                    equipment_ =
+                            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.newBuilder(equipment_).mergeFrom(value).buildPartial();
+                } else {
+                    equipment_ = value;
+                }
+                onChanged();
+            } else {
+                equipmentBuilder_.mergeFrom(value);
+            }
+            bitField0_ |= 0x00000040;
+            return this;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public Builder clearEquipment() {
+            if (equipmentBuilder_ == null) {
+                equipment_ = null;
+                onChanged();
+            } else {
+                equipmentBuilder_.clear();
+            }
+            bitField0_ = (bitField0_ & ~0x00000040);
+            return this;
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder getEquipmentBuilder() {
+            bitField0_ |= 0x00000040;
+            onChanged();
+            return getEquipmentFieldBuilder().getBuilder();
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        public me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder getEquipmentOrBuilder() {
+            if (equipmentBuilder_ != null) {
+                return equipmentBuilder_.getMessageOrBuilder();
+            } else {
+                return equipment_ == null ?
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.getDefaultInstance() : equipment_;
+            }
+        }
+
+        /**
+         * <code>optional .shapewars.PlayerInfo.PlayerEquipment equipment = 7;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+                me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder>
         getEquipmentFieldBuilder() {
-      if (equipmentBuilder_ == null) {
-        equipmentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder>(
-                getEquipment(),
-                getParentForChildren(),
-                isClean());
-        equipment_ = null;
-      }
-      return equipmentBuilder_;
+            if (equipmentBuilder_ == null) {
+                equipmentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                        me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipment.Builder, me.partlysunny.shapewars.proto.PlayerInfo.PlayerEquipmentOrBuilder>(
+                        getEquipment(),
+                        getParentForChildren(),
+                        isClean());
+                equipment_ = null;
+            }
+            return equipmentBuilder_;
+        }
+
+        @java.lang.Override
+        public final Builder setUnknownFields(
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+                final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo)
     }
-    @java.lang.Override
-    public final Builder setUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFields(unknownFields);
-    }
-
-    @java.lang.Override
-    public final Builder mergeUnknownFields(
-        final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.mergeUnknownFields(unknownFields);
-    }
-
-
-    // @@protoc_insertion_point(builder_scope:shapewars.PlayerInfo)
-  }
-
-  // @@protoc_insertion_point(class_scope:shapewars.PlayerInfo)
-  private static final me.partlysunny.shapewars.proto.PlayerInfo DEFAULT_INSTANCE;
-  static {
-    DEFAULT_INSTANCE = new me.partlysunny.shapewars.proto.PlayerInfo();
-  }
-
-  public static me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstance() {
-    return DEFAULT_INSTANCE;
-  }
-
-  private static final com.google.protobuf.Parser<PlayerInfo>
-      PARSER = new com.google.protobuf.AbstractParser<PlayerInfo>() {
-    @java.lang.Override
-    public PlayerInfo parsePartialFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PlayerInfo(input, extensionRegistry);
-    }
-  };
-
-  public static com.google.protobuf.Parser<PlayerInfo> parser() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  public com.google.protobuf.Parser<PlayerInfo> getParserForType() {
-    return PARSER;
-  }
-
-  @java.lang.Override
-  public me.partlysunny.shapewars.proto.PlayerInfo getDefaultInstanceForType() {
-    return DEFAULT_INSTANCE;
-  }
 
 }
 
