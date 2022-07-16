@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class AmmoManager {
 
-    private Map<String, Integer> ammoMap = new HashMap<>();
-    private Map<String, Float> counter = new HashMap<>();
+    private final Map<String, Integer> ammoMap = new HashMap<>();
+    private final Map<String, Float> counter = new HashMap<>();
 
     public AmmoManager() {
         for (String item : ItemManager.items()) {
@@ -58,5 +58,9 @@ public class AmmoManager {
 
     public int ammoRemaining(String texture) {
         return ammoMap.get(texture);
+    }
+
+    public Map<String, Integer> ammoMap() {
+        return ammoMap;
     }
 }

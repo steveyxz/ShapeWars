@@ -76,3 +76,5 @@ nb-configuration.xml
 /hypevids/
 /ShapeWars-0.0.1.jar
 *.mscz
+/include/
+protoc.exe

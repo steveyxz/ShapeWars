@@ -243,4 +243,8 @@ public class PlayerInfo {
     public int money() {
         return money;
     }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
 }

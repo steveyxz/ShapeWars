@@ -33,7 +33,6 @@ import java.util.Map;
 
 public class PlayerEquipment {
 
-    private final List<Item> unlockedItems = new ArrayList<>();
     private final TextureRegionDrawable regular;
     private final TextureRegionDrawable selected;
     private final List<String> unlockedWeapons = new ArrayList<>();
@@ -237,12 +236,12 @@ public class PlayerEquipment {
         InGameScreen.playerInfo.setMaxHealth(100 + (armorOne == null ? 0 : armorOne.getBonusHealth()) + (armorTwo == null ? 0 : armorTwo.getBonusHealth()));
     }
 
-    public List<Item> unlockedItems() {
-        return unlockedItems;
-    }
-
     public ArmorItem armorOne() {
         return armorOne;
+    }
+
+    public String armorOneTexture() {
+        return armorOne == null ? "" : armorOne.texture();
     }
 
     public void setArmorOne(ArmorItem armorOne) {
@@ -293,6 +292,10 @@ public class PlayerEquipment {
         return armorTwo;
     }
 
+    public String armorTwoTexture() {
+        return armorTwo == null ? "" : armorTwo.texture();
+    }
+
     public void setArmorTwo(ArmorItem armorTwo) {
         if (armorOne == armorTwo) {
             this.armorOne = null;
@@ -302,6 +305,10 @@ public class PlayerEquipment {
 
     public WeaponItem weaponOne() {
         return weaponOne;
+    }
+
+    public String weaponOneTexture() {
+        return weaponOne == null ? "" : weaponOne.texture();
     }
 
     public void unlockWeapon(String weapon) {
@@ -329,6 +336,10 @@ public class PlayerEquipment {
 
     public WeaponItem weaponTwo() {
         return weaponTwo;
+    }
+
+    public String weaponTwoTexture() {
+        return weaponTwo == null ? "" : weaponTwo.texture();
     }
 
     public void setWeaponTwo(WeaponItem weaponTwo) {

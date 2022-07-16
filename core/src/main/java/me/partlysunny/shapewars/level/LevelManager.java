@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
+import me.partlysunny.shapewars.proto.GameSaver;
 import me.partlysunny.shapewars.screens.InGameScreen;
 import me.partlysunny.shapewars.util.classes.PositionSet;
 import me.partlysunny.shapewars.util.constants.FontPresets;
@@ -160,6 +161,15 @@ public class LevelManager {
         }
     }
 
+    public int currentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
+        loadCurrentLevel();
+    }
+
     private void checkLevelUp() {
         //If no enemies
         if (enemiesRemaining() == 0) {
@@ -183,6 +193,7 @@ public class LevelManager {
                     isLeveling = true;
                     loadCurrentLevel();
                     isLeveling = false;
+                    GameSaver.save();
                 }
             }
         }

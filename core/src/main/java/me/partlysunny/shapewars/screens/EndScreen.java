@@ -5,9 +5,11 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.kotcrab.vis.ui.widget.VisTable;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.sound.MusicManager;
+import me.partlysunny.shapewars.proto.GameSaver;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.Util;
 
@@ -41,7 +43,12 @@ public class EndScreen extends BasicGuiScreen {
             public boolean keyDown(InputEvent event, int keycode) {
                 if ((keycode == Input.Keys.ENTER) && game.getScreenManager().getCurrentScreen().equals(s)) {
                     ((InGameScreen) game.getScreenManager().getScreen("ingame")).delete();
-                    game.reload();
+                    GameSaver.deleteSave();
+                    try {
+                        game.reload();
+                    } catch (InvalidProtocolBufferException e) {
+                        throw new RuntimeException(e);
+                    }
                     game.getScreenManager().pushScreen("mainMenu", "blending");
                 }
                 return true;
