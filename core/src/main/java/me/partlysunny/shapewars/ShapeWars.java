@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -29,7 +30,7 @@ public class ShapeWars extends ManagedGame<ManagedScreen, ScreenTransition> {
         try {
             reload();
         } catch (InvalidProtocolBufferException e) {
-            throw new RuntimeException(e);
+            Gdx.app.log("ERROR", "Loading game save failed! Corrupted save?", e);
         }
         screenManager.pushScreen("intro", "blending");
     }

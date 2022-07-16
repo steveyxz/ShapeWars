@@ -1,5 +1,6 @@
 package me.partlysunny.shapewars.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -47,7 +48,7 @@ public class EndScreen extends BasicGuiScreen {
                     try {
                         game.reload();
                     } catch (InvalidProtocolBufferException e) {
-                        throw new RuntimeException(e);
+                        Gdx.app.log("ERROR", "Loading game save failed! Corrupted save?", e);
                     }
                     game.getScreenManager().pushScreen("mainMenu", "blending");
                 }
