@@ -52,7 +52,7 @@ public class CommanderEnemy extends Enemy {
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return CustomLootTable.LootTableBuilder.builder().setRolls(4).addEntry(new TableEntryWrapper(new CoinEntry(3, 6, 3), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "basicHpPot"), 1)).build();
+        return CustomLootTable.LootTableBuilder.builder().setRolls(4).addEntry(new TableEntryWrapper(new CoinEntry(4, 7, 3), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "mediumHpPot"), 1)).build();
     }
 
     @Override

@@ -52,7 +52,7 @@ public class MegaTankEnemy extends Enemy {
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return CustomLootTable.LootTableBuilder.builder().setRolls(3).addEntry(new TableEntryWrapper(new CoinEntry(2, 4, 2), 3)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "basicHpPot"), 1)).build();
+        return CustomLootTable.LootTableBuilder.builder().setRolls(2).addEntry(new TableEntryWrapper(new CoinEntry(4, 6, 3), 4)).addEntry(new TableEntryWrapper(new UtilityItemEntry(1, 1, "mediumHpPot"), 1)).build();
     }
 
     @Override

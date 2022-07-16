@@ -56,7 +56,7 @@ public class MiniGun implements WeaponItem {
 
     @Override
     public int damage() {
-        return 3;
+        return 4;
     }
 
     @Override

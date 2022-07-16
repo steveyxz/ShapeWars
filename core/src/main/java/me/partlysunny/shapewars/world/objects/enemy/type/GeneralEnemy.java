@@ -51,7 +51,7 @@ public class GeneralEnemy extends Enemy {
     @Nullable
     @Override
     protected CustomLootTable loot() {
-        return CustomLootTable.LootTableBuilder.builder().setRolls(3).addEntry(new TableEntryWrapper(new CoinEntry(8, 16, 6), 1)).build();
+        return CustomLootTable.LootTableBuilder.builder().setRolls(5).addEntry(new TableEntryWrapper(new CoinEntry(8, 16, 6), 1)).build();
     }
 
     @Override

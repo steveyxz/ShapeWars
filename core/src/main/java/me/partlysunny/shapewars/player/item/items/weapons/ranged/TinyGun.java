@@ -36,4 +36,9 @@ public class TinyGun extends MiniGun {
     public int price() {
         return 250;
     }
+
+    @Override
+    public int damage() {
+        return 3;
+    }
 }
