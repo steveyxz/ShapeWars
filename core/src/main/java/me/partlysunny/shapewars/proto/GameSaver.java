@@ -112,10 +112,13 @@ public class GameSaver {
     }
 
     public static void deleteSave() {
-        FileHandle saveFile = Gdx.files.internal("saves/save.swsave");
+        FileHandle saveFile = Gdx.files.local("saves/save.swsave");
         if (saveFile.exists()) {
             saveFile.delete();
         }
     }
 
+    public static boolean hasSave() {
+        return Gdx.files.local("saves/save.swsave").exists();
+    }
 }

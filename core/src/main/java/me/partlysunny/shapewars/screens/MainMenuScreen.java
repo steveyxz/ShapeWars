@@ -13,6 +13,7 @@ import com.kotcrab.vis.ui.widget.VisImage;
 import me.partlysunny.shapewars.ShapeWars;
 import me.partlysunny.shapewars.effects.sound.MusicManager;
 import me.partlysunny.shapewars.effects.sound.SoundEffectManager;
+import me.partlysunny.shapewars.proto.GameSaver;
 import me.partlysunny.shapewars.util.constants.FontPresets;
 import me.partlysunny.shapewars.util.utilities.TextureManager;
 import me.partlysunny.shapewars.util.utilities.TextureRegionDrawableCache;
@@ -56,7 +57,11 @@ public class MainMenuScreen extends BasicGuiScreen {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                 if (game.getScreenManager().getCurrentScreen().equals(t)) {
-                    game.getScreenManager().pushScreen("ingame", "blending");
+                    if (!GameSaver.hasSave()) {
+                        game.getScreenManager().pushScreen("ingame", "blending");
+                    } else {
+                        game.getScreenManager().pushScreen("loadOldSave", "blending");
+                    }
                 }
                 SoundEffectManager.play("click", 1);
                 return false;
